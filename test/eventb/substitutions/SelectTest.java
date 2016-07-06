@@ -58,7 +58,10 @@ public class SelectTest {
 
     @Test
     public void test_toString() {
-
+        True condition = new True();
+        Skip substitution = new Skip();
+        EventBFormatter eventBFormatter = new EventBFormatter();
+        Assert.assertEquals("SELECT" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + condition.accept(eventBFormatter) + UCharacters.LINE_SEPARATOR + "THEN" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + substitution.accept(eventBFormatter) + UCharacters.LINE_SEPARATOR + "END", new Select(condition, substitution).toString());
     }
 
 }
