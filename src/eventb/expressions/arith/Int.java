@@ -1,4 +1,4 @@
-package eventb.expressions.bool;
+package eventb.expressions.arith;
 
 import eventb.expressions.AExpression;
 import eventb.tools.formatter.IEventBFormatter;
@@ -6,9 +6,19 @@ import eventb.tools.replacer.IAssignableReplacer;
 
 /**
  * Created by gvoiron on 07/07/16.
- * Time : 00:03
+ * Time : 14:45
  */
-public final class True extends ABooleanExpression {
+public final class Int extends AArithmeticExpression {
+
+    private Integer value;
+
+    public Int(Integer value) {
+        this.value = value;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
 
     @Override
     public String accept(IEventBFormatter visitor) {

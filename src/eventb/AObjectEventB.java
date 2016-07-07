@@ -1,7 +1,7 @@
 package eventb;
 
-import eventb.formatter.EventBFormatter;
-import eventb.formatter.IEventBFormatterVisitable;
+import eventb.tools.formatter.EventBFormatter;
+import eventb.tools.formatter.IEventBFormatterVisitable;
 
 /**
  * Created by gvoiron on 07/07/16.

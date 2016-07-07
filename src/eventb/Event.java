@@ -1,7 +1,7 @@
 package eventb;
 
-import eventb.formatter.IEventBFormatter;
 import eventb.substitutions.ASubstitution;
+import eventb.tools.formatter.IEventBFormatter;
 
 /**
  * Created by gvoiron on 06/07/16.

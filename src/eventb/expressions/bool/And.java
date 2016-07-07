@@ -4,11 +4,20 @@ import eventb.expressions.AExpression;
 import eventb.tools.formatter.IEventBFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by gvoiron on 07/07/16.
- * Time : 00:03
+ * Time : 23:30
  */
-public final class True extends ABooleanExpression {
+public final class And extends ABooleanExpression {
+
+    private final List<ABooleanExpression> operands;
+
+    public And(ABooleanExpression... operands) {
+        this.operands = Arrays.asList(operands);
+    }
 
     @Override
     public String accept(IEventBFormatter visitor) {
@@ -18,6 +27,10 @@ public final class True extends ABooleanExpression {
     @Override
     public AExpression accept(IAssignableReplacer visitor) {
         return visitor.visit(this);
+    }
+
+    public List<ABooleanExpression> getOperands() {
+        return operands;
     }
 
 }

@@ -1,7 +1,7 @@
 package eventb.substitutions;
 
 import eventb.expressions.bool.ABooleanExpression;
-import eventb.formatter.IEventBFormatter;
+import eventb.tools.formatter.IEventBFormatter;
 
 /**
  * Created by gvoiron on 06/07/16.

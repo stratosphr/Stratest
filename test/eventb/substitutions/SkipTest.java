@@ -1,7 +1,7 @@
 package eventb.substitutions;
 
 import eventb.expressions.bool.True;
-import eventb.formatter.EventBFormatter;
+import eventb.tools.formatter.EventBFormatter;
 import org.junit.Assert;
 import org.junit.Test;
 
