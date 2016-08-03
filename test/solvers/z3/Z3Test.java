@@ -14,10 +14,6 @@ public class Z3Test {
     public void test_defaultConstructor_loadsLibraries() {
         Z3 z3 = new Z3();
         Assert.assertEquals(Status.SATISFIABLE, z3.checkSAT());
-        z3.addCode("(define-fun x () Int 1)");
-        z3.addCode("(define-fun y () Int 2)");
-        Assert.assertEquals(Status.SATISFIABLE, z3.checkSAT());
-        //Assert.assertEquals("1", z3.getContext().mkInt(1).toString());
     }
 
     @Test
