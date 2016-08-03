@@ -3,6 +3,7 @@ package eventb.tools.replacer;
 import eventb.expressions.AExpression;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
+import eventb.expressions.sets.NamedSet;
 
 /**
  * Created by gvoiron on 07/07/16.
@@ -85,6 +86,11 @@ public final class AssignableReplacer implements IAssignableReplacer {
     @Override
     public AExpression visit(Multiplication multiplication) {
         return new Multiplication(multiplication.getOperands().stream().map(operand -> operand.accept(this)).toArray(AArithmeticExpression[]::new));
+    }
+
+    @Override
+    public AExpression visit(NamedSet namedSet) {
+        throw new Error("AssignableReplacer should never be used as visitor of NamedSet instance.");
     }
 
     public AAssignable getAssignable() {

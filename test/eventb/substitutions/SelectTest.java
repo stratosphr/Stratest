@@ -2,7 +2,7 @@ package eventb.substitutions;
 
 import eventb.expressions.bool.Implication;
 import eventb.expressions.bool.True;
-import eventb.tools.formatter.EventBFormatter;
+import eventb.tools.formatters.EventBFormatter;
 import org.junit.Assert;
 import org.junit.Test;
 import utilities.UCharacters;

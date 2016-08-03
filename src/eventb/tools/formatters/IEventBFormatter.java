@@ -1,8 +1,10 @@
-package eventb.tools.formatter;
+package eventb.tools.formatters;
 
 import eventb.Event;
+import eventb.Machine;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
+import eventb.expressions.sets.NamedSet;
 import eventb.substitutions.*;
 
 /**
@@ -48,5 +50,9 @@ public interface IEventBFormatter {
     String visit(Subtraction subtraction);
 
     String visit(Multiplication multiplication);
+
+    String visit(NamedSet namedSet);
+
+    String visit(Machine machine);
 
 }

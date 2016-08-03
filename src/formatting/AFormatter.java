@@ -23,17 +23,17 @@ public abstract class AFormatter {
         return formatted;
     }
 
-    private String indent() {
+    public String indent() {
         return String.join("", Collections.nCopies(indentationLevel, UCharacters.TABULATION));
     }
 
-    private void indentLeft() {
+    public void indentLeft() {
         if (indentationLevel >= 1) {
             --indentationLevel;
         }
     }
 
-    private void indentRight() {
+    public void indentRight() {
         ++indentationLevel;
     }
 

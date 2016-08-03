@@ -1,7 +1,7 @@
 package eventb;
 
 import eventb.substitutions.Skip;
-import eventb.tools.formatter.EventBFormatter;
+import eventb.tools.formatters.EventBFormatter;
 import org.junit.Assert;
 import org.junit.Test;
 import utilities.UCharacters;

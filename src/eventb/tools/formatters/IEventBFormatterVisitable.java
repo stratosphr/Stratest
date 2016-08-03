@@ -1,4 +1,4 @@
-package eventb.tools.formatter;
+package eventb.tools.formatters;
 
 /**
  * Created by gvoiron on 06/07/16.

@@ -1,14 +1,26 @@
-package eventb.expressions.bool;
+package eventb.expressions.sets;
 
 import eventb.expressions.AExpression;
+import eventb.expressions.arith.Int;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
 
 /**
- * Created by gvoiron on 07/07/16.
- * Time : 00:03
+ * Created by gvoiron on 03/08/16.
+ * Time : 23:30
  */
-public final class True extends ABooleanExpression {
+public final class NamedSet extends ASet {
+
+    private final String name;
+
+    public NamedSet(String name, Int... elements) {
+        super(elements);
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     @Override
     public String accept(IEventBFormatter visitor) {

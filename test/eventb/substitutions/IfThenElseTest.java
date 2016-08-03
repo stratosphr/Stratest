@@ -5,7 +5,7 @@ import eventb.expressions.arith.Int;
 import eventb.expressions.arith.LowerThan;
 import eventb.expressions.arith.Variable;
 import eventb.expressions.bool.*;
-import eventb.tools.formatter.EventBFormatter;
+import eventb.tools.formatters.EventBFormatter;
 import org.junit.Assert;
 import org.junit.Test;
 import utilities.UCharacters;

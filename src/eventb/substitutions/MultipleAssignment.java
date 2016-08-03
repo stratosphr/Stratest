@@ -1,7 +1,7 @@
 package eventb.substitutions;
 
 import eventb.expressions.bool.ABooleanExpression;
-import eventb.tools.formatter.IEventBFormatter;
+import eventb.tools.formatters.IEventBFormatter;
 
 import java.util.ArrayList;
 import java.util.Arrays;

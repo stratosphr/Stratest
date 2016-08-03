@@ -2,7 +2,7 @@ package eventb.expressions.bool;
 
 import eventb.expressions.AExpression;
 import eventb.expressions.arith.AArithmeticExpression;
-import eventb.tools.formatter.IEventBFormatter;
+import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
 
 /**

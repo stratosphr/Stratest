@@ -1,7 +1,7 @@
 package eventb.substitutions;
 
 import eventb.expressions.arith.*;
-import eventb.tools.formatter.EventBFormatter;
+import eventb.tools.formatters.EventBFormatter;
 import org.junit.Assert;
 import org.junit.Test;
 import utilities.UCharacters;

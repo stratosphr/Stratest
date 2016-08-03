@@ -1,6 +1,6 @@
 package eventb.expressions.bool;
 
-import eventb.tools.formatter.EventBFormatter;
+import eventb.tools.formatters.EventBFormatter;
 import org.junit.Assert;
 import org.junit.Test;
 

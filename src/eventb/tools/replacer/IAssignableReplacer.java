@@ -3,6 +3,7 @@ package eventb.tools.replacer;
 import eventb.expressions.AExpression;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
+import eventb.expressions.sets.NamedSet;
 
 /**
  * Created by gvoiron on 07/07/16.
@@ -35,5 +36,7 @@ public interface IAssignableReplacer {
     AExpression visit(Subtraction subtraction);
 
     AExpression visit(Multiplication multiplication);
+
+    AExpression visit(NamedSet namedSet);
 
 }

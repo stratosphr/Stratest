@@ -4,7 +4,7 @@ import eventb.expressions.bool.ABooleanExpression;
 import eventb.expressions.bool.And;
 import eventb.expressions.bool.Implication;
 import eventb.expressions.bool.Not;
-import eventb.tools.formatter.IEventBFormatter;
+import eventb.tools.formatters.IEventBFormatter;
 
 /**
  * Created by gvoiron on 07/07/16.

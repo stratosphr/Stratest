@@ -3,7 +3,7 @@ package eventb.substitutions;
 import eventb.expressions.arith.AArithmeticExpression;
 import eventb.expressions.arith.AAssignable;
 import eventb.expressions.bool.ABooleanExpression;
-import eventb.tools.formatter.IEventBFormatter;
+import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.replacer.AssignableReplacer;
 
 /**
