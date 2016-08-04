@@ -1,134 +1,80 @@
 package eventb.tools.formatters;
 
-import eventb.Event;
-import eventb.Machine;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
-import eventb.expressions.sets.CustomSet;
-import eventb.expressions.sets.NamedSet;
-import eventb.expressions.sets.RangeSet;
-import eventb.substitutions.*;
 import formatting.AFormatter;
 
+import java.util.stream.Collectors;
+
 /**
- * Created by gvoiron on 06/07/16.
- * Time : 22:22
+ * Created by gvoiron on 04/08/16.
+ * Time : 13:12
  */
-public final class EventBToSMTLib2Formatter extends AFormatter implements IEventBFormatter {
-
-    @Override
-    public String visit(Event event) {
-        return null;
-    }
-
-    @Override
-    public String visit(Skip skip) {
-        return null;
-    }
-
-    @Override
-    public String visit(Assignment assignment) {
-        return null;
-    }
-
-    @Override
-    public String visit(MultipleAssignment multipleAssignment) {
-        return null;
-    }
-
-    @Override
-    public String visit(Select select) {
-        return null;
-    }
-
-    @Override
-    public String visit(IfThenElse ifThenElse) {
-        return null;
-    }
+public class EventBToSMTLib2Formatter extends AFormatter implements IExpressionFormatter {
 
     @Override
     public String visit(True aTrue) {
-        return null;
+        return "true";
     }
 
     @Override
     public String visit(Not not) {
-        return null;
+        return "(not " + not.getOperand().accept(this) + ")";
     }
 
     @Override
     public String visit(And and) {
-        return null;
+        return and.getOperands().isEmpty() ? "and" : "(and " + and.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(" ")) + ")";
     }
 
     @Override
     public String visit(Equals equals) {
-        return null;
+        return "(= " + equals.getLeft() + " " + equals.getRight() + ")";
     }
 
     @Override
     public String visit(LowerThan lowerThan) {
-        return null;
+        return "(< " + lowerThan.getLeft() + " " + lowerThan.getRight() + ")";
     }
 
     @Override
     public String visit(LowerOrEqual lowerOrEqual) {
-        return null;
+        return "(<= " + lowerOrEqual.getLeft() + " " + lowerOrEqual.getRight() + ")";
     }
 
     @Override
     public String visit(GreaterThan greaterThan) {
-        return null;
+        return "(> " + greaterThan.getLeft() + " " + greaterThan.getRight() + ")";
     }
 
     @Override
     public String visit(GreaterOrEqual greaterOrEqual) {
-        return null;
+        return "(>= " + greaterOrEqual.getLeft() + " " + greaterOrEqual.getRight() + ")";
     }
 
     @Override
     public String visit(Implication implication) {
-        return null;
+        return "(=> " + implication.getIfPart().accept(this) + " " + implication.getThenPart().accept(this) + ")";
     }
 
     @Override
     public String visit(Variable variable) {
-        return null;
+        return variable.getName();
     }
 
     @Override
     public String visit(Int anInt) {
-        return null;
+        return String.valueOf(anInt.getValue());
     }
 
     @Override
     public String visit(Subtraction subtraction) {
-        return null;
+        return "(- " + subtraction.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(" ")) + ")";
     }
 
     @Override
     public String visit(Multiplication multiplication) {
-        return null;
-    }
-
-    @Override
-    public String visit(CustomSet customSet) {
-        return null;
-    }
-
-    @Override
-    public String visit(NamedSet namedSet) {
-        return null;
-    }
-
-    @Override
-    public String visit(RangeSet rangeSet) {
-        return null;
-    }
-
-    @Override
-    public String visit(Machine machine) {
-        return null;
+        return "(* " + multiplication.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(" ")) + ")";
     }
 
 }

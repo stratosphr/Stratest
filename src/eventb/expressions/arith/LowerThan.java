@@ -3,6 +3,7 @@ package eventb.expressions.arith;
 import eventb.expressions.AExpression;
 import eventb.expressions.bool.ABooleanExpression;
 import eventb.tools.formatters.IEventBFormatter;
+import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
 
 /**
@@ -26,6 +27,11 @@ public final class LowerThan extends ABooleanExpression {
 
     @Override
     public AExpression accept(IAssignableReplacer visitor) {
+        return visitor.visit(this);
+    }
+
+    @Override
+    public String accept(IExpressionFormatter visitor) {
         return visitor.visit(this);
     }
 

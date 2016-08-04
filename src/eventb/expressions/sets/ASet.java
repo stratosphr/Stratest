@@ -1,6 +1,6 @@
 package eventb.expressions.sets;
 
-import eventb.expressions.AExpression;
+import eventb.AObjectEventB;
 import eventb.expressions.arith.Int;
 
 import java.util.Arrays;
@@ -11,7 +11,7 @@ import java.util.Set;
  * Created by gvoiron on 03/08/16.
  * Time : 23:30
  */
-public abstract class ASet extends AExpression {
+public abstract class ASet extends AObjectEventB {
 
     private final Set<Int> elements;
 

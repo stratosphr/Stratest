@@ -2,7 +2,6 @@ package eventb.expressions.sets;
 
 import eventb.expressions.arith.Int;
 import eventb.tools.formatters.EventBFormatter;
-import eventb.tools.replacer.AssignableReplacer;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -28,16 +27,6 @@ public class RangeSetTest {
     public void test_acceptEventBFormatter() {
         RangeSet rangeSet = new RangeSet(new Int(42), new Int(64));
         Assert.assertEquals("42..64", rangeSet.accept(new EventBFormatter()));
-    }
-
-    @Test
-    public void test_acceptAssignableReplacer() {
-        RangeSet rangeSet = new RangeSet(new Int(42), new Int(64));
-        try {
-            rangeSet.accept(new AssignableReplacer(null, null));
-            throw new Error("AssignableReplacer visiting RangeSet instance occurred and did not throw the expected Error.");
-        } catch (Error ignored) {
-        }
     }
 
     @Test

@@ -2,6 +2,7 @@ package eventb.expressions.bool;
 
 import eventb.expressions.AExpression;
 import eventb.tools.formatters.IEventBFormatter;
+import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
 
 import java.util.Arrays;
@@ -31,6 +32,11 @@ public final class And extends ABooleanExpression {
 
     public List<ABooleanExpression> getOperands() {
         return operands;
+    }
+
+    @Override
+    public String accept(IExpressionFormatter visitor) {
+        return visitor.visit(this);
     }
 
 }

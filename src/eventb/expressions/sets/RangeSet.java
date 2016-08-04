@@ -1,9 +1,7 @@
 package eventb.expressions.sets;
 
-import eventb.expressions.AExpression;
 import eventb.expressions.arith.Int;
 import eventb.tools.formatters.IEventBFormatter;
-import eventb.tools.replacer.IAssignableReplacer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +23,6 @@ public final class RangeSet extends ASet {
 
     @Override
     public String accept(IEventBFormatter visitor) {
-        return visitor.visit(this);
-    }
-
-    @Override
-    public AExpression accept(IAssignableReplacer visitor) {
         return visitor.visit(this);
     }
 

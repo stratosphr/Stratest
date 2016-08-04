@@ -16,13 +16,6 @@ public abstract class AFormatter {
         this.indentationLevel = 0;
     }
 
-    public String indent(String toIndent) {
-        indentRight();
-        String formatted = indent() + toIndent;
-        indentLeft();
-        return formatted;
-    }
-
     public String indent() {
         return String.join("", Collections.nCopies(indentationLevel, UCharacters.TABULATION));
     }
