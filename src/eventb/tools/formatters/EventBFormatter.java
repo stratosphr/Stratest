@@ -37,30 +37,38 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
 
     @Override
     public String visit(MultipleAssignment multipleAssignment) {
-        /*String formatted = "";
-        for (Assignment assignment : multipleAssignment.getAssignments()) {
-            formatted += assignment.accept(this) + " ||" + UCharacters.LINE_SEPARATOR ;
-        }
-        indentRight();
-        String formatted = multipleAssignment.getAssignments().stream().map(assignment -> assignment.accept(this)).collect(Collectors.joining(" ||" + UCharacters.LINE_SEPARATOR + indent()));
-        indentLeft();
-        return formatted;*/
-        return "";
+        return multipleAssignment.getAssignments().stream().map(assignment -> assignment.accept(this)).collect(Collectors.joining(" ||" + UCharacters.LINE_SEPARATOR + indent()));
     }
 
     @Override
     public String visit(Select select) {
+        String formatted = "SELECT" + UCharacters.LINE_SEPARATOR;
         indentRight();
-        String formatted = "SELECT" + UCharacters.LINE_SEPARATOR + indent() + select.getCondition().accept(this) + UCharacters.LINE_SEPARATOR + "THEN" + UCharacters.LINE_SEPARATOR + indent() + select.getSubstitution().accept(this) + UCharacters.LINE_SEPARATOR + "END";
+        formatted += indent() + select.getCondition().accept(this) + UCharacters.LINE_SEPARATOR;
         indentLeft();
+        formatted += indent() + "THEN" + UCharacters.LINE_SEPARATOR;
+        indentRight();
+        formatted += indent() + select.getSubstitution().accept(this) + UCharacters.LINE_SEPARATOR;
+        indentLeft();
+        formatted += indent() + "END";
         return formatted;
     }
 
     @Override
     public String visit(IfThenElse ifThenElse) {
+        String formatted = "IF" + UCharacters.LINE_SEPARATOR;
         indentRight();
-        String formatted = "IF" + UCharacters.LINE_SEPARATOR + indent() + ifThenElse.getCondition().accept(this) + UCharacters.LINE_SEPARATOR + "THEN" + UCharacters.LINE_SEPARATOR + indent() + ifThenElse.getThenPart().accept(this) + UCharacters.LINE_SEPARATOR + "ELSE" + UCharacters.LINE_SEPARATOR + indent() + ifThenElse.getElsePart().accept(this) + UCharacters.LINE_SEPARATOR + "END";
+        formatted += indent() + ifThenElse.getCondition().accept(this) + UCharacters.LINE_SEPARATOR;
         indentLeft();
+        formatted += indent() + "THEN" + UCharacters.LINE_SEPARATOR;
+        indentRight();
+        formatted += indent() + ifThenElse.getThenPart().accept(this) + UCharacters.LINE_SEPARATOR;
+        indentLeft();
+        formatted += indent() + "ELSE" + UCharacters.LINE_SEPARATOR;
+        indentRight();
+        formatted += indent() + ifThenElse.getElsePart().accept(this) + UCharacters.LINE_SEPARATOR;
+        indentLeft();
+        formatted += indent() + "END";
         return formatted;
     }
 
@@ -162,12 +170,11 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
         indentLeft();
         formatted += UCharacters.LINE_SEPARATOR;
         formatted += "EVENTS" + UCharacters.LINE_SEPARATOR;
-        formatted += UCharacters.LINE_SEPARATOR;
         for (Event event : machine.getEvents()) {
+            formatted += UCharacters.LINE_SEPARATOR;
             indentRight();
             formatted += indent() + event.accept(this) + UCharacters.LINE_SEPARATOR;
             indentLeft();
-            formatted += UCharacters.LINE_SEPARATOR;
         }
         return formatted;
     }
