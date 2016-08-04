@@ -4,7 +4,9 @@ import eventb.Event;
 import eventb.Machine;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
+import eventb.expressions.sets.CustomSet;
 import eventb.expressions.sets.NamedSet;
+import eventb.expressions.sets.RangeSet;
 import eventb.substitutions.*;
 import formatting.AFormatter;
 import utilities.UCharacters;
@@ -138,8 +140,18 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
     }
 
     @Override
+    public String visit(CustomSet customSet) {
+        return "{" + customSet.getElements().stream().map(anInt -> anInt.accept(this)).collect(Collectors.joining(", ")) + "}";
+    }
+
+    @Override
     public String visit(NamedSet namedSet) {
         return "(" + namedSet.getName() + " : {" + namedSet.getElements().stream().map(anInt -> anInt.accept(this)).collect(Collectors.joining(", ")) + "})";
+    }
+
+    @Override
+    public String visit(RangeSet rangeSet) {
+        return rangeSet.getLowerBound() + ".." + rangeSet.getUpperBound();
     }
 
     @Override

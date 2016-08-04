@@ -1,7 +1,6 @@
 package eventb.expressions.sets;
 
 import eventb.expressions.arith.Int;
-import eventb.expressions.arith.Variable;
 import eventb.tools.formatters.EventBFormatter;
 import eventb.tools.replacer.AssignableReplacer;
 import org.junit.Assert;
@@ -31,7 +30,7 @@ public class NamedSetTest {
     public void test_acceptAssignableReplacer() throws Exception {
         NamedSet namedSet = new NamedSet("set1");
         try {
-            namedSet.accept(new AssignableReplacer(new Variable("a1"), new Int(42)));
+            namedSet.accept(new AssignableReplacer(null, null));
             throw new Error("AssignableReplacer visiting NamedSet instance occurred and did not throw the expected Error.");
         } catch (Error ignored) {
         }

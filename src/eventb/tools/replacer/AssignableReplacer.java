@@ -3,7 +3,9 @@ package eventb.tools.replacer;
 import eventb.expressions.AExpression;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
+import eventb.expressions.sets.CustomSet;
 import eventb.expressions.sets.NamedSet;
+import eventb.expressions.sets.RangeSet;
 
 /**
  * Created by gvoiron on 07/07/16.
@@ -89,8 +91,18 @@ public final class AssignableReplacer implements IAssignableReplacer {
     }
 
     @Override
+    public AExpression visit(CustomSet customSet) {
+        throw new Error("AssignableReplacer should never be used as visitor of CustomSet instance.");
+    }
+
+    @Override
     public AExpression visit(NamedSet namedSet) {
         throw new Error("AssignableReplacer should never be used as visitor of NamedSet instance.");
+    }
+
+    @Override
+    public AExpression visit(RangeSet rangeSet) {
+        throw new Error("AssignableReplacer should never be used as visitor of RangeSet instance.");
     }
 
     public AAssignable getAssignable() {

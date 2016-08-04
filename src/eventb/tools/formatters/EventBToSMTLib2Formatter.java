@@ -4,7 +4,9 @@ import eventb.Event;
 import eventb.Machine;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
+import eventb.expressions.sets.CustomSet;
 import eventb.expressions.sets.NamedSet;
+import eventb.expressions.sets.RangeSet;
 import eventb.substitutions.*;
 import formatting.AFormatter;
 
@@ -110,7 +112,17 @@ public final class EventBToSMTLib2Formatter extends AFormatter implements IEvent
     }
 
     @Override
+    public String visit(CustomSet customSet) {
+        return null;
+    }
+
+    @Override
     public String visit(NamedSet namedSet) {
+        return null;
+    }
+
+    @Override
+    public String visit(RangeSet rangeSet) {
         return null;
     }
 

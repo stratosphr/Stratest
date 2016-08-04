@@ -4,7 +4,9 @@ import eventb.Event;
 import eventb.Machine;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
+import eventb.expressions.sets.CustomSet;
 import eventb.expressions.sets.NamedSet;
+import eventb.expressions.sets.RangeSet;
 import eventb.substitutions.*;
 
 /**
@@ -51,7 +53,11 @@ public interface IEventBFormatter {
 
     String visit(Multiplication multiplication);
 
+    String visit(CustomSet customSet);
+
     String visit(NamedSet namedSet);
+
+    String visit(RangeSet rangeSet);
 
     String visit(Machine machine);
 
