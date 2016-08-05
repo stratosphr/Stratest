@@ -31,12 +31,16 @@ public abstract class AExpressionToSMTLib2Formatter extends AFormatter implement
     }
 
     private String visitNaryOperation(INaryOperation operation, String operator) {
-        String formatted = "(" + operator + UCharacters.LINE_SEPARATOR;
-        indentRight();
-        formatted += operation.getOperands().stream().map(operand -> indent() + operand.accept(this)).collect(Collectors.joining(UCharacters.LINE_SEPARATOR)) + UCharacters.LINE_SEPARATOR;
-        indentLeft();
-        formatted += indent() + ")";
-        return formatted;
+        if (operation.getOperands().isEmpty()) {
+            return operator;
+        } else {
+            String formatted = "(" + operator + UCharacters.LINE_SEPARATOR;
+            indentRight();
+            formatted += operation.getOperands().stream().map(operand -> indent() + operand.accept(this)).collect(Collectors.joining(UCharacters.LINE_SEPARATOR)) + UCharacters.LINE_SEPARATOR;
+            indentLeft();
+            formatted += indent() + ")";
+            return formatted;
+        }
     }
 
     @Override
@@ -51,16 +55,7 @@ public abstract class AExpressionToSMTLib2Formatter extends AFormatter implement
 
     @Override
     public String visit(And and) {
-        if (and.getOperands().isEmpty()) {
-            return "and";
-        } else {
-            String formatted = "(and" + UCharacters.LINE_SEPARATOR;
-            indentRight();
-            formatted += and.getOperands().stream().map(operand -> indent() + operand.accept(this)).collect(Collectors.joining(UCharacters.LINE_SEPARATOR)) + UCharacters.LINE_SEPARATOR;
-            indentLeft();
-            formatted += indent() + ")";
-            return formatted;
-        }
+        return visitNaryOperation(and, "and");
     }
 
     @Override
