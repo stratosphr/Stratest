@@ -29,6 +29,8 @@ public interface IExpressionFormatter {
 
     String visit(Variable variable);
 
+    String visit(FunctionCall functionCall);
+
     String visit(Int anInt);
 
     String visit(Subtraction subtraction);

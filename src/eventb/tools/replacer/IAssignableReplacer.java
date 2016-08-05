@@ -36,4 +36,6 @@ public interface IAssignableReplacer {
 
     AExpression visit(Multiplication multiplication);
 
+    AExpression visit(FunctionCall functionCall);
+
 }

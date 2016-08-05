@@ -2,6 +2,7 @@ package eventb.tools.formatters;
 
 import eventb.Event;
 import eventb.Machine;
+import eventb.expressions.FunctionDefinition;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
 import eventb.expressions.sets.CustomSet;
@@ -125,6 +126,11 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
     }
 
     @Override
+    public String visit(FunctionCall functionCall) {
+        return functionCall.getDefinition().getName() + "(" + functionCall.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(", ")) + ")";
+    }
+
+    @Override
     public String visit(Int anInt) {
         return String.valueOf(anInt.getValue());
     }
@@ -152,6 +158,11 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
     @Override
     public String visit(RangeSet rangeSet) {
         return rangeSet.getLowerBound() + ".." + rangeSet.getUpperBound();
+    }
+
+    @Override
+    public String visit(FunctionDefinition functionDefinition) {
+        return functionDefinition.getName() + " : " + functionDefinition.getDomain().accept(this) + " -> " + functionDefinition.getCoDomain().accept(this);
     }
 
     @Override

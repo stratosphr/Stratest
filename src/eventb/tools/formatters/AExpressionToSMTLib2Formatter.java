@@ -44,68 +44,73 @@ public abstract class AExpressionToSMTLib2Formatter extends AFormatter implement
     }
 
     @Override
-    public String visit(True aTrue) {
+    public final String visit(True aTrue) {
         return "true";
     }
 
     @Override
-    public String visit(Not not) {
+    public final String visit(Not not) {
         return visitUnaryOperation(not, "not");
     }
 
     @Override
-    public String visit(And and) {
+    public final String visit(And and) {
         return visitNaryOperation(and, "and");
     }
 
     @Override
-    public String visit(Equals equals) {
+    public final String visit(Equals equals) {
         return visitBinaryOperation(equals, "=");
     }
 
     @Override
-    public String visit(LowerThan lowerThan) {
+    public final String visit(LowerThan lowerThan) {
         return visitBinaryOperation(lowerThan, "<");
     }
 
     @Override
-    public String visit(LowerOrEqual lowerOrEqual) {
+    public final String visit(LowerOrEqual lowerOrEqual) {
         return visitBinaryOperation(lowerOrEqual, "<=");
     }
 
     @Override
-    public String visit(GreaterThan greaterThan) {
+    public final String visit(GreaterThan greaterThan) {
         return visitBinaryOperation(greaterThan, ">");
     }
 
     @Override
-    public String visit(GreaterOrEqual greaterOrEqual) {
+    public final String visit(GreaterOrEqual greaterOrEqual) {
         return visitBinaryOperation(greaterOrEqual, ">=");
     }
 
     @Override
-    public String visit(Implication implication) {
+    public final String visit(Implication implication) {
         return visitBinaryOperation(implication, "=>");
     }
 
     @Override
-    public String visit(Variable variable) {
+    public final String visit(Variable variable) {
         return variable.getName();
     }
 
     @Override
-    public String visit(Int anInt) {
+    public final String visit(Int anInt) {
         return String.valueOf(anInt.getValue());
     }
 
     @Override
-    public String visit(Subtraction subtraction) {
+    public final String visit(Subtraction subtraction) {
         return visitNaryOperation(subtraction, "-");
     }
 
     @Override
-    public String visit(Multiplication multiplication) {
+    public final String visit(Multiplication multiplication) {
         return visitNaryOperation(multiplication, "*");
+    }
+
+    @Override
+    public final String visit(FunctionCall functionCall) {
+        return visitNaryOperation(functionCall, functionCall.getDefinition().getName());
     }
 
 }

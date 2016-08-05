@@ -87,6 +87,16 @@ public final class AssignableReplacer implements IAssignableReplacer {
         return new Multiplication(multiplication.getOperands().stream().map(operand -> operand.accept(this)).toArray(AArithmeticExpression[]::new));
     }
 
+    @Override
+    public AExpression visit(FunctionCall functionCall) {
+        /*if (functionCall.equals(getAssignable())) {
+            return getSubstitute();
+        } else {
+            return functionCall;
+        }*/
+        throw new Error("Unhandled AssignableReplacer case.");
+    }
+
     public AAssignable getAssignable() {
         return assignable;
     }

@@ -1,12 +1,14 @@
 package eventb;
 
 import eventb.expressions.arith.AAssignable;
+import eventb.expressions.arith.Variable;
 import eventb.expressions.bool.ABooleanExpression;
 import eventb.expressions.sets.NamedSet;
 import eventb.substitutions.ASubstitution;
 import eventb.tools.formatters.IEventBFormatter;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by gvoiron on 03/08/16.
@@ -45,6 +47,10 @@ public final class Machine extends AObjectEventB {
 
     public List<AAssignable> getAssignables() {
         return assignables;
+    }
+
+    public List<Variable> getVariables() {
+        return getAssignables().stream().filter(assignable -> assignable instanceof Variable).map(assignable -> (Variable) assignable).collect(Collectors.toList());
     }
 
     public ABooleanExpression getInvariant() {

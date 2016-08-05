@@ -2,6 +2,7 @@ package eventb.tools.formatters;
 
 import eventb.Event;
 import eventb.Machine;
+import eventb.expressions.FunctionDefinition;
 import eventb.expressions.sets.CustomSet;
 import eventb.expressions.sets.NamedSet;
 import eventb.expressions.sets.RangeSet;
@@ -12,6 +13,8 @@ import eventb.substitutions.*;
  * Time : 22:25
  */
 public interface IEventBFormatter extends IExpressionFormatter {
+
+    String visit(Machine machine);
 
     String visit(Event event);
 
@@ -31,6 +34,6 @@ public interface IEventBFormatter extends IExpressionFormatter {
 
     String visit(RangeSet rangeSet);
 
-    String visit(Machine machine);
+    String visit(FunctionDefinition functionDefinition);
 
 }
