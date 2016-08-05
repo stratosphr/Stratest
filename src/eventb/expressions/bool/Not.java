@@ -1,6 +1,7 @@
 package eventb.expressions.bool;
 
 import eventb.expressions.AExpression;
+import eventb.expressions.IUnaryOperation;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
@@ -9,7 +10,7 @@ import eventb.tools.replacer.IAssignableReplacer;
  * Created by gvoiron on 07/07/16.
  * Time : 23:39
  */
-public final class Not extends ABooleanExpression {
+public final class Not extends ABooleanExpression implements IUnaryOperation {
 
     private final ABooleanExpression operand;
 
@@ -32,6 +33,7 @@ public final class Not extends ABooleanExpression {
         return visitor.visit(this);
     }
 
+    @Override
     public ABooleanExpression getOperand() {
         return operand;
     }

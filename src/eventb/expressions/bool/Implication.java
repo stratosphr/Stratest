@@ -1,6 +1,7 @@
 package eventb.expressions.bool;
 
 import eventb.expressions.AExpression;
+import eventb.expressions.IBinaryOperation;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
@@ -9,14 +10,14 @@ import eventb.tools.replacer.IAssignableReplacer;
  * Created by gvoiron on 07/07/16.
  * Time : 01:09
  */
-public final class Implication extends ABooleanExpression {
+public final class Implication extends ABooleanExpression implements IBinaryOperation {
 
-    private final ABooleanExpression ifPart;
-    private final ABooleanExpression thenPart;
+    private final ABooleanExpression left;
+    private final ABooleanExpression right;
 
-    public Implication(ABooleanExpression ifPart, ABooleanExpression thenPart) {
-        this.ifPart = ifPart;
-        this.thenPart = thenPart;
+    public Implication(ABooleanExpression left, ABooleanExpression right) {
+        this.left = left;
+        this.right = right;
     }
 
     @Override
@@ -34,12 +35,14 @@ public final class Implication extends ABooleanExpression {
         return visitor.visit(this);
     }
 
-    public ABooleanExpression getIfPart() {
-        return ifPart;
+    @Override
+    public ABooleanExpression getLeft() {
+        return left;
     }
 
-    public ABooleanExpression getThenPart() {
-        return thenPart;
+    @Override
+    public ABooleanExpression getRight() {
+        return right;
     }
 
 }

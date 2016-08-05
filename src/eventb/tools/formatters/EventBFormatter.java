@@ -116,7 +116,7 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
 
     @Override
     public String visit(Implication implication) {
-        return "(" + implication.getIfPart().accept(this) + " => " + implication.getThenPart().accept(this) + ")";
+        return "(" + implication.getLeft().accept(this) + " => " + implication.getRight().accept(this) + ")";
     }
 
     @Override

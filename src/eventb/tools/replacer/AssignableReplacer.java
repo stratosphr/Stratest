@@ -60,7 +60,7 @@ public final class AssignableReplacer implements IAssignableReplacer {
 
     @Override
     public AExpression visit(Implication implication) {
-        return new Implication((ABooleanExpression) implication.getIfPart().accept(this), (ABooleanExpression) implication.getThenPart().accept(this));
+        return new Implication((ABooleanExpression) implication.getLeft().accept(this), (ABooleanExpression) implication.getRight().accept(this));
     }
 
     @Override

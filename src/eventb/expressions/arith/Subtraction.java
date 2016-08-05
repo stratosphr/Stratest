@@ -1,6 +1,7 @@
 package eventb.expressions.arith;
 
 import eventb.expressions.AExpression;
+import eventb.expressions.INaryOperation;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
@@ -12,7 +13,7 @@ import java.util.List;
  * Created by gvoiron on 07/07/16.
  * Time : 14:46
  */
-public final class Subtraction extends AArithmeticExpression {
+public final class Subtraction extends AArithmeticExpression implements INaryOperation {
 
     private final List<AArithmeticExpression> operands;
 
@@ -35,6 +36,7 @@ public final class Subtraction extends AArithmeticExpression {
         return visitor.visit(this);
     }
 
+    @Override
     public List<AArithmeticExpression> getOperands() {
         return operands;
     }

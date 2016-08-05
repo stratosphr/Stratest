@@ -1,6 +1,7 @@
 package eventb.expressions.bool;
 
 import eventb.expressions.AExpression;
+import eventb.expressions.IBinaryOperation;
 import eventb.expressions.arith.AArithmeticExpression;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
@@ -10,7 +11,7 @@ import eventb.tools.replacer.IAssignableReplacer;
  * Created by gvoiron on 07/07/16.
  * Time : 01:09
  */
-public final class Equals extends ABooleanExpression {
+public final class Equals extends ABooleanExpression implements IBinaryOperation {
 
     private final AArithmeticExpression left;
     private final AArithmeticExpression right;
@@ -25,14 +26,6 @@ public final class Equals extends ABooleanExpression {
         return visitor.visit(this);
     }
 
-    public AArithmeticExpression getLeft() {
-        return left;
-    }
-
-    public AArithmeticExpression getRight() {
-        return right;
-    }
-
     @Override
     public AExpression accept(IAssignableReplacer visitor) {
         return visitor.visit(this);
@@ -41,6 +34,16 @@ public final class Equals extends ABooleanExpression {
     @Override
     public String accept(IExpressionFormatter visitor) {
         return visitor.visit(this);
+    }
+
+    @Override
+    public AArithmeticExpression getLeft() {
+        return left;
+    }
+
+    @Override
+    public AArithmeticExpression getRight() {
+        return right;
     }
 
 }

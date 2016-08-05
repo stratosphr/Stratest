@@ -1,6 +1,7 @@
 package eventb.expressions.bool;
 
 import eventb.expressions.AExpression;
+import eventb.expressions.INaryOperation;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
@@ -12,7 +13,7 @@ import java.util.List;
  * Created by gvoiron on 07/07/16.
  * Time : 23:30
  */
-public final class And extends ABooleanExpression {
+public final class And extends ABooleanExpression implements INaryOperation {
 
     private final List<ABooleanExpression> operands;
 
@@ -30,13 +31,14 @@ public final class And extends ABooleanExpression {
         return visitor.visit(this);
     }
 
-    public List<ABooleanExpression> getOperands() {
-        return operands;
-    }
-
     @Override
     public String accept(IExpressionFormatter visitor) {
         return visitor.visit(this);
+    }
+
+    @Override
+    public List<ABooleanExpression> getOperands() {
+        return operands;
     }
 
 }

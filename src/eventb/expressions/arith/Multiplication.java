@@ -1,6 +1,7 @@
 package eventb.expressions.arith;
 
 import eventb.expressions.AExpression;
+import eventb.expressions.INaryOperation;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
@@ -12,7 +13,7 @@ import java.util.List;
  * Created by gvoiron on 07/07/16.
  * Time : 14:52
  */
-public final class Multiplication extends AArithmeticExpression {
+public final class Multiplication extends AArithmeticExpression implements INaryOperation {
 
     private final List<AArithmeticExpression> operands;
 
