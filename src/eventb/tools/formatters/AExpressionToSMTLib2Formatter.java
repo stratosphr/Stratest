@@ -50,7 +50,7 @@ public abstract class AExpressionToSMTLib2Formatter extends AFormatter implement
 
     @Override
     public String visit(Not not) {
-        return "(not " + not.getOperand().accept(this) + ")";
+        return visitUnaryOperation(not, "not");
     }
 
     @Override
@@ -100,12 +100,12 @@ public abstract class AExpressionToSMTLib2Formatter extends AFormatter implement
 
     @Override
     public String visit(Subtraction subtraction) {
-        return "(- " + subtraction.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(" ")) + ")";
+        return visitNaryOperation(subtraction, "-");
     }
 
     @Override
     public String visit(Multiplication multiplication) {
-        return "(* " + multiplication.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(" ")) + ")";
+        return visitNaryOperation(multiplication, "*");
     }
 
 }

@@ -101,7 +101,7 @@ public class ExpressionToSMTLib2FormatterTest {
         Int fortyTwo = new Int(42);
         Int sixtyFour = new Int(64);
         Subtraction subtraction = new Subtraction(fortyTwo, sixtyFour, sixtyFour);
-        Assert.assertEquals("(- 42 64 64)", subtraction.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(-" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "42" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + ")", subtraction.accept(new ExpressionToSMTLib2Formatter()));
     }
 
     @Test
@@ -109,7 +109,7 @@ public class ExpressionToSMTLib2FormatterTest {
         Int fortyTwo = new Int(42);
         Int sixtyFour = new Int(64);
         Multiplication multiplication = new Multiplication(fortyTwo, sixtyFour, sixtyFour);
-        Assert.assertEquals("(* 42 64 64)", multiplication.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(*" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "42" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + ")", multiplication.accept(new ExpressionToSMTLib2Formatter()));
     }
 
 }
