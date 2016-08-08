@@ -12,6 +12,9 @@ import utilities.UCharacters;
 
 import java.util.Collections;
 
+import static utilities.UCharacters.LINE_SEPARATOR;
+import static utilities.UCharacters.TABULATION;
+
 /**
  * Created by gvoiron on 05/08/16.
  * Time : 14:13
@@ -31,13 +34,19 @@ public class FunctionCallTest {
 
     @Test
     public void test_acceptExpressionFormatter() throws Exception {
-        FunctionDefinition functionDefinition = new FunctionDefinition("fun", new RangeSet(new Int(0), new Int(4)), new CustomSet(new Int(0), new Int(1), new Int(3)));
-        FunctionCall functionCall = new FunctionCall(functionDefinition);
-        Assert.assertEquals("fun", functionCall.accept(new ExpressionToSMTLib2Formatter()));
-        functionCall = new FunctionCall(functionDefinition, new Int(42));
-        Assert.assertEquals("(fun" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "42" + UCharacters.LINE_SEPARATOR + ")", functionCall.accept(new ExpressionToSMTLib2Formatter()));
+        ExpressionToSMTLib2Formatter expressionToSMTLib2Formatter = new ExpressionToSMTLib2Formatter();
+        FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new CustomSet(new Int(0), new Int(1), new Int(3)));
+        FunctionCall functionCall = new FunctionCall(functionDefinition, new Int(42));
+        String readFunction = "(define-fun " + functionDefinition.getName() + " ((index Int)) Int" + LINE_SEPARATOR + TABULATION + "(ite" + LINE_SEPARATOR + TABULATION + TABULATION + "(=" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + "index" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + "0" + LINE_SEPARATOR + TABULATION + TABULATION + ")" + LINE_SEPARATOR + TABULATION + TABULATION + functionDefinition.getName() + "!0" + LINE_SEPARATOR + TABULATION + TABULATION + "(ite" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + "(=" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + "index" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + "3" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + ")" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + functionDefinition.getName() + "!3" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + "(ite" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + "(=" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + TABULATION + "index" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + TABULATION + "4" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + ")" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + functionDefinition.getName() + "!4" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + "-1" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + ")" + LINE_SEPARATOR + TABULATION + TABULATION + ")" + LINE_SEPARATOR + TABULATION + ")" + LINE_SEPARATOR + ")";
+        Assert.assertEquals(readFunction + UCharacters.LINE_SEPARATOR + "(fun" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + ")", functionCall.accept(expressionToSMTLib2Formatter));
         functionCall = new FunctionCall(functionDefinition, new Variable("v1"));
-        Assert.assertEquals("(fun" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "v1" + UCharacters.LINE_SEPARATOR + ")", functionCall.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(fun" + LINE_SEPARATOR + TABULATION + "v1" + LINE_SEPARATOR + ")", functionCall.accept(expressionToSMTLib2Formatter));
+        functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new CustomSet(new Int(0), new Int(1), new Int(3)));
+        functionCall = new FunctionCall(functionDefinition, new Int(42));
+        Assert.assertEquals(readFunction + UCharacters.LINE_SEPARATOR + "(fun" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + ")", functionCall.accept(new ExpressionToSMTLib2Formatter()));
+        functionCall = new FunctionCall(functionDefinition, new Variable("v1"));
+        Assert.assertEquals(readFunction + UCharacters.LINE_SEPARATOR + "(fun" + LINE_SEPARATOR + TABULATION + "v1" + LINE_SEPARATOR + ")", functionCall.accept(new ExpressionToSMTLib2Formatter()));
+        System.out.println(readFunction + UCharacters.LINE_SEPARATOR + "(fun" + LINE_SEPARATOR + TABULATION + "v1" + LINE_SEPARATOR + ")");
     }
 
     @Test

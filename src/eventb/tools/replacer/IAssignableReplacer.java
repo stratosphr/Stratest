@@ -38,4 +38,6 @@ public interface IAssignableReplacer {
 
     AExpression visit(FunctionCall functionCall);
 
+    AExpression visit(ArithmeticITE arithmeticITE);
+
 }

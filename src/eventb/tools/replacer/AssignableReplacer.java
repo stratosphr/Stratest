@@ -97,6 +97,11 @@ public final class AssignableReplacer implements IAssignableReplacer {
         throw new Error("Unhandled AssignableReplacer case.");
     }
 
+    @Override
+    public AExpression visit(ArithmeticITE arithmeticITE) {
+        throw new Error("Unhandled AssignableReplacer case.");
+    }
+
     public AAssignable getAssignable() {
         return assignable;
     }

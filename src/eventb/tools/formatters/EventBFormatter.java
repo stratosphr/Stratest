@@ -146,6 +146,11 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
     }
 
     @Override
+    public String visit(ArithmeticITE arithmeticITE) {
+        return "(" + arithmeticITE.getCondition().accept(this) + " ? " + arithmeticITE.getThenPart().accept(this) + " : " + arithmeticITE.getElsePart().accept(this) + ")";
+    }
+
+    @Override
     public String visit(CustomSet customSet) {
         return "{" + customSet.getElements().stream().map(anInt -> anInt.accept(this)).collect(Collectors.joining(", ")) + "}";
     }

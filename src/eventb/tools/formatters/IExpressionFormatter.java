@@ -37,4 +37,6 @@ public interface IExpressionFormatter {
 
     String visit(Multiplication multiplication);
 
+    String visit(ArithmeticITE arithmeticITE);
+
 }
