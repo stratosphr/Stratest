@@ -1,5 +1,6 @@
 package eventb.tools.formatters;
 
+import eventb.expressions.FunctionDefinition;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
 
@@ -38,5 +39,7 @@ public interface IExpressionFormatter {
     String visit(Multiplication multiplication);
 
     String visit(ArithmeticITE arithmeticITE);
+
+    String visit(FunctionDefinition functionDefinition);
 
 }

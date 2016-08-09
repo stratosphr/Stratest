@@ -53,21 +53,6 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
         }
     }
 
-    private String getReadFunction(FunctionDefinition functionDefinition) {
-        Variable index = new Variable("index");
-        String formatted = "(define-fun " + functionDefinition.getName() + " ((" + index.getName() + " Int)) Int" + UCharacters.LINE_SEPARATOR;
-        List<Int> elements = new ArrayList<>(functionDefinition.getDomain().getElements());
-        ArithmeticITE body = new ArithmeticITE(new Equals(index, elements.get(elements.size() - 1)), new Variable(functionDefinition.getName() + "!" + elements.get(elements.size() - 1)), new Int(-1));
-        for (int i = elements.size() - 2; i >= 0; i--) {
-            body = new ArithmeticITE(new Equals(index, elements.get(i)), new Variable(functionDefinition.getName() + "!" + elements.get(i)), body);
-        }
-        indentRight();
-        formatted += indent() + body.accept(this) + UCharacters.LINE_SEPARATOR;
-        indentLeft();
-        formatted += indent() + ")";
-        return formatted;
-    }
-
     @Override
     public final String visit(True aTrue) {
         return "true";
@@ -139,14 +124,25 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
     }
 
     @Override
-    public final String visit(FunctionCall functionCall) {
-        FunctionDefinition functionDefinition = functionCall.getDefinition();
-        if (!functionDefinitions.contains(functionCall.getDefinition())) {
-            functionDefinitions.add(functionDefinition);
-            return getReadFunction(functionDefinition) + UCharacters.LINE_SEPARATOR + visitNaryOperation(functionCall, functionDefinition.getName());
-        } else {
-            return visitNaryOperation(functionCall, functionDefinition.getName());
+    public String visit(FunctionDefinition functionDefinition) {
+        Variable index = new Variable("index");
+        String formatted = functionDefinition.getDomain().getElements().stream().map(anInt -> "(declare-fun " + functionDefinition.getName() + "!" + anInt + " () Int)").collect(Collectors.joining(UCharacters.LINE_SEPARATOR)) + UCharacters.LINE_SEPARATOR;
+        formatted += "(define-fun " + functionDefinition.getName() + " ((" + index.getName() + " Int)) Int" + UCharacters.LINE_SEPARATOR;
+        List<Int> elements = new ArrayList<>(functionDefinition.getDomain().getElements());
+        ArithmeticITE body = new ArithmeticITE(new Equals(index, elements.get(elements.size() - 1)), new Variable(functionDefinition.getName() + "!" + elements.get(elements.size() - 1)), new Int(-1));
+        for (int i = elements.size() - 2; i >= 0; i--) {
+            body = new ArithmeticITE(new Equals(index, elements.get(i)), new Variable(functionDefinition.getName() + "!" + elements.get(i)), body);
         }
+        indentRight();
+        formatted += indent() + body.accept(this) + UCharacters.LINE_SEPARATOR;
+        indentLeft();
+        formatted += indent() + ")";
+        return formatted;
+    }
+
+    @Override
+    public final String visit(FunctionCall functionCall) {
+        return visitNaryOperation(functionCall, functionCall.getDefinition().getName());
     }
 
 }
