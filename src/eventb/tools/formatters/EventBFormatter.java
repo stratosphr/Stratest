@@ -10,9 +10,12 @@ import eventb.expressions.sets.NamedSet;
 import eventb.expressions.sets.RangeSet;
 import eventb.substitutions.*;
 import formatting.AFormatter;
+import graphs.AState;
 import utilities.UCharacters;
 
 import java.util.stream.Collectors;
+
+import static utilities.UCharacters.EQ_DEF;
 
 /**
  * Created by gvoiron on 06/07/16.
@@ -23,7 +26,7 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
     @Override
     public String visit(Event event) {
         indentRight();
-        String formatted = event.getName() + " " + UCharacters.EQ_DEF + UCharacters.LINE_SEPARATOR + indent() + event.getSubstitution().accept(this);
+        String formatted = event.getName() + " " + EQ_DEF + UCharacters.LINE_SEPARATOR + indent() + event.getSubstitution().accept(this);
         indentLeft();
         return formatted;
     }
@@ -118,6 +121,11 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
     @Override
     public String visit(Implication implication) {
         return "(" + implication.getLeft().accept(this) + " => " + implication.getRight().accept(this) + ")";
+    }
+
+    @Override
+    public String visit(AState aState) {
+        return "(" + aState.getName() + " " + EQ_DEF + " " + aState.getExpression().accept(this) + ")";
     }
 
     @Override

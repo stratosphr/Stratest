@@ -3,6 +3,7 @@ package eventb.tools.replacer;
 import eventb.expressions.AExpression;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
+import graphs.AState;
 
 /**
  * Created by gvoiron on 07/07/16.
@@ -61,6 +62,11 @@ public final class AssignableReplacer implements IAssignableReplacer {
     @Override
     public AExpression visit(Implication implication) {
         return new Implication((ABooleanExpression) implication.getLeft().accept(this), (ABooleanExpression) implication.getRight().accept(this));
+    }
+
+    @Override
+    public AExpression visit(AState aState) {
+        return aState.getExpression().accept(this);
     }
 
     @Override

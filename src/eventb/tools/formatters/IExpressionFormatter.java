@@ -2,6 +2,7 @@ package eventb.tools.formatters;
 
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
+import graphs.AState;
 
 /**
  * Created by gvoiron on 04/08/16.
@@ -26,6 +27,8 @@ public interface IExpressionFormatter {
     String visit(GreaterOrEqual greaterOrEqual);
 
     String visit(Implication implication);
+
+    String visit(AState aState);
 
     String visit(Variable variable);
 

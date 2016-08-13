@@ -4,7 +4,7 @@ package utilities;
  * Created by gvoiron on 06/07/16.
  * Time : 23:26
  */
-public final class UCharacters extends AUninstantiable {
+public final class UCharacters extends UAUninstantiable {
 
     public static final String EQ_DEF = "≝";
     public static final String LINE_SEPARATOR = System.lineSeparator();

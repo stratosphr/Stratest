@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
  * Created by gvoiron on 26/02/16.
  * Time : 15:46
  */
-public final class ULibraryLinker extends AUninstantiable {
+public final class ULibraryLinker extends UAUninstantiable {
 
     private ULibraryLinker() {
         super();

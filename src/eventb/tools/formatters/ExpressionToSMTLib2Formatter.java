@@ -7,6 +7,7 @@ import eventb.expressions.IUnaryOperation;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
 import formatting.AFormatter;
+import graphs.AState;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -126,6 +127,11 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
     @Override
     public final String visit(Implication implication) {
         return visitBinaryOperation(implication, "=>");
+    }
+
+    @Override
+    public String visit(AState aState) {
+        return aState.getExpression().accept(this);
     }
 
     @Override

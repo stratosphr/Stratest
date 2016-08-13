@@ -3,6 +3,7 @@ package eventb.tools.replacer;
 import eventb.expressions.AExpression;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
+import graphs.AState;
 
 /**
  * Created by gvoiron on 07/07/16.
@@ -27,6 +28,8 @@ public interface IAssignableReplacer {
     AExpression visit(GreaterOrEqual greaterOrEqual);
 
     AExpression visit(Implication implication);
+
+    AExpression visit(AState aState);
 
     AExpression visit(Int anInt);
 
