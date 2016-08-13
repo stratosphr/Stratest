@@ -2,6 +2,7 @@ package eventb.substitutions;
 
 import eventb.AObjectEventB;
 import eventb.expressions.bool.ABooleanExpression;
+import eventb.expressions.bool.Not;
 import eventb.tools.formatters.IEventBFormatterVisitable;
 
 /**
@@ -11,5 +12,9 @@ import eventb.tools.formatters.IEventBFormatterVisitable;
 public abstract class ASubstitution extends AObjectEventB implements IEventBFormatterVisitable {
 
     public abstract ABooleanExpression getWP(ABooleanExpression postCondition);
+
+    public final ABooleanExpression getWCP(ABooleanExpression postCondition) {
+        return new Not(getWP(new Not(postCondition)));
+    }
 
 }
