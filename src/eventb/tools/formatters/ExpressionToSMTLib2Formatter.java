@@ -1,18 +1,19 @@
 package eventb.tools.formatters;
 
-import eventb.expressions.FunctionDefinition;
+import eventb.expressions.AExpression;
 import eventb.expressions.IBinaryOperation;
 import eventb.expressions.INaryOperation;
 import eventb.expressions.IUnaryOperation;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
 import formatting.AFormatter;
-import utilities.UCharacters;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.stream.Collectors;
+
+import static utilities.UCharacters.LINE_SEPARATOR;
 
 /**
  * Created by gvoiron on 05/08/16.
@@ -20,10 +21,39 @@ import java.util.stream.Collectors;
  */
 public final class ExpressionToSMTLib2Formatter extends AFormatter implements IExpressionFormatter {
 
-    private final List<FunctionDefinition> functionDefinitions;
+    private ExpressionToSMTLib2Formatter() {
+    }
 
-    public ExpressionToSMTLib2Formatter() {
-        this.functionDefinitions = new ArrayList<>();
+    public static String formatExpression(AExpression expression) {
+        ExpressionToSMTLib2Formatter expressionToSMTLib2Formatter = new ExpressionToSMTLib2Formatter();
+        String definitions = expressionToSMTLib2Formatter.getDefinitions(expression.getAssignables());
+        return definitions.equals("") ? expression.accept(expressionToSMTLib2Formatter) : expressionToSMTLib2Formatter.getDefinitions(expression.getAssignables()) + LINE_SEPARATOR + expression.accept(expressionToSMTLib2Formatter);
+    }
+
+    private String getDefinitions(LinkedHashSet<AAssignable> assignables) {
+        String definitions = "";
+        for (AAssignable assignable : assignables) {
+            // TODO : create an assignable visitor
+            if (assignable instanceof Variable) {
+                definitions += "(declare-fun " + ((Variable) assignable).getName() + " () Int)";
+            } else if (assignable instanceof FunctionCall) {
+                Variable index = new Variable("index");
+                definitions += "(define-fun " + ((FunctionCall) assignable).getDefinition().getName() + " ((" + index.getName() + " Int)) Int" + LINE_SEPARATOR;
+                ArrayList<Int> domainElements = new ArrayList<>(((FunctionCall) assignable).getDefinition().getDomain().getElements());
+                ArithmeticITE body = new ArithmeticITE(new Equals(index, domainElements.get(domainElements.size() - 1)), new Variable(((FunctionCall) assignable).getDefinition().getName() + "!" + domainElements.get(domainElements.size() - 1)), new Int(-1));
+                for (int i = domainElements.size() - 2; i >= 0; i--) {
+                    body = new ArithmeticITE(new Equals(index, domainElements.get(i)), new Variable(((FunctionCall) assignable).getDefinition().getName() + "!" + domainElements.get(i)), body);
+                }
+                indentRight();
+                definitions += indent() + body.accept(this) + LINE_SEPARATOR;
+                indentLeft();
+                definitions += ")";
+            } else {
+                throw new Error("Unhandled assignable type.");
+            }
+            definitions += LINE_SEPARATOR;
+        }
+        return definitions;
     }
 
     private String visitUnaryOperation(IUnaryOperation operation, String operator) {
@@ -31,10 +61,10 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
     }
 
     private String visitBinaryOperation(IBinaryOperation operation, String operator) {
-        String formatted = "(" + operator + UCharacters.LINE_SEPARATOR;
+        String formatted = "(" + operator + LINE_SEPARATOR;
         indentRight();
-        formatted += indent() + operation.getLeft().accept(this) + UCharacters.LINE_SEPARATOR;
-        formatted += indent() + operation.getRight().accept(this) + UCharacters.LINE_SEPARATOR;
+        formatted += indent() + operation.getLeft().accept(this) + LINE_SEPARATOR;
+        formatted += indent() + operation.getRight().accept(this) + LINE_SEPARATOR;
         indentLeft();
         formatted += indent() + ")";
         return formatted;
@@ -44,9 +74,9 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
         if (operation.getOperands().isEmpty()) {
             return operator;
         } else {
-            String formatted = "(" + operator + UCharacters.LINE_SEPARATOR;
+            String formatted = "(" + operator + LINE_SEPARATOR;
             indentRight();
-            formatted += operation.getOperands().stream().map(operand -> indent() + operand.accept(this)).collect(Collectors.joining(UCharacters.LINE_SEPARATOR)) + UCharacters.LINE_SEPARATOR;
+            formatted += operation.getOperands().stream().map(operand -> indent() + operand.accept(this)).collect(Collectors.joining(LINE_SEPARATOR)) + LINE_SEPARATOR;
             indentLeft();
             formatted += indent() + ")";
             return formatted;
@@ -121,23 +151,6 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
     @Override
     public String visit(ArithmeticITE arithmeticITE) {
         return visitNaryOperation(() -> Arrays.asList(arithmeticITE.getCondition(), arithmeticITE.getThenPart(), arithmeticITE.getElsePart()), "ite");
-    }
-
-    @Override
-    public String visit(FunctionDefinition functionDefinition) {
-        Variable index = new Variable("index");
-        String formatted = functionDefinition.getDomain().getElements().stream().map(anInt -> "(declare-fun " + functionDefinition.getName() + "!" + anInt + " () Int)").collect(Collectors.joining(UCharacters.LINE_SEPARATOR)) + UCharacters.LINE_SEPARATOR;
-        formatted += "(define-fun " + functionDefinition.getName() + " ((" + index.getName() + " Int)) Int" + UCharacters.LINE_SEPARATOR;
-        List<Int> elements = new ArrayList<>(functionDefinition.getDomain().getElements());
-        ArithmeticITE body = new ArithmeticITE(new Equals(index, elements.get(elements.size() - 1)), new Variable(functionDefinition.getName() + "!" + elements.get(elements.size() - 1)), new Int(-1));
-        for (int i = elements.size() - 2; i >= 0; i--) {
-            body = new ArithmeticITE(new Equals(index, elements.get(i)), new Variable(functionDefinition.getName() + "!" + elements.get(i)), body);
-        }
-        indentRight();
-        formatted += indent() + body.accept(this) + UCharacters.LINE_SEPARATOR;
-        indentLeft();
-        formatted += indent() + ")";
-        return formatted;
     }
 
     @Override

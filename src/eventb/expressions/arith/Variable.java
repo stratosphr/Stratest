@@ -5,6 +5,9 @@ import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
 
+import java.util.Collections;
+import java.util.LinkedHashSet;
+
 /**
  * Created by gvoiron on 07/07/16.
  * Time : 10:45
@@ -34,6 +37,11 @@ public final class Variable extends AAssignable {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public LinkedHashSet<AAssignable> getAssignables() {
+        return new LinkedHashSet<>(Collections.singletonList(this));
     }
 
 }

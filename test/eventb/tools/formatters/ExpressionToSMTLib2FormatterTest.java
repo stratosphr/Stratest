@@ -4,7 +4,9 @@ import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
 import org.junit.Assert;
 import org.junit.Test;
-import utilities.UCharacters;
+
+import static utilities.UCharacters.LINE_SEPARATOR;
+import static utilities.UCharacters.TABULATION;
 
 /**
  * Created by gvoiron on 04/08/16.
@@ -14,7 +16,7 @@ public class ExpressionToSMTLib2FormatterTest {
 
     @Test
     public void test_visitTrue() {
-        Assert.assertEquals("true", new True().accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("true", ExpressionToSMTLib2Formatter.formatExpression(new True()));
     }
 
     @Test
@@ -22,18 +24,18 @@ public class ExpressionToSMTLib2FormatterTest {
         True aTrue = new True();
         And and = new And(aTrue, new Not(aTrue));
         Not not = new Not(and);
-        Assert.assertEquals("(not (and" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "true" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "(not true)" + UCharacters.LINE_SEPARATOR + "))", not.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(not (and" + LINE_SEPARATOR + TABULATION + "true" + LINE_SEPARATOR + TABULATION + "(not true)" + LINE_SEPARATOR + "))", ExpressionToSMTLib2Formatter.formatExpression(not));
     }
 
     @Test
     public void test_visitAnd() {
         True aTrue = new True();
         And and = new And(aTrue, new Not(aTrue));
-        Assert.assertEquals("(and" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "true" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "(not true)" + UCharacters.LINE_SEPARATOR + ")", and.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(and" + LINE_SEPARATOR + TABULATION + "true" + LINE_SEPARATOR + TABULATION + "(not true)" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(and));
         and = new And();
-        Assert.assertEquals("and", and.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("and", ExpressionToSMTLib2Formatter.formatExpression(and));
         and = new And(aTrue);
-        Assert.assertEquals("(and" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "true" + UCharacters.LINE_SEPARATOR + ")", and.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(and" + LINE_SEPARATOR + TABULATION + "true" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(and));
     }
 
     @Test
@@ -41,7 +43,7 @@ public class ExpressionToSMTLib2FormatterTest {
         Int fortyTwo = new Int(42);
         Int sixtyFour = new Int(64);
         Equals equals = new Equals(fortyTwo, sixtyFour);
-        Assert.assertEquals("(=" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "42" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + ")", equals.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(=" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + TABULATION + "64" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(equals));
     }
 
     @Test
@@ -49,7 +51,7 @@ public class ExpressionToSMTLib2FormatterTest {
         Int fortyTwo = new Int(42);
         Int sixtyFour = new Int(64);
         LowerThan lowerThan = new LowerThan(fortyTwo, sixtyFour);
-        Assert.assertEquals("(<" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "42" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + ")", lowerThan.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(<" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + TABULATION + "64" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(lowerThan));
     }
 
     @Test
@@ -57,7 +59,7 @@ public class ExpressionToSMTLib2FormatterTest {
         Int fortyTwo = new Int(42);
         Int sixtyFour = new Int(64);
         LowerOrEqual lowerOrEqual = new LowerOrEqual(fortyTwo, sixtyFour);
-        Assert.assertEquals("(<=" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "42" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + ")", lowerOrEqual.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(<=" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + TABULATION + "64" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(lowerOrEqual));
     }
 
     @Test
@@ -65,7 +67,7 @@ public class ExpressionToSMTLib2FormatterTest {
         Int fortyTwo = new Int(42);
         Int sixtyFour = new Int(64);
         GreaterThan greaterThan = new GreaterThan(fortyTwo, sixtyFour);
-        Assert.assertEquals("(>" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "42" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + ")", greaterThan.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(>" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + TABULATION + "64" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(greaterThan));
     }
 
     @Test
@@ -73,7 +75,7 @@ public class ExpressionToSMTLib2FormatterTest {
         Int fortyTwo = new Int(42);
         Int sixtyFour = new Int(64);
         GreaterOrEqual greaterOrEqual = new GreaterOrEqual(fortyTwo, sixtyFour);
-        Assert.assertEquals("(>=" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "42" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + ")", greaterOrEqual.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(>=" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + TABULATION + "64" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(greaterOrEqual));
     }
 
     @Test
@@ -81,19 +83,19 @@ public class ExpressionToSMTLib2FormatterTest {
         True aTrue = new True();
         And and = new And(aTrue, new Not(aTrue));
         Implication implication = new Implication(aTrue, and);
-        Assert.assertEquals("(=>" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "true" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "(and" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + UCharacters.TABULATION + "true" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + UCharacters.TABULATION + "(not true)" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + ")" + UCharacters.LINE_SEPARATOR + ")", implication.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(=>" + LINE_SEPARATOR + TABULATION + "true" + LINE_SEPARATOR + TABULATION + "(and" + LINE_SEPARATOR + TABULATION + TABULATION + "true" + LINE_SEPARATOR + TABULATION + TABULATION + "(not true)" + LINE_SEPARATOR + TABULATION + ")" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(implication));
     }
 
     @Test
     public void test_visitVariable() {
         Variable variable = new Variable("v1");
-        Assert.assertEquals("v1", variable.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "v1", ExpressionToSMTLib2Formatter.formatExpression(variable));
     }
 
     @Test
     public void test_visitInt() {
         Int fortyTwo = new Int(42);
-        Assert.assertEquals("42", fortyTwo.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("42", ExpressionToSMTLib2Formatter.formatExpression(fortyTwo));
     }
 
     @Test
@@ -101,7 +103,7 @@ public class ExpressionToSMTLib2FormatterTest {
         Int fortyTwo = new Int(42);
         Int sixtyFour = new Int(64);
         Subtraction subtraction = new Subtraction(fortyTwo, sixtyFour, sixtyFour);
-        Assert.assertEquals("(-" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "42" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + ")", subtraction.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(-" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + TABULATION + "64" + LINE_SEPARATOR + TABULATION + "64" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(subtraction));
     }
 
     @Test
@@ -109,7 +111,7 @@ public class ExpressionToSMTLib2FormatterTest {
         Int fortyTwo = new Int(42);
         Int sixtyFour = new Int(64);
         Multiplication multiplication = new Multiplication(fortyTwo, sixtyFour, sixtyFour);
-        Assert.assertEquals("(*" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "42" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + UCharacters.TABULATION + "64" + UCharacters.LINE_SEPARATOR + ")", multiplication.accept(new ExpressionToSMTLib2Formatter()));
+        Assert.assertEquals("(*" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + TABULATION + "64" + LINE_SEPARATOR + TABULATION + "64" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(multiplication));
     }
 
 }

@@ -1,11 +1,14 @@
 package eventb;
 
+import eventb.expressions.FunctionDefinition;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.ABooleanExpression;
 import eventb.expressions.bool.And;
 import eventb.expressions.bool.Equals;
 import eventb.expressions.bool.True;
+import eventb.expressions.sets.CustomSet;
 import eventb.expressions.sets.NamedSet;
+import eventb.expressions.sets.RangeSet;
 import eventb.substitutions.*;
 import eventb.tools.formatters.EventBFormatter;
 import org.junit.Assert;
@@ -59,6 +62,30 @@ public class MachineTest {
         List<AAssignable> assignables = Arrays.asList(new Variable("v1"), new Variable("v2"), new Variable("v3"));
         Machine machine = new Machine(null, null, assignables, null, null, null);
         Assert.assertEquals(assignables, machine.getAssignables());
+    }
+
+    @Test
+    public void test_getVariables() {
+        FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(0), new Int(3)));
+        Variable v1 = new Variable("v1");
+        Variable v2 = new Variable("v2");
+        Variable v3 = new Variable("v3");
+        FunctionCall functionCall = new FunctionCall(functionDefinition, v3);
+        List<AAssignable> assignables = Arrays.asList(v1, functionCall, v2, v3);
+        Machine machine = new Machine(null, null, assignables, null, null, null);
+        Assert.assertEquals(Arrays.asList(v1, v2, v3), machine.getVariables());
+    }
+
+    @Test
+    public void test_getFunctionCalls() {
+        FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(0), new Int(3)));
+        Variable v1 = new Variable("v1");
+        Variable v2 = new Variable("v2");
+        Variable v3 = new Variable("v3");
+        FunctionCall functionCall = new FunctionCall(functionDefinition, v3);
+        List<AAssignable> assignables = Arrays.asList(v1, functionCall, v2, v3);
+        Machine machine = new Machine(null, null, assignables, null, null, null);
+        Assert.assertEquals(Collections.singletonList(functionCall), machine.getFunctionCalls());
     }
 
     @Test

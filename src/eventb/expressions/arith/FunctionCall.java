@@ -7,8 +7,9 @@ import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by gvoiron on 05/08/16.
@@ -46,6 +47,11 @@ public class FunctionCall extends AAssignable implements INaryOperation {
     @Override
     public List<AExpression> getOperands() {
         return operands;
+    }
+
+    @Override
+    public LinkedHashSet<AAssignable> getAssignables() {
+        return new LinkedHashSet<>(Stream.concat(getOperands().stream().map(AExpression::getAssignables).flatMap(Collection::stream), Collections.singletonList(this).stream()).collect(Collectors.toList()));
     }
 
 }

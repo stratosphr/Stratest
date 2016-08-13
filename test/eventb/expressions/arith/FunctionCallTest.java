@@ -33,12 +33,13 @@ public class FunctionCallTest {
 
     @Test
     public void test_acceptExpressionFormatter() throws Exception {
-        ExpressionToSMTLib2Formatter expressionToSMTLib2Formatter = new ExpressionToSMTLib2Formatter();
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new CustomSet(new Int(0), new Int(1), new Int(3)));
         FunctionCall functionCall = new FunctionCall(functionDefinition, new Int(42));
-        Assert.assertEquals("(fun" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + ")", functionCall.accept(expressionToSMTLib2Formatter));
+        String formattedFunctionDefinition = "(define-fun fun ((index Int)) Int" + LINE_SEPARATOR + TABULATION + "(ite" + LINE_SEPARATOR + TABULATION + TABULATION + "(=" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + "index" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + "0" + LINE_SEPARATOR + TABULATION + TABULATION + ")" + LINE_SEPARATOR + TABULATION + TABULATION + "fun!0" + LINE_SEPARATOR + TABULATION + TABULATION + "(ite" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + "(=" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + "index" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + "3" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + ")" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + "fun!3" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + "(ite" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + "(=" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + TABULATION + "index" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + TABULATION + "4" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + ")" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + "fun!4" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + TABULATION + "-1" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + ")" + LINE_SEPARATOR + TABULATION + TABULATION + ")" + LINE_SEPARATOR + TABULATION + ")" + LINE_SEPARATOR + ")" + LINE_SEPARATOR;
+        Assert.assertEquals(formattedFunctionDefinition + LINE_SEPARATOR + "(fun" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(functionCall));
         functionCall = new FunctionCall(functionDefinition, new Variable("v1"));
-        Assert.assertEquals("(fun" + LINE_SEPARATOR + TABULATION + "v1" + LINE_SEPARATOR + ")", functionCall.accept(expressionToSMTLib2Formatter));
+        String formattedVariableDeclaration = "(declare-fun v1 () Int)";
+        Assert.assertEquals(formattedVariableDeclaration + LINE_SEPARATOR + formattedFunctionDefinition + LINE_SEPARATOR + "(fun" + LINE_SEPARATOR + TABULATION + "v1" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(functionCall));
     }
 
     @Test

@@ -2,9 +2,14 @@ package eventb.expressions.bool;
 
 import eventb.expressions.AExpression;
 import eventb.expressions.IBinaryOperation;
+import eventb.expressions.arith.AAssignable;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
+
+import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by gvoiron on 07/07/16.
@@ -43,6 +48,11 @@ public final class Implication extends ABooleanExpression implements IBinaryOper
     @Override
     public ABooleanExpression getRight() {
         return right;
+    }
+
+    @Override
+    public LinkedHashSet<AAssignable> getAssignables() {
+        return new LinkedHashSet<>(Stream.concat(getLeft().getAssignables().stream(), getRight().getAssignables().stream()).collect(Collectors.toList()));
     }
 
 }

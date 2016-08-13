@@ -1,6 +1,7 @@
 package eventb;
 
 import eventb.expressions.arith.AAssignable;
+import eventb.expressions.arith.FunctionCall;
 import eventb.expressions.arith.Variable;
 import eventb.expressions.bool.ABooleanExpression;
 import eventb.expressions.sets.NamedSet;
@@ -51,6 +52,10 @@ public final class Machine extends AObjectEventB {
 
     public List<Variable> getVariables() {
         return getAssignables().stream().filter(assignable -> assignable instanceof Variable).map(assignable -> (Variable) assignable).collect(Collectors.toList());
+    }
+
+    public List<FunctionCall> getFunctionCalls() {
+        return getAssignables().stream().filter(assignable -> assignable instanceof FunctionCall).map(assignable -> (FunctionCall) assignable).collect(Collectors.toList());
     }
 
     public ABooleanExpression getInvariant() {

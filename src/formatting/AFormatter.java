@@ -1,8 +1,8 @@
 package formatting;
 
-import utilities.UCharacters;
-
 import java.util.Collections;
+
+import static utilities.UCharacters.TABULATION;
 
 /**
  * Created by gvoiron on 06/07/16.
@@ -17,7 +17,7 @@ public abstract class AFormatter {
     }
 
     public String indent() {
-        return String.join("", Collections.nCopies(indentationLevel, UCharacters.TABULATION));
+        return String.join("", Collections.nCopies(indentationLevel, TABULATION));
     }
 
     public void indentLeft() {

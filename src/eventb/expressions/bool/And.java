@@ -2,12 +2,16 @@ package eventb.expressions.bool;
 
 import eventb.expressions.AExpression;
 import eventb.expressions.INaryOperation;
+import eventb.expressions.arith.AAssignable;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.replacer.IAssignableReplacer;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by gvoiron on 07/07/16.
@@ -39,6 +43,11 @@ public final class And extends ABooleanExpression implements INaryOperation {
     @Override
     public List<ABooleanExpression> getOperands() {
         return operands;
+    }
+
+    @Override
+    public LinkedHashSet<AAssignable> getAssignables() {
+        return new LinkedHashSet<>(getOperands().stream().map(AExpression::getAssignables).flatMap(Collection::stream).collect(Collectors.toList()));
     }
 
 }
