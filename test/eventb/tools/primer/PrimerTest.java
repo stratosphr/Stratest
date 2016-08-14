@@ -308,4 +308,27 @@ public class PrimerTest {
         Assert.assertEquals(concreteStateTrue, concreteState.prime(true));
     }
 
+    @Test
+    public void test_visitForAll() {
+        Variable v1 = new Variable("v1");
+        Variable v2 = new Variable("v2");
+        Variable v3 = new Variable("v3");
+        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
+        FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
+        FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
+        Equals equals = new Equals(new Subtraction(v1, v2), new Subtraction(functionCall, v3));
+        Equals equalsPrimedFalse = new Equals(new Subtraction(v1Primed, v2Primed), new Subtraction(functionCallPrimedFalse, v3Primed));
+        Equals equalsPrimedTrue = new Equals(new Subtraction(v1Primed, v2Primed), new Subtraction(functionCallPrimedTrue, v3Primed));
+        ForAll forAll = new ForAll(equals, v1, v2, v3);
+        ForAll forAllPrimedFalse = new ForAll(equalsPrimedFalse, v1, v2, v3);
+        ForAll forAllPrimedTrue = new ForAll(equalsPrimedTrue, v1, v2, v3);
+        Assert.assertEquals(forAllPrimedFalse, forAll.prime());
+        Assert.assertEquals(forAllPrimedTrue, forAll.prime(true));
+    }
+
 }

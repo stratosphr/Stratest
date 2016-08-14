@@ -1,10 +1,15 @@
 package eventb.expressions.bool;
 
+import eventb.expressions.arith.Subtraction;
 import eventb.expressions.arith.Variable;
 import eventb.tools.formatters.EventBFormatter;
 import eventb.tools.formatters.ExpressionToSMTLib2Formatter;
+import eventb.tools.replacer.AssignableReplacer;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 
 import static utilities.UCharacters.*;
 
@@ -34,23 +39,48 @@ public class ForAllTest {
     }
 
     @Test
-    public void test_acceptExpressionToExpressionVisitor() {
-    }
-
-    @Test
     public void test_acceptAssignableReplacer() {
+        Variable v1 = new Variable("v1");
+        Variable v2 = new Variable("v2");
+        Variable v3 = new Variable("v3");
+        Equals equals = new Equals(v1, v2);
+        ForAll forAll = new ForAll(equals, v1, v2, v3);
+        try {
+            forAll.accept(new AssignableReplacer(v1, new Subtraction(v1, v2)));
+            throw new Error("AssignableReplacer visiting ForAll instance occurred and did not throw the expected error.");
+        } catch (Error ignored) {
+
+        }
     }
 
     @Test
     public void test_getAssignables() {
+        Variable v1 = new Variable("v1");
+        Variable v2 = new Variable("v2");
+        Variable v3 = new Variable("v3");
+        Equals equals = new Equals(v1, v2);
+        ForAll forAll = new ForAll(equals, v1, v3, v2);
+        Assert.assertEquals(new LinkedHashSet<>(Arrays.asList(v1, v2)), forAll.getAssignables());
     }
 
     @Test
     public void test_getQuantifiedVariables() {
+        Variable v1 = new Variable("v1");
+        Variable v2 = new Variable("v2");
+        Variable v3 = new Variable("v3");
+        Equals equals = new Equals(v1, v2);
+        ForAll forAll = new ForAll(equals, v1, v3, v2);
+        Assert.assertEquals(Arrays.asList(v1, v3, v2), forAll.getQuantifiedVariables());
     }
 
     @Test
     public void test_getExpression() {
+        Variable v1 = new Variable("v1");
+        Variable v2 = new Variable("v2");
+        Variable v3 = new Variable("v3");
+        Equals equals = new Equals(v1, v2);
+        ForAll forAll = new ForAll(equals, v1, v2, v3);
+        Assert.assertEquals(equals, forAll.getExpression());
     }
 
     @Test
