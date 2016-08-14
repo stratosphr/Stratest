@@ -24,30 +24,30 @@ public abstract class AState extends ABooleanExpression {
     }
 
     @Override
-    public String accept(IEventBFormatter visitor) {
+    public final String accept(IEventBFormatter visitor) {
         return visitor.visit(this);
     }
 
     @Override
-    public String accept(IExpressionFormatter visitor) {
+    public final String accept(IExpressionFormatter visitor) {
         return visitor.visit(this);
     }
 
     @Override
-    public AExpression accept(IAssignableReplacer visitor) {
+    public final AExpression accept(IAssignableReplacer visitor) {
         return visitor.visit(this);
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public ABooleanExpression getExpression() {
+    public final ABooleanExpression getExpression() {
         return expression;
     }
 
     @Override
-    public LinkedHashSet<AAssignable> getAssignables() {
+    public final LinkedHashSet<AAssignable> getAssignables() {
         return getExpression().getAssignables();
     }
 

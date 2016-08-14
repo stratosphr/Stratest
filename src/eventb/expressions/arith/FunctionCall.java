@@ -5,6 +5,7 @@ import eventb.expressions.FunctionDefinition;
 import eventb.expressions.INaryOperation;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
+import eventb.tools.primer.IExpressionToExpressionVisitor;
 import eventb.tools.replacer.IAssignableReplacer;
 
 import java.util.*;
@@ -18,9 +19,9 @@ import java.util.stream.Stream;
 public class FunctionCall extends AAssignable implements INaryOperation {
 
     private final FunctionDefinition definition;
-    private final List<AExpression> operands;
+    private final List<AArithmeticExpression> operands;
 
-    public FunctionCall(FunctionDefinition definition, AExpression... operands) {
+    public FunctionCall(FunctionDefinition definition, AArithmeticExpression... operands) {
         this.definition = definition;
         this.operands = Arrays.asList(operands);
     }
@@ -40,12 +41,17 @@ public class FunctionCall extends AAssignable implements INaryOperation {
         return visitor.visit(this);
     }
 
+    @Override
+    public AExpression accept(IExpressionToExpressionVisitor visitor) {
+        return visitor.visit(this);
+    }
+
     public FunctionDefinition getDefinition() {
         return definition;
     }
 
     @Override
-    public List<AExpression> getOperands() {
+    public List<AArithmeticExpression> getOperands() {
         return operands;
     }
 

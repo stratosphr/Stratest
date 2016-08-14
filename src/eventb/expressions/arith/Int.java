@@ -3,6 +3,7 @@ package eventb.expressions.arith;
 import eventb.expressions.AExpression;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
+import eventb.tools.primer.IExpressionToExpressionVisitor;
 import eventb.tools.replacer.IAssignableReplacer;
 
 import java.util.Collections;
@@ -36,6 +37,11 @@ public final class Int extends AArithmeticExpression {
 
     @Override
     public String accept(IExpressionFormatter visitor) {
+        return visitor.visit(this);
+    }
+
+    @Override
+    public AExpression accept(IExpressionToExpressionVisitor visitor) {
         return visitor.visit(this);
     }
 

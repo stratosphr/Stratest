@@ -5,6 +5,7 @@ import eventb.expressions.IBinaryOperation;
 import eventb.expressions.bool.ABooleanExpression;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
+import eventb.tools.primer.IExpressionToExpressionVisitor;
 import eventb.tools.replacer.IAssignableReplacer;
 
 import java.util.LinkedHashSet;
@@ -37,6 +38,11 @@ public final class LowerOrEqual extends ABooleanExpression implements IBinaryOpe
 
     @Override
     public String accept(IExpressionFormatter visitor) {
+        return visitor.visit(this);
+    }
+
+    @Override
+    public AExpression accept(IExpressionToExpressionVisitor visitor) {
         return visitor.visit(this);
     }
 

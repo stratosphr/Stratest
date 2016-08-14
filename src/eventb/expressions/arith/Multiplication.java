@@ -4,6 +4,7 @@ import eventb.expressions.AExpression;
 import eventb.expressions.INaryOperation;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
+import eventb.tools.primer.IExpressionToExpressionVisitor;
 import eventb.tools.replacer.IAssignableReplacer;
 
 import java.util.Arrays;
@@ -36,6 +37,11 @@ public final class Multiplication extends AArithmeticExpression implements INary
 
     @Override
     public String accept(IExpressionFormatter visitor) {
+        return visitor.visit(this);
+    }
+
+    @Override
+    public AExpression accept(IExpressionToExpressionVisitor visitor) {
         return visitor.visit(this);
     }
 
