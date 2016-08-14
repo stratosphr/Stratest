@@ -45,4 +45,6 @@ public interface IExpressionVisitor<T> {
 
     T visit(ConcreteState concreteState);
 
+    T visit(ForAll forAll);
+
 }

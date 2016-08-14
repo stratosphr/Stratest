@@ -13,7 +13,10 @@ public final class UCharacters extends UAUninstantiable {
     public static final String LOWER_OR_EQUAL = "≤";
     public static final String LAND = "∧";
     public static final String LOR = "∨";
-    public static final String LNOT = "";
+    public static final String LNOT = "¬";
+    public static final String FORALL = "∀";
+    public static final String EXISTS = "∃";
+    public static final String EQUIVALENT_TO = "≡";
 
     private UCharacters() {
         super();

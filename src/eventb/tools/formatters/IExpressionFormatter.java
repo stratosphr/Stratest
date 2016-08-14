@@ -42,4 +42,6 @@ public interface IExpressionFormatter {
 
     String visit(ArithmeticITE arithmeticITE);
 
+    String visit(ForAll forAll);
+
 }

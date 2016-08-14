@@ -115,4 +115,15 @@ public class Primer implements IExpressionToExpressionVisitor {
         return new ConcreteState(concreteState.getName(), (ABooleanExpression) concreteState.getExpression().accept(this));
     }
 
+    @Override
+    public AExpression visit(ForAll forAll) {
+        Set<AAssignable> oldQuantifiedVariables = quantifiedVariables;
+        quantifiedVariables = new HashSet<>();
+        quantifiedVariables.addAll(oldQuantifiedVariables);
+        quantifiedVariables.addAll(forAll.getQuantifiedVariables());
+        ForAll primed = new ForAll((ABooleanExpression) forAll.getExpression().accept(this), forAll.getQuantifiedVariables().toArray(new Variable[forAll.getQuantifiedVariables().size()]));
+        quantifiedVariables = new HashSet<>(oldQuantifiedVariables);
+        return primed;
+    }
+
 }

@@ -28,6 +28,8 @@ public interface IEventBFormatter extends IExpressionFormatter {
 
     String visit(IfThenElse ifThenElse);
 
+    String visit(Any any);
+
     String visit(CustomSet customSet);
 
     String visit(NamedSet namedSet);

@@ -79,6 +79,25 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
     }
 
     @Override
+    public String visit(Any any) {
+        String formatted = "ANY" + UCharacters.LINE_SEPARATOR;
+        indentRight();
+        formatted += indent() + any.getQuantifiedVariables().stream().map(variable -> variable.accept(this)).collect(Collectors.joining(", ")) + UCharacters.LINE_SEPARATOR;
+        indentLeft();
+        formatted += indent() + "WHERE" + UCharacters.LINE_SEPARATOR;
+        indentRight();
+        formatted += indent() + any.getWherePart().accept(this) + UCharacters.LINE_SEPARATOR;
+        indentLeft();
+        formatted += indent() + "THEN" + UCharacters.LINE_SEPARATOR;
+        indentRight();
+        formatted += indent() + any.getThenPart().accept(this) + UCharacters.LINE_SEPARATOR;
+        indentLeft();
+        formatted += indent() + "END";
+        System.out.println(formatted);
+        return formatted;
+    }
+
+    @Override
     public String visit(True aTrue) {
         return "_true_";
     }
@@ -156,6 +175,11 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
     @Override
     public String visit(ArithmeticITE arithmeticITE) {
         return "(" + arithmeticITE.getCondition().accept(this) + " ? " + arithmeticITE.getThenPart().accept(this) + " : " + arithmeticITE.getElsePart().accept(this) + ")";
+    }
+
+    @Override
+    public String visit(ForAll forAll) {
+        return "(" + UCharacters.FORALL + "(" + forAll.getQuantifiedVariables().stream().map(Variable::getName).collect(Collectors.joining(", ")) + ")." + forAll.getExpression().accept(this) + ")";
     }
 
     @Override

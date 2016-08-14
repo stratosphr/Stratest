@@ -160,6 +160,17 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
     }
 
     @Override
+    public String visit(ForAll forAll) {
+        String formatted = "(forall" + LINE_SEPARATOR;
+        indentRight();
+        formatted += indent() + "(" + forAll.getQuantifiedVariables().stream().map(variable -> "(" + variable.getName() + " Int)").collect(Collectors.joining(LINE_SEPARATOR + indent())) + ")" + LINE_SEPARATOR;
+        formatted += indent() + forAll.getExpression().accept(this) + LINE_SEPARATOR;
+        indentLeft();
+        formatted += ")";
+        return formatted;
+    }
+
+    @Override
     public final String visit(FunctionCall functionCall) {
         return visitNaryOperation(functionCall, functionCall.getDefinition().getName());
     }

@@ -108,6 +108,11 @@ public final class AssignableReplacer implements IAssignableReplacer {
         throw new Error("Unhandled AssignableReplacer case.");
     }
 
+    @Override
+    public AExpression visit(ForAll forAll) {
+        throw new Error("Unhandled AssignableReplacer case.");
+    }
+
     public AAssignable getAssignable() {
         return assignable;
     }

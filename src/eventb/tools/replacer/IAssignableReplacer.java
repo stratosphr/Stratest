@@ -43,4 +43,6 @@ public interface IAssignableReplacer {
 
     AExpression visit(ArithmeticITE arithmeticITE);
 
+    AExpression visit(ForAll forAll);
+
 }
