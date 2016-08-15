@@ -91,6 +91,11 @@ public class Primer implements IExpressionToExpressionVisitor {
     }
 
     @Override
+    public AExpression visit(Or or) {
+        return new Or(or.getOperands().stream().map(operand -> operand.accept(this)).toArray(ABooleanExpression[]::new));
+    }
+
+    @Override
     public AExpression visit(Not not) {
         return new Not((ABooleanExpression) not.getOperand().accept(this));
     }
@@ -124,6 +129,16 @@ public class Primer implements IExpressionToExpressionVisitor {
         ForAll primed = new ForAll((ABooleanExpression) forAll.getExpression().accept(this), forAll.getQuantifiedVariables().toArray(new Variable[forAll.getQuantifiedVariables().size()]));
         quantifiedVariables = new HashSet<>(oldQuantifiedVariables);
         return primed;
+    }
+
+    @Override
+    public AExpression visit(Predicate predicate) {
+        return new Predicate(predicate.getName(), (ABooleanExpression) predicate.getExpression().accept(this));
+    }
+
+    @Override
+    public AExpression visit(Sum sum) {
+        return new Sum(sum.getOperands().stream().map(operand -> operand.accept(this)).toArray(AArithmeticExpression[]::new));
     }
 
 }

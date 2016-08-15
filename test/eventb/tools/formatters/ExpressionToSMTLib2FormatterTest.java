@@ -39,6 +39,17 @@ public class ExpressionToSMTLib2FormatterTest {
     }
 
     @Test
+    public void test_visitOr() {
+        True aTrue = new True();
+        Or or = new Or(aTrue, new Not(aTrue));
+        Assert.assertEquals("(or" + LINE_SEPARATOR + TABULATION + "true" + LINE_SEPARATOR + TABULATION + "(not true)" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(or));
+        or = new Or();
+        Assert.assertEquals("or", ExpressionToSMTLib2Formatter.formatExpression(or));
+        or = new Or(aTrue);
+        Assert.assertEquals("(or" + LINE_SEPARATOR + TABULATION + "true" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(or));
+    }
+
+    @Test
     public void test_visitEquals() {
         Int fortyTwo = new Int(42);
         Int sixtyFour = new Int(64);
@@ -96,6 +107,14 @@ public class ExpressionToSMTLib2FormatterTest {
     public void test_visitInt() {
         Int fortyTwo = new Int(42);
         Assert.assertEquals("42", ExpressionToSMTLib2Formatter.formatExpression(fortyTwo));
+    }
+
+    @Test
+    public void test_visitSum() {
+        Int fortyTwo = new Int(42);
+        Int sixtyFour = new Int(64);
+        Sum sum = new Sum(fortyTwo, sixtyFour, sixtyFour);
+        Assert.assertEquals("(+" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + TABULATION + "64" + LINE_SEPARATOR + TABULATION + "64" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(sum));
     }
 
     @Test

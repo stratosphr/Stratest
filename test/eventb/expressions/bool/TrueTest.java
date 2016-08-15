@@ -26,7 +26,6 @@ public class TrueTest {
     @Test
     public void test_equals() {
         True aTrue = new True();
-        Assert.assertNotEquals(null, aTrue);
         Assert.assertEquals(new True(), aTrue);
         Assert.assertEquals(aTrue, aTrue);
     }

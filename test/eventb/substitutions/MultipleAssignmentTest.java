@@ -1,6 +1,10 @@
 package eventb.substitutions;
 
-import eventb.expressions.arith.*;
+import eventb.expressions.arith.Int;
+import eventb.expressions.arith.Multiplication;
+import eventb.expressions.arith.Subtraction;
+import eventb.expressions.arith.Variable;
+import eventb.expressions.bool.GreaterThan;
 import eventb.tools.formatters.EventBFormatter;
 import org.junit.Assert;
 import org.junit.Test;

@@ -15,7 +15,7 @@ import utilities.UCharacters;
 
 import java.util.stream.Collectors;
 
-import static utilities.UCharacters.EQ_DEF;
+import static utilities.UCharacters.*;
 
 /**
  * Created by gvoiron on 06/07/16.
@@ -93,7 +93,6 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
         formatted += indent() + any.getThenPart().accept(this) + UCharacters.LINE_SEPARATOR;
         indentLeft();
         formatted += indent() + "END";
-        System.out.println(formatted);
         return formatted;
     }
 
@@ -134,7 +133,7 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
 
     @Override
     public String visit(GreaterOrEqual greaterOrEqual) {
-        return "(" + greaterOrEqual.getLeft().accept(this) + " " + UCharacters.GREATER_OR_EQUAL + " " + greaterOrEqual.getRight().accept(this) + ")";
+        return "(" + greaterOrEqual.getLeft().accept(this) + " " + GREATER_OR_EQUAL + " " + greaterOrEqual.getRight().accept(this) + ")";
     }
 
     @Override
@@ -163,6 +162,11 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
     }
 
     @Override
+    public String visit(Sum sum) {
+        return "(" + sum.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(" + ")) + ")";
+    }
+
+    @Override
     public String visit(Subtraction subtraction) {
         return "(" + subtraction.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(" - ")) + ")";
     }
@@ -183,6 +187,16 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
     }
 
     @Override
+    public String visit(Predicate predicate) {
+        return "(" + predicate.getName() + " " + EQ_DEF + " " + predicate.getExpression().accept(this) + ")";
+    }
+
+    @Override
+    public String visit(Or or) {
+        return "(" + or.getOperands().stream().map(operand -> operand.accept(this)).collect(Collectors.joining(" " + UCharacters.LOR + " ")) + ")";
+    }
+
+    @Override
     public String visit(CustomSet customSet) {
         return "{" + customSet.getElements().stream().map(anInt -> anInt.accept(this)).collect(Collectors.joining(", ")) + "}";
     }
@@ -200,6 +214,27 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
     @Override
     public String visit(FunctionDefinition functionDefinition) {
         return functionDefinition.getName() + " : " + functionDefinition.getDomain().accept(this) + " -> " + functionDefinition.getCoDomain().accept(this);
+    }
+
+    @Override
+    public String visit(Parallel parallel) {
+        return parallel.getSubstitutions().stream().map(substitution -> substitution.accept(this)).collect(Collectors.joining(" ||" + LINE_SEPARATOR + indent()));
+    }
+
+    @Override
+    public String visit(Choice choice) {
+        String formatted = "CHOICE" + LINE_SEPARATOR;
+        for (ASubstitution aSubstitution : choice.getSubstitutions().subList(0, choice.getSubstitutions().size() - 1)) {
+            indentRight();
+            formatted += indent() + aSubstitution.accept(this) + LINE_SEPARATOR;
+            indentLeft();
+            formatted += indent() + "OR" + LINE_SEPARATOR;
+        }
+        indentRight();
+        formatted += indent() + choice.getSubstitutions().get(choice.getSubstitutions().size() - 1).accept(this) + LINE_SEPARATOR;
+        indentLeft();
+        formatted += indent() + "END";
+        return formatted;
     }
 
     @Override

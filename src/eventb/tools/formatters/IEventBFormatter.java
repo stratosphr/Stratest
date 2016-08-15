@@ -38,4 +38,8 @@ public interface IEventBFormatter extends IExpressionFormatter {
 
     String visit(FunctionDefinition functionDefinition);
 
+    String visit(Parallel parallel);
+
+    String visit(Choice choice);
+
 }

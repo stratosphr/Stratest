@@ -33,7 +33,6 @@ public class SkipTest {
     @Test
     public void test_equals() {
         Skip skip = new Skip();
-        Assert.assertNotEquals(null, skip);
         Assert.assertEquals(new Skip(), skip);
         Assert.assertNotEquals(new Skip(), new Select(new True(), new Skip()));
         Assert.assertEquals(skip, skip);

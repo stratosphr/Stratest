@@ -1,8 +1,9 @@
-package eventb.expressions.arith;
+package eventb.expressions.bool;
 
 import eventb.expressions.AExpression;
 import eventb.expressions.IBinaryOperation;
-import eventb.expressions.bool.ABooleanExpression;
+import eventb.expressions.arith.AArithmeticExpression;
+import eventb.expressions.arith.AAssignable;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.primer.IExpressionToExpressionVisitor;
@@ -16,12 +17,12 @@ import java.util.stream.Stream;
  * Created by gvoiron on 07/07/16.
  * Time : 23:23
  */
-public final class LowerOrEqual extends ABooleanExpression implements IBinaryOperation {
+public final class GreaterOrEqual extends ABooleanExpression implements IBinaryOperation {
 
     private final AArithmeticExpression left;
     private final AArithmeticExpression right;
 
-    public LowerOrEqual(AArithmeticExpression left, AArithmeticExpression right) {
+    public GreaterOrEqual(AArithmeticExpression left, AArithmeticExpression right) {
         this.left = left;
         this.right = right;
     }

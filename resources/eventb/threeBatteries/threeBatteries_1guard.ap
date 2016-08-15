@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AbstractionPredicatesList>
+    <CAnd>
+        <COr>
+
+            <CAnd>
+
+                <CEquals>
+
+                    <CVariable val="Bat1"/>
+
+                    <CNumber val="0"/>
+
+                </CEquals>
+
+                <CEquals>
+
+                    <CVariable val="Bat2"/>
+
+                    <CNumber val="0"/>
+
+                </CEquals>
+
+            </CAnd>
+
+            <CAnd>
+
+                <CEquals>
+
+                    <CVariable val="Bat1"/>
+
+                    <CNumber val="0"/>
+
+                </CEquals>
+
+                <CEquals>
+
+                    <CVariable val="Bat3"/>
+
+                    <CNumber val="0"/>
+
+                </CEquals>
+
+            </CAnd>
+
+            <CAnd>
+
+                <CEquals>
+
+                    <CVariable val="Bat2"/>
+
+                    <CNumber val="0"/>
+
+                </CEquals>
+
+                <CEquals>
+
+                    <CVariable val="Bat3"/>
+
+                    <CNumber val="0"/>
+
+                </CEquals>
+
+            </CAnd>
+
+        </COr>
+
+        <CEquals>
+
+            <CVariable val="h"/>
+
+            <CNumber val="0"/>
+
+        </CEquals>
+
+        <COr>
+
+            <CAnd>
+
+                <CEquals>
+
+                    <CVariable val="Bat1"/>
+
+                    <CNumber val="0"/>
+
+                </CEquals>
+
+                <CNot>
+
+                    <CEquals>
+
+                        <CVariable val="BatInUse"/>
+
+                        <CNumber val="1"/>
+
+                    </CEquals>
+
+                </CNot>
+
+            </CAnd>
+
+            <CAnd>
+
+                <CEquals>
+
+                    <CVariable val="Bat2"/>
+
+                    <CNumber val="0"/>
+
+                </CEquals>
+
+                <CNot>
+
+                    <CEquals>
+
+                        <CVariable val="BatInUse"/>
+
+                        <CNumber val="1"/>
+
+                    </CEquals>
+
+                </CNot>
+
+            </CAnd>
+
+            <CAnd>
+
+                <CEquals>
+
+                    <CVariable val="Bat3"/>
+
+                    <CNumber val="0"/>
+
+                </CEquals>
+
+                <CNot>
+
+                    <CEquals>
+
+                        <CVariable val="BatInUse"/>
+
+                        <CNumber val="1"/>
+
+                    </CEquals>
+
+                </CNot>
+
+            </CAnd>
+
+        </COr>
+
+    </CAnd>
+
+    <CEquals>
+
+        <CVariable val="h"/>
+
+        <CNumber val="1"/>
+
+    </CEquals>
+</AbstractionPredicatesList>

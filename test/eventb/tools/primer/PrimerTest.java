@@ -156,6 +156,26 @@ public class PrimerTest {
     }
 
     @Test
+    public void test_visitSum() {
+        Variable v1 = new Variable("v1");
+        Variable v2 = new Variable("v2");
+        Variable v3 = new Variable("v3");
+        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
+        FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
+        FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
+        Sum sum = new Sum(v1, v2, v3, functionCall);
+        Sum sumPrimedFalse = new Sum(v1Primed, v2Primed, v3Primed, functionCallPrimedFalse);
+        Sum sumPrimedTrue = new Sum(v1Primed, v2Primed, v3Primed, functionCallPrimedTrue);
+        Assert.assertEquals(sumPrimedFalse, sum.prime());
+        Assert.assertEquals(sumPrimedTrue, sum.prime(true));
+    }
+
+    @Test
     public void test_visitSubtraction() {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
@@ -200,6 +220,26 @@ public class PrimerTest {
         And andPrimedTrue = new And(new Equals(v1Primed, v2Primed), new Equals(v3Primed, functionCallPrimedTrue));
         Assert.assertEquals(andPrimedFalse, and.prime());
         Assert.assertEquals(andPrimedTrue, and.prime(true));
+    }
+
+    @Test
+    public void test_visitOr() {
+        Variable v1 = new Variable("v1");
+        Variable v2 = new Variable("v2");
+        Variable v3 = new Variable("v3");
+        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
+        FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
+        FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
+        Or or = new Or(new Equals(v1, v2), new Equals(v3, functionCall));
+        Or orPrimedFalse = new Or(new Equals(v1Primed, v2Primed), new Equals(v3Primed, functionCallPrimedFalse));
+        Or orPrimedTrue = new Or(new Equals(v1Primed, v2Primed), new Equals(v3Primed, functionCallPrimedTrue));
+        Assert.assertEquals(orPrimedFalse, or.prime());
+        Assert.assertEquals(orPrimedTrue, or.prime(true));
     }
 
     @Test
@@ -260,6 +300,29 @@ public class PrimerTest {
         Equals equalsPrimedTrue = new Equals(new Subtraction(v1Primed, v2Primed), new Subtraction(functionCallPrimedTrue, v3Primed));
         Assert.assertEquals(equalsPrimedFalse, equals.prime());
         Assert.assertEquals(equalsPrimedTrue, equals.prime(true));
+    }
+
+    @Test
+    public void test_visitPredicate() {
+        Variable v1 = new Variable("v1");
+        Variable v2 = new Variable("v2");
+        Variable v3 = new Variable("v3");
+        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
+        FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
+        FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
+        Equals equals = new Equals(new Subtraction(v1, v2), new Subtraction(functionCall, v3));
+        Equals equalsPrimedFalse = new Equals(new Subtraction(v1Primed, v2Primed), new Subtraction(functionCallPrimedFalse, v3Primed));
+        Equals equalsPrimedTrue = new Equals(new Subtraction(v1Primed, v2Primed), new Subtraction(functionCallPrimedTrue, v3Primed));
+        Predicate predicate = new Predicate("p0", equals);
+        Predicate predicatePrimedFalse = new Predicate("p0", equalsPrimedFalse);
+        Predicate predicatePrimedTrue = new Predicate("p0", equalsPrimedTrue);
+        Assert.assertEquals(predicatePrimedFalse, predicate.prime());
+        Assert.assertEquals(predicatePrimedTrue, predicate.prime(true));
     }
 
     @Test

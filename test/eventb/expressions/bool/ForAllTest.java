@@ -83,8 +83,4 @@ public class ForAllTest {
         Assert.assertEquals(equals, forAll.getExpression());
     }
 
-    @Test
-    public void test_prime() {
-    }
-
 }

@@ -2,10 +2,7 @@ package eventb;
 
 import eventb.expressions.FunctionDefinition;
 import eventb.expressions.arith.*;
-import eventb.expressions.bool.ABooleanExpression;
-import eventb.expressions.bool.And;
-import eventb.expressions.bool.Equals;
-import eventb.expressions.bool.True;
+import eventb.expressions.bool.*;
 import eventb.expressions.sets.CustomSet;
 import eventb.expressions.sets.NamedSet;
 import eventb.expressions.sets.RangeSet;

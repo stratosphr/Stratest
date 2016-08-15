@@ -48,7 +48,6 @@ public class AnyTest {
         any = new Any(and, assignment, v1, v2);
         forAll = new ForAll(select.getWP(postCondition), v1, v2);
         Assert.assertEquals(forAll, any.getWP(postCondition));
-        System.out.println(forAll);
     }
 
     @Test

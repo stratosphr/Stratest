@@ -1,8 +1,6 @@
 package eventb.substitutions;
 
-import eventb.expressions.arith.GreaterOrEqual;
 import eventb.expressions.arith.Int;
-import eventb.expressions.arith.LowerThan;
 import eventb.expressions.arith.Variable;
 import eventb.expressions.bool.*;
 import eventb.tools.formatters.EventBFormatter;

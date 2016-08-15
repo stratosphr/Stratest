@@ -3,7 +3,8 @@ package eventb.tools.replacer;
 import eventb.expressions.AExpression;
 import eventb.expressions.arith.*;
 import eventb.expressions.bool.*;
-import graphs.AState;
+import graphs.AbstractState;
+import graphs.ConcreteState;
 
 /**
  * Created by gvoiron on 07/07/16.
@@ -35,8 +36,23 @@ public final class AssignableReplacer implements IAssignableReplacer {
     }
 
     @Override
+    public AExpression visit(Or or) {
+        return new Or(or.getOperands().stream().map(operand -> operand.accept(this)).toArray(ABooleanExpression[]::new));
+    }
+
+    @Override
     public AExpression visit(Equals equals) {
         return new Equals((AArithmeticExpression) equals.getLeft().accept(this), (AArithmeticExpression) equals.getRight().accept(this));
+    }
+
+    @Override
+    public AExpression visit(AbstractState abstractState) {
+        return abstractState.getExpression().accept(this);
+    }
+
+    @Override
+    public AExpression visit(ConcreteState concreteState) {
+        return concreteState.getExpression().accept(this);
     }
 
     @Override
@@ -65,11 +81,6 @@ public final class AssignableReplacer implements IAssignableReplacer {
     }
 
     @Override
-    public AExpression visit(AState aState) {
-        return aState.getExpression().accept(this);
-    }
-
-    @Override
     public AExpression visit(Int anInt) {
         return anInt;
     }
@@ -81,6 +92,11 @@ public final class AssignableReplacer implements IAssignableReplacer {
         } else {
             return variable;
         }
+    }
+
+    @Override
+    public AExpression visit(Sum sum) {
+        return new Sum(sum.getOperands().stream().map(operand -> operand.accept(this)).toArray(AArithmeticExpression[]::new));
     }
 
     @Override
@@ -111,6 +127,11 @@ public final class AssignableReplacer implements IAssignableReplacer {
     @Override
     public AExpression visit(ForAll forAll) {
         throw new Error("Unhandled AssignableReplacer case.");
+    }
+
+    @Override
+    public AExpression visit(Predicate predicate) {
+        return predicate.getExpression().accept(this);
     }
 
     public AAssignable getAssignable() {

@@ -1,5 +1,6 @@
 package eventb.expressions.arith;
 
+import eventb.expressions.bool.LowerThan;
 import eventb.tools.replacer.AssignableReplacer;
 import org.junit.Assert;
 import org.junit.Test;

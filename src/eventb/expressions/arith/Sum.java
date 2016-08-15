@@ -1,29 +1,28 @@
 package eventb.expressions.arith;
 
 import eventb.expressions.AExpression;
-import eventb.expressions.IBinaryOperation;
-import eventb.expressions.bool.ABooleanExpression;
+import eventb.expressions.INaryOperation;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.primer.IExpressionToExpressionVisitor;
 import eventb.tools.replacer.IAssignableReplacer;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created by gvoiron on 07/07/16.
- * Time : 14:54
+ * Time : 14:52
  */
-public final class GreaterThan extends ABooleanExpression implements IBinaryOperation {
+public final class Sum extends AArithmeticExpression implements INaryOperation {
 
-    private final AArithmeticExpression left;
-    private final AArithmeticExpression right;
+    private final List<AArithmeticExpression> operands;
 
-    public GreaterThan(AArithmeticExpression left, AArithmeticExpression right) {
-        this.left = left;
-        this.right = right;
+    public Sum(AArithmeticExpression... operands) {
+        this.operands = Arrays.asList(operands);
     }
 
     @Override
@@ -46,19 +45,13 @@ public final class GreaterThan extends ABooleanExpression implements IBinaryOper
         return visitor.visit(this);
     }
 
-    @Override
-    public AArithmeticExpression getLeft() {
-        return left;
-    }
-
-    @Override
-    public AArithmeticExpression getRight() {
-        return right;
+    public List<AArithmeticExpression> getOperands() {
+        return operands;
     }
 
     @Override
     public LinkedHashSet<AAssignable> getAssignables() {
-        return new LinkedHashSet<>(Stream.concat(getLeft().getAssignables().stream(), getRight().getAssignables().stream()).collect(Collectors.toList()));
+        return new LinkedHashSet<>(getOperands().stream().map(AExpression::getAssignables).flatMap(Collection::stream).collect(Collectors.toList()));
     }
 
 }

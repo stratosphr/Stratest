@@ -50,7 +50,6 @@ public class SelectTest {
     @Test
     public void test_equals() {
         Select select = new Select(new True(), new Skip());
-        Assert.assertNotEquals(null, select);
         Assert.assertEquals(new Select(new True(), new Skip()), select);
         Assert.assertNotEquals(new Select(new True(), new Skip()), new Skip());
         Assert.assertEquals(select, select);

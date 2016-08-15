@@ -5,6 +5,7 @@ import eventb.expressions.arith.Int;
 import eventb.expressions.arith.Subtraction;
 import eventb.expressions.arith.Variable;
 import eventb.expressions.bool.Equals;
+import eventb.expressions.bool.Predicate;
 import eventb.tools.formatters.EventBFormatter;
 import eventb.tools.formatters.ExpressionToSMTLib2Formatter;
 import eventb.tools.replacer.AssignableReplacer;
@@ -29,8 +30,12 @@ public class AStateTest {
         Variable v1 = new Variable("v1");
         Int fortyTwo = new Int(42);
         Equals equals = new Equals(v1, fortyTwo);
-        ConcreteState state = new ConcreteState("c0", equals);
-        Assert.assertEquals("(c0 " + UCharacters.EQ_DEF + " (v1 = 42))", state.accept(new EventBFormatter()));
+        Predicate predicate = new Predicate("p0", equals);
+        ConcreteState concreteState = new ConcreteState("c0", equals);
+        AbstractState abstractState = new AbstractState("q0", equals);
+        Assert.assertEquals("(p0 " + UCharacters.EQ_DEF + " (v1 = 42))", predicate.accept(new EventBFormatter()));
+        Assert.assertEquals("(c0 " + UCharacters.EQ_DEF + " (v1 = 42))", concreteState.accept(new EventBFormatter()));
+        Assert.assertEquals("(q0 " + UCharacters.EQ_DEF + " (v1 = 42))", abstractState.accept(new EventBFormatter()));
     }
 
     @Test
@@ -38,8 +43,12 @@ public class AStateTest {
         Variable v1 = new Variable("v1");
         Int fortyTwo = new Int(42);
         Equals equals = new Equals(v1, fortyTwo);
-        ConcreteState state = new ConcreteState("c0", equals);
-        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "(=" + LINE_SEPARATOR + TABULATION + "v1" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(state));
+        Predicate predicate = new Predicate("p0", equals);
+        ConcreteState concreteState = new ConcreteState("c0", equals);
+        AbstractState abstractState = new AbstractState("q0", equals);
+        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "(=" + LINE_SEPARATOR + TABULATION + "v1" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(predicate));
+        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "(=" + LINE_SEPARATOR + TABULATION + "v1" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(abstractState));
+        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "(=" + LINE_SEPARATOR + TABULATION + "v1" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(concreteState));
     }
 
     @Test
@@ -47,22 +56,13 @@ public class AStateTest {
         Variable v1 = new Variable("v1");
         Int fortyTwo = new Int(42);
         Equals equals = new Equals(v1, fortyTwo);
-        ConcreteState state = new ConcreteState("c0", equals);
         Subtraction subtraction = new Subtraction(v1, fortyTwo);
-        Assert.assertEquals(new Equals(subtraction, fortyTwo), state.accept(new AssignableReplacer(v1, subtraction)));
-    }
-
-    @Test
-    public void test_getName() {
-        Assert.assertEquals("c0", new ConcreteState("c0", null).getName());
-        Assert.assertEquals("c0", new AbstractState("c0", null).getName());
-    }
-
-    @Test
-    public void test_getExpression() {
-        Equals equals = new Equals(new Variable("v1"), new Int(42));
-        Assert.assertEquals(equals, new ConcreteState(null, equals).getExpression());
-        Assert.assertEquals(equals, new AbstractState(null, equals).getExpression());
+        Predicate predicate = new Predicate("p0", equals);
+        ConcreteState concreteState = new ConcreteState("c0", equals);
+        AbstractState abstractState = new AbstractState("q0", equals);
+        Assert.assertEquals(new Equals(subtraction, fortyTwo), predicate.accept(new AssignableReplacer(v1, subtraction)));
+        Assert.assertEquals(new Equals(subtraction, fortyTwo), concreteState.accept(new AssignableReplacer(v1, subtraction)));
+        Assert.assertEquals(new Equals(subtraction, fortyTwo), abstractState.accept(new AssignableReplacer(v1, subtraction)));
     }
 
     @Test
@@ -70,8 +70,12 @@ public class AStateTest {
         Variable v1 = new Variable("v1");
         Int fortyTwo = new Int(42);
         Equals equals = new Equals(v1, fortyTwo);
-        ConcreteState state = new ConcreteState("c0", equals);
-        Assert.assertEquals(new LinkedHashSet<AAssignable>(Collections.singletonList(v1)), state.getAssignables());
+        Predicate predicate = new Predicate("p0", equals);
+        ConcreteState concreteState = new ConcreteState("c0", equals);
+        AbstractState abstractState = new AbstractState("q0", equals);
+        Assert.assertEquals(new LinkedHashSet<AAssignable>(Collections.singletonList(v1)), predicate.getAssignables());
+        Assert.assertEquals(new LinkedHashSet<AAssignable>(Collections.singletonList(v1)), concreteState.getAssignables());
+        Assert.assertEquals(new LinkedHashSet<AAssignable>(Collections.singletonList(v1)), abstractState.getAssignables());
     }
 
 }

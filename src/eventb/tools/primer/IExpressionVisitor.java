@@ -35,6 +35,8 @@ public interface IExpressionVisitor<T> {
 
     T visit(And and);
 
+    T visit(Or or);
+
     T visit(Not not);
 
     T visit(Implication implication);
@@ -47,4 +49,8 @@ public interface IExpressionVisitor<T> {
 
     T visit(ForAll forAll);
 
+    T visit(Predicate predicate);
+
+    T visit(Sum sum);
+    
 }

@@ -1,8 +1,9 @@
-package eventb.expressions.arith;
+package eventb.expressions.bool;
 
 import eventb.expressions.AExpression;
 import eventb.expressions.IBinaryOperation;
-import eventb.expressions.bool.ABooleanExpression;
+import eventb.expressions.arith.AArithmeticExpression;
+import eventb.expressions.arith.AAssignable;
 import eventb.tools.formatters.IEventBFormatter;
 import eventb.tools.formatters.IExpressionFormatter;
 import eventb.tools.primer.IExpressionToExpressionVisitor;

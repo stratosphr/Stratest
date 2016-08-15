@@ -16,6 +16,8 @@ public interface IExpressionFormatter {
 
     String visit(And and);
 
+    String visit(Or or);
+
     String visit(Equals equals);
 
     String visit(LowerThan lowerThan);
@@ -36,6 +38,8 @@ public interface IExpressionFormatter {
 
     String visit(Int anInt);
 
+    String visit(Sum sum);
+
     String visit(Subtraction subtraction);
 
     String visit(Multiplication multiplication);
@@ -43,5 +47,7 @@ public interface IExpressionFormatter {
     String visit(ArithmeticITE arithmeticITE);
 
     String visit(ForAll forAll);
+
+    String visit(Predicate predicate);
 
 }

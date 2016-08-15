@@ -1,7 +1,6 @@
 package eventb.expressions.bool;
 
 import eventb.expressions.arith.Int;
-import eventb.expressions.arith.LowerOrEqual;
 import eventb.expressions.arith.Multiplication;
 import eventb.expressions.arith.Variable;
 import eventb.tools.replacer.AssignableReplacer;
@@ -15,7 +14,7 @@ import org.junit.Test;
 public class AndTest {
 
     @Test
-    public void acceptAssignableReplacer() {
+    public void test_acceptAssignableReplacer() {
         Variable x = new Variable("x");
         Int two = new Int(2);
         Multiplication substitute = new Multiplication(x, two);

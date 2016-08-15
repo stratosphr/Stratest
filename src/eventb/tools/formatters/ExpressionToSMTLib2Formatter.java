@@ -100,6 +100,11 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
     }
 
     @Override
+    public String visit(Or or) {
+        return visitNaryOperation(or, "or");
+    }
+
+    @Override
     public final String visit(Equals equals) {
         return visitBinaryOperation(equals, "=");
     }
@@ -120,7 +125,7 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
     }
 
     @Override
-    public final String visit(GreaterOrEqual greaterOrEqual) {
+    public String visit(GreaterOrEqual greaterOrEqual) {
         return visitBinaryOperation(greaterOrEqual, ">=");
     }
 
@@ -142,6 +147,11 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
     @Override
     public final String visit(Int anInt) {
         return String.valueOf(anInt.getValue());
+    }
+
+    @Override
+    public String visit(Sum sum) {
+        return visitNaryOperation(sum, "+");
     }
 
     @Override
@@ -168,6 +178,11 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
         indentLeft();
         formatted += ")";
         return formatted;
+    }
+
+    @Override
+    public String visit(Predicate predicate) {
+        return predicate.getExpression().accept(this);
     }
 
     @Override

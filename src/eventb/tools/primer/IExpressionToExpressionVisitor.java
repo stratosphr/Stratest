@@ -7,4 +7,5 @@ import eventb.expressions.AExpression;
  * Time : 10:46
  */
 public interface IExpressionToExpressionVisitor extends IExpressionVisitor<AExpression> {
+
 }
