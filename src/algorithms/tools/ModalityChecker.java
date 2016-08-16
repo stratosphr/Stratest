@@ -48,13 +48,11 @@ public final class ModalityChecker {
     public Boolean isMustMinus(AbstractTransition abstractTransition) {
         Z3 z3 = new Z3();
         z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
-                getMachine().getInvariant(),
                 (ABooleanExpression) getMachine().getInvariant().prime(true),
                 abstractTransition.getSource(),
                 new Not(abstractTransition.getEvent().getSubstitution().getSP(abstractTransition.getSource(), getMachine())),
                 (ABooleanExpression) abstractTransition.getTarget().prime()
         )));
-        z3.getLines().forEach(System.out::println);
         return z3.checkSAT() == Status.UNSATISFIABLE;
     }
 
