@@ -46,9 +46,9 @@ public class AStateTest {
         Predicate predicate = new Predicate("p0", equals);
         ConcreteState concreteState = new ConcreteState("c0", equals);
         AbstractState abstractState = new AbstractState("q0", equals);
-        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "(=" + LINE_SEPARATOR + TABULATION + "v1" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(predicate));
-        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "(=" + LINE_SEPARATOR + TABULATION + "v1" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(abstractState));
-        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "(=" + LINE_SEPARATOR + TABULATION + "v1" + LINE_SEPARATOR + TABULATION + "42" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(concreteState));
+        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "(assert" + LINE_SEPARATOR + TABULATION + "(=" + LINE_SEPARATOR + TABULATION + TABULATION + "v1" + LINE_SEPARATOR + TABULATION + TABULATION + "42" + LINE_SEPARATOR + TABULATION + ")" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(predicate));
+        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "(assert" + LINE_SEPARATOR + TABULATION + "(=" + LINE_SEPARATOR + TABULATION + TABULATION + "v1" + LINE_SEPARATOR + TABULATION + TABULATION + "42" + LINE_SEPARATOR + TABULATION + ")" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(abstractState));
+        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "(assert" + LINE_SEPARATOR + TABULATION + "(=" + LINE_SEPARATOR + TABULATION + TABULATION + "v1" + LINE_SEPARATOR + TABULATION + TABULATION + "42" + LINE_SEPARATOR + TABULATION + ")" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(concreteState));
     }
 
     @Test

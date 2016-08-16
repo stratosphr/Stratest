@@ -20,16 +20,16 @@ public final class ModalityChecker {
         this.machine = machine;
     }
 
-    public void isMay(AbstractTransition abstractTransition) {
+    public Boolean isMay(AbstractTransition abstractTransition) {
         Z3 z3 = new Z3();
         z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
                 getMachine().getInvariant(),
                 (ABooleanExpression) getMachine().getInvariant().prime(true),
                 abstractTransition.getSource(),
-                abstractTransition.getEvent().getSubstitution().getWCP((ABooleanExpression) abstractTransition.getTarget().prime())
+                abstractTransition.getEvent().getSubstitution().getWCP(abstractTransition.getTarget()),
+                (ABooleanExpression) abstractTransition.getTarget().prime()
         )));
-        Status status = z3.checkSAT();
-        System.out.println(status);
+        return z3.checkSAT() == Status.SATISFIABLE;
     }
 
     public Machine getMachine() {

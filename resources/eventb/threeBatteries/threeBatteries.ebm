@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MACHINE name="3 Batries">
+<MACHINE name="3 batries">
   <VARIABLES>
-    <CVariable val="BatInUse" />
+    <CVariable val="batInUse" />
     <CVariable val="h" />
-    <CVariable val="Bat1" />
-    <CVariable val="Bat2" />
-    <CVariable val="Bat3" />
+    <CVariable val="bat1" />
+    <CVariable val="bat2" />
+    <CVariable val="bat3" />
   </VARIABLES>
   <INVARIANT>
     <CAnd>
@@ -13,21 +13,21 @@
         <CVariable val="h" />
       </CInDomain>
       <CInDomain type="0">
-        <CVariable val="Bat1" />
+        <CVariable val="bat1" />
       </CInDomain>
       <CInDomain type="0">
-        <CVariable val="Bat2" />
+        <CVariable val="bat2" />
       </CInDomain>
       <CInDomain type="0">
-        <CVariable val="Bat3" />
+        <CVariable val="bat3" />
       </CInDomain>
       <CGreater>
-        <CVariable val="BatInUse" />
+        <CVariable val="batInUse" />
         <CNumber val="0" />
       </CGreater>
       <CGreater>
         <CNumber val="4" />
-        <CVariable val="BatInUse" />
+        <CVariable val="batInUse" />
       </CGreater>
       <CGreater>
         <CNumber val="2" />
@@ -35,44 +35,44 @@
       </CGreater>
       <CGreater>
         <CNumber val="2" />
-        <CVariable val="Bat1" />
+        <CVariable val="bat1" />
       </CGreater>
       <CGreater>
         <CNumber val="2" />
-        <CVariable val="Bat2" />
+        <CVariable val="bat2" />
       </CGreater>
       <CGreater>
         <CNumber val="2" />
-        <CVariable val="Bat3" />
+        <CVariable val="bat3" />
       </CGreater>
       <COr>
         <CAnd>
           <CEquals>
-            <CVariable val="BatInUse" />
+            <CVariable val="batInUse" />
             <CNumber val="1" />
           </CEquals>
           <CEquals>
-            <CVariable val="Bat1" />
+            <CVariable val="bat1" />
             <CNumber val="0" />
           </CEquals>
         </CAnd>
         <CAnd>
           <CEquals>
-            <CVariable val="BatInUse" />
+            <CVariable val="batInUse" />
             <CNumber val="2" />
           </CEquals>
           <CEquals>
-            <CVariable val="Bat2" />
+            <CVariable val="bat2" />
             <CNumber val="0" />
           </CEquals>
         </CAnd>
         <CAnd>
           <CEquals>
-            <CVariable val="BatInUse" />
+            <CVariable val="batInUse" />
             <CNumber val="3" />
           </CEquals>
           <CEquals>
-            <CVariable val="Bat3" />
+            <CVariable val="bat3" />
             <CNumber val="0" />
           </CEquals>
         </CAnd>
@@ -80,11 +80,11 @@
       <CNot>
         <CAnd>
           <CEquals>
-            <CVariable val="BatInUse" />
+            <CVariable val="batInUse" />
             <CNumber val="1" />
           </CEquals>
           <CEquals>
-            <CVariable val="Bat1" />
+            <CVariable val="bat1" />
             <CNumber val="1" />
           </CEquals>
         </CAnd>
@@ -92,11 +92,11 @@
       <CNot>
         <CAnd>
           <CEquals>
-            <CVariable val="BatInUse" />
+            <CVariable val="batInUse" />
             <CNumber val="2" />
           </CEquals>
           <CEquals>
-            <CVariable val="Bat2" />
+            <CVariable val="bat2" />
             <CNumber val="1" />
           </CEquals>
         </CAnd>
@@ -104,11 +104,11 @@
       <CNot>
         <CAnd>
           <CEquals>
-            <CVariable val="BatInUse" />
+            <CVariable val="batInUse" />
             <CNumber val="3" />
           </CEquals>
           <CEquals>
-            <CVariable val="Bat3" />
+            <CVariable val="bat3" />
             <CNumber val="1" />
           </CEquals>
         </CAnd>
@@ -118,7 +118,7 @@
   <INITIALISATION>
     <CMultipleAssignment>
       <CAssignment>
-        <CVariable val="BatInUse" />
+        <CVariable val="batInUse" />
         <CNumber val="1" />
       </CAssignment>
       <CAssignment>
@@ -126,15 +126,15 @@
         <CNumber val="1" />
       </CAssignment>
       <CAssignment>
-        <CVariable val="Bat1" />
+        <CVariable val="bat1" />
         <CNumber val="0" />
       </CAssignment>
       <CAssignment>
-        <CVariable val="Bat2" />
+        <CVariable val="bat2" />
         <CNumber val="0" />
       </CAssignment>
       <CAssignment>
-        <CVariable val="Bat3" />
+        <CVariable val="bat3" />
         <CNumber val="0" />
       </CAssignment>
     </CMultipleAssignment>
@@ -155,31 +155,31 @@
         <COr>
           <CAnd>
             <CEquals>
-              <CVariable val="Bat1" />
+              <CVariable val="bat1" />
               <CNumber val="0" />
             </CEquals>
             <CEquals>
-              <CVariable val="Bat2" />
-              <CNumber val="0" />
-            </CEquals>
-          </CAnd>
-          <CAnd>
-            <CEquals>
-              <CVariable val="Bat1" />
-              <CNumber val="0" />
-            </CEquals>
-            <CEquals>
-              <CVariable val="Bat3" />
+              <CVariable val="bat2" />
               <CNumber val="0" />
             </CEquals>
           </CAnd>
           <CAnd>
             <CEquals>
-              <CVariable val="Bat2" />
+              <CVariable val="bat1" />
               <CNumber val="0" />
             </CEquals>
             <CEquals>
-              <CVariable val="Bat3" />
+              <CVariable val="bat3" />
+              <CNumber val="0" />
+            </CEquals>
+          </CAnd>
+          <CAnd>
+            <CEquals>
+              <CVariable val="bat2" />
+              <CNumber val="0" />
+            </CEquals>
+            <CEquals>
+              <CVariable val="bat3" />
               <CNumber val="0" />
             </CEquals>
           </CAnd>
@@ -188,54 +188,54 @@
           <CGuarded>
             <CAnd>
               <CEquals>
-                <CVariable val="Bat1" />
+                <CVariable val="bat1" />
                 <CNumber val="0" />
               </CEquals>
               <CNot>
                 <CEquals>
-                  <CVariable val="BatInUse" />
+                  <CVariable val="batInUse" />
                   <CNumber val="1" />
                 </CEquals>
               </CNot>
             </CAnd>
             <CAssignment>
-              <CVariable val="Bat1" />
+              <CVariable val="bat1" />
               <CNumber val="1" />
             </CAssignment>
           </CGuarded>
           <CGuarded>
             <CAnd>
               <CEquals>
-                <CVariable val="Bat3" />
+                <CVariable val="bat3" />
                 <CNumber val="0" />
               </CEquals>
               <CNot>
                 <CEquals>
-                  <CVariable val="BatInUse" />
+                  <CVariable val="batInUse" />
                   <CNumber val="3" />
                 </CEquals>
               </CNot>
             </CAnd>
             <CAssignment>
-              <CVariable val="Bat3" />
+              <CVariable val="bat3" />
               <CNumber val="1" />
             </CAssignment>
           </CGuarded>
           <CGuarded>
             <CAnd>
               <CEquals>
-                <CVariable val="Bat2" />
+                <CVariable val="bat2" />
                 <CNumber val="0" />
               </CEquals>
               <CNot>
                 <CEquals>
-                  <CVariable val="BatInUse" />
+                  <CVariable val="batInUse" />
                   <CNumber val="2" />
                 </CEquals>
               </CNot>
             </CAnd>
             <CAssignment>
-              <CVariable val="Bat2" />
+              <CVariable val="bat2" />
               <CNumber val="1" />
             </CAssignment>
           </CGuarded>
@@ -247,31 +247,31 @@
         <COr>
           <CAnd>
             <CEquals>
-              <CVariable val="Bat1" />
+              <CVariable val="bat1" />
               <CNumber val="0" />
             </CEquals>
             <CEquals>
-              <CVariable val="Bat2" />
-              <CNumber val="0" />
-            </CEquals>
-          </CAnd>
-          <CAnd>
-            <CEquals>
-              <CVariable val="Bat1" />
-              <CNumber val="0" />
-            </CEquals>
-            <CEquals>
-              <CVariable val="Bat3" />
+              <CVariable val="bat2" />
               <CNumber val="0" />
             </CEquals>
           </CAnd>
           <CAnd>
             <CEquals>
-              <CVariable val="Bat2" />
+              <CVariable val="bat1" />
               <CNumber val="0" />
             </CEquals>
             <CEquals>
-              <CVariable val="Bat3" />
+              <CVariable val="bat3" />
+              <CNumber val="0" />
+            </CEquals>
+          </CAnd>
+          <CAnd>
+            <CEquals>
+              <CVariable val="bat2" />
+              <CNumber val="0" />
+            </CEquals>
+            <CEquals>
+              <CVariable val="bat3" />
               <CNumber val="0" />
             </CEquals>
           </CAnd>
@@ -285,19 +285,19 @@
         <CGuarded>
           <CAnd>
             <CEquals>
-              <CVariable val="Bat1" />
+              <CVariable val="bat1" />
               <CNumber val="0" />
             </CEquals>
             <CNot>
               <CEquals>
-                <CVariable val="BatInUse" />
+                <CVariable val="batInUse" />
                 <CNumber val="1" />
               </CEquals>
             </CNot>
           </CAnd>
           <CMultipleAssignment>
             <CAssignment>
-              <CVariable val="BatInUse" />
+              <CVariable val="batInUse" />
               <CNumber val="1" />
             </CAssignment>
             <CAssignment>
@@ -309,19 +309,19 @@
         <CGuarded>
           <CAnd>
             <CEquals>
-              <CVariable val="Bat2" />
+              <CVariable val="bat2" />
               <CNumber val="0" />
             </CEquals>
             <CNot>
               <CEquals>
-                <CVariable val="BatInUse" />
+                <CVariable val="batInUse" />
                 <CNumber val="2" />
               </CEquals>
             </CNot>
           </CAnd>
           <CMultipleAssignment>
             <CAssignment>
-              <CVariable val="BatInUse" />
+              <CVariable val="batInUse" />
               <CNumber val="2" />
             </CAssignment>
             <CAssignment>
@@ -333,19 +333,19 @@
         <CGuarded>
           <CAnd>
             <CEquals>
-              <CVariable val="Bat3" />
+              <CVariable val="bat3" />
               <CNumber val="0" />
             </CEquals>
             <CNot>
               <CEquals>
-                <CVariable val="BatInUse" />
+                <CVariable val="batInUse" />
                 <CNumber val="3" />
               </CEquals>
             </CNot>
           </CAnd>
           <CMultipleAssignment>
             <CAssignment>
-              <CVariable val="BatInUse" />
+              <CVariable val="batInUse" />
               <CNumber val="3" />
             </CAssignment>
             <CAssignment>
@@ -360,31 +360,31 @@
       <CNDChoice>
         <CGuarded>
           <CEquals>
-            <CVariable val="Bat1" />
+            <CVariable val="bat1" />
             <CNumber val="1" />
           </CEquals>
           <CAssignment>
-            <CVariable val="Bat1" />
+            <CVariable val="bat1" />
             <CNumber val="0" />
           </CAssignment>
         </CGuarded>
         <CGuarded>
           <CEquals>
-            <CVariable val="Bat2" />
+            <CVariable val="bat2" />
             <CNumber val="1" />
           </CEquals>
           <CAssignment>
-            <CVariable val="Bat2" />
+            <CVariable val="bat2" />
             <CNumber val="0" />
           </CAssignment>
         </CGuarded>
         <CGuarded>
           <CEquals>
-            <CVariable val="Bat3" />
+            <CVariable val="bat3" />
             <CNumber val="1" />
           </CEquals>
           <CAssignment>
-            <CVariable val="Bat3" />
+            <CVariable val="bat3" />
             <CNumber val="0" />
           </CAssignment>
         </CGuarded>

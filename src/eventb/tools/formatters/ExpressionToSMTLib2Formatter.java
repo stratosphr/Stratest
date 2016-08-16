@@ -28,7 +28,26 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
     public static String formatExpression(AExpression expression) {
         ExpressionToSMTLib2Formatter expressionToSMTLib2Formatter = new ExpressionToSMTLib2Formatter();
         String definitions = expressionToSMTLib2Formatter.getDefinitions(expression.getAssignables());
-        return definitions.equals("") ? expression.accept(expressionToSMTLib2Formatter) : expressionToSMTLib2Formatter.getDefinitions(expression.getAssignables()) + LINE_SEPARATOR + expression.accept(expressionToSMTLib2Formatter);
+        if (expression instanceof Variable || expression instanceof Int) {
+            return definitions.equals("") ? expression.accept(expressionToSMTLib2Formatter) : definitions + LINE_SEPARATOR + expression.accept(expressionToSMTLib2Formatter);
+        } else {
+            if (definitions.equals("")) {
+                String formatted = "(assert" + LINE_SEPARATOR;
+                expressionToSMTLib2Formatter.indentRight();
+                formatted += expressionToSMTLib2Formatter.indent() + expression.accept(expressionToSMTLib2Formatter) + LINE_SEPARATOR;
+                expressionToSMTLib2Formatter.indentLeft();
+                formatted += expressionToSMTLib2Formatter.indent() + ")";
+                return formatted;
+            } else {
+                String formatted = definitions + LINE_SEPARATOR;
+                formatted += "(assert" + LINE_SEPARATOR;
+                expressionToSMTLib2Formatter.indentRight();
+                formatted += expressionToSMTLib2Formatter.indent() + expression.accept(expressionToSMTLib2Formatter) + LINE_SEPARATOR;
+                expressionToSMTLib2Formatter.indentLeft();
+                formatted += expressionToSMTLib2Formatter.indent() + ")";
+                return formatted;
+            }
+        }
     }
 
     private String getDefinitions(LinkedHashSet<AAssignable> assignables) {
@@ -176,7 +195,7 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
         formatted += indent() + "(" + forAll.getQuantifiedVariables().stream().map(variable -> "(" + variable.getName() + " Int)").collect(Collectors.joining(LINE_SEPARATOR + indent())) + ")" + LINE_SEPARATOR;
         formatted += indent() + forAll.getExpression().accept(this) + LINE_SEPARATOR;
         indentLeft();
-        formatted += ")";
+        formatted += indent() + ")";
         return formatted;
     }
 

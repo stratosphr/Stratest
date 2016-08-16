@@ -35,7 +35,7 @@ public class ForAllTest {
         Variable v3 = new Variable("v3");
         Equals equals = new Equals(v1, v2);
         ForAll forAll = new ForAll(equals, v1, v2, v3);
-        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + "(declare-fun v2 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "(forall" + LINE_SEPARATOR + TABULATION + "((v1 Int)" + LINE_SEPARATOR + TABULATION + "(v2 Int)" + LINE_SEPARATOR + TABULATION + "(v3 Int))" + LINE_SEPARATOR + TABULATION + "(=" + LINE_SEPARATOR + TABULATION + TABULATION + "v1" + LINE_SEPARATOR + TABULATION + TABULATION + "v2" + LINE_SEPARATOR + TABULATION + ")" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(forAll));
+        Assert.assertEquals("(declare-fun v1 () Int)" + LINE_SEPARATOR + "(declare-fun v2 () Int)" + LINE_SEPARATOR + LINE_SEPARATOR + "(assert" + LINE_SEPARATOR + TABULATION + "(forall" + LINE_SEPARATOR + TABULATION + TABULATION + "((v1 Int)" + LINE_SEPARATOR + TABULATION + TABULATION + "(v2 Int)" + LINE_SEPARATOR + TABULATION + TABULATION + "(v3 Int))" + LINE_SEPARATOR + TABULATION + TABULATION + "(=" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + "v1" + LINE_SEPARATOR + TABULATION + TABULATION + TABULATION + "v2" + LINE_SEPARATOR + TABULATION + TABULATION + ")" + LINE_SEPARATOR + TABULATION + ")" + LINE_SEPARATOR + ")", ExpressionToSMTLib2Formatter.formatExpression(forAll));
     }
 
     @Test
