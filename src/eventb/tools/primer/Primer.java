@@ -132,6 +132,17 @@ public class Primer implements IExpressionToExpressionVisitor {
     }
 
     @Override
+    public AExpression visit(Exists exists) {
+        Set<AAssignable> oldQuantifiedVariables = quantifiedVariables;
+        quantifiedVariables = new HashSet<>();
+        quantifiedVariables.addAll(oldQuantifiedVariables);
+        quantifiedVariables.addAll(exists.getQuantifiedVariables());
+        Exists primed = new Exists((ABooleanExpression) exists.getExpression().accept(this), exists.getQuantifiedVariables().toArray(new Variable[exists.getQuantifiedVariables().size()]));
+        quantifiedVariables = new HashSet<>(oldQuantifiedVariables);
+        return primed;
+    }
+
+    @Override
     public AExpression visit(Predicate predicate) {
         return new Predicate(predicate.getName(), (ABooleanExpression) predicate.getExpression().accept(this));
     }

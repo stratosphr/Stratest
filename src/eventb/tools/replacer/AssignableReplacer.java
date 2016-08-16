@@ -130,6 +130,11 @@ public final class AssignableReplacer implements IAssignableReplacer {
     }
 
     @Override
+    public AExpression visit(Exists exists) {
+        throw new Error("Unhandled AssignableReplacer case.");
+    }
+
+    @Override
     public AExpression visit(Predicate predicate) {
         return predicate.getExpression().accept(this);
     }

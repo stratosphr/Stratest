@@ -8,12 +8,12 @@ import eventb.tools.primer.IExpressionToExpressionVisitor;
 import eventb.tools.replacer.IAssignableReplacer;
 
 /**
- * Created by gvoiron on 14/08/16.
- * Time : 16:52
+ * Created by gvoiron on 16/08/16.
+ * Time : 22:39
  */
-public final class ForAll extends AQuantifier {
+public final class Exists extends AQuantifier {
 
-    public ForAll(ABooleanExpression expression, Variable... quantifiedVariables) {
+    public Exists(ABooleanExpression expression, Variable... quantifiedVariables) {
         super(expression, quantifiedVariables);
     }
 

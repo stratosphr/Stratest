@@ -187,6 +187,11 @@ public final class EventBFormatter extends AFormatter implements IEventBFormatte
     }
 
     @Override
+    public String visit(Exists exists) {
+        return "(" + UCharacters.EXISTS + "(" + exists.getQuantifiedVariables().stream().map(Variable::getName).collect(Collectors.joining(", ")) + ")." + exists.getExpression().accept(this) + ")";
+    }
+
+    @Override
     public String visit(Predicate predicate) {
         return "(" + predicate.getName() + " " + EQ_DEF + " " + predicate.getExpression().accept(this) + ")";
     }

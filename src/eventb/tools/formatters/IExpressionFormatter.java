@@ -48,6 +48,8 @@ public interface IExpressionFormatter {
 
     String visit(ForAll forAll);
 
+    String visit(Exists exists);
+
     String visit(Predicate predicate);
 
 }

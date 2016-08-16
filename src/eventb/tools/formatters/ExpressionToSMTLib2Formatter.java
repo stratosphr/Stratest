@@ -200,6 +200,17 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
     }
 
     @Override
+    public String visit(Exists exists) {
+        String formatted = "(exists" + LINE_SEPARATOR;
+        indentRight();
+        formatted += indent() + "(" + exists.getQuantifiedVariables().stream().map(variable -> "(" + variable.getName() + " Int)").collect(Collectors.joining(LINE_SEPARATOR + indent())) + ")" + LINE_SEPARATOR;
+        formatted += indent() + exists.getExpression().accept(this) + LINE_SEPARATOR;
+        indentLeft();
+        formatted += indent() + ")";
+        return formatted;
+    }
+
+    @Override
     public String visit(Predicate predicate) {
         return predicate.getExpression().accept(this);
     }

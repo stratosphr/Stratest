@@ -49,8 +49,10 @@ public interface IExpressionVisitor<T> {
 
     T visit(ForAll forAll);
 
+    T visit(Exists exists);
+
     T visit(Predicate predicate);
 
     T visit(Sum sum);
-    
+
 }
