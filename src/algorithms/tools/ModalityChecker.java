@@ -7,7 +7,9 @@ import eventb.expressions.bool.And;
 import eventb.expressions.bool.Not;
 import eventb.tools.formatters.ExpressionToSMTLib2Formatter;
 import graphs.AbstractTransition;
+import solvers.z3.Model;
 import solvers.z3.Z3;
+import utilities.UTuple;
 
 /**
  * Created by gvoiron on 13/08/16.
@@ -31,6 +33,23 @@ public final class ModalityChecker {
                 (ABooleanExpression) abstractTransition.getTarget().prime()
         )));
         return z3.checkSAT() == Status.SATISFIABLE;
+    }
+
+    public UTuple<Boolean, Model> isMayWithModel(AbstractTransition abstractTransition) {
+        Z3 z3 = new Z3();
+        z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
+                getMachine().getInvariant(),
+                (ABooleanExpression) getMachine().getInvariant().prime(true),
+                abstractTransition.getSource(),
+                abstractTransition.getEvent().getSubstitution().getWCP(abstractTransition.getTarget()),
+                (ABooleanExpression) abstractTransition.getTarget().prime()
+        )));
+        Status isSAT = z3.checkSAT();
+        if (isSAT == Status.SATISFIABLE) {
+            return new UTuple<>(true, z3.getModel());
+        } else {
+            return new UTuple<>(false, null);
+        }
     }
 
     public Boolean isMustPlus(AbstractTransition abstractTransition) {

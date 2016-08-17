@@ -45,7 +45,16 @@ public abstract class AZ3 {
         }
     }
 
-    private Context getContext() {
+    public Model getModel() {
+        return new Model(this, getSolver().getModel());
+    }
+
+    public void reset() {
+        getLines().clear();
+        getSolver().reset();
+    }
+
+    public Context getContext() {
         return context;
     }
 

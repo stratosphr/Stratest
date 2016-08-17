@@ -14,7 +14,7 @@ import java.util.Set;
  * Created by gvoiron on 14/08/16.
  * Time : 10:30
  */
-public class Primer implements IExpressionToExpressionVisitor {
+public final class Primer implements IExpressionToExpressionVisitor {
 
     private static String suffix = "_prime";
     private final boolean primeFunctionCallsParameters;

@@ -5,6 +5,7 @@ import eventb.expressions.arith.AAssignable;
 import eventb.tools.formatters.IExpressionFormatterVisitable;
 import eventb.tools.primer.IExpressionVisitorVisitable;
 import eventb.tools.primer.Primer;
+import eventb.tools.primer.UnPrimer;
 import eventb.tools.replacer.IAssignableReplacerVisitable;
 
 import java.util.LinkedHashSet;
@@ -23,6 +24,10 @@ public abstract class AExpression extends AObjectEventB implements IAssignableRe
 
     public AExpression prime(boolean primeFunctionCallsParameters) {
         return accept(new Primer(primeFunctionCallsParameters));
+    }
+
+    public AExpression unprime() {
+        return accept(new UnPrimer());
     }
 
 }

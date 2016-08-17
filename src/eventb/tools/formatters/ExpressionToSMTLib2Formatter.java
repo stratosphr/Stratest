@@ -58,9 +58,12 @@ public final class ExpressionToSMTLib2Formatter extends AFormatter implements IE
                 definitions += "(declare-fun " + ((Variable) assignable).getName() + " () Int)";
             } else if (assignable instanceof FunctionCall) {
                 Variable index = new Variable("index");
-                definitions += "(define-fun " + ((FunctionCall) assignable).getDefinition().getName() + " ((" + index.getName() + " Int)) Int" + LINE_SEPARATOR;
                 ArrayList<Int> domainElements = new ArrayList<>(((FunctionCall) assignable).getDefinition().getDomain().getElements());
+                for (Int domainElement : domainElements) {
+                    definitions += "(declare-fun " + ((FunctionCall) assignable).getDefinition().getName() + "!" + domainElement.getValue() + " () Int)" + LINE_SEPARATOR;
+                }
                 ArithmeticITE body = new ArithmeticITE(new Equals(index, domainElements.get(domainElements.size() - 1)), new Variable(((FunctionCall) assignable).getDefinition().getName() + "!" + domainElements.get(domainElements.size() - 1)), new Int(-1));
+                definitions += "(define-fun " + ((FunctionCall) assignable).getDefinition().getName() + " ((" + index.getName() + " Int)) Int" + LINE_SEPARATOR;
                 for (int i = domainElements.size() - 2; i >= 0; i--) {
                     body = new ArithmeticITE(new Equals(index, domainElements.get(i)), new Variable(((FunctionCall) assignable).getDefinition().getName() + "!" + domainElements.get(i)), body);
                 }

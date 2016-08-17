@@ -9,6 +9,7 @@ import eventb.expressions.bool.Predicate;
 import eventb.tools.formatters.ExpressionToSMTLib2Formatter;
 import graphs.AbstractState;
 import solvers.z3.Z3;
+import utilities.UAUninstantiable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
  * Created by gvoiron on 17/08/16.
  * Time : 09:03
  */
-public final class AbstractStatesComputer {
+public final class AbstractStatesComputer extends UAUninstantiable {
 
     public static List<AbstractState> computeAbstractStates(Machine machine, List<Predicate> abstractionPredicates) {
         List<AbstractState> abstractStates = new ArrayList<>();
