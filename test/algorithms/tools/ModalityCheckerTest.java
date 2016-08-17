@@ -218,7 +218,7 @@ public class ModalityCheckerTest {
         Assert.assertFalse(modalityChecker.isMustMinus(new AbstractTransition(q0, commute, q1)));
         Assert.assertFalse(modalityChecker.isMustMinus(new AbstractTransition(q0, commute, q2)));
         Assert.assertFalse(modalityChecker.isMustMinus(new AbstractTransition(q0, commute, q3)));
-        //Assert.assertFalse(modalityChecker.isMustMinus(new AbstractTransition(q0, repair, q0)));
+        Assert.assertFalse(modalityChecker.isMustMinus(new AbstractTransition(q0, repair, q0)));
         Assert.assertFalse(modalityChecker.isMustMinus(new AbstractTransition(q0, repair, q1)));
         Assert.assertFalse(modalityChecker.isMustMinus(new AbstractTransition(q0, repair, q2)));
         Assert.assertFalse(modalityChecker.isMustMinus(new AbstractTransition(q0, repair, q3)));
