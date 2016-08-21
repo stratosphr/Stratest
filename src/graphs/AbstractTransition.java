@@ -12,4 +12,14 @@ public final class AbstractTransition extends ATransition {
         super(source, label, target);
     }
 
+    @Override
+    public AbstractState getSource() {
+        return (AbstractState) super.getSource();
+    }
+
+    @Override
+    public AbstractState getTarget() {
+        return (AbstractState) super.getTarget();
+    }
+
 }

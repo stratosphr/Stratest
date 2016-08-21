@@ -12,4 +12,14 @@ public final class ConcreteTransition extends ATransition {
         super(source, label, target);
     }
 
+    @Override
+    public ConcreteState getSource() {
+        return (ConcreteState) super.getSource();
+    }
+
+    @Override
+    public ConcreteState getTarget() {
+        return (ConcreteState) super.getTarget();
+    }
+
 }

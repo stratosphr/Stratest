@@ -1,4 +1,4 @@
-package algorithms.eua;
+package algorithms.outputs;
 
 import algorithms.tools.EStateColor;
 import graphs.AbstractState;

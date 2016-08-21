@@ -38,7 +38,7 @@ public class ModelTest {
         z3.checkSAT();
         model = z3.getModel();
         Assert.assertEquals(one, model.get(new Variable("v1" + Primer.getSuffix())));
-        Assert.assertEquals(three, model.get(new Variable("fun!1" + Primer.getSuffix())));
+        Assert.assertEquals(three, model.get(new Variable("fun" + Primer.getSuffix() + "!1")));
     }
 
 }

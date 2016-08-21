@@ -1,5 +1,8 @@
-package algorithms;
+package algorithms.eua;
 
+import algorithms.EUAComputer;
+import algorithms.UUAComputer;
+import algorithms.outputs.JSCATS;
 import algorithms.tools.AbstractStatesComputer;
 import eventb.Event;
 import eventb.Machine;
@@ -16,13 +19,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by gvoiron on 17/08/16.
- * Time : 11:32
+ * Created by gvoiron on 18/08/16.
+ * Time : 11:08
  */
-public class EUAComputerTest {
+public class UUAComputerTest {
 
     @Test
-    public void test_computeEUA() throws Exception {
+    public void test_computeUniversalConcretisation() throws Exception {
         Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
         Int zero = new Int(0);
         Variable h = new Variable("h");
@@ -40,7 +43,8 @@ public class EUAComputerTest {
         Event commute = machine.getEvents().stream().filter(event -> event.getName().equals("Commute")).collect(Collectors.toList()).get(0);
         Event repair = machine.getEvents().stream().filter(event -> event.getName().equals("Repair")).collect(Collectors.toList()).get(0);
         Event fail = machine.getEvents().stream().filter(event -> event.getName().equals("Fail")).collect(Collectors.toList()).get(0);
-        EUAComputer.computeEUA(machine, abstractStates);
+        JSCATS abstraction = EUAComputer.computeEUA(machine, abstractStates);
+        JSCATS jscats = UUAComputer.computeUUA(machine, abstraction);
     }
 
 }

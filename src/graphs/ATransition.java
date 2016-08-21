@@ -31,6 +31,25 @@ public abstract class ATransition {
     }
 
     @Override
+    public int hashCode() {
+        return (getSource().getExpression() + getEvent().getName() + getTarget().getExpression()).hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        } else if (this == obj) {
+            return true;
+        } else if (!(obj instanceof ATransition)) {
+            return false;
+        } else {
+            ATransition other = (ATransition) obj;
+            return getSource().equals(other.getSource()) && getEvent().getName().equals(other.getEvent().getName()) && getTarget().equals(other.getTarget());
+        }
+    }
+
+    @Override
     public String toString() {
         return getSource() + " - " + getEvent().getName() + " -> " + getTarget();
     }
