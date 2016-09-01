@@ -22,10 +22,10 @@ public final class AbstractStatesComputer extends UAUninstantiable {
 
     public static List<AbstractState> computeAbstractStates(Machine machine, List<Predicate> abstractionPredicates) {
         List<AbstractState> abstractStates = new ArrayList<>();
-        for (int i = 0; i < Math.pow(abstractionPredicates.size(), 2); i++) {
+        for (int i = 0; i < Math.pow(2, abstractionPredicates.size()); i++) {
             List<ABooleanExpression> andOperands = new ArrayList<>();
-            String binaryString = String.format("%2s", Integer.toBinaryString(i)).replace(' ', '0');
-            for (int j = 0, n = binaryString.length(); j < n; j++) {
+            String binaryString = String.format("%" + abstractionPredicates.size() + "s", Integer.toBinaryString(i)).replace(' ', '0');
+            for (int j = 0; j < binaryString.length(); j++) {
                 char c = binaryString.charAt(j);
                 if (c == '0') {
                     andOperands.add(new Not(abstractionPredicates.get(j)));

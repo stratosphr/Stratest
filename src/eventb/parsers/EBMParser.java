@@ -60,14 +60,35 @@ public class EBMParser {
         isInAny = false;
     }
 
-    public Object parse(File file) {
+    public List<Predicate> parseAbstractionPredicates(File file) {
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
             Document document = documentBuilder.parse(file);
             document.getDocumentElement().normalize();
             Element root = document.getDocumentElement();
-            return visit(root, document);
+            try {
+                return (List<Predicate>) visit(root, document);
+            } catch (ClassCastException e) {
+                throw new Error("The file \"" + file + "\" does not contain the expected abstraction predicates list.");
+            }
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            throw new Error(e);
+        }
+    }
+
+    public Machine parseMachine(File file) {
+        try {
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document document = documentBuilder.parse(file);
+            document.getDocumentElement().normalize();
+            Element root = document.getDocumentElement();
+            try {
+                return (Machine) visit(root, document);
+            } catch (ClassCastException e) {
+                throw new Error("The file \"" + file + "\" does not contain the expected machine definition.");
+            }
         } catch (ParserConfigurationException | SAXException | IOException e) {
             throw new Error(e);
         }
@@ -118,7 +139,7 @@ public class EBMParser {
                 if (invariantNode != null) {
                     invariant = new And(properties, (ABooleanExpression) visit(invariantNode, document));
                 }
-                //System.out.println(invariant);
+                //JSCATS.out.println(invariant);
                 Node eventsNode = document.getElementsByTagName("EVENTS").item(0);
                 if (eventsNode != null) {
                     events = new LinkedHashSet<>((Collection<Event>) visit(eventsNode, document));

@@ -1,5 +1,6 @@
 package eventb.substitutions;
 
+import eventb.Machine;
 import eventb.expressions.bool.ABooleanExpression;
 import eventb.expressions.bool.And;
 import eventb.expressions.bool.Implication;
@@ -20,6 +21,14 @@ public final class IfThenElse extends ASubstitution {
         this.condition = condition;
         this.thenPart = thenPart;
         this.elsePart = elsePart;
+    }
+
+    @Override
+    public ABooleanExpression getPrd(Machine machine) {
+        return new Choice(
+                new Select(getCondition(), getThenPart()),
+                new Select(new Not(getCondition()), getElsePart())
+        ).getPrd(machine);
     }
 
     @Override

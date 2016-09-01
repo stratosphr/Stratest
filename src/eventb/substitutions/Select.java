@@ -1,6 +1,8 @@
 package eventb.substitutions;
 
+import eventb.Machine;
 import eventb.expressions.bool.ABooleanExpression;
+import eventb.expressions.bool.And;
 import eventb.expressions.bool.Implication;
 import eventb.tools.formatters.IEventBFormatter;
 
@@ -16,6 +18,11 @@ public final class Select extends ASubstitution {
     public Select(ABooleanExpression condition, ASubstitution substitution) {
         this.condition = condition;
         this.substitution = substitution;
+    }
+
+    @Override
+    public ABooleanExpression getPrd(Machine machine) {
+        return new And(getCondition(), getSubstitution().getPrd(machine));
     }
 
     @Override

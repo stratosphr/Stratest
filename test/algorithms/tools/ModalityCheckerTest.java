@@ -23,7 +23,7 @@ public class ModalityCheckerTest {
 
     @Test
     public void test_isMay() throws Exception {
-        Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
         Int zero = new Int(0);
         Variable h = new Variable("h");
         Variable bat1 = new Variable("bat1");
@@ -108,7 +108,7 @@ public class ModalityCheckerTest {
 
     @Test
     public void test_isMustPlus() throws Exception {
-        Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
         Int zero = new Int(0);
         Variable h = new Variable("h");
         Variable bat1 = new Variable("bat1");
@@ -189,7 +189,7 @@ public class ModalityCheckerTest {
 
     @Test
     public void test_isMustMinus() throws Exception {
-        Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
         Int zero = new Int(0);
         Variable h = new Variable("h");
         Variable bat1 = new Variable("bat1");
@@ -274,7 +274,7 @@ public class ModalityCheckerTest {
 
     @Test
     public void getMachine() throws Exception {
-        Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
         ModalityChecker modalityChecker = new ModalityChecker(machine);
         Assert.assertEquals(machine, modalityChecker.getMachine());
     }

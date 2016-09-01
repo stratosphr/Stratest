@@ -1,6 +1,8 @@
 package eventb.substitutions;
 
+import eventb.Machine;
 import eventb.expressions.bool.ABooleanExpression;
+import eventb.expressions.bool.True;
 import eventb.tools.formatters.IEventBFormatter;
 
 /**
@@ -8,6 +10,11 @@ import eventb.tools.formatters.IEventBFormatter;
  * Time : 21:44
  */
 public final class Skip extends ASubstitution {
+
+    @Override
+    public ABooleanExpression getPrd(Machine machine) {
+        return new True();
+    }
 
     @Override
     public ABooleanExpression getWP(ABooleanExpression postCondition) {

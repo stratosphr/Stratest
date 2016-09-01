@@ -1,9 +1,8 @@
-package algorithms;
+package algorithms.tools;
 
+import algorithms.computers.IComputer;
 import algorithms.outputs.JSCATS;
-import algorithms.tools.ChinesePostman;
-import algorithms.tools.EStateColor;
-import algorithms.tools.Tarjan;
+import algorithms.outputs.Test;
 import eventb.Event;
 import eventb.expressions.bool.True;
 import graphs.AbstractState;
@@ -61,12 +60,13 @@ public final class TestsGenerator extends UAUninstantiable {
         return new JSCATS(new LinkedHashSet<>(universalConcretisation.getQ()), new LinkedHashSet<>(universalConcretisation.getQ0()), C, new LinkedHashSet<>(Collections.singletonList(fictive)), new LinkedHashSet<>(universalConcretisation.getDelta()), new LinkedHashSet<>(universalConcretisation.getDeltaPlus()), new LinkedHashSet<>(universalConcretisation.getDeltaMinus()), Alpha, Kappa, DeltaC);
     }
 
-    public static List<List<ConcreteTransition>> generateTests(JSCATS abstraction) {
-        List<ConcreteState> C = new ArrayList<>(abstraction.getC().stream().collect(Collectors.toList()));
-        C.addAll(abstraction.getIc0());
+    public static List<Test> generateTests(IComputer<JSCATS> computer) {
+        JSCATS connectedJSCATS = connectJSCATS(computer.compute());
+        List<ConcreteState> C = new ArrayList<>(connectedJSCATS.getC().stream().collect(Collectors.toList()));
+        C.addAll(connectedJSCATS.getIc0());
         ChinesePostman G = new ChinesePostman(C);
-        abstraction.getDeltaC().forEach(concreteTransition -> G.addArc(concreteTransition.getEvent().getName(), C.indexOf(concreteTransition.getSource()), C.indexOf(concreteTransition.getTarget()), 1));
-        List<List<ConcreteTransition>> concreteTests = G.computeCPT(C.indexOf(abstraction.getIc0().iterator().next()));
+        connectedJSCATS.getDeltaC().forEach(concreteTransition -> G.addArc(concreteTransition.getEvent().getName(), C.indexOf(concreteTransition.getSource()), C.indexOf(concreteTransition.getTarget()), 1));
+        List<Test> concreteTests = G.computeCPT(C.indexOf(connectedJSCATS.getIc0().iterator().next())).stream().map(Test::new).collect(Collectors.toList());
         concreteTests.forEach(test -> test.removeIf(concreteTransition -> concreteTransition.getEvent().getName().equals("_Beta_") || concreteTransition.getEvent().getName().equals("_Reset_")));
         return concreteTests;
     }

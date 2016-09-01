@@ -55,7 +55,7 @@ public final class ChinesePostman {
         G.addArc("a", 0, 1, 1).addArc("b", 0, 2, 1).addArc("c", 1, 2, 1).addArc("d", 1, 3, 1).addArc("e", 2, 3, 1).addArc("f", 3, 0, 1);
         G.solve();
         G.computeCPT(0);
-        //System.out.println("Cost = " + G.cost());
+        //JSCATS.out.println("Cost = " + G.cost());
         //OpenChinesePostman.test();
     }*/
 
@@ -236,7 +236,7 @@ public final class ChinesePostman {
                 f[u][v]--;
                 for (int p; u != v; u = p) {
                     p = path[u][v];
-                    //System.out.println("Take arc " + cheapestLabel[u][p] + " from " + u + " to " + p);
+                    //JSCATS.out.println("Take arc " + cheapestLabel[u][p] + " from " + u + " to " + p);
                     fullPath.add(new ConcreteTransition(vertices.get(u), new Event(cheapestLabel[u][p], new Skip()), vertices.get(p)));
                     if (p == startVertex) {
                         paths.add(fullPath);
@@ -255,7 +255,7 @@ public final class ChinesePostman {
                     }
                 }
                 arcs[u][v]--;
-                //System.out.println("Take arc " + label[u][v].elementAt(arcs[u][v]) + " from " + u + " to " + v);
+                //JSCATS.out.println("Take arc " + label[u][v].elementAt(arcs[u][v]) + " from " + u + " to " + v);
                 fullPath.add(new ConcreteTransition(vertices.get(u), new Event((String) label[u][v].elementAt(arcs[u][v]), new Skip()), vertices.get(v)));
                 if (v == startVertex) {
                     paths.add(fullPath);
@@ -264,8 +264,8 @@ public final class ChinesePostman {
             }
         }
         return paths;
-        //System.out.println();
-        //paths.forEach(System.out::println);
+        //JSCATS.out.println();
+        //paths.forEach(JSCATS.out::println);
     }
 
 }

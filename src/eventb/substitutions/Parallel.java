@@ -1,5 +1,6 @@
 package eventb.substitutions;
 
+import eventb.Machine;
 import eventb.expressions.arith.Variable;
 import eventb.expressions.bool.ABooleanExpression;
 import eventb.tools.formatters.IEventBFormatter;
@@ -28,6 +29,11 @@ public class Parallel extends ASubstitution {
     }
 
     @Override
+    public ABooleanExpression getPrd(Machine machine) {
+        return getSurrogate().getPrd(machine);
+    }
+
+    @Override
     public ABooleanExpression getWP(ABooleanExpression postCondition) {
         return getSurrogate().getWP(postCondition);
     }
@@ -40,7 +46,6 @@ public class Parallel extends ASubstitution {
             for (ASubstitution substitution : getSubstitutions().subList(1, getSubstitutions().size())) {
                 surrogate = computeSurrogate(surrogate, substitution);
             }
-            //getSubstitutions().forEach(System.out::println);
             return surrogate instanceof Parallel ? ((Parallel) surrogate).getSurrogate() : surrogate;
         }
     }

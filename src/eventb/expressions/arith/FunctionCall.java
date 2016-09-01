@@ -51,6 +51,11 @@ public class FunctionCall extends AAssignable implements INaryOperation {
     }
 
     @Override
+    public String getName() {
+        return getDefinition().getName();
+    }
+
+    @Override
     public List<AArithmeticExpression> getOperands() {
         return operands;
     }

@@ -81,7 +81,8 @@ public final class Primer implements IExpressionToExpressionVisitor {
 
     @Override
     public AExpression visit(Variable variable) {
-        //return quantifiedVariables.contains(variable) ? variable : variable.getName().contains("!") ? new Variable(variable.getName().substring(0, variable.getName().indexOf("!")) + getSuffix() + variable.getName().substring(variable.getName().indexOf("!"))) : new Variable(variable.getName() + getSuffix());
+        /*JSCATS.out.println(quantifiedVariables.contains(variable) ? variable : variable.getName().contains("!") ? new Variable(variable.getName().substring(0, variable.getName().indexOf("!")) + getSuffix() + variable.getName().substring(variable.getName().indexOf("!"))) : new Variable(variable.getName() + getSuffix()));
+        return quantifiedVariables.contains(variable) ? variable : variable.getName().contains("!") ? new Variable(variable.getName().substring(0, variable.getName().indexOf("!")) + getSuffix() + variable.getName().substring(variable.getName().indexOf("!"))) : new Variable(variable.getName() + getSuffix());*/
         return new Variable(variable.getName() + getSuffix());
     }
 

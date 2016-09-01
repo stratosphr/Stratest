@@ -1,7 +1,9 @@
 package eventb.substitutions;
 
+import eventb.Machine;
 import eventb.expressions.bool.ABooleanExpression;
 import eventb.expressions.bool.And;
+import eventb.expressions.bool.Or;
 import eventb.tools.formatters.IEventBFormatter;
 
 import java.util.Arrays;
@@ -22,6 +24,11 @@ public class Choice extends ASubstitution {
     @Override
     public String accept(IEventBFormatter visitor) {
         return visitor.visit(this);
+    }
+
+    @Override
+    public ABooleanExpression getPrd(Machine machine) {
+        return new Or(getSubstitutions().stream().map(substitution -> substitution.getPrd(machine)).toArray(ABooleanExpression[]::new));
     }
 
     @Override

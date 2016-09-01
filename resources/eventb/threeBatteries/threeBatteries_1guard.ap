@@ -4,31 +4,31 @@
         <COr>
             <CAnd>
                 <CEquals>
-                    <CVariable val="Bat1"/>
+                    <CVariable val="bat1"/>
                     <CNumber val="0"/>
                 </CEquals>
                 <CEquals>
-                    <CVariable val="Bat2"/>
-                    <CNumber val="0"/>
-                </CEquals>
-            </CAnd>
-            <CAnd>
-                <CEquals>
-                    <CVariable val="Bat1"/>
-                    <CNumber val="0"/>
-                </CEquals>
-                <CEquals>
-                    <CVariable val="Bat3"/>
+                    <CVariable val="bat2"/>
                     <CNumber val="0"/>
                 </CEquals>
             </CAnd>
             <CAnd>
                 <CEquals>
-                    <CVariable val="Bat2"/>
+                    <CVariable val="bat1"/>
                     <CNumber val="0"/>
                 </CEquals>
                 <CEquals>
-                    <CVariable val="Bat3"/>
+                    <CVariable val="bat3"/>
+                    <CNumber val="0"/>
+                </CEquals>
+            </CAnd>
+            <CAnd>
+                <CEquals>
+                    <CVariable val="bat2"/>
+                    <CNumber val="0"/>
+                </CEquals>
+                <CEquals>
+                    <CVariable val="bat3"/>
                     <CNumber val="0"/>
                 </CEquals>
             </CAnd>
@@ -40,36 +40,36 @@
         <COr>
             <CAnd>
                 <CEquals>
-                    <CVariable val="Bat1"/>
+                    <CVariable val="bat1"/>
                     <CNumber val="0"/>
                 </CEquals>
                 <CNot>
                     <CEquals>
-                        <CVariable val="BatInUse"/>
+                        <CVariable val="batInUse"/>
                         <CNumber val="1"/>
                     </CEquals>
                 </CNot>
             </CAnd>
             <CAnd>
                 <CEquals>
-                    <CVariable val="Bat2"/>
+                    <CVariable val="bat2"/>
                     <CNumber val="0"/>
                 </CEquals>
                 <CNot>
                     <CEquals>
-                        <CVariable val="BatInUse"/>
+                        <CVariable val="batInUse"/>
                         <CNumber val="1"/>
                     </CEquals>
                 </CNot>
             </CAnd>
             <CAnd>
                 <CEquals>
-                    <CVariable val="Bat3"/>
+                    <CVariable val="bat3"/>
                     <CNumber val="0"/>
                 </CEquals>
                 <CNot>
                     <CEquals>
-                        <CVariable val="BatInUse"/>
+                        <CVariable val="batInUse"/>
                         <CNumber val="1"/>
                     </CEquals>
                 </CNot>

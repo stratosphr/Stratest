@@ -4,7 +4,7 @@
 
         <CEquals>
 
-            <CVariable val="Bat1"/>
+            <CVariable val="bat1"/>
 
             <CNumber val="1"/>
 
@@ -12,7 +12,7 @@
 
         <CEquals>
 
-            <CVariable val="Bat2"/>
+            <CVariable val="bat2"/>
 
             <CNumber val="1"/>
 
@@ -20,7 +20,7 @@
 
         <CEquals>
 
-            <CVariable val="Bat3"/>
+            <CVariable val="bat3"/>
 
             <CNumber val="1"/>
 
@@ -34,7 +34,7 @@
 
             <CEquals>
 
-                <CVariable val="Bat1"/>
+                <CVariable val="bat1"/>
 
                 <CNumber val="0"/>
 
@@ -42,7 +42,7 @@
 
             <CEquals>
 
-                <CVariable val="Bat2"/>
+                <CVariable val="bat2"/>
 
                 <CNumber val="0"/>
 
@@ -54,15 +54,15 @@
 
                     <CEquals>
 
-                        <CVariable val="BatInUse"/>
+                        <CVariable val="batInUse"/>
 
-                        <CVariable val="Bat1"/>
+                        <CVariable val="bat1"/>
 
                     </CEquals>
 
                     <CEquals>
 
-                        <CVariable val="Bat1"/>
+                        <CVariable val="bat1"/>
 
                         <CNumber val="1"/>
 
@@ -76,9 +76,9 @@
 
                         <CEquals>
 
-                            <CVariable val="BatInUse"/>
+                            <CVariable val="batInUse"/>
 
-                            <CVariable val="Bat1"/>
+                            <CVariable val="bat1"/>
 
                         </CEquals>
 
@@ -88,7 +88,7 @@
 
                         <CEquals>
 
-                            <CVariable val="Bat1"/>
+                            <CVariable val="bat1"/>
 
                             <CNumber val="1"/>
 
@@ -96,9 +96,9 @@
 
                         <CEquals>
 
-                            <CVariable val="BatInUse"/>
+                            <CVariable val="batInUse"/>
 
-                            <CVariable val="Bat2"/>
+                            <CVariable val="bat2"/>
 
                         </CEquals>
 
@@ -114,7 +114,7 @@
 
             <CEquals>
 
-                <CVariable val="Bat1"/>
+                <CVariable val="bat1"/>
 
                 <CNumber val="0"/>
 
@@ -122,7 +122,7 @@
 
             <CEquals>
 
-                <CVariable val="Bat3"/>
+                <CVariable val="bat3"/>
 
                 <CNumber val="0"/>
 
@@ -134,15 +134,15 @@
 
                     <CEquals>
 
-                        <CVariable val="BatInUse"/>
+                        <CVariable val="batInUse"/>
 
-                        <CVariable val="Bat1"/>
+                        <CVariable val="bat1"/>
 
                     </CEquals>
 
                     <CEquals>
 
-                        <CVariable val="Bat1"/>
+                        <CVariable val="bat1"/>
 
                         <CNumber val="1"/>
 
@@ -156,9 +156,9 @@
 
                         <CEquals>
 
-                            <CVariable val="BatInUse"/>
+                            <CVariable val="batInUse"/>
 
-                            <CVariable val="Bat1"/>
+                            <CVariable val="bat1"/>
 
                         </CEquals>
 
@@ -168,7 +168,7 @@
 
                         <CEquals>
 
-                            <CVariable val="Bat1"/>
+                            <CVariable val="bat1"/>
 
                             <CNumber val="1"/>
 
@@ -176,9 +176,9 @@
 
                         <CEquals>
 
-                            <CVariable val="BatInUse"/>
+                            <CVariable val="batInUse"/>
 
-                            <CVariable val="Bat3"/>
+                            <CVariable val="bat3"/>
 
                         </CEquals>
 
@@ -194,7 +194,7 @@
 
             <CEquals>
 
-                <CVariable val="Bat2"/>
+                <CVariable val="bat2"/>
 
                 <CNumber val="0"/>
 
@@ -202,7 +202,7 @@
 
             <CEquals>
 
-                <CVariable val="Bat3"/>
+                <CVariable val="bat3"/>
 
                 <CNumber val="0"/>
 
@@ -214,15 +214,15 @@
 
                     <CEquals>
 
-                        <CVariable val="BatInUse"/>
+                        <CVariable val="batInUse"/>
 
-                        <CVariable val="Bat2"/>
+                        <CVariable val="bat2"/>
 
                     </CEquals>
 
                     <CEquals>
 
-                        <CVariable val="Bat2"/>
+                        <CVariable val="bat2"/>
 
                         <CNumber val="1"/>
 
@@ -236,9 +236,9 @@
 
                         <CEquals>
 
-                            <CVariable val="BatInUse"/>
+                            <CVariable val="batInUse"/>
 
-                            <CVariable val="Bat2"/>
+                            <CVariable val="bat2"/>
 
                         </CEquals>
 
@@ -248,7 +248,7 @@
 
                         <CEquals>
 
-                            <CVariable val="Bat2"/>
+                            <CVariable val="bat2"/>
 
                             <CNumber val="1"/>
 
@@ -256,9 +256,9 @@
 
                         <CEquals>
 
-                            <CVariable val="BatInUse"/>
+                            <CVariable val="batInUse"/>
 
-                            <CVariable val="Bat3"/>
+                            <CVariable val="bat3"/>
 
                         </CEquals>
 

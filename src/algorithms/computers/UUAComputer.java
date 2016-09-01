@@ -1,17 +1,18 @@
-package algorithms;
+package algorithms.computers;
 
 import algorithms.outputs.JSCATS;
 import algorithms.tools.ConcreteStateComputer;
 import algorithms.tools.EStateColor;
 import eventb.Machine;
+import eventb.expressions.arith.Variable;
 import eventb.expressions.bool.ABooleanExpression;
 import eventb.expressions.bool.And;
+import eventb.expressions.bool.Exists;
 import eventb.tools.formatters.ExpressionToSMTLib2Formatter;
 import graphs.AbstractTransition;
 import graphs.ConcreteState;
 import graphs.ConcreteTransition;
 import solvers.z3.Z3;
-import utilities.UAUninstantiable;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -22,12 +23,20 @@ import static com.microsoft.z3.Status.SATISFIABLE;
  * Created by gvoiron on 18/08/16.
  * Time : 11:01
  */
-public final class UUAComputer extends UAUninstantiable {
+public final class UUAComputer implements IComputer<JSCATS> {
 
+    private final Machine machine;
+    private final JSCATS abstraction;
     private static Map<AbstractTransition, Boolean> MPlus;
     private static Map<AbstractTransition, Boolean> MMinus;
 
-    public static JSCATS computeUUA(Machine machine, JSCATS abstraction) {
+    public UUAComputer(Machine machine, JSCATS abstraction) {
+        this.machine = machine;
+        this.abstraction = abstraction;
+    }
+
+    @Override
+    public JSCATS compute() {
         JSCATS connectedJSCATS = new JSCATS(new LinkedHashSet<>(abstraction.getQ()), new LinkedHashSet<>(abstraction.getQ0()), new LinkedHashSet<>(abstraction.getC()), new LinkedHashSet<>(abstraction.getIc0()), new LinkedHashSet<>(abstraction.getDelta()), new LinkedHashSet<>(abstraction.getDeltaPlus()), new LinkedHashSet<>(abstraction.getDeltaMinus()), new LinkedHashMap<>(abstraction.getAlpha()), new LinkedHashMap<>(abstraction.getKappa()), new LinkedHashSet<>(abstraction.getDeltaC()));
         // Step 0: Variables declaration
         MPlus = new LinkedHashMap<>();
@@ -88,9 +97,21 @@ public final class UUAComputer extends UAUninstantiable {
             tc = TC.iterator().next();
         } else {
             Z3 z3 = new Z3();
-            z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
+            /*z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
                     (ABooleanExpression) machine.getInvariant().prime(true),
                     t.getEvent().getSubstitution().getSP(c, machine),
+                    (ABooleanExpression) t.getTarget().prime()
+            )));*/
+            z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
+                    (ABooleanExpression) machine.getInvariant().prime(true),
+                    new Exists(
+                            new And(
+                                    machine.getInvariant(),
+                                    t.getEvent().getSubstitution().getPrd(machine),
+                                    c.getExpression()
+                            ),
+                            machine.getVariables().toArray(new Variable[machine.getVariables().size()])
+                    ),
                     (ABooleanExpression) t.getTarget().prime()
             )));
             if (z3.checkSAT() == SATISFIABLE) {
@@ -121,10 +142,22 @@ public final class UUAComputer extends UAUninstantiable {
             tc = TC.iterator().next();
         } else {
             Z3 z3 = new Z3();
-            z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
+            /*z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
                     machine.getInvariant(),
                     (ABooleanExpression) machine.getInvariant().prime(true),
                     t.getEvent().getSubstitution().getWCP(cPrime),
+                    t.getSource()
+            )));*/
+            z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
+                    machine.getInvariant(),
+                    new Exists(
+                            new And(
+                                    (ABooleanExpression) machine.getInvariant().prime(true),
+                                    (ABooleanExpression) cPrime.getExpression().prime(),
+                                    t.getEvent().getSubstitution().getPrd(machine)
+                            ),
+                            machine.getVariables().stream().map(variable -> (Variable) variable.prime()).toArray(Variable[]::new)
+                    ),
                     t.getSource()
             )));
             if (z3.checkSAT() == SATISFIABLE) {
@@ -153,6 +186,14 @@ public final class UUAComputer extends UAUninstantiable {
 
     private static boolean isMustMinusStructureEntryPoint(AbstractTransition t, JSCATS abstraction) {
         return abstraction.getDeltaMinus().stream().noneMatch(abstractTransition -> t.getTarget().equals(abstractTransition.getSource()));
+    }
+
+    public Machine getMachine() {
+        return machine;
+    }
+
+    public JSCATS getAbstraction() {
+        return abstraction;
     }
 
 }

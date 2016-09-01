@@ -20,7 +20,7 @@ public class AbstractStatesComputerTest {
 
     @Test
     public void test_computeAbstractStates() {
-        Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
         Int zero = new Int(0);
         Variable h = new Variable("h");
         Variable bat1 = new Variable("bat1");
@@ -37,7 +37,7 @@ public class AbstractStatesComputerTest {
 
     @Test
     public void test_computeAbstractStatesWithImpossibleCombinations() {
-        Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
         Int zero = new Int(0);
         Variable h = new Variable("h");
         Variable bat1 = new Variable("bat1");

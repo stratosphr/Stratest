@@ -14,32 +14,32 @@ public class EBMParserTest {
 
     @Test
     public void test_parseThreeBatteries() {
-        Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
     }
 
     @Test
     public void test_parsePhone() {
-        Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/phone/phone.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/phone/phone.ebm"));
     }
 
     @Test
     public void test_parseCarAlarm() {
-        Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/carAlarm/carAlarm.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/carAlarm/carAlarm.ebm"));
     }
 
     @Test
     public void test_parseCoffeeMachine() {
-        Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/coffeeMachine/coffeeMachine.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/coffeeMachine/coffeeMachine.ebm"));
     }
 
     @Test
     public void test_parseFrontWiper() {
-        Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/frontWiper/frontWiper.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/frontWiper/frontWiper.ebm"));
     }
 
     @Test
     public void test_parseCreditCard() {
-        Machine machine = (Machine) new EBMParser().parse(new File("resources/eventb/creditCard/creditCard.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/creditCard/creditCard.ebm"));
     }
 
 }

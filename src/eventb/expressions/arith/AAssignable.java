@@ -11,4 +11,6 @@ public abstract class AAssignable extends AArithmeticExpression implements Compa
         return toString().compareTo(assignable.toString());
     }
 
+    public abstract String getName();
+
 }

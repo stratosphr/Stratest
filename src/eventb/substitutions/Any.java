@@ -1,7 +1,10 @@
 package eventb.substitutions;
 
+import eventb.Machine;
 import eventb.expressions.arith.Variable;
 import eventb.expressions.bool.ABooleanExpression;
+import eventb.expressions.bool.And;
+import eventb.expressions.bool.Exists;
 import eventb.expressions.bool.ForAll;
 import eventb.tools.formatters.IEventBFormatter;
 
@@ -27,6 +30,17 @@ public final class Any extends ASubstitution {
     @Override
     public String accept(IEventBFormatter visitor) {
         return visitor.visit(this);
+    }
+
+    @Override
+    public ABooleanExpression getPrd(Machine machine) {
+        return new Exists(
+                new And(
+                        getWherePart(),
+                        getThenPart().getPrd(machine)
+                ),
+                getQuantifiedVariables().toArray(new Variable[getQuantifiedVariables().size()])
+        );
     }
 
     @Override

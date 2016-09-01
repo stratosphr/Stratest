@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
  */
 public abstract class ASubstitution extends AObjectEventB implements IEventBFormatterVisitable {
 
+    public abstract ABooleanExpression getPrd(Machine machine);
+
     public abstract ABooleanExpression getWP(ABooleanExpression postCondition);
 
     public final ABooleanExpression getWCP(ABooleanExpression postCondition) {
