@@ -1,6 +1,5 @@
-package algorithms;
+package algorithms.computers;
 
-import algorithms.computers.EUAComputer;
 import algorithms.outputs.JSCATS;
 import algorithms.tools.AbstractStatesComputer;
 import com.microsoft.z3.Status;

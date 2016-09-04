@@ -1,7 +1,5 @@
-package algorithms.eua;
+package algorithms.computers;
 
-import algorithms.computers.EUAComputer;
-import algorithms.computers.UUAComputer;
 import algorithms.outputs.JSCATS;
 import algorithms.tools.AbstractStatesComputer;
 import eventb.Event;

@@ -1,11 +1,13 @@
 package algorithms.outputs;
 
 import algorithms.tools.EStateColor;
+import algorithms.tools.formatting.DOTFormatter;
 import graphs.AbstractState;
 import graphs.AbstractTransition;
 import graphs.ConcreteState;
 import graphs.ConcreteTransition;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
@@ -37,6 +39,18 @@ public class JSCATS {
         this.alpha = alpha;
         this.kappa = kappa;
         this.deltaC = deltaC;
+    }
+
+    public String getDOTFormatting() {
+        return getDOTFormatting(false);
+    }
+
+    public String getDOTFormatting(boolean abstractSystem) {
+        if (abstractSystem) {
+            return new DOTFormatter().formatGraph(new ArrayList<>(getQ0()), new ArrayList<>(getDelta()));
+        } else {
+            return new DOTFormatter().formatGraph(new ArrayList<>(getIc0()), new ArrayList<>(getDeltaC()));
+        }
     }
 
     public Set<AbstractState> getQ() {

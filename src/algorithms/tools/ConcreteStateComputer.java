@@ -18,6 +18,10 @@ import java.util.TreeMap;
 public final class ConcreteStateComputer {
 
     public static ConcreteState computeConcreteState(String name, Model model, boolean isSource) {
+        return new ConcreteState(name, computeConcreteStateExpression(model, isSource));
+    }
+
+    public static ABooleanExpression computeConcreteStateExpression(Model model, boolean isSource) {
         TreeMap<AAssignable, Int> sortedAssignables = new TreeMap<>();
         model.forEach((assignable, ints) -> {
             if (isSource && !assignable.getName().endsWith(Primer.getSuffix())) {
@@ -27,14 +31,7 @@ public final class ConcreteStateComputer {
                 sortedAssignables.put((AAssignable) assignable.unprime(), model.get(assignable));
             }
         });
-        return new ConcreteState(name, new And(sortedAssignables.keySet().stream().map(assignable -> new Equals(assignable, sortedAssignables.get(assignable))).toArray(ABooleanExpression[]::new)));
-        /*if (isSource) {
-            System.out.println("#1 " + new ConcreteState(name, new And(model.keySet().stream().filter(variable -> !variable.getName().endsWith(Primer.getSuffix())).map(variable -> new Equals(variable, model.get(variable))).toArray(ABooleanExpression[]::new))));
-            return new ConcreteState(name, new And(model.keySet().stream().filter(variable -> !variable.getName().contains(Primer.getSuffix())).map(variable -> new Equals(variable, model.get(variable))).toArray(ABooleanExpression[]::new)));
-        } else {
-            System.out.println("#2 " + new ConcreteState(name, new And(model.keySet().stream().filter(variable -> variable.getName().endsWith(Primer.getSuffix())).map(variable -> new Equals((AArithmeticExpression) variable.unprime(), model.get(variable))).toArray(ABooleanExpression[]::new))));
-            return new ConcreteState(name, new And(model.keySet().stream().filter(variable -> variable.getName().contains(Primer.getSuffix())).map(variable -> new Equals((AArithmeticExpression) variable.unprime(), model.get(variable))).toArray(ABooleanExpression[]::new)));
-        }*/
+        return new And(sortedAssignables.keySet().stream().map(assignable -> new Equals(assignable, sortedAssignables.get(assignable))).toArray(ABooleanExpression[]::new));
     }
 
 }

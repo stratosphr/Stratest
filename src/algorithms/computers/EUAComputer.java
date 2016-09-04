@@ -1,9 +1,7 @@
 package algorithms.computers;
 
 import algorithms.outputs.JSCATS;
-import algorithms.tools.ConcreteStateComputer;
-import algorithms.tools.EStateColor;
-import algorithms.tools.ModalityChecker;
+import algorithms.tools.*;
 import com.microsoft.z3.Status;
 import eventb.Event;
 import eventb.Machine;
@@ -29,10 +27,32 @@ public final class EUAComputer implements IComputer<JSCATS> {
 
     private final Machine machine;
     private final List<AbstractState> abstractStates;
+    private final IRelevancyChecker relevanceChecker;
+    private final boolean useRelevanceChecker;
+    private final boolean usePropagation;
 
     public EUAComputer(Machine machine, List<AbstractState> abstractStates) {
+        this(machine, abstractStates, false);
+    }
+
+    public EUAComputer(Machine machine, List<AbstractState> abstractStates, boolean usePropagation) {
         this.machine = machine;
         this.abstractStates = abstractStates;
+        this.useRelevanceChecker = false;
+        this.relevanceChecker = (concreteState, computedConcreteStates, concreteStatesColors) -> false;
+        this.usePropagation = usePropagation;
+    }
+
+    public EUAComputer(Machine machine, List<AbstractState> abstractStates, IRelevancyChecker relevanceChecker) {
+        this(machine, abstractStates, relevanceChecker, false);
+    }
+
+    public EUAComputer(Machine machine, List<AbstractState> abstractStates, IRelevancyChecker relevanceChecker, boolean usePropagation) {
+        this.machine = machine;
+        this.abstractStates = abstractStates;
+        this.useRelevanceChecker = true;
+        this.relevanceChecker = relevanceChecker;
+        this.usePropagation = usePropagation;
     }
 
     @Override
@@ -49,11 +69,12 @@ public final class EUAComputer implements IComputer<JSCATS> {
         Map<ConcreteState, EStateColor> Kappa = new LinkedHashMap<>();
         Set<ConcreteTransition> DeltaC = new LinkedHashSet<>();
         Set<AbstractState> RQ = new LinkedHashSet<>();
+        Set<ConcreteState> RC = new LinkedHashSet<>();
         Set<ConcreteState> GC = new LinkedHashSet<>();
         Set<ConcreteState> BC = new LinkedHashSet<>();
         // Step 1: Computation of one concrete instance of each initial abstract state
         Z3 z3 = new Z3();
-        for (AbstractState q : abstractStates) {
+        for (AbstractState q : getAbstractStates()) {
             z3.reset();
             z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And((ABooleanExpression) machine.getInvariant().prime(true), new Exists(new And(machine.getInvariant(), machine.getInitialization().getPrd(machine)), machine.getVariables().toArray(new Variable[machine.getAssignables().size()])), (ABooleanExpression) q.prime())));
             if (z3.checkSAT() == Status.SATISFIABLE) {
@@ -62,6 +83,9 @@ public final class EUAComputer implements IComputer<JSCATS> {
                 IC0.add(c);
                 Alpha.put(c, q);
                 Kappa.put(c, EStateColor.GREEN);
+                if (isUseRelevanceChecker()) {
+                    RC.add(c);
+                }
             }
         }
         C = new LinkedHashSet<>(IC0);
@@ -72,7 +96,7 @@ public final class EUAComputer implements IComputer<JSCATS> {
             RQ.remove(q);
             Set<AbstractState> sortedAbstractStates = new LinkedHashSet<>();
             sortedAbstractStates.add(q);
-            sortedAbstractStates.addAll(abstractStates);
+            sortedAbstractStates.addAll(getAbstractStates());
             Q.add(q);
             for (AbstractState qPrime : sortedAbstractStates) {
                 for (Event e : machine.getEvents()) {
@@ -118,6 +142,12 @@ public final class EUAComputer implements IComputer<JSCATS> {
                                 ConcreteState c = ConcreteStateComputer.computeConcreteState("c_" + q.getName(), z3.getModel(), true);
                                 DeltaC.add(new ConcreteTransition(c, e, cPrime));
                                 Kappa.put(cPrime, EStateColor.GREEN);
+                                if (isUsePropagation()) {
+                                    propagate(cPrime, DeltaC, Kappa);
+                                }
+                                if (isUseRelevanceChecker() && getRelevanceChecker().isRelevant(cPrime, C, Kappa)) {
+                                    RC.add(cPrime);
+                                }
                             }
                             z3.reset();
                             z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And((ABooleanExpression) machine.getInvariant().prime(true), new Exists(new And(machine.getInvariant(), e.getSubstitution().getPrd(machine), new Or(GC.toArray(new ABooleanExpression[GC.size()]))), machine.getVariables().toArray(new Variable[machine.getAssignables().size()])), new Not(new Or(BC.stream().map(concreteState -> (ABooleanExpression) concreteState.prime()).toArray(ABooleanExpression[]::new))), (ABooleanExpression) qPrime.prime())));
@@ -132,6 +162,12 @@ public final class EUAComputer implements IComputer<JSCATS> {
                                 Kappa.put(cPrime, EStateColor.GREEN);
                                 if (C.add(cPrime)) {
                                     Alpha.put(cPrime, qPrime);
+                                    if (isUsePropagation()) {
+                                        propagate(cPrime, DeltaC, Kappa);
+                                    }
+                                    if (isUseRelevanceChecker() && getRelevanceChecker().isRelevant(cPrime, C, Kappa)) {
+                                        RC.add(cPrime);
+                                    }
                                 }
                             }
                         }
@@ -142,7 +178,52 @@ public final class EUAComputer implements IComputer<JSCATS> {
                 }
             }
         }
+        // Step 3: Concretization of transition with relevant concrete states as source
+        if (isUseRelevanceChecker()) {
+            while (!RC.isEmpty()) {
+                ConcreteState c = RC.iterator().next();
+                RC.remove(c);
+                for (Event e : machine.getEvents()) {
+                    z3.reset();
+                    z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
+                            (ABooleanExpression) machine.getInvariant().prime(true),
+                            new Exists(
+                                    new And(
+                                            machine.getInvariant(),
+                                            e.getSubstitution().getPrd(machine),
+                                            c
+                                    ),
+                                    machine.getVariables().toArray(new Variable[machine.getAssignables().size()])
+                            )
+                    )));
+                    Status cPrimeSat = z3.checkSAT();
+                    if (cPrimeSat == Status.SATISFIABLE) {
+                        ABooleanExpression booleanExpression = ConcreteStateComputer.computeConcreteStateExpression(z3.getModel(), false);
+                        AbstractState abstractState = AbstractStateComputer.computeAbstractState(booleanExpression, machine, getAbstractStates());
+                        ConcreteState cPrime = new ConcreteState("c_" + abstractState.getName(), booleanExpression);
+                        Kappa.put(cPrime, EStateColor.GREEN);
+                        Alpha.put(cPrime, abstractState);
+                        DeltaC.add(new ConcreteTransition(c, e, cPrime));
+                        if (isUsePropagation()) {
+                            propagate(cPrime, DeltaC, Kappa);
+                        }
+                        if (getRelevanceChecker().isRelevant(cPrime, C, Kappa)) {
+                            RC.add(cPrime);
+                        }
+                        C.add(cPrime);
+                    }
+                }
+            }
+        }
         return new JSCATS(Q, Q0, C, IC0, Delta, DeltaPlus, DeltaMinus, Alpha, Kappa, DeltaC);
+    }
+
+    private static void propagate(ConcreteState c, Set<ConcreteTransition> deltaC, Map<ConcreteState, EStateColor> kappa) {
+        deltaC.stream().filter(concreteTransition -> concreteTransition.getSource().equals(c) && kappa.get(concreteTransition.getTarget()) == EStateColor.BLUE).forEach(concreteTransition -> {
+            System.out.println("Propagation");
+            kappa.put(concreteTransition.getTarget(), EStateColor.GREEN);
+            propagate(concreteTransition.getTarget(), deltaC, kappa);
+        });
     }
 
     public Machine getMachine() {
@@ -151,6 +232,18 @@ public final class EUAComputer implements IComputer<JSCATS> {
 
     public List<AbstractState> getAbstractStates() {
         return abstractStates;
+    }
+
+    public IRelevancyChecker getRelevanceChecker() {
+        return relevanceChecker;
+    }
+
+    public boolean isUseRelevanceChecker() {
+        return useRelevanceChecker;
+    }
+
+    public boolean isUsePropagation() {
+        return usePropagation;
     }
 
 }

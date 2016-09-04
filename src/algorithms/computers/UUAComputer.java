@@ -97,11 +97,6 @@ public final class UUAComputer implements IComputer<JSCATS> {
             tc = TC.iterator().next();
         } else {
             Z3 z3 = new Z3();
-            /*z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
-                    (ABooleanExpression) machine.getInvariant().prime(true),
-                    t.getEvent().getSubstitution().getSP(c, machine),
-                    (ABooleanExpression) t.getTarget().prime()
-            )));*/
             z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
                     (ABooleanExpression) machine.getInvariant().prime(true),
                     new Exists(
@@ -142,12 +137,6 @@ public final class UUAComputer implements IComputer<JSCATS> {
             tc = TC.iterator().next();
         } else {
             Z3 z3 = new Z3();
-            /*z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
-                    machine.getInvariant(),
-                    (ABooleanExpression) machine.getInvariant().prime(true),
-                    t.getEvent().getSubstitution().getWCP(cPrime),
-                    t.getSource()
-            )));*/
             z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
                     machine.getInvariant(),
                     new Exists(

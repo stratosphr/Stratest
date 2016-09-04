@@ -1,22 +1,47 @@
-package algorithms;
+package algorithms.outputs;
+
+import algorithms.computers.EUAComputer;
+import algorithms.computers.UUAComputer;
+import algorithms.tools.AbstractStatesComputer;
+import algorithms.tools.TestsGenerator;
+import eventb.Machine;
+import eventb.expressions.arith.Int;
+import eventb.expressions.arith.Variable;
+import eventb.expressions.bool.And;
+import eventb.expressions.bool.Equals;
+import eventb.expressions.bool.Or;
+import eventb.expressions.bool.Predicate;
+import eventb.parsers.EBMParser;
+import graphs.AbstractState;
+import org.junit.Assert;
+import org.junit.Test;
+import parser.noeud.AfterParserException;
+import parser.noeud.BParserException;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
- * Created by gvoiron on 18/08/16.
- * Time : 11:28
+ * Created by gvoiron on 04/09/16.
+ * Time : 11:30
  */
-public class TestsGeneratorTest {
+public class JSCATSStatisticsReporterTest {
 
-    /*@Test
+    @Test
     public void test_testGeneration_simple() throws BParserException, InvocationTargetException, AfterParserException, IllegalAccessException, NoSuchMethodException, IOException, NoSuchFieldException {
         Machine machine = new EBMParser().parseMachine(new File("resources/eventb/simple/simple.ebm"));
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/simple/simple_1.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
+        Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
-        List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(new UUAComputer(machine, eua), machine, new ArrayList<>(abstractionPredicates), null);
-        Assert.assertEquals(1, tests.size());
-        Assert.assertEquals(1, tests.get(0).size());
-        Assert.assertEquals(new algorithms.outputs.Test(Collections.singletonList(new ConcreteTransition(new ConcreteState("c_q0", new And(new Equals(new Variable("var1"), new Int(0)), new Equals(new Variable("var2"), new Int(0)))), machine.getEvents().stream().filter(event -> event.getName().equals("event1")).findFirst().orElse(null), new ConcreteState("c_q1", new And(new Equals(new Variable("var1"), new Int(1)), new Equals(new Variable("var2"), new Int(0))))))), tests.get(0));
+        JSCATS uua = new UUAComputer(machine, eua).compute();
+        JSCATSStatisticsReporter euaReport = new JSCATSStatisticsReporter(eua, machine, new ArrayList<>(abstractionPredicates), eventNames);
+        JSCATSStatisticsReporter uuaReport = new JSCATSStatisticsReporter(uua, machine, new ArrayList<>(abstractionPredicates), eventNames);
+        System.out.println(euaReport);
+        System.out.println(uuaReport);
     }
 
     @Test
@@ -30,36 +55,12 @@ public class TestsGeneratorTest {
         Predicate p0 = new Predicate("p0", new Equals(h, zero));
         Predicate p1 = new Predicate("p1", new Or(new And(new Equals(bat1, zero), new Equals(bat2, zero)), new And(new Equals(bat2, zero), new Equals(bat3, zero)), new And(new Equals(bat1, zero), new Equals(bat3, zero))));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, Arrays.asList(p0, p1));
+        Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
-        List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(new UUAComputer(machine, eua), machine, Arrays.asList(p0, p1), null);
-        Assert.assertEquals(1, tests.size());
-        Assert.assertEquals(20, tests.get(0).size());
-        Assert.assertEquals(new algorithms.outputs.Test(
-                        Arrays.asList(
-                                new ConcreteTransition(new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(0)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1)))), machine.getEvents().stream().filter(event -> event.getName().equals("Fail")).findFirst().orElse(null), new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1))))),
-                                new ConcreteTransition(new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1)))), machine.getEvents().stream().filter(event -> event.getName().equals("Fail")).findFirst().orElse(null), new ConcreteState("c_q0", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(1)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1))))),
-                                new ConcreteTransition(new ConcreteState("c_q0", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(1)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1)))), machine.getEvents().stream().filter(event -> event.getName().equals("Tic")).findFirst().orElse(null), new ConcreteState("c_q2", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(1)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0))))),
-                                new ConcreteTransition(new ConcreteState("c_q2", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(1)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0)))), machine.getEvents().stream().filter(event -> event.getName().equals("Repair")).findFirst().orElse(null), new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0))))),
-                                new ConcreteTransition(new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0)))), machine.getEvents().stream().filter(event -> event.getName().equals("Commute")).findFirst().orElse(null), new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(3)), new Equals(new Variable("h"), new Int(1))))),
-                                new ConcreteTransition(new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(3)), new Equals(new Variable("h"), new Int(1)))), machine.getEvents().stream().filter(event -> event.getName().equals("Tic")).findFirst().orElse(null), new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(3)), new Equals(new Variable("h"), new Int(0))))),
-                                new ConcreteTransition(new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(3)), new Equals(new Variable("h"), new Int(0)))), machine.getEvents().stream().filter(event -> event.getName().equals("Commute")).findFirst().orElse(null), new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1))))),
-                                new ConcreteTransition(new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1)))), machine.getEvents().stream().filter(event -> event.getName().equals("Fail")).findFirst().orElse(null), new ConcreteState("c_q0", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(1)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1))))),
-                                new ConcreteTransition(new ConcreteState("c_q0", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(1)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1)))), machine.getEvents().stream().filter(event -> event.getName().equals("Repair")).findFirst().orElse(null), new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1))))),
-                                new ConcreteTransition(new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1)))), machine.getEvents().stream().filter(event -> event.getName().equals("Tic")).findFirst().orElse(null), new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0))))),
-                                new ConcreteTransition(new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0)))), machine.getEvents().stream().filter(event -> event.getName().equals("Fail")).findFirst().orElse(null), new ConcreteState("c_q2", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(1)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0))))),
-                                new ConcreteTransition(new ConcreteState("c_q2", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(1)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0)))), machine.getEvents().stream().filter(event -> event.getName().equals("Repair")).findFirst().orElse(null), new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0))))),
-                                new ConcreteTransition(new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0)))), machine.getEvents().stream().filter(event -> event.getName().equals("Commute")).findFirst().orElse(null), new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(3)), new Equals(new Variable("h"), new Int(1))))),
-                                new ConcreteTransition(new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(3)), new Equals(new Variable("h"), new Int(1)))), machine.getEvents().stream().filter(event -> event.getName().equals("Tic")).findFirst().orElse(null), new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(3)), new Equals(new Variable("h"), new Int(0))))),
-                                new ConcreteTransition(new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(3)), new Equals(new Variable("h"), new Int(0)))), machine.getEvents().stream().filter(event -> event.getName().equals("Commute")).findFirst().orElse(null), new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1))))),
-                                new ConcreteTransition(new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1)))), machine.getEvents().stream().filter(event -> event.getName().equals("Repair")).findFirst().orElse(null), new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(0)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1))))),
-                                new ConcreteTransition(new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(0)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(1)))), machine.getEvents().stream().filter(event -> event.getName().equals("Tic")).findFirst().orElse(null), new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(0)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0))))),
-                                new ConcreteTransition(new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(0)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0)))), machine.getEvents().stream().filter(event -> event.getName().equals("Fail")).findFirst().orElse(null), new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0))))),
-                                new ConcreteTransition(new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(1)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0)))), machine.getEvents().stream().filter(event -> event.getName().equals("Repair")).findFirst().orElse(null), new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(0)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0))))),
-                                new ConcreteTransition(new ConcreteState("c_q3", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(0)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(1)), new Equals(new Variable("h"), new Int(0)))), machine.getEvents().stream().filter(event -> event.getName().equals("Commute")).findFirst().orElse(null), new ConcreteState("c_q1", new And(new Equals(new Variable("bat1"), new Int(0)), new Equals(new Variable("bat2"), new Int(0)), new Equals(new Variable("bat3"), new Int(0)), new Equals(new Variable("batInUse"), new Int(2)), new Equals(new Variable("h"), new Int(1)))))
-                        )
-                ), tests.get(0).subList(0, 20)
-        );
+        JSCATS uua = new UUAComputer(machine, eua).compute();
+        JSCATSStatisticsReporter euaReport = new JSCATSStatisticsReporter(eua, machine, Arrays.asList(p0, p1), eventNames);
+        JSCATSStatisticsReporter uuaReport = new JSCATSStatisticsReporter(uua, machine, Arrays.asList(p0, p1), eventNames);
+        System.out.println(eua.getDOTFormatting());
     }
 
     @Test
@@ -69,7 +70,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -79,7 +79,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -89,7 +88,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -99,7 +97,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -109,7 +106,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -119,7 +115,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -129,7 +124,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -139,7 +133,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -149,7 +142,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
         Assert.assertEquals(4, tests.size());
         Assert.assertEquals(8, tests.get(0).size());
         Assert.assertEquals(10, tests.get(1).size());
@@ -164,7 +156,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -174,7 +165,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -184,7 +174,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -194,7 +183,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -204,7 +192,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -214,7 +201,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -224,7 +210,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -234,7 +219,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -244,7 +228,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -254,7 +237,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -264,7 +246,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -274,7 +255,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
     }
 
     @Test
@@ -284,7 +264,6 @@ public class TestsGeneratorTest {
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         JSCATS eua = new EUAComputer(machine, abstractStates).compute();
         List<algorithms.outputs.Test> tests = TestsGenerator.generateTests(new UUAComputer(machine, eua));
-        JSCATSStatisticsReporter JSCATSStatisticsReporter = new JSCATSStatisticsReporter(tests, machine, new ArrayList<>(abstractionPredicates), null);
-    }*/
+    }
 
 }

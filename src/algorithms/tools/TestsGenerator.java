@@ -71,4 +71,15 @@ public final class TestsGenerator extends UAUninstantiable {
         return concreteTests;
     }
 
+    public static List<Test> generateTests(JSCATS graph) {
+        JSCATS connectedJSCATS = connectJSCATS(graph);
+        List<ConcreteState> C = new ArrayList<>(connectedJSCATS.getC().stream().collect(Collectors.toList()));
+        C.addAll(connectedJSCATS.getIc0());
+        ChinesePostman G = new ChinesePostman(C);
+        connectedJSCATS.getDeltaC().forEach(concreteTransition -> G.addArc(concreteTransition.getEvent().getName(), C.indexOf(concreteTransition.getSource()), C.indexOf(concreteTransition.getTarget()), 1));
+        List<Test> concreteTests = G.computeCPT(C.indexOf(connectedJSCATS.getIc0().iterator().next())).stream().map(Test::new).collect(Collectors.toList());
+        concreteTests.forEach(test -> test.removeIf(concreteTransition -> concreteTransition.getEvent().getName().equals("_Beta_") || concreteTransition.getEvent().getName().equals("_Reset_")));
+        return concreteTests;
+    }
+
 }
