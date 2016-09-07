@@ -174,7 +174,6 @@ public final class JSCATSStatisticsReporter extends AStatisticsReporter {
     @Override
     public String toString() {
         String str = "";
-        str += getTests().stream().map(test -> test.stream().map(ATransition::toString).collect(Collectors.joining(UCharacters.LINE_SEPARATOR))).collect(Collectors.joining(UCharacters.LINE_SEPARATOR + "-----------------------------------" + UCharacters.LINE_SEPARATOR, "-----------------------------------" + UCharacters.LINE_SEPARATOR, "")) + UCharacters.LINE_SEPARATOR + "-----------------------------------" + UCharacters.LINE_SEPARATOR;
         str += "System size : " + getSize() + UCharacters.LINE_SEPARATOR;
         str += "#AbstractionPredicates : " + getNbAbstractionPredicates() + UCharacters.LINE_SEPARATOR;
         str += "#Tests : " + getNbTests() + UCharacters.LINE_SEPARATOR;
@@ -198,6 +197,7 @@ public final class JSCATSStatisticsReporter extends AStatisticsReporter {
         str += "#GreenTransitions : " + getNbGreenTransitions() + UCharacters.LINE_SEPARATOR;
         str += "#AbstractStatesInTests : " + getNbAbstractStatesInTests() + UCharacters.LINE_SEPARATOR;
         str += "#AbstractTransitionsInTests : " + getNbAbstractTransitionsInTests() + UCharacters.LINE_SEPARATOR;
+        str += getTests().stream().map(test -> test.stream().map(ATransition::toString).collect(Collectors.joining(UCharacters.LINE_SEPARATOR))).collect(Collectors.joining(UCharacters.LINE_SEPARATOR + "-----------------------------------" + UCharacters.LINE_SEPARATOR, "-----------------------------------" + UCharacters.LINE_SEPARATOR, "")) + UCharacters.LINE_SEPARATOR + "-----------------------------------" + UCharacters.LINE_SEPARATOR;
         return str;
     }
 

@@ -8,6 +8,7 @@ import graphs.ConcreteState;
 import graphs.ConcreteTransition;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -53,6 +54,18 @@ public class JSCATS {
         }
     }
 
+    public String getTestsDOTFormatting(List<Test> tests) {
+        return getTestsDOTFormatting(tests, false);
+    }
+
+    public String getTestsDOTFormatting(List<Test> tests, boolean abstractSystem) {
+        if (abstractSystem) {
+            return new DOTFormatter().formatTestsOnGraph(tests, new ArrayList<>(getQ0()), new ArrayList<>(getDelta()));
+        } else {
+            return new DOTFormatter().formatTestsOnGraph(tests, new ArrayList<>(getIc0()), new ArrayList<>(getDeltaC()));
+        }
+    }
+
     public Set<AbstractState> getQ() {
         return q;
     }
@@ -67,10 +80,6 @@ public class JSCATS {
 
     public Set<ConcreteState> getIc0() {
         return ic0;
-    }
-
-    public void setIc0(Set<ConcreteState> ic0) {
-        this.ic0 = ic0;
     }
 
     public Set<AbstractTransition> getDelta() {

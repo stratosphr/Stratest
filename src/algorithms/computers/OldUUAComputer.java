@@ -2,7 +2,6 @@ package algorithms.computers;
 
 import algorithms.outputs.JSCATS;
 import algorithms.tools.ConcreteStateComputer;
-import algorithms.tools.EStateColor;
 import eventb.Machine;
 import eventb.expressions.arith.Variable;
 import eventb.expressions.bool.ABooleanExpression;
@@ -23,14 +22,14 @@ import static com.microsoft.z3.Status.SATISFIABLE;
  * Created by gvoiron on 18/08/16.
  * Time : 11:01
  */
-public final class UUAComputer implements IComputer<JSCATS> {
+public final class OldUUAComputer implements IComputer<JSCATS> {
 
     private final Machine machine;
     private final JSCATS abstraction;
     private static Map<AbstractTransition, Boolean> MPlus;
     private static Map<AbstractTransition, Boolean> MMinus;
 
-    public UUAComputer(Machine machine, JSCATS abstraction) {
+    public OldUUAComputer(Machine machine, JSCATS abstraction) {
         this.machine = machine;
         this.abstraction = abstraction;
     }
@@ -49,8 +48,7 @@ public final class UUAComputer implements IComputer<JSCATS> {
                 if (isMustPlusStructureEntryPoint(t, connectedJSCATS)) {
                     Optional<ConcreteState> optionalC = connectedJSCATS.getAlpha().keySet().stream().filter(concreteState -> connectedJSCATS.getAlpha().get(concreteState).equals(t.getSource())).findFirst();
                     if (optionalC.isPresent()) {
-                        ConcreteState c = optionalC.get();
-                        mustPlusConcretization(t, c, machine, connectedJSCATS);
+                        mustPlusConcretization(t, optionalC.get(), machine, connectedJSCATS);
                     }
                 }
             }
@@ -114,7 +112,6 @@ public final class UUAComputer implements IComputer<JSCATS> {
                 ConcreteState cPrime = ConcreteStateComputer.computeConcreteState("c_" + t.getTarget().getName(), z3.getModel(), false); //new ConcreteState("c_" + t.getTarget().getName(), getConcreteState(new EventBModel(machine, z3.getModel(), z3), false));
                 if (abstraction.getC().add(cPrime)) {
                     abstraction.getAlpha().put(cPrime, t.getTarget());
-                    abstraction.getKappa().put(cPrime, EStateColor.BLUE);
                 }
                 tc = new ConcreteTransition(c, t.getEvent(), cPrime);
                 abstraction.getDeltaC().add(tc);
@@ -154,7 +151,6 @@ public final class UUAComputer implements IComputer<JSCATS> {
                 ConcreteState c = ConcreteStateComputer.computeConcreteState("c_" + t.getSource().getName(), z3.getModel(), true); //new ConcreteState("c_" + t.getSource().getName(), getConcreteState(new EventBModel(machine, z3.getModel(), z3), true));
                 if (abstraction.getC().add(c)) {
                     abstraction.getAlpha().put(c, t.getSource());
-                    abstraction.getKappa().put(c, EStateColor.BLUE);
                 }
                 tc = new ConcreteTransition(c, t.getEvent(), cPrime);
                 abstraction.getDeltaC().add(tc);

@@ -220,7 +220,6 @@ public final class EUAComputer implements IComputer<JSCATS> {
 
     private static void propagate(ConcreteState c, Set<ConcreteTransition> deltaC, Map<ConcreteState, EStateColor> kappa) {
         deltaC.stream().filter(concreteTransition -> concreteTransition.getSource().equals(c) && kappa.get(concreteTransition.getTarget()) == EStateColor.BLUE).forEach(concreteTransition -> {
-            System.out.println("Propagation");
             kappa.put(concreteTransition.getTarget(), EStateColor.GREEN);
             propagate(concreteTransition.getTarget(), deltaC, kappa);
         });

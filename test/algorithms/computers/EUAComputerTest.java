@@ -60,6 +60,8 @@ public class EUAComputerTest {
         Assert.assertFalse(q1Concretization.isEmpty());
         Assert.assertFalse(q2Concretization.isEmpty());
         Assert.assertFalse(q3Concretization.isEmpty());
+        Assert.assertEquals(eua.getC().size(), eua.getAlpha().size());
+        Assert.assertEquals(eua.getC().size(), eua.getKappa().size());
         Z3 z3 = new Z3();
         q0Concretization.forEach(concreteState -> {
             z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(machine.getInvariant(), (ABooleanExpression) machine.getInvariant().prime(true), concreteState, q0)));
