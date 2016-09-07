@@ -1,0 +1,82 @@
+digraph G {
+
+	rankdir = LR;
+
+	start_c_q4_71[style=invisible];
+
+	node[shape=box, style="rounded, filled", color=lightblue2];
+
+	c_q1_60[label="(c_q1 ≝ ((Balance = 0) ∧ (CofeeLeft = 1) ∧ (Mago = 6120) ∧ (Statut = 1)))"];
+	c_q0_35[label="(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 1) ∧ (Mago = 6180) ∧ (Statut = 1)))"];
+	c_q3_54[label="(c_q3 ≝ ((Balance = 1) ∧ (CofeeLeft = 0) ∧ (Mago = 6120) ∧ (Statut = 1)))"];
+	c_q0_17[label="(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 1) ∧ (Mago = 60) ∧ (Statut = 1)))"];
+	c_q4_69[label="(c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 6120) ∧ (Statut = 0)))"];
+	c_q0_45[label="(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 60) ∧ (Statut = 2)))"];
+	c_q4_71[label="(c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))"];
+	c_q0_24[label="(c_q0 ≝ ((Balance = 60) ∧ (CofeeLeft = 1) ∧ (Mago = 6060) ∧ (Statut = 1)))"];
+	c_q1_30[label="(c_q1 ≝ ((Balance = 1) ∧ (CofeeLeft = 1) ∧ (Mago = 6120) ∧ (Statut = 1)))"];
+	c_q2_46[label="(c_q2 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 6180) ∧ (Statut = 1)))"];
+	c_q0_18[label="(c_q0 ≝ ((Balance = 60) ∧ (CofeeLeft = 2) ∧ (Mago = 0) ∧ (Statut = 1)))"];
+	c_q0_20[label="(c_q0 ≝ ((Balance = 60) ∧ (CofeeLeft = 2) ∧ (Mago = 6060) ∧ (Statut = 1)))"];
+	c_q4_55[label="(c_q4 ≝ ((Balance = 1) ∧ (CofeeLeft = 0) ∧ (Mago = 6120) ∧ (Statut = 0)))"];
+	c_q1_38[label="(c_q1 ≝ ((Balance = 60) ∧ (CofeeLeft = 1) ∧ (Mago = 6120) ∧ (Statut = 1)))"];
+	c_q0_53[label="(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 6120) ∧ (Statut = 2)))"];
+	c_q4_59[label="(c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))"];
+	c_q4_67[label="(c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 0) ∧ (Statut = 0)))"];
+	c_q2_66[label="(c_q2 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 0) ∧ (Statut = 1)))"];
+	c_q1_34[label="(c_q1 ≝ ((Balance = 60) ∧ (CofeeLeft = 2) ∧ (Mago = 6120) ∧ (Statut = 1)))"];
+	c_q0_19[label="(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 2) ∧ (Mago = 0) ∧ (Statut = 1)))"];
+	c_q0_22[label="(c_q0 ≝ ((Balance = 60) ∧ (CofeeLeft = 1) ∧ (Mago = 0) ∧ (Statut = 1)))"];
+	c_q0_65[label="(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 0) ∧ (Statut = 2)))"];
+	c_q2_44[label="(c_q2 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 60) ∧ (Statut = 1)))"];
+	c_q2_43[label="(c_q2 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 6121) ∧ (Statut = 1)))"];
+	c_q2_42[label="(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 0) ∧ (Mago = 6121) ∧ (Statut = 1)))"];
+	c_q0_26[label="(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 1) ∧ (Mago = 0) ∧ (Statut = 1)))"];
+	c_q4_61[label="(c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 1) ∧ (Mago = 6120) ∧ (Statut = 0)))"];
+	c_q4_27[label="(c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 1) ∧ (Mago = 0) ∧ (Statut = 0)))"];
+	c_q4_39[label="(c_q4 ≝ ((Balance = 60) ∧ (CofeeLeft = 1) ∧ (Mago = 6120) ∧ (Statut = 0)))"];
+	c_q4_47[label="(c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 6180) ∧ (Statut = 0)))"];
+	c_q3_68[label="(c_q3 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 6120) ∧ (Statut = 1)))"];
+	c_q0_73[label="(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))"];
+	c_q0_33[label="(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 1) ∧ (Mago = 6120) ∧ (Statut = 2)))"];
+
+	start_c_q4_71 -> c_q4_71;
+	c_q4_71 -> c_q4_71[label="insert", penwidth=3, color=red];
+	c_q4_67 -> c_q4_67[label="takeMago"];
+	c_q4_67 -> c_q4_27[label="addCofee"];
+	c_q4_27 -> c_q0_26[label="powerUp"];
+	c_q4_61 -> c_q1_60[label="powerUp"];
+	c_q4_67 -> c_q2_66[label="powerUp"];
+	c_q4_69 -> c_q3_68[label="powerUp"];
+	c_q0_26 -> c_q0_26[label="insert"];
+	c_q0_18 -> c_q0_17[label="serveCofee"];
+	c_q0_18 -> c_q0_19[label="backBalance"];
+	c_q0_20 -> c_q1_60[label="serveCofee"];
+	c_q0_22 -> c_q2_44[label="serveCofee"];
+	c_q0_24 -> c_q3_68[label="serveCofee"];
+	c_q0_26 -> c_q4_27[label="powerDown"];
+	c_q1_60 -> c_q1_60[label="insert"];
+	c_q1_30 -> c_q1_60[label="backBalance"];
+	c_q1_60 -> c_q0_33[label="AutoOut"];
+	c_q1_34 -> c_q0_35[label="serveCofee"];
+	c_q1_38 -> c_q2_46[label="serveCofee"];
+	c_q1_38 -> c_q4_39[label="powerDown"];
+	c_q2_44 -> c_q2_44[label="insert"];
+	c_q2_42 -> c_q2_43[label="backBalance"];
+	c_q2_44 -> c_q0_45[label="AutoOut"];
+	c_q2_46 -> c_q4_47[label="powerDown"];
+	c_q3_68 -> c_q3_68[label="insert"];
+	c_q3_54 -> c_q3_68[label="backBalance"];
+	c_q3_68 -> c_q0_53[label="AutoOut"];
+	c_q3_54 -> c_q4_55[label="powerDown"];
+	c_q4_71 -> c_q4_71[label="takeMago", penwidth=3, color=red];
+	c_q4_71 -> c_q4_59[label="addCofee", penwidth=3, color=red];
+	c_q1_60 -> c_q4_61[label="powerDown"];
+	c_q2_66 -> c_q2_66[label="insert"];
+	c_q2_66 -> c_q0_65[label="AutoOut"];
+	c_q2_66 -> c_q4_67[label="powerDown"];
+	c_q3_68 -> c_q4_69[label="powerDown"];
+	c_q0_73 -> c_q4_71[label="powerDown"];
+	c_q0_73 -> c_q0_73[label="insert"];
+
+}

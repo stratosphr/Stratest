@@ -1,0 +1,40 @@
+digraph G {
+
+	rankdir = LR;
+
+	start_c_q5_33[style=invisible];
+
+	node[shape=box, style="rounded, filled", color=lightblue2];
+
+	c_q6_34[label="(c_q6 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))"];
+	c_q2_35[label="(c_q2 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 2)))"];
+	c_q6_15[label="(c_q6 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 0)))"];
+	c_q2_3[label="(c_q2 ≝ ((Combine = 1) ∧ (Etat = 1) ∧ (NbEssai = 1)))"];
+	c_q2_25[label="(c_q2 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))"];
+	c_q2_30[label="(c_q2 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 2)))"];
+	c_q6_12[label="(c_q6 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0)))"];
+	c_q2_32[label="(c_q2 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 1)))"];
+	c_q5_33[label="(c_q5 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))"];
+	c_q6_14[label="(c_q6 ≝ ((Combine = 1) ∧ (Etat = 2) ∧ (NbEssai = 0)))"];
+
+	start_c_q5_33 -> c_q5_33;
+	c_q5_33 -> c_q6_34[label="Appel_Qui_Donc", penwidth=3, color=red];
+	c_q2_32 -> c_q2_3[label="Start"];
+	c_q2_25 -> c_q2_35[label="Timeout", penwidth=3, color=red];
+	c_q2_25 -> c_q5_33[label="Start", penwidth=3, color=red];
+	c_q2_25 -> c_q5_33[label="HangUp", penwidth=3, color=red];
+	c_q2_25 -> c_q6_34[label="Start", penwidth=3, color=red];
+	c_q6_12 -> c_q6_34[label="Start"];
+	c_q6_14 -> c_q6_15[label="Timeout"];
+	c_q6_34 -> c_q2_25[label="Start", penwidth=3, color=red];
+	c_q6_34 -> c_q2_25[label="Timeout", penwidth=3, color=red];
+	c_q6_34 -> c_q5_33[label="Start", penwidth=3, color=red];
+	c_q6_34 -> c_q5_33[label="HangUp", penwidth=3, color=red];
+	c_q2_35 -> c_q2_25[label="Start", penwidth=3, color=red];
+	c_q2_35 -> c_q2_30[label="Timeout", penwidth=3, color=red];
+	c_q2_35 -> c_q5_33[label="HangUp", penwidth=3, color=red];
+	c_q2_30 -> c_q5_33[label="HangUp", penwidth=3, color=red];
+	c_q2_32 -> c_q5_33[label="HangUp"];
+	c_q6_34 -> c_q2_35[label="Start", penwidth=3, color=red];
+
+}

@@ -1,0 +1,42 @@
+digraph G {
+
+	rankdir = LR;
+
+	start_c_q1_23[style=invisible];
+
+	node[shape=box, style="rounded, filled", color=lightblue2];
+
+	c_q3_31[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 0)))"];
+	c_q3_24[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1)))"];
+	c_q1_3[label="(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 3) ∧ (h = 1)))"];
+	c_q3_9[label="(c_q3 ≝ ((bat1 = 1) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 2) ∧ (h = 0)))"];
+	c_q2_30[label="(c_q2 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 0)))"];
+	c_q2_26[label="(c_q2 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1)))"];
+	c_q2_8[label="(c_q2 ≝ ((bat1 = 1) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 2) ∧ (h = 0)))"];
+	c_q3_11[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))"];
+	c_q2_19[label="(c_q2 ≝ ((bat1 = 1) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 2) ∧ (h = 1)))"];
+	c_q3_27[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1)))"];
+	c_q1_29[label="(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))"];
+	c_q1_15[label="(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 2) ∧ (h = 1)))"];
+	c_q3_18[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 2) ∧ (h = 1)))"];
+	c_q1_23[label="(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1)))"];
+
+	start_c_q1_23 -> c_q1_23;
+	c_q1_23 -> c_q1_29[label="Tic", penwidth=3, color=red];
+	c_q1_29 -> c_q1_3[label="Commute", penwidth=3, color=red];
+	c_q1_29 -> c_q3_31[label="Fail", penwidth=3, color=red];
+	c_q2_26 -> c_q2_30[label="Tic", penwidth=3, color=red];
+	c_q2_8 -> c_q3_9[label="Repair"];
+	c_q3_27 -> c_q3_11[label="Tic", penwidth=3, color=red];
+	c_q3_31 -> c_q3_18[label="Commute", penwidth=3, color=red];
+	c_q3_18 -> c_q1_15[label="Repair", penwidth=3, color=red];
+	c_q3_31 -> c_q2_30[label="Fail", penwidth=3, color=red];
+	c_q3_18 -> c_q2_19[label="Fail", penwidth=3, color=red];
+	c_q1_23 -> c_q3_24[label="Fail", penwidth=3, color=red];
+	c_q3_24 -> c_q1_23[label="Repair", penwidth=3, color=red];
+	c_q3_24 -> c_q2_26[label="Fail", penwidth=3, color=red];
+	c_q2_26 -> c_q3_27[label="Repair", penwidth=3, color=red];
+	c_q3_31 -> c_q1_29[label="Repair", penwidth=3, color=red];
+	c_q2_30 -> c_q3_31[label="Repair", penwidth=3, color=red];
+
+}
