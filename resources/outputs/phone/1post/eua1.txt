@@ -1,53 +1,67 @@
 System size : -1
 #AbstractionPredicates : 3
-#Tests : 2
-AverageTestsLength : 13.5
-TestsLengthStandardDeviation : 10.5
+#Tests : 3
+AverageTestsLength : 13.333333333333334
+TestsLengthStandardDeviation : 8.9566858950296
 #AbstractStates : 5
 #AbstractTransitions : 19
 #MustMinusTransitions : 16
 #MustPlusTransitions : 15
 #MustSharpTransitions : 14
 #PureMayTransitions : 2
-#ConcreteStates : 9
-#ConcreteTransitions : 19
-#UniqueConcreteStatesInTests : 7
-#UniqueConcreteTransitionsInTests : 15
+#ConcreteStates : 12
+#ConcreteTransitions : 21
+#UniqueConcreteStatesInTests : 9
+#UniqueConcreteTransitionsInTests : 18
 #EventsInTestPurpose : 0
 #EventsInTestPurposeFiredInTests : 0
-#BlueStates : 12
-#GreenStates : 0
-#BlueTransitions : 15
-#GreenTransitions : 0
+#BlueStates : 4
+#GreenStates : 8
+#BlueTransitions : 1
+#GreenTransitions : 17
 #AbstractStatesInTests : -1
 #AbstractTransitionsInTests : -1
 -----------------------------------
 (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
-(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - HangUp -> (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))
-(c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
-(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))
-(c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
 (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Timeout -> (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))
 (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1))) - HangUp -> (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))
 (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
-(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Timeout -> (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))
 (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1))) - Start -> (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))
 (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
-(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q5 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 0)))
-(c_q5 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 0))) - HangUp -> (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0))) - HangUp -> (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))
 (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
-(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))
-(c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1))) - Start -> (c_q5 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 0)))
-(c_q5 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 0))) - HangUp -> (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0))) - Start -> (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))
 (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
-(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0))) - Start -> (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 2)))
+(c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 2))) - Timeout -> (c_q1 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 2)))
+(c_q1 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 2))) - HangUp -> (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))
+(c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Timeout -> (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))
 (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1))) - Timeout -> (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 2)))
 (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 2))) - Timeout -> (c_q1 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 2)))
 (c_q1 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 2))) - HangUp -> (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))
 (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
-(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q1 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 1)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0))) - Start -> (c_q1 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 1)))
 -----------------------------------
 (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
-(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Timeout -> (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))
+(c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1))) - Start -> (c_q5 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 0)))
+(c_q5 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 0))) - HangUp -> (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))
+(c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Timeout -> (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))
 (c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1))) - Start -> (c_q1 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 1)))
+-----------------------------------
+(c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0))) - Start -> (c_q5 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 0)))
+(c_q5 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 0))) - HangUp -> (c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))
+(c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0)))
+(c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0))) - Start -> (c_q0 ≝ ((Combine = 1) ∧ (Etat = 2) ∧ (NbEssai = 1)))
 -----------------------------------

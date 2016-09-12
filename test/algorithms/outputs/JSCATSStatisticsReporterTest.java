@@ -15,6 +15,7 @@ import eventb.expressions.bool.Or;
 import eventb.expressions.bool.Predicate;
 import eventb.parsers.EBMParser;
 import graphs.AbstractState;
+import org.junit.Assert;
 import org.junit.Test;
 import parser.noeud.AfterParserException;
 import parser.noeud.BParserException;
@@ -34,9 +35,87 @@ import java.util.stream.Collectors;
  */
 public class JSCATSStatisticsReporterTest {
 
-    private void save(String systemName, String predsFolder, JSCATS eua0, JSCATS eua1, JSCATS eua2, JSCATS eua3, JSCATS eua4, JSCATS uua0, JSCATS uua1, JSCATS uua2, JSCATS uua3, JSCATS uua4, JSCATSStatisticsReporter eua0Report, JSCATSStatisticsReporter eua1Report, JSCATSStatisticsReporter eua2Report, JSCATSStatisticsReporter eua3Report, JSCATSStatisticsReporter eua4Report, JSCATSStatisticsReporter uua0Report, JSCATSStatisticsReporter uua1Report, JSCATSStatisticsReporter uua2Report, JSCATSStatisticsReporter uua3Report, JSCATSStatisticsReporter uua4Report) {
+    private void testAndSave(String systemName, String predicatesFolder, JSCATS eua0, JSCATS eua1, JSCATS eua2, JSCATS eua3, JSCATS eua4, JSCATS uua0, JSCATS uua1, JSCATS uua2, JSCATS uua3, JSCATS uua4, JSCATSStatisticsReporter eua0Report, JSCATSStatisticsReporter eua1Report, JSCATSStatisticsReporter eua2Report, JSCATSStatisticsReporter eua3Report, JSCATSStatisticsReporter eua4Report, JSCATSStatisticsReporter uua0Report, JSCATSStatisticsReporter uua1Report, JSCATSStatisticsReporter uua2Report, JSCATSStatisticsReporter uua3Report, JSCATSStatisticsReporter uua4Report) {
+        Assert.assertEquals(0, eua0Report.getNbBlueStates());
+        Assert.assertEquals(0, eua0Report.getNbGreenStates());
+        Assert.assertTrue(eua1Report.getNbGreenStates() > 0);
+        Assert.assertTrue(eua2Report.getNbGreenStates() > 0);
+        Assert.assertTrue(eua3Report.getNbGreenStates() > 0);
+        Assert.assertTrue(eua4Report.getNbGreenStates() > 0);
+        Assert.assertTrue(uua1Report.getNbGreenStates() >= eua1Report.getNbGreenStates());
+        Assert.assertTrue(uua2Report.getNbGreenStates() >= eua2Report.getNbGreenStates());
+        Assert.assertTrue(uua3Report.getNbGreenStates() >= eua3Report.getNbGreenStates());
+        Assert.assertTrue(uua4Report.getNbGreenStates() >= eua4Report.getNbGreenStates());
+        Assert.assertEquals(eua1.getC().size(), eua1Report.getNbBlueStates() + eua1Report.getNbGreenStates());
+        Assert.assertEquals(eua2.getC().size(), eua2Report.getNbBlueStates() + eua2Report.getNbGreenStates());
+        Assert.assertEquals(eua3.getC().size(), eua3Report.getNbBlueStates() + eua3Report.getNbGreenStates());
+        Assert.assertEquals(eua4.getC().size(), eua4Report.getNbBlueStates() + eua4Report.getNbGreenStates());
+        Assert.assertEquals(uua1.getC().size(), uua1Report.getNbBlueStates() + uua1Report.getNbGreenStates());
+        Assert.assertEquals(uua2.getC().size(), uua2Report.getNbBlueStates() + uua2Report.getNbGreenStates());
+        Assert.assertEquals(uua3.getC().size(), uua3Report.getNbBlueStates() + uua3Report.getNbGreenStates());
+        Assert.assertEquals(uua4.getC().size(), uua4Report.getNbBlueStates() + uua4Report.getNbGreenStates());
+        Assert.assertTrue(eua0Report.getNbAbstractStates() >= 0 && eua0Report.getNbAbstractStates() <= Math.pow(2, eua0Report.getNbAbstractStates()));
+        Assert.assertTrue(eua1Report.getNbAbstractStates() >= 0 && eua1Report.getNbAbstractStates() <= Math.pow(2, eua1Report.getNbAbstractStates()));
+        Assert.assertTrue(eua2Report.getNbAbstractStates() >= 0 && eua2Report.getNbAbstractStates() <= Math.pow(2, eua2Report.getNbAbstractStates()));
+        Assert.assertTrue(eua3Report.getNbAbstractStates() >= 0 && eua3Report.getNbAbstractStates() <= Math.pow(2, eua3Report.getNbAbstractStates()));
+        Assert.assertTrue(eua4Report.getNbAbstractStates() >= 0 && eua4Report.getNbAbstractStates() <= Math.pow(2, eua4Report.getNbAbstractStates()));
+        Assert.assertTrue(uua0Report.getNbAbstractStates() >= 0 && uua0Report.getNbAbstractStates() <= Math.pow(2, uua0Report.getNbAbstractStates()));
+        Assert.assertTrue(uua1Report.getNbAbstractStates() >= 0 && uua1Report.getNbAbstractStates() <= Math.pow(2, uua1Report.getNbAbstractStates()));
+        Assert.assertTrue(uua2Report.getNbAbstractStates() >= 0 && uua2Report.getNbAbstractStates() <= Math.pow(2, uua2Report.getNbAbstractStates()));
+        Assert.assertTrue(uua3Report.getNbAbstractStates() >= 0 && uua3Report.getNbAbstractStates() <= Math.pow(2, uua3Report.getNbAbstractStates()));
+        Assert.assertTrue(uua4Report.getNbAbstractStates() >= 0 && uua4Report.getNbAbstractStates() <= Math.pow(2, uua4Report.getNbAbstractStates()));
+        Assert.assertTrue(eua0Report.getNbMustMinusTransitions() >= eua0Report.getNbMustSharpTransitions());
+        Assert.assertTrue(eua1Report.getNbMustMinusTransitions() >= eua1Report.getNbMustSharpTransitions());
+        Assert.assertTrue(eua2Report.getNbMustMinusTransitions() >= eua2Report.getNbMustSharpTransitions());
+        Assert.assertTrue(eua3Report.getNbMustMinusTransitions() >= eua3Report.getNbMustSharpTransitions());
+        Assert.assertTrue(eua4Report.getNbMustMinusTransitions() >= eua4Report.getNbMustSharpTransitions());
+        Assert.assertTrue(uua0Report.getNbMustMinusTransitions() >= uua0Report.getNbMustSharpTransitions());
+        Assert.assertTrue(uua1Report.getNbMustMinusTransitions() >= uua1Report.getNbMustSharpTransitions());
+        Assert.assertTrue(uua2Report.getNbMustMinusTransitions() >= uua2Report.getNbMustSharpTransitions());
+        Assert.assertTrue(uua3Report.getNbMustMinusTransitions() >= uua3Report.getNbMustSharpTransitions());
+        Assert.assertTrue(uua4Report.getNbMustMinusTransitions() >= uua4Report.getNbMustSharpTransitions());
+        Assert.assertTrue(eua0Report.getNbMustPlusTransitions() >= eua0Report.getNbMustSharpTransitions());
+        Assert.assertTrue(eua1Report.getNbMustPlusTransitions() >= eua1Report.getNbMustSharpTransitions());
+        Assert.assertTrue(eua2Report.getNbMustPlusTransitions() >= eua2Report.getNbMustSharpTransitions());
+        Assert.assertTrue(eua3Report.getNbMustPlusTransitions() >= eua3Report.getNbMustSharpTransitions());
+        Assert.assertTrue(eua4Report.getNbMustPlusTransitions() >= eua4Report.getNbMustSharpTransitions());
+        Assert.assertTrue(uua0Report.getNbMustPlusTransitions() >= uua0Report.getNbMustSharpTransitions());
+        Assert.assertTrue(uua1Report.getNbMustPlusTransitions() >= uua1Report.getNbMustSharpTransitions());
+        Assert.assertTrue(uua2Report.getNbMustPlusTransitions() >= uua2Report.getNbMustSharpTransitions());
+        Assert.assertTrue(uua3Report.getNbMustPlusTransitions() >= uua3Report.getNbMustSharpTransitions());
+        Assert.assertTrue(uua4Report.getNbMustPlusTransitions() >= uua4Report.getNbMustSharpTransitions());
+        Assert.assertEquals(eua0Report.getNbAbstractTransitions(), eua0Report.getNbPureMayTransitions() + eua0Report.getNbMustMinusTransitions() + eua0Report.getNbMustPlusTransitions() - eua0Report.getNbMustSharpTransitions());
+        Assert.assertEquals(eua1Report.getNbAbstractTransitions(), eua1Report.getNbPureMayTransitions() + eua1Report.getNbMustMinusTransitions() + eua1Report.getNbMustPlusTransitions() - eua1Report.getNbMustSharpTransitions());
+        Assert.assertEquals(eua2Report.getNbAbstractTransitions(), eua2Report.getNbPureMayTransitions() + eua2Report.getNbMustMinusTransitions() + eua2Report.getNbMustPlusTransitions() - eua2Report.getNbMustSharpTransitions());
+        Assert.assertEquals(eua3Report.getNbAbstractTransitions(), eua3Report.getNbPureMayTransitions() + eua3Report.getNbMustMinusTransitions() + eua3Report.getNbMustPlusTransitions() - eua3Report.getNbMustSharpTransitions());
+        Assert.assertEquals(eua4Report.getNbAbstractTransitions(), eua4Report.getNbPureMayTransitions() + eua4Report.getNbMustMinusTransitions() + eua4Report.getNbMustPlusTransitions() - eua4Report.getNbMustSharpTransitions());
+        Assert.assertEquals(uua0Report.getNbAbstractTransitions(), uua0Report.getNbPureMayTransitions() + uua0Report.getNbMustMinusTransitions() + uua0Report.getNbMustPlusTransitions() - uua0Report.getNbMustSharpTransitions());
+        Assert.assertEquals(uua1Report.getNbAbstractTransitions(), uua1Report.getNbPureMayTransitions() + uua1Report.getNbMustMinusTransitions() + uua1Report.getNbMustPlusTransitions() - uua1Report.getNbMustSharpTransitions());
+        Assert.assertEquals(uua2Report.getNbAbstractTransitions(), uua2Report.getNbPureMayTransitions() + uua2Report.getNbMustMinusTransitions() + uua2Report.getNbMustPlusTransitions() - uua2Report.getNbMustSharpTransitions());
+        Assert.assertEquals(uua3Report.getNbAbstractTransitions(), uua3Report.getNbPureMayTransitions() + uua3Report.getNbMustMinusTransitions() + uua3Report.getNbMustPlusTransitions() - uua3Report.getNbMustSharpTransitions());
+        Assert.assertEquals(uua4Report.getNbAbstractTransitions(), uua4Report.getNbPureMayTransitions() + uua4Report.getNbMustMinusTransitions() + uua4Report.getNbMustPlusTransitions() - uua4Report.getNbMustSharpTransitions());
+        Assert.assertTrue(eua0Report.getNbAbstractStates() >= eua0Report.getNbAbstractStatesInTests());
+        Assert.assertTrue(eua1Report.getNbAbstractStates() >= eua1Report.getNbAbstractStatesInTests());
+        Assert.assertTrue(eua2Report.getNbAbstractStates() >= eua2Report.getNbAbstractStatesInTests());
+        Assert.assertTrue(eua3Report.getNbAbstractStates() >= eua3Report.getNbAbstractStatesInTests());
+        Assert.assertTrue(eua4Report.getNbAbstractStates() >= eua4Report.getNbAbstractStatesInTests());
+        Assert.assertTrue(uua0Report.getNbAbstractStates() >= uua0Report.getNbAbstractStatesInTests());
+        Assert.assertTrue(uua1Report.getNbAbstractStates() >= uua1Report.getNbAbstractStatesInTests());
+        Assert.assertTrue(uua2Report.getNbAbstractStates() >= uua2Report.getNbAbstractStatesInTests());
+        Assert.assertTrue(uua3Report.getNbAbstractStates() >= uua3Report.getNbAbstractStatesInTests());
+        Assert.assertTrue(uua4Report.getNbAbstractStates() >= uua4Report.getNbAbstractStatesInTests());
+        Assert.assertTrue(eua0Report.getNbAbstractTransitions() >= eua0Report.getNbAbstractTransitionsInTests());
+        Assert.assertTrue(eua1Report.getNbAbstractTransitions() >= eua1Report.getNbAbstractTransitionsInTests());
+        Assert.assertTrue(eua2Report.getNbAbstractTransitions() >= eua2Report.getNbAbstractTransitionsInTests());
+        Assert.assertTrue(eua3Report.getNbAbstractTransitions() >= eua3Report.getNbAbstractTransitionsInTests());
+        Assert.assertTrue(eua4Report.getNbAbstractTransitions() >= eua4Report.getNbAbstractTransitionsInTests());
+        Assert.assertTrue(uua0Report.getNbAbstractTransitions() >= uua0Report.getNbAbstractTransitionsInTests());
+        Assert.assertTrue(uua1Report.getNbAbstractTransitions() >= uua1Report.getNbAbstractTransitionsInTests());
+        Assert.assertTrue(uua2Report.getNbAbstractTransitions() >= uua2Report.getNbAbstractTransitionsInTests());
+        Assert.assertTrue(uua3Report.getNbAbstractTransitions() >= uua3Report.getNbAbstractTransitionsInTests());
+        Assert.assertTrue(uua4Report.getNbAbstractTransitions() >= uua4Report.getNbAbstractTransitionsInTests());
         try {
-            File root = new File("resources/outputs/" + systemName + "/" + predsFolder);
+            File root = new File("resources/outputs/" + systemName + "/" + predicatesFolder);
             root.mkdirs();
             Files.write(Paths.get(root.getAbsolutePath() + "/eua0.txt"), eua0Report.toString().getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
             Files.write(Paths.get(root.getAbsolutePath() + "/eua0.dot"), eua0.getTestsDOTFormatting(eua0Report.getTests()).getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
@@ -69,38 +148,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/simple/simple_1.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -111,7 +168,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("simple", "default", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("simple", "default", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -127,38 +184,16 @@ public class JSCATSStatisticsReporterTest {
         List<Predicate> abstractionPredicates = Arrays.asList(p0, p1);
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates);
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -169,26 +204,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("threeBatteries", "default", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
-    }
-
-    @Test
-    public void test_testGeneration_default2() throws BParserException, InvocationTargetException, AfterParserException, IllegalAccessException, NoSuchMethodException, IOException, NoSuchFieldException {
-        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/threeBatteries/threeBatteries.ebm"));
-        Int zero = new Int(0);
-        Variable h = new Variable("h");
-        Variable bat1 = new Variable("bat1");
-        Variable bat2 = new Variable("bat2");
-        Variable bat3 = new Variable("bat3");
-        Predicate p0 = new Predicate("p0", new Equals(h, zero));
-        Predicate p1 = new Predicate("p1", new Or(new And(new Equals(bat1, zero), new Equals(bat2, zero)), new And(new Equals(bat2, zero), new Equals(bat3, zero)), new And(new Equals(bat1, zero), new Equals(bat3, zero))));
-        List<Predicate> abstractionPredicates = Arrays.asList(p0, p1);
-        List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates);
-        Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
-        JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        JSCATSStatisticsReporter uua0Report = new JSCATSStatisticsReporter(uua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
+        testAndSave("threeBatteries", "default", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -197,38 +213,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/threeBatteries/threeBatteries_1guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -239,7 +233,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("threeBatteries", "1guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("threeBatteries", "1guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -248,38 +242,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/threeBatteries/threeBatteries_2guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -290,7 +262,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("threeBatteries", "2guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("threeBatteries", "2guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -299,38 +271,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/threeBatteries/threeBatteries_1post.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -341,7 +291,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("threeBatteries", "1post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("threeBatteries", "1post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -350,38 +300,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/phone/phone_1guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -392,7 +320,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("phone", "1guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("phone", "1guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -401,38 +329,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/phone/phone_2guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -443,7 +349,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("phone", "2guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("phone", "2guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -452,38 +358,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/phone/phone_1post.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -494,7 +378,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("phone", "1post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("phone", "1post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -503,38 +387,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/phone/phone_2post.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -545,7 +407,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("phone", "2post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("phone", "2post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -554,38 +416,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/carAlarm/carAlarm_1guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -596,7 +436,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("carAlarm", "1guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("carAlarm", "1guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -605,38 +445,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/carAlarm/carAlarm_2guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -647,7 +465,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("carAlarm", "2guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("carAlarm", "2guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -656,38 +474,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/carAlarm/carAlarm_1post.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -698,7 +494,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("carAlarm", "1post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("carAlarm", "1post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -707,38 +503,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/carAlarm/carAlarm_2post.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -749,7 +523,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("carAlarm", "2post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("carAlarm", "2post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -758,38 +532,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/coffeeMachine/coffeeMachine_1guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -800,7 +552,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("coffeeMachine", "1guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("coffeeMachine", "1guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -809,38 +561,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/coffeeMachine/coffeeMachine_2guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -851,7 +581,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("coffeeMachine", "2guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("coffeeMachine", "2guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -860,38 +590,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/coffeeMachine/coffeeMachine_1post.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -902,7 +610,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("coffeeMachine", "1post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("coffeeMachine", "1post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -911,38 +619,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/coffeeMachine/coffeeMachine_2post.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -953,7 +639,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("coffeeMachine", "2post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("coffeeMachine", "2post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -962,38 +648,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/frontWiper/frontWiper_1guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -1004,7 +668,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("frontWiper", "1guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("frontWiper", "1guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -1013,38 +677,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/frontWiper/frontWiper_2guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -1055,7 +697,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("frontWiper", "2guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("frontWiper", "2guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -1064,38 +706,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/creditCard/creditCard_1guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -1106,7 +726,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("creditCard", "1guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("creditCard", "1guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -1115,38 +735,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/creditCard/creditCard_2guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -1157,7 +755,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("creditCard", "2guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("creditCard", "2guard", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -1166,38 +764,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/creditCard/creditCard_1post.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -1208,7 +784,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("creditCard", "1post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("creditCard", "1post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
     @Test
@@ -1217,38 +793,16 @@ public class JSCATSStatisticsReporterTest {
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/creditCard/creditCard_2post.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Collections.emptyList());
-        long startTime;
-        long endTime;
-        double eua0Time;
-        double uua0Time;
-        double eua1Time;
-        double uua1Time;
-        startTime = System.nanoTime();
         JSCATS eua0 = new OldEUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
-        endTime = System.nanoTime();
-        eua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        startTime = System.nanoTime();
         JSCATS uua0 = new UUAComputer(machine, eua0).compute();
-        endTime = System.nanoTime();
-        uua0Time = (1.0 * endTime - startTime) / 1000000000;
-        startTime = System.nanoTime();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
-        endTime = System.nanoTime();
-        uua1Time = (1.0 * endTime - startTime) / 1000000000;
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
         JSCATS uua4 = new UUAComputer(machine, eua4).compute();
-        System.out.println(eua0Time);
-        System.out.println(eua1Time);
-        System.out.println(uua0Time);
-        System.out.println(uua1Time);
         JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter eua2Report = new JSCATSStatisticsReporter(eua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
@@ -1259,7 +813,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATSStatisticsReporter uua2Report = new JSCATSStatisticsReporter(uua2, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua3Report = new JSCATSStatisticsReporter(uua3, machine, new ArrayList<>(abstractionPredicates), eventNames);
         JSCATSStatisticsReporter uua4Report = new JSCATSStatisticsReporter(uua4, machine, new ArrayList<>(abstractionPredicates), eventNames);
-        save("creditCard", "2post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
+        testAndSave("creditCard", "2post", eua0, eua1, eua2, eua3, eua4, uua0, uua1, uua2, uua3, uua4, eua0Report, eua1Report, eua2Report, eua3Report, eua4Report, uua0Report, uua1Report, uua2Report, uua3Report, uua4Report);
     }
 
 }

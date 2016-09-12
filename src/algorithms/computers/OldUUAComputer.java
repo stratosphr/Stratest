@@ -36,8 +36,13 @@ public final class OldUUAComputer implements IComputer<JSCATS> {
 
     @Override
     public JSCATS compute() {
-        JSCATS connectedJSCATS = new JSCATS(new LinkedHashSet<>(abstraction.getQ()), new LinkedHashSet<>(abstraction.getQ0()), new LinkedHashSet<>(abstraction.getC()), new LinkedHashSet<>(abstraction.getIc0()), new LinkedHashSet<>(abstraction.getDelta()), new LinkedHashSet<>(abstraction.getDeltaPlus()), new LinkedHashSet<>(abstraction.getDeltaMinus()), new LinkedHashMap<>(abstraction.getAlpha()), new LinkedHashMap<>(abstraction.getKappa()), new LinkedHashSet<>(abstraction.getDeltaC()));
+        // Time measurement
+        long startTime;
+        long endTime;
+        double computationTime;
+        startTime = System.nanoTime();
         // Step 0: Variables declaration
+        JSCATS connectedJSCATS = new JSCATS(new LinkedHashSet<>(abstraction.getQ()), new LinkedHashSet<>(abstraction.getQ0()), new LinkedHashSet<>(abstraction.getC()), new LinkedHashSet<>(abstraction.getIc0()), new LinkedHashSet<>(abstraction.getDelta()), new LinkedHashSet<>(abstraction.getDeltaPlus()), new LinkedHashSet<>(abstraction.getDeltaMinus()), new LinkedHashMap<>(abstraction.getAlpha()), new LinkedHashMap<>(abstraction.getKappa()), new LinkedHashSet<>(abstraction.getDeltaC()), 0);
         MPlus = new LinkedHashMap<>();
         MMinus = new LinkedHashMap<>();
         connectedJSCATS.getDeltaPlus().forEach(abstractTransition -> MPlus.put(abstractTransition, false));
@@ -85,7 +90,10 @@ public final class OldUUAComputer implements IComputer<JSCATS> {
                 }
             }
         });
-        return connectedJSCATS;
+        // Time measurement
+        endTime = System.nanoTime();
+        computationTime = (1.0 * endTime - startTime) / 1000000000;
+        return new JSCATS(new LinkedHashSet<>(connectedJSCATS.getQ()), new LinkedHashSet<>(connectedJSCATS.getQ0()), new LinkedHashSet<>(connectedJSCATS.getC()), new LinkedHashSet<>(connectedJSCATS.getIc0()), new LinkedHashSet<>(connectedJSCATS.getDelta()), new LinkedHashSet<>(connectedJSCATS.getDeltaPlus()), new LinkedHashSet<>(connectedJSCATS.getDeltaMinus()), new LinkedHashMap<>(connectedJSCATS.getAlpha()), new LinkedHashMap<>(connectedJSCATS.getKappa()), new LinkedHashSet<>(connectedJSCATS.getDeltaC()), computationTime);
     }
 
     private static void mustPlusConcretization(AbstractTransition t, ConcreteState c, Machine machine, JSCATS abstraction) {

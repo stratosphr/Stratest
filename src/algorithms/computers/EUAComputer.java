@@ -57,6 +57,11 @@ public final class EUAComputer implements IComputer<JSCATS> {
 
     @Override
     public JSCATS compute() {
+        // Time measurement
+        long startTime;
+        long endTime;
+        double computationTime;
+        startTime = System.nanoTime();
         // Step 0: Variables declaration
         Set<AbstractState> Q = new LinkedHashSet<>();
         Set<AbstractState> Q0 = new LinkedHashSet<>();
@@ -83,7 +88,7 @@ public final class EUAComputer implements IComputer<JSCATS> {
                 IC0.add(c);
                 Alpha.put(c, q);
                 Kappa.put(c, EStateColor.GREEN);
-                if (isUseRelevanceChecker()) {
+                if (isUseRelevanceChecker() && relevanceChecker.isRelevant(c, new LinkedHashSet<>(Collections.singleton(c)), Kappa)) {
                     RC.add(c);
                 }
             }
@@ -126,8 +131,9 @@ public final class EUAComputer implements IComputer<JSCATS> {
                             z3.checkSAT();
                             cPrime = ConcreteStateComputer.computeConcreteState("c_" + qPrime.getName(), z3.getModel(), false);
                             Alpha.put(cPrime, qPrime);
-                            Kappa.put(cPrime, Kappa.get(witness));
+                            Kappa.putIfAbsent(cPrime, EStateColor.BLUE);
                             DeltaC.add(new ConcreteTransition(witness, e, cPrime));
+                            C.add(cPrime);
                         } else {
                             BC.clear();
                             BC.addAll(Alpha.keySet().stream().filter(concreteState -> Alpha.get(concreteState).equals(qPrime) && Kappa.get(concreteState).equals(EStateColor.BLUE)).collect(Collectors.toList()));
@@ -215,7 +221,10 @@ public final class EUAComputer implements IComputer<JSCATS> {
                 }
             }
         }
-        return new JSCATS(Q, Q0, C, IC0, Delta, DeltaPlus, DeltaMinus, Alpha, Kappa, DeltaC);
+        // Time measurement
+        endTime = System.nanoTime();
+        computationTime = (1.0 * endTime - startTime) / 1000000000;
+        return new JSCATS(Q, Q0, C, IC0, Delta, DeltaPlus, DeltaMinus, Alpha, Kappa, DeltaC, computationTime);
     }
 
     private static void propagate(ConcreteState c, Set<ConcreteTransition> deltaC, Map<ConcreteState, EStateColor> kappa) {

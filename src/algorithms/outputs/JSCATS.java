@@ -28,8 +28,9 @@ public class JSCATS {
     private final Map<ConcreteState, AbstractState> alpha;
     private Map<ConcreteState, EStateColor> kappa;
     private final Set<ConcreteTransition> deltaC;
+    private final double computationTime;
 
-    public JSCATS(Set<AbstractState> q, Set<AbstractState> q0, Set<ConcreteState> c, Set<ConcreteState> ic0, Set<AbstractTransition> delta, Set<AbstractTransition> deltaPlus, Set<AbstractTransition> deltaMinus, Map<ConcreteState, AbstractState> alpha, Map<ConcreteState, EStateColor> kappa, Set<ConcreteTransition> deltaC) {
+    public JSCATS(Set<AbstractState> q, Set<AbstractState> q0, Set<ConcreteState> c, Set<ConcreteState> ic0, Set<AbstractTransition> delta, Set<AbstractTransition> deltaPlus, Set<AbstractTransition> deltaMinus, Map<ConcreteState, AbstractState> alpha, Map<ConcreteState, EStateColor> kappa, Set<ConcreteTransition> deltaC, double computationTime) {
         this.q = q;
         this.q0 = q0;
         this.c = c;
@@ -40,6 +41,7 @@ public class JSCATS {
         this.alpha = alpha;
         this.kappa = kappa;
         this.deltaC = deltaC;
+        this.computationTime = computationTime;
     }
 
     public String getDOTFormatting() {
@@ -104,6 +106,10 @@ public class JSCATS {
 
     public Set<ConcreteTransition> getDeltaC() {
         return deltaC;
+    }
+
+    public double getComputationTime() {
+        return computationTime;
     }
 
 }

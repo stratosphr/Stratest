@@ -6,15 +6,15 @@ digraph G {
 
 	node[shape=box, style="rounded, filled", color=lightblue2];
 
-	c_q3_10[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 0)))"];
-	c_q3_13[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1)))"];
-	c_q1_3[label="(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 3) ∧ (h = 1)))"];
-	c_q3_16[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1)))"];
-	c_q1_2[label="(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))"];
-	c_q1_15[label="(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 2) ∧ (h = 1)))"];
-	c_q3_14[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 2) ∧ (h = 1)))"];
-	c_q1_17[label="(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1)))"];
-	c_q3_12[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1)))"];
+	c_q3_10[label="c_q3_10"];
+	c_q3_13[label="c_q3_13"];
+	c_q1_3[label="c_q1_3"];
+	c_q3_16[label="c_q3_16"];
+	c_q1_2[label="c_q1_2"];
+	c_q1_15[label="c_q1_15"];
+	c_q3_14[label="c_q3_14"];
+	c_q1_17[label="c_q1_17"];
+	c_q3_12[label="c_q3_12"];
 
 	start_c_q1_17 -> c_q1_17;
 	c_q1_17 -> c_q1_2[label="Tic", penwidth=3, color=red];

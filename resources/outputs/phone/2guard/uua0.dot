@@ -6,20 +6,20 @@ digraph G {
 
 	node[shape=box, style="rounded, filled", color=lightblue2];
 
-	c_q10_83[label="(c_q10 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 1)))"];
-	c_q11_46[label="(c_q11 ≝ ((Combine = 1) ∧ (Etat = 1) ∧ (NbEssai = 1)))"];
-	c_q11_64[label="(c_q11 ≝ ((Combine = 1) ∧ (Etat = 2) ∧ (NbEssai = 1)))"];
-	c_q4_57[label="(c_q4 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))"];
-	c_q3_82[label="(c_q3 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 2)))"];
-	c_q11_81[label="(c_q11 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))"];
-	c_q11_73[label="(c_q11 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 1)))"];
-	c_q3_53[label="(c_q3 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 2)))"];
-	c_q6_59[label="(c_q6 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 0)))"];
-	c_q7_40[label="(c_q7 ≝ ((Combine = 1) ∧ (Etat = 2) ∧ (NbEssai = 0)))"];
-	c_q7_80[label="(c_q7 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0)))"];
-	c_q7_42[label="(c_q7 ≝ ((Combine = 1) ∧ (Etat = 1) ∧ (NbEssai = 0)))"];
-	c_q2_75[label="(c_q2 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 2)))"];
-	c_q7_76[label="(c_q7 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))"];
+	c_q10_83[label="c_q10_83"];
+	c_q11_46[label="c_q11_46"];
+	c_q11_64[label="c_q11_64"];
+	c_q4_57[label="c_q4_57"];
+	c_q3_82[label="c_q3_82"];
+	c_q11_81[label="c_q11_81"];
+	c_q11_73[label="c_q11_73"];
+	c_q3_53[label="c_q3_53"];
+	c_q6_59[label="c_q6_59"];
+	c_q7_40[label="c_q7_40"];
+	c_q7_80[label="c_q7_80"];
+	c_q7_42[label="c_q7_42"];
+	c_q2_75[label="c_q2_75"];
+	c_q7_76[label="c_q7_76"];
 
 	start_c_q4_57 -> c_q4_57;
 	c_q4_57 -> c_q7_76[label="Appel_Qui_Donc", penwidth=3, color=red];

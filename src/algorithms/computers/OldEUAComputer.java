@@ -40,6 +40,11 @@ public final class OldEUAComputer implements IComputer<JSCATS> {
 
     @Override
     public JSCATS compute() {
+        // Time measurement
+        long startTime;
+        long endTime;
+        double computationTime;
+        startTime = System.nanoTime();
         // Step 0: Variables declaration
         Set<AbstractState> Q = new LinkedHashSet<>();
         Set<AbstractState> Q0 = new LinkedHashSet<>();
@@ -121,7 +126,10 @@ public final class OldEUAComputer implements IComputer<JSCATS> {
                 }
             }
         }
-        return new JSCATS(Q, Q0, C, IC0, Delta, DeltaPlus, DeltaMinus, Alpha, Kappa, DeltaC);
+        // Time measurement
+        endTime = System.nanoTime();
+        computationTime = (1.0 * endTime - startTime) / 1000000000;
+        return new JSCATS(Q, Q0, C, IC0, Delta, DeltaPlus, DeltaMinus, Alpha, Kappa, DeltaC, computationTime);
     }
 
     public Machine getMachine() {

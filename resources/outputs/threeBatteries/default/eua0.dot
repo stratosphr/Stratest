@@ -6,16 +6,16 @@ digraph G {
 
 	node[shape=box, style="rounded, filled", color=lightblue2];
 
-	c_q2_12[label="(c_q2 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 0)))"];
-	c_q0_10[label="(c_q0 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1)))"];
-	c_q3_20[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 2) ∧ (h = 0)))"];
-	c_q2_21[label="(c_q2 ≝ ((bat1 = 1) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 2) ∧ (h = 0)))"];
-	c_q3_17[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 3) ∧ (h = 0)))"];
-	c_q3_13[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))"];
-	c_q1_6[label="(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 3) ∧ (h = 1)))"];
-	c_q1_19[label="(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1)))"];
-	c_q3_18[label="(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 0) ∧ (batInUse = 3) ∧ (h = 0)))"];
-	c_q1_3[label="(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1)))"];
+	c_q2_12[label="c_q2_12"];
+	c_q0_10[label="c_q0_10"];
+	c_q3_20[label="c_q3_20"];
+	c_q2_21[label="c_q2_21"];
+	c_q3_17[label="c_q3_17"];
+	c_q3_13[label="c_q3_13"];
+	c_q1_6[label="c_q1_6"];
+	c_q1_19[label="c_q1_19"];
+	c_q3_18[label="c_q3_18"];
+	c_q1_3[label="c_q1_3"];
 
 	start_c_q1_3 -> c_q1_3;
 	c_q1_3 -> c_q1_19[label="Fail", penwidth=3, color=red];

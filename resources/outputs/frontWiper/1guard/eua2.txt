@@ -9,7 +9,7 @@ TestsLengthStandardDeviation : 3.168595903550972
 #MustPlusTransitions : 21
 #MustSharpTransitions : 0
 #PureMayTransitions : 102
-#ConcreteStates : 112
+#ConcreteStates : 183
 #ConcreteTransitions : 123
 #UniqueConcreteStatesInTests : 27
 #UniqueConcreteTransitionsInTests : 33

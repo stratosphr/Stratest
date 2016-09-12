@@ -1,24 +1,24 @@
 System size : -1
 #AbstractionPredicates : 4
 #Tests : 2
-AverageTestsLength : 25.0
-TestsLengthStandardDeviation : 2.0
+AverageTestsLength : 24.5
+TestsLengthStandardDeviation : 1.5
 #AbstractStates : 7
 #AbstractTransitions : 102
 #MustMinusTransitions : 24
 #MustPlusTransitions : 3
 #MustSharpTransitions : 0
 #PureMayTransitions : 75
-#ConcreteStates : 136
-#ConcreteTransitions : 138
-#UniqueConcreteStatesInTests : 46
-#UniqueConcreteTransitionsInTests : 45
+#ConcreteStates : 190
+#ConcreteTransitions : 137
+#UniqueConcreteStatesInTests : 45
+#UniqueConcreteTransitionsInTests : 44
 #EventsInTestPurpose : 0
 #EventsInTestPurposeFiredInTests : 0
 #BlueStates : 145
-#GreenStates : 46
+#GreenStates : 45
 #BlueTransitions : 0
-#GreenTransitions : 45
+#GreenTransitions : 44
 #AbstractStatesInTests : -1
 #AbstractTransitionsInTests : -1
 -----------------------------------
@@ -48,7 +48,6 @@ TestsLengthStandardDeviation : 2.0
 (c_q5 ≝ ((ATM_state = 7) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 7400) ∧ (A_balance_after_operation = 7400) ∧ (A_card_id = 3121) ∧ (A_error = 0) ∧ (A_result = 1) ∧ (A_user_pin = 4040) ∧ (CARD_state = 3) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 4040) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 3121) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 0))) - CARD_traite_pin -> (c_q7 ≝ ((ATM_state = 7) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 7400) ∧ (A_balance_after_operation = 7400) ∧ (A_card_id = 3121) ∧ (A_error = 0) ∧ (A_result = 1) ∧ (A_user_pin = 4040) ∧ (CARD_state = 4) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 4040) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 3121) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 0)))
 (c_q7 ≝ ((ATM_state = 7) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 7400) ∧ (A_balance_after_operation = 7400) ∧ (A_card_id = 3121) ∧ (A_error = 0) ∧ (A_result = 1) ∧ (A_user_pin = 4040) ∧ (CARD_state = 4) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 4040) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 3121) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 0))) - CARD_succes_pin -> (c_q5 ≝ ((ATM_state = 8) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 7400) ∧ (A_balance_after_operation = 7400) ∧ (A_card_id = 3121) ∧ (A_error = 0) ∧ (A_result = 1) ∧ (A_user_pin = 4040) ∧ (CARD_state = 0) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 4040) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 3121) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 0)))
 (c_q5 ≝ ((ATM_state = 8) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 7400) ∧ (A_balance_after_operation = 7400) ∧ (A_card_id = 3121) ∧ (A_error = 0) ∧ (A_result = 1) ∧ (A_user_pin = 4040) ∧ (CARD_state = 0) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 4040) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 3121) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 0))) - ATM_traite_reponse_pin -> (c_q5 ≝ ((ATM_state = 9) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 7400) ∧ (A_balance_after_operation = 7400) ∧ (A_card_id = 3121) ∧ (A_error = 0) ∧ (A_result = 1) ∧ (A_user_pin = 4040) ∧ (CARD_state = 0) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 4040) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 3121) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 1)))
-(c_q5 ≝ ((ATM_state = 9) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 7400) ∧ (A_balance_after_operation = 7400) ∧ (A_card_id = 3121) ∧ (A_error = 0) ∧ (A_result = 1) ∧ (A_user_pin = 4040) ∧ (CARD_state = 0) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 4040) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 3121) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 1))) - DB_check_id -> (c_q5 ≝ ((ATM_state = 9) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 7400) ∧ (A_balance_after_operation = 7400) ∧ (A_card_id = 3121) ∧ (A_error = 0) ∧ (A_result = 1) ∧ (A_user_pin = 4040) ∧ (CARD_state = 0) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 4040) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 3121) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 2)))
 -----------------------------------
 (c_q11 ≝ ((ATM_state = 0) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 0) ∧ (A_balance_after_operation = 0) ∧ (A_card_id = 0) ∧ (A_error = 0) ∧ (A_result = 0) ∧ (A_user_pin = 0) ∧ (CARD_state = 0) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 0) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 0) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 0))) - ATM_signal_connexion -> (c_q3 ≝ ((ATM_state = 1) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 0) ∧ (A_balance_after_operation = 0) ∧ (A_card_id = 0) ∧ (A_error = 0) ∧ (A_result = 0) ∧ (A_user_pin = 0) ∧ (CARD_state = 0) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 0) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 0) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 0)))
 (c_q3 ≝ ((ATM_state = 1) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 0) ∧ (A_balance_after_operation = 0) ∧ (A_card_id = 0) ∧ (A_error = 0) ∧ (A_result = 0) ∧ (A_user_pin = 0) ∧ (CARD_state = 0) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 0) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 0) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 0))) - ATM_operation_vide -> (c_q3 ≝ ((ATM_state = 2) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 0) ∧ (A_balance_after_operation = 0) ∧ (A_card_id = 0) ∧ (A_error = 0) ∧ (A_result = 0) ∧ (A_user_pin = 0) ∧ (CARD_state = 0) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 0) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 0) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 0)))
