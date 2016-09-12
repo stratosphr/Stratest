@@ -153,7 +153,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -276,7 +276,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -305,7 +305,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -421,7 +421,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -450,7 +450,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -479,7 +479,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -508,7 +508,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -537,7 +537,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -566,7 +566,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -595,7 +595,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -624,7 +624,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -653,7 +653,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -682,7 +682,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -740,7 +740,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
@@ -798,7 +798,7 @@ public class JSCATSStatisticsReporterTest {
         JSCATS eua2 = new EUAComputer(machine, abstractStates, true).compute();
         JSCATS eua3 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50)).compute();
         JSCATS eua4 = new EUAComputer(machine, abstractStates, new UniversalRelevancyChecker(50), true).compute();
-        JSCATS uua0 = new UUAComputer(machine, eua0).compute();
+        JSCATS uua0 = new OldUUAComputer(machine, eua0).compute();
         JSCATS uua1 = new UUAComputer(machine, eua1).compute();
         JSCATS uua2 = new UUAComputer(machine, eua2).compute();
         JSCATS uua3 = new UUAComputer(machine, eua3).compute();
