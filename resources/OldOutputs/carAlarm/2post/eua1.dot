@@ -1,0 +1,62 @@
+digraph G {
+
+	rankdir = LR;
+
+	start_c_q2_26[style=invisible];
+
+	node[shape=box, style="rounded, filled", color=lightblue2];
+
+	c_q2_17[label="c_q2_17"];
+	c_q0_31[label="c_q0_31"];
+	c_q1_44[label="c_q1_44"];
+	c_q2_25[label="c_q2_25"];
+	c_q2_41[label="c_q2_41"];
+	c_q0_45[label="c_q0_45"];
+	c_q0_40[label="c_q0_40"];
+	c_q0_43[label="c_q0_43"];
+	c_q0_35[label="c_q0_35"];
+	c_q0_29[label="c_q0_29"];
+	c_q0_33[label="c_q0_33"];
+	c_q2_4[label="c_q2_4"];
+	c_q2_24[label="c_q2_24"];
+	c_q0_32[label="c_q0_32"];
+	c_q2_8[label="c_q2_8"];
+	c_q2_20[label="c_q2_20"];
+	c_q2_26[label="c_q2_26"];
+	c_q0_34[label="c_q0_34"];
+	c_q0_37[label="c_q0_37"];
+	c_q0_38[label="c_q0_38"];
+	c_q2_39[label="c_q2_39"];
+	c_q2_6[label="c_q2_6"];
+	c_q0_28[label="c_q0_28"];
+	c_q2_13[label="c_q2_13"];
+	c_q2_5[label="c_q2_5"];
+	c_q0_36[label="c_q0_36"];
+	c_q0_30[label="c_q0_30"];
+
+	start_c_q2_26 -> c_q2_26;
+	c_q2_26 -> c_q2_13[label="e1", penwidth=3, color=red];
+	c_q2_13 -> c_q2_26[label="e2", penwidth=3, color=red];
+	c_q2_4 -> c_q2_5[label="e4"];
+	c_q2_6 -> c_q2_39[label="e6"];
+	c_q2_8 -> c_q2_39[label="e9"];
+	c_q2_13 -> c_q2_17[label="e12", penwidth=3, color=red];
+	c_q2_17 -> c_q2_13[label="e13", penwidth=3, color=red];
+	c_q2_17 -> c_q2_25[label="e14", penwidth=3, color=red];
+	c_q2_25 -> c_q2_17[label="e15", penwidth=3, color=red];
+	c_q2_26 -> c_q2_20[label="e16", penwidth=3, color=red];
+	c_q2_20 -> c_q2_26[label="e17", penwidth=3, color=red];
+	c_q2_25 -> c_q2_24[label="e18", penwidth=3, color=red];
+	c_q2_24 -> c_q2_25[label="e19", penwidth=3, color=red];
+	c_q2_26 -> c_q1_44[label="e10", penwidth=3, color=red];
+	c_q0_28 -> c_q0_29[label="e1"];
+	c_q0_30 -> c_q0_31[label="e4"];
+	c_q0_32 -> c_q0_33[label="e7"];
+	c_q0_34 -> c_q0_35[label="e8"];
+	c_q0_36 -> c_q0_37[label="e20"];
+	c_q0_38 -> c_q2_39[label="e6"];
+	c_q0_40 -> c_q2_41[label="e11"];
+	c_q1_44 -> c_q0_43[label="e8", penwidth=3, color=red];
+	c_q1_44 -> c_q0_45[label="e20", penwidth=3, color=red];
+
+}

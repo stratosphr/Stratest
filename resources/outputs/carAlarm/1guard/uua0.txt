@@ -1,26 +1,27 @@
-System size : -1
-#AbstractionPredicates : 9
-#Tests : 1
-AverageTestsLength : 28.0
-TestsLengthStandardDeviation : 0.0
-#AbstractStates : 27
-#AbstractTransitions : 68
-#MustMinusTransitions : 14
-#MustPlusTransitions : 23
-#MustSharpTransitions : 12
-#PureMayTransitions : 43
-#ConcreteStates : 63
-#ConcreteTransitions : 81
-#UniqueConcreteStatesInTests : 14
-#UniqueConcreteTransitionsInTests : 22
-#EventsInTestPurpose : 0
-#EventsInTestPurposeFiredInTests : 0
-#BlueStates : 2
-#GreenStates : 0
-#BlueTransitions : 2
-#GreenTransitions : 0
-#AbstractStatesInTests : -1
-#AbstractTransitionsInTests : -1
+System size: 32768
+#AbstractionPredicates: 9
+#Tests: 1
+AverageTestsLength: 28.0
+TestsLengthStandardDeviation: 0.0
+#AbstractStates: 27
+#AbstractStatesInTests: 9
+#ConcreteStates: 63
+#UniqueConcreteStatesInTests: 14
+#BlueStates: 0
+#GreenStates: 0
+#AbstractTransitions: 68
+#AbstractTransitionsInTests: 20
+#ConcreteTransitions: 81
+#UniqueConcreteTransitionsInTests: 22
+#BlueTransitions: 0
+#GreenTransitions: 0
+#PureMayTransitions: 43
+#MustMinusTransitions: 14
+#MustPlusTransitions: 23
+#MustSharpTransitions: 12
+#EventsInTestPurpose: 4
+#EventsInTestPurposeFiredInTests: 0
+Time: 0.291875814s
 -----------------------------------
 (c_q403 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 0) ∧ (Wa = 0))) - e12 -> (c_q403 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 1) ∧ (Wa = 0)))
 (c_q403 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 1) ∧ (Wa = 0))) - e16 -> (c_q275 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 1) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 1) ∧ (Wa = 0)))

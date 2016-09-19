@@ -50,9 +50,13 @@ public final class UUAComputer implements IComputer<JSCATS> {
         connectedJSCATS.getDeltaMinus().forEach(abstractTransition -> MMinus.put(abstractTransition, false));
         // Step 1: t has not been concretized yet and is an entry point for a must+ structure
         MPlus.forEach((t, marked) -> {
-            if (!marked) {
-                if (isMustPlusStructureEntryPoint(t, connectedJSCATS)) {
-                    Optional<ConcreteState> optionalC = connectedJSCATS.getAlpha().keySet().stream().filter(concreteState -> connectedJSCATS.getAlpha().get(concreteState).equals(t.getSource())).findFirst();
+            if (!marked && isMustPlusStructureEntryPoint(t, connectedJSCATS)) {
+                Optional<ConcreteState> optionalC = connectedJSCATS.getAlpha().keySet().stream().filter(concreteState -> connectedJSCATS.getAlpha().get(concreteState).equals(t.getSource()) && connectedJSCATS.getKappa().get(concreteState) == EStateColor.GREEN).findFirst();
+                if (optionalC.isPresent()) {
+                    ConcreteState c = optionalC.get();
+                    mustPlusConcretization(t, c, machine, connectedJSCATS);
+                } else {
+                    optionalC = connectedJSCATS.getAlpha().keySet().stream().filter(concreteState -> connectedJSCATS.getAlpha().get(concreteState).equals(t.getSource())).findFirst();
                     if (optionalC.isPresent()) {
                         ConcreteState c = optionalC.get();
                         mustPlusConcretization(t, c, machine, connectedJSCATS);
@@ -62,23 +66,27 @@ public final class UUAComputer implements IComputer<JSCATS> {
         });
         // Step 2: t has not been concretized yet and is an entry point for a must- structure
         MMinus.forEach((t, marked) -> {
-            if (!marked) {
-                if (isMustMinusStructureEntryPoint(t, connectedJSCATS)) {
-                    Optional<ConcreteState> optionalCPrime = connectedJSCATS.getAlpha().keySet().stream().filter(concreteState -> connectedJSCATS.getAlpha().get(concreteState).equals(t.getTarget())).findFirst();
-                    if (optionalCPrime.isPresent()) {
-                        ConcreteState cPrime = optionalCPrime.get();
-                        mustMinusConcretization(t, cPrime, machine, connectedJSCATS);
-                    }
+            if (!marked && isMustMinusStructureEntryPoint(t, connectedJSCATS)) {
+                Optional<ConcreteState> optionalCPrime = connectedJSCATS.getAlpha().keySet().stream().filter(concreteState -> connectedJSCATS.getAlpha().get(concreteState).equals(t.getTarget())).findFirst();
+                if (optionalCPrime.isPresent()) {
+                    ConcreteState cPrime = optionalCPrime.get();
+                    mustMinusConcretization(t, cPrime, machine, connectedJSCATS);
                 }
             }
         });
         // Step 3: concretisation of the must+ structures with no entry point
         MPlus.forEach((t, marked) -> {
             if (!marked) {
-                Optional<ConcreteState> optionalC = connectedJSCATS.getAlpha().keySet().stream().filter(concreteState -> connectedJSCATS.getAlpha().get(concreteState).equals(t.getSource())).findFirst();
+                Optional<ConcreteState> optionalC = connectedJSCATS.getAlpha().keySet().stream().filter(concreteState -> connectedJSCATS.getAlpha().get(concreteState).equals(t.getSource()) && connectedJSCATS.getKappa().get(concreteState) == EStateColor.GREEN).findFirst();
                 if (optionalC.isPresent()) {
                     ConcreteState c = optionalC.get();
                     mustPlusConcretization(t, c, machine, connectedJSCATS);
+                } else {
+                    optionalC = connectedJSCATS.getAlpha().keySet().stream().filter(concreteState -> connectedJSCATS.getAlpha().get(concreteState).equals(t.getSource())).findFirst();
+                    if (optionalC.isPresent()) {
+                        ConcreteState c = optionalC.get();
+                        mustPlusConcretization(t, c, machine, connectedJSCATS);
+                    }
                 }
             }
         });
@@ -103,7 +111,7 @@ public final class UUAComputer implements IComputer<JSCATS> {
         ConcreteTransition tc;
         abstraction.getAlpha().keySet().stream().filter(concreteState -> abstraction.getAlpha().get(concreteState).equals(t.getTarget())).forEach(concreteState -> TC.addAll(abstraction.getDeltaC().stream().filter(concreteTransition -> concreteTransition.getSource().equals(c) && concreteTransition.getEvent().getName().equals(t.getEvent().getName()) && concreteTransition.getTarget().equals(concreteState)).collect(Collectors.toList())));
         if (!TC.isEmpty()) {
-            tc = TC.iterator().next();
+            tc = TC.stream().filter(concreteTransition -> abstraction.getKappa().get(concreteTransition.getTarget()) == EStateColor.BLUE).findAny().orElse(TC.iterator().next());
         } else {
             Z3 z3 = new Z3();
             z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
@@ -119,10 +127,10 @@ public final class UUAComputer implements IComputer<JSCATS> {
                     (ABooleanExpression) t.getTarget().prime()
             )));
             if (z3.checkSAT() == SATISFIABLE) {
-                ConcreteState cPrime = ConcreteStateComputer.computeConcreteState("c_" + t.getTarget().getName(), z3.getModel(), false); //new ConcreteState("c_" + t.getTarget().getName(), getConcreteState(new EventBModel(machine, z3.getModel(), z3), false));
+                ConcreteState cPrime = ConcreteStateComputer.computeConcreteState("c_" + t.getTarget().getName(), z3.getModel(), false);
                 if (abstraction.getC().add(cPrime)) {
                     abstraction.getAlpha().put(cPrime, t.getTarget());
-                    abstraction.getKappa().put(cPrime, EStateColor.BLUE);
+                    abstraction.getKappa().put(cPrime, EStateColor.GREEN);
                 }
                 tc = new ConcreteTransition(c, t.getEvent(), cPrime);
                 abstraction.getDeltaC().add(tc);

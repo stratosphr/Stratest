@@ -1,0 +1,68 @@
+digraph G {
+
+	rankdir = LR;
+
+	start_c_q4_57[style=invisible];
+
+	node[shape=box, style="rounded, filled", color=lightblue2];
+
+	c_q10_83[label="c_q10_83"];
+	c_q11_46[label="c_q11_46"];
+	c_q11_64[label="c_q11_64"];
+	c_q4_57[label="c_q4_57"];
+	c_q3_82[label="c_q3_82"];
+	c_q11_81[label="c_q11_81"];
+	c_q11_73[label="c_q11_73"];
+	c_q3_53[label="c_q3_53"];
+	c_q6_59[label="c_q6_59"];
+	c_q7_40[label="c_q7_40"];
+	c_q7_80[label="c_q7_80"];
+	c_q7_42[label="c_q7_42"];
+	c_q2_75[label="c_q2_75"];
+	c_q7_76[label="c_q7_76"];
+
+	start_c_q4_57 -> c_q4_57;
+	c_q4_57 -> c_q7_76[label="Appel_Qui_Donc", penwidth=3, color=red];
+	c_q2_75 -> c_q4_57[label="HangUp", penwidth=3, color=red];
+	c_q3_82 -> c_q3_82[label="Start", penwidth=3, color=red];
+	c_q3_82 -> c_q2_75[label="Start", penwidth=3, color=red];
+	c_q3_82 -> c_q2_75[label="Timeout", penwidth=3, color=red];
+	c_q3_82 -> c_q4_57[label="Start", penwidth=3, color=red];
+	c_q3_82 -> c_q4_57[label="HangUp", penwidth=3, color=red];
+	c_q3_82 -> c_q6_59[label="Start", penwidth=3, color=red];
+	c_q3_53 -> c_q7_76[label="Start", penwidth=3, color=red];
+	c_q3_53 -> c_q10_83[label="Start", penwidth=3, color=red];
+	c_q3_53 -> c_q11_81[label="Start", penwidth=3, color=red];
+	c_q6_59 -> c_q4_57[label="HangUp", penwidth=3, color=red];
+	c_q7_76 -> c_q7_76[label="Start", penwidth=3, color=red];
+	c_q7_80 -> c_q2_75[label="Start", penwidth=3, color=red];
+	c_q7_80 -> c_q3_82[label="Start", penwidth=3, color=red];
+	c_q7_80 -> c_q4_57[label="Start", penwidth=3, color=red];
+	c_q7_80 -> c_q4_57[label="HangUp", penwidth=3, color=red];
+	c_q7_80 -> c_q6_59[label="Start", penwidth=3, color=red];
+	c_q7_40 -> c_q6_59[label="Timeout"];
+	c_q7_40 -> c_q10_83[label="Start"];
+	c_q7_40 -> c_q11_81[label="Start"];
+	c_q7_42 -> c_q11_46[label="Timeout"];
+	c_q10_83 -> c_q4_57[label="HangUp", penwidth=3, color=red];
+	c_q11_46 -> c_q11_81[label="Start"];
+	c_q11_73 -> c_q2_75[label="Start", penwidth=3, color=red];
+	c_q11_73 -> c_q3_82[label="Start", penwidth=3, color=red];
+	c_q11_73 -> c_q3_53[label="Timeout", penwidth=3, color=red];
+	c_q11_73 -> c_q4_57[label="Start", penwidth=3, color=red];
+	c_q11_73 -> c_q4_57[label="HangUp", penwidth=3, color=red];
+	c_q11_73 -> c_q6_59[label="Start", penwidth=3, color=red];
+	c_q11_73 -> c_q7_76[label="Start", penwidth=3, color=red];
+	c_q11_73 -> c_q10_83[label="Start", penwidth=3, color=red];
+	c_q11_64 -> c_q10_83[label="Timeout"];
+	c_q3_82 -> c_q7_80[label="Start", penwidth=3, color=red];
+	c_q3_82 -> c_q11_73[label="Start", penwidth=3, color=red];
+	c_q7_76 -> c_q11_73[label="Start", penwidth=3, color=red];
+	c_q11_81 -> c_q11_73[label="Start", penwidth=3, color=red];
+	c_q7_76 -> c_q2_75[label="Start", penwidth=3, color=red];
+	c_q7_76 -> c_q3_82[label="Start", penwidth=3, color=red];
+	c_q7_80 -> c_q10_83[label="Start", penwidth=3, color=red];
+	c_q7_80 -> c_q11_81[label="Start", penwidth=3, color=red];
+	c_q3_82 -> c_q10_83[label="Start", penwidth=3, color=red];
+
+}

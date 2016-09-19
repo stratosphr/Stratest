@@ -1,0 +1,31 @@
+System size: 32768
+#AbstractionPredicates: 2
+#Tests: 1
+AverageTestsLength: 5.0
+TestsLengthStandardDeviation: 0.0
+#AbstractStates: 3
+#AbstractStatesInTests: 1
+#ConcreteStates: 31
+#UniqueConcreteStatesInTests: 3
+#BlueStates: 0
+#GreenStates: 0
+#AbstractTransitions: 23
+#AbstractTransitionsInTests: 4
+#ConcreteTransitions: 24
+#UniqueConcreteTransitionsInTests: 4
+#BlueTransitions: 0
+#GreenTransitions: 0
+#PureMayTransitions: 22
+#MustMinusTransitions: 0
+#MustPlusTransitions: 1
+#MustSharpTransitions: 0
+#EventsInTestPurpose: 2
+#EventsInTestPurposeFiredInTests: 0
+Time: 0.018719486s
+-----------------------------------
+(c_q2 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 0) ∧ (Wa = 0))) - e16 -> (c_q2 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 1) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 0) ∧ (Wa = 0)))
+(c_q2 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 1) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 0) ∧ (Wa = 0))) - e17 -> (c_q2 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 0) ∧ (Wa = 0)))
+(c_q2 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 0) ∧ (Wa = 0))) - e1 -> (c_q2 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 1) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 0) ∧ (Wa = 0)))
+(c_q2 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 1) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 0) ∧ (Wa = 0))) - e2 -> (c_q2 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 0) ∧ (Wa = 0)))
+(c_q2 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 0) ∧ (Wa = 0))) - e16 -> (c_q2 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 1) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 0) ∧ (Wa = 0)))
+-----------------------------------

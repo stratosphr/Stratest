@@ -44,14 +44,14 @@ public final class JSCATSStatisticsReporter extends AStatisticsReporter {
     private final List<Test> tests;
     private final double computationTime;
 
-    public JSCATSStatisticsReporter(JSCATS jscats, Machine machine, List<Predicate> abstractionPredicates, Set<String> testPurposeEventNames) {
+    public JSCATSStatisticsReporter(JSCATS jscats, Machine machine, List<Predicate> abstractionPredicates, Set<String> testPurposeEventNames, int estimatedSystemSize) {
         List<Test> tests = TestsGenerator.generateTests(jscats);
         LinkedHashSet<ConcreteTransition> flattenedTestsTransitions = tests.stream().flatMap(Collection::stream).collect(Collectors.toCollection(LinkedHashSet::new));
         LinkedHashSet<ConcreteState> flattenedTestsStates = flattenedTestsTransitions.stream().map(concreteTransition -> Arrays.asList(concreteTransition.getSource(), concreteTransition.getTarget())).flatMap(Collection::stream).collect(Collectors.toCollection(LinkedHashSet::new));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates);
         List<AbstractTransition> mustSharpTransitions = jscats.getDeltaMinus().stream().filter(abstractTransition -> jscats.getDeltaPlus().contains(abstractTransition)).collect(Collectors.toList());
         this.tests = tests;
-        this.size = -1;
+        this.size = estimatedSystemSize;
         this.nbAbstractionPredicates = abstractionPredicates.size();
         this.nbTests = tests.size();
         this.averageTestsLength = tests.stream().mapToInt(ArrayList::size).average().orElse(0);
@@ -177,6 +177,35 @@ public final class JSCATSStatisticsReporter extends AStatisticsReporter {
         return computationTime;
     }
 
+    public String getRowRepresentation() {
+        String rowRepresentation = "";
+        rowRepresentation += getSize() + " ";
+        rowRepresentation += getNbAbstractionPredicates() + " ";
+        rowRepresentation += getNbTests() + " ";
+        rowRepresentation += getAverageTestsLength() + " ";
+        rowRepresentation += getTestsLengthStandardDeviation() + " ";
+        rowRepresentation += getNbAbstractStates() + " ";
+        rowRepresentation += getNbAbstractStatesInTests() + " ";
+        rowRepresentation += getNbConcreteStates() + " ";
+        rowRepresentation += getNbUniqueConcreteStatesInTests() + " ";
+        rowRepresentation += getNbBlueStates() + " ";
+        rowRepresentation += getNbGreenStates() + " ";
+        rowRepresentation += getNbAbstractTransitions() + " ";
+        rowRepresentation += getNbAbstractTransitionsInTests() + " ";
+        rowRepresentation += getNbConcreteTransitions() + " ";
+        rowRepresentation += getNbUniqueConcreteTransitionsInTests() + " ";
+        rowRepresentation += getNbBlueTransitions() + " ";
+        rowRepresentation += getNbGreenTransitions() + " ";
+        rowRepresentation += getNbPureMayTransitions() + " ";
+        rowRepresentation += getNbMustMinusTransitions() + " ";
+        rowRepresentation += getNbMustPlusTransitions() + " ";
+        rowRepresentation += getNbMustSharpTransitions() + " ";
+        rowRepresentation += getNbEventsInTestPurpose() + " ";
+        rowRepresentation += getNbEventsInTestPurposeFiredInTests() + " ";
+        rowRepresentation += getComputationTime();
+        return rowRepresentation;
+    }
+
     @Override
     public String toString() {
         String str = "";
@@ -186,23 +215,23 @@ public final class JSCATSStatisticsReporter extends AStatisticsReporter {
         str += "AverageTestsLength: " + getAverageTestsLength() + UCharacters.LINE_SEPARATOR;
         str += "TestsLengthStandardDeviation: " + getTestsLengthStandardDeviation() + UCharacters.LINE_SEPARATOR;
         str += "#AbstractStates: " + getNbAbstractStates() + UCharacters.LINE_SEPARATOR;
+        str += "#AbstractStatesInTests: " + getNbAbstractStatesInTests() + UCharacters.LINE_SEPARATOR;
+        str += "#ConcreteStates: " + getNbConcreteStates() + UCharacters.LINE_SEPARATOR;
+        str += "#UniqueConcreteStatesInTests: " + getNbUniqueConcreteStatesInTests() + UCharacters.LINE_SEPARATOR;
+        str += "#BlueStates: " + getNbBlueStates() + UCharacters.LINE_SEPARATOR;
+        str += "#GreenStates: " + getNbGreenStates() + UCharacters.LINE_SEPARATOR;
         str += "#AbstractTransitions: " + getNbAbstractTransitions() + UCharacters.LINE_SEPARATOR;
+        str += "#AbstractTransitionsInTests: " + getNbAbstractTransitionsInTests() + UCharacters.LINE_SEPARATOR;
+        str += "#ConcreteTransitions: " + getNbConcreteTransitions() + UCharacters.LINE_SEPARATOR;
+        str += "#UniqueConcreteTransitionsInTests: " + getNbUniqueConcreteTransitionsInTests() + UCharacters.LINE_SEPARATOR;
+        str += "#BlueTransitions: " + getNbBlueTransitions() + UCharacters.LINE_SEPARATOR;
+        str += "#GreenTransitions: " + getNbGreenTransitions() + UCharacters.LINE_SEPARATOR;
+        str += "#PureMayTransitions: " + getNbPureMayTransitions() + UCharacters.LINE_SEPARATOR;
         str += "#MustMinusTransitions: " + getNbMustMinusTransitions() + UCharacters.LINE_SEPARATOR;
         str += "#MustPlusTransitions: " + getNbMustPlusTransitions() + UCharacters.LINE_SEPARATOR;
         str += "#MustSharpTransitions: " + getNbMustSharpTransitions() + UCharacters.LINE_SEPARATOR;
-        str += "#PureMayTransitions: " + getNbPureMayTransitions() + UCharacters.LINE_SEPARATOR;
-        str += "#ConcreteStates: " + getNbConcreteStates() + UCharacters.LINE_SEPARATOR;
-        str += "#ConcreteTransitions: " + getNbConcreteTransitions() + UCharacters.LINE_SEPARATOR;
-        str += "#UniqueConcreteStatesInTests: " + getNbUniqueConcreteStatesInTests() + UCharacters.LINE_SEPARATOR;
-        str += "#UniqueConcreteTransitionsInTests: " + getNbUniqueConcreteTransitionsInTests() + UCharacters.LINE_SEPARATOR;
         str += "#EventsInTestPurpose: " + getNbEventsInTestPurpose() + UCharacters.LINE_SEPARATOR;
         str += "#EventsInTestPurposeFiredInTests: " + getNbEventsInTestPurposeFiredInTests() + UCharacters.LINE_SEPARATOR;
-        str += "#BlueStates: " + getNbBlueStates() + UCharacters.LINE_SEPARATOR;
-        str += "#GreenStates: " + getNbGreenStates() + UCharacters.LINE_SEPARATOR;
-        str += "#BlueTransitions: " + getNbBlueTransitions() + UCharacters.LINE_SEPARATOR;
-        str += "#GreenTransitions: " + getNbGreenTransitions() + UCharacters.LINE_SEPARATOR;
-        str += "#AbstractStatesInTests: " + getNbAbstractStatesInTests() + UCharacters.LINE_SEPARATOR;
-        str += "#AbstractTransitionsInTests: " + getNbAbstractTransitionsInTests() + UCharacters.LINE_SEPARATOR;
         str += "Time: " + getComputationTime() + "s" + UCharacters.LINE_SEPARATOR;
         str += getTests().stream().map(test -> test.stream().map(ATransition::toString).collect(Collectors.joining(UCharacters.LINE_SEPARATOR))).collect(Collectors.joining(UCharacters.LINE_SEPARATOR + "-----------------------------------" + UCharacters.LINE_SEPARATOR, "-----------------------------------" + UCharacters.LINE_SEPARATOR, "")) + UCharacters.LINE_SEPARATOR + "-----------------------------------" + UCharacters.LINE_SEPARATOR;
         return str;

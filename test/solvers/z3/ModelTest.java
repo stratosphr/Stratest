@@ -37,8 +37,8 @@ public class ModelTest {
         z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(new Equals(v1, one), new Equals(functionCall, three)).prime(true)));
         z3.checkSAT();
         model = z3.getModel();
-        Assert.assertEquals(one, model.get(new Variable("v1" + Primer.getSuffix())));
-        Assert.assertEquals(three, model.get(new Variable("fun" + Primer.getSuffix() + "!1")));
+        Assert.assertEquals(one, model.get(new Variable("v1" + Primer.getPrimeSuffix())));
+        Assert.assertEquals(three, model.get(new Variable("fun" + Primer.getPrimeSuffix() + "!1")));
     }
 
 }

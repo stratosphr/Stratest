@@ -8,6 +8,7 @@ import eventb.Machine;
 import eventb.expressions.arith.Variable;
 import eventb.expressions.bool.*;
 import eventb.tools.formatters.ExpressionToSMTLib2Formatter;
+import eventb.tools.primer.Primer;
 import graphs.AbstractState;
 import graphs.AbstractTransition;
 import graphs.ConcreteState;
@@ -88,7 +89,7 @@ public final class EUAComputer implements IComputer<JSCATS> {
                 IC0.add(c);
                 Alpha.put(c, q);
                 Kappa.put(c, EStateColor.GREEN);
-                if (isUseRelevanceChecker() && relevanceChecker.isRelevant(c, new LinkedHashSet<>(Collections.singleton(c)), Kappa)) {
+                if (isUseRelevanceChecker()) {
                     RC.add(c);
                 }
             }
@@ -126,10 +127,12 @@ public final class EUAComputer implements IComputer<JSCATS> {
                         z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And((ABooleanExpression) machine.getInvariant().prime(true), new Exists(new And(machine.getInvariant(), e.getSubstitution().getPrd(machine), new Or(GC.toArray(new ABooleanExpression[GC.size()]))), machine.getVariables().toArray(new Variable[machine.getAssignables().size()])), (ABooleanExpression) qPrime.getExpression().prime())));
                         Status cPrimeSAT = z3.checkSAT();
                         if (cPrimeSAT != Status.SATISFIABLE) {
-                            z3.reset();
+                            /*z3.reset();
                             z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And((ABooleanExpression) machine.getInvariant().prime(true), new Exists(new And(machine.getInvariant(), e.getSubstitution().getPrd(machine), witness), machine.getVariables().toArray(new Variable[machine.getAssignables().size()])), (ABooleanExpression) qPrime.prime())));
                             z3.checkSAT();
-                            cPrime = ConcreteStateComputer.computeConcreteState("c_" + qPrime.getName(), z3.getModel(), false);
+                            cPrime = ConcreteStateComputer.computeConcreteState("c_" + qPrime.getName(), z3.getModel(), false);*/
+                            // NEW
+                            cPrime = ConcreteStateComputer.computeConcreteState("c_" + qPrime.getName(), nc.getSecond(), false);
                             Alpha.put(cPrime, qPrime);
                             Kappa.putIfAbsent(cPrime, EStateColor.BLUE);
                             DeltaC.add(new ConcreteTransition(witness, e, cPrime));
@@ -138,14 +141,32 @@ public final class EUAComputer implements IComputer<JSCATS> {
                             BC.clear();
                             BC.addAll(Alpha.keySet().stream().filter(concreteState -> Alpha.get(concreteState).equals(qPrime) && Kappa.get(concreteState).equals(EStateColor.BLUE)).collect(Collectors.toList()));
                             z3.reset();
-                            z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And((ABooleanExpression) machine.getInvariant().prime(true), new Exists(new And(machine.getInvariant(), e.getSubstitution().getPrd(machine), new Or(GC.toArray(new ABooleanExpression[GC.size()]))), machine.getVariables().toArray(new Variable[machine.getAssignables().size()])), new Or(BC.stream().map(concreteState -> (ABooleanExpression) concreteState.prime()).toArray(ABooleanExpression[]::new)))));
+                            z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(
+                                    new And(
+                                            (ABooleanExpression) machine.getInvariant().prime(true),
+                                            new Exists(
+                                                    new And(
+                                                            machine.getInvariant(),
+                                                            e.getSubstitution().getPrd(machine),
+                                                            new Or(GC.toArray(new ABooleanExpression[GC.size()])),
+                                                            // NEW
+                                                            new And(machine.getVariables().stream().map(variable -> new Equals(new Variable(variable.getName() + Primer.getAnteSuffix()), variable)).toArray(ABooleanExpression[]::new))
+                                                    ),
+                                                    machine.getVariables().toArray(new Variable[machine.getAssignables().size()])
+                                            ),
+                                            new Or(BC.stream().map(concreteState -> (ABooleanExpression) concreteState.prime()).toArray(ABooleanExpression[]::new))
+                                    )
+                            ));
                             cPrimeSAT = z3.checkSAT();
                             if (cPrimeSAT == Status.SATISFIABLE) {
-                                cPrime = ConcreteStateComputer.computeConcreteState("c_" + qPrime.getName(), z3.getModel(), false);
-                                z3.reset();
+                                Model model = z3.getModel();
+                                cPrime = ConcreteStateComputer.computeConcreteState("c_" + qPrime.getName(), model, false);
+                                /*z3.reset();
                                 z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(machine.getInvariant(), (ABooleanExpression) machine.getInvariant().prime(true), e.getSubstitution().getPrd(machine), (ABooleanExpression) cPrime.prime(), new Or(GC.toArray(new ABooleanExpression[GC.size()])))));
                                 z3.checkSAT();
-                                ConcreteState c = ConcreteStateComputer.computeConcreteState("c_" + q.getName(), z3.getModel(), true);
+                                ConcreteState c = ConcreteStateComputer.computeConcreteState("c_" + q.getName(), z3.getModel(), true);*/
+                                // NEW
+                                ConcreteState c = ConcreteStateComputer.computeConcreteState("c_" + q.getName(), model, true);
                                 DeltaC.add(new ConcreteTransition(c, e, cPrime));
                                 Kappa.put(cPrime, EStateColor.GREEN);
                                 if (isUsePropagation()) {
@@ -156,14 +177,33 @@ public final class EUAComputer implements IComputer<JSCATS> {
                                 }
                             }
                             z3.reset();
-                            z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And((ABooleanExpression) machine.getInvariant().prime(true), new Exists(new And(machine.getInvariant(), e.getSubstitution().getPrd(machine), new Or(GC.toArray(new ABooleanExpression[GC.size()]))), machine.getVariables().toArray(new Variable[machine.getAssignables().size()])), new Not(new Or(BC.stream().map(concreteState -> (ABooleanExpression) concreteState.prime()).toArray(ABooleanExpression[]::new))), (ABooleanExpression) qPrime.prime())));
+                            z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(
+                                    new And(
+                                            (ABooleanExpression) machine.getInvariant().prime(true),
+                                            new Exists(
+                                                    new And(
+                                                            machine.getInvariant(),
+                                                            e.getSubstitution().getPrd(machine),
+                                                            new Or(GC.toArray(new ABooleanExpression[GC.size()])),
+                                                            // NEW
+                                                            new And(machine.getVariables().stream().map(variable -> new Equals(new Variable(variable.getName() + Primer.getAnteSuffix()), variable)).toArray(ABooleanExpression[]::new))
+                                                    ),
+                                                    machine.getVariables().toArray(new Variable[machine.getAssignables().size()])
+                                            ),
+                                            new Not(new Or(BC.stream().map(concreteState -> (ABooleanExpression) concreteState.prime()).toArray(ABooleanExpression[]::new))),
+                                            (ABooleanExpression) qPrime.prime()
+                                    )
+                            ));
                             cPrimeSAT = z3.checkSAT();
                             if (cPrimeSAT == Status.SATISFIABLE) {
-                                cPrime = ConcreteStateComputer.computeConcreteState("c_" + qPrime.getName(), z3.getModel(), false);
-                                z3.reset();
+                                Model model = z3.getModel();
+                                cPrime = ConcreteStateComputer.computeConcreteState("c_" + qPrime.getName(), model, false);
+                                /*z3.reset();
                                 z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(machine.getInvariant(), (ABooleanExpression) machine.getInvariant().prime(true), e.getSubstitution().getPrd(machine), (ABooleanExpression) cPrime.prime(), new Or(GC.toArray(new ABooleanExpression[GC.size()])))));
                                 z3.checkSAT();
-                                ConcreteState c = ConcreteStateComputer.computeConcreteState("c_" + q.getName(), z3.getModel(), true);
+                                ConcreteState c = ConcreteStateComputer.computeConcreteState("c_" + q.getName(), z3.getModel(), true);*/
+                                // NEW
+                                ConcreteState c = ConcreteStateComputer.computeConcreteState("c_" + q.getName(), model, true);
                                 DeltaC.add(new ConcreteTransition(c, e, cPrime));
                                 Kappa.put(cPrime, EStateColor.GREEN);
                                 if (C.add(cPrime)) {

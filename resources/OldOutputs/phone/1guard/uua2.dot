@@ -1,0 +1,39 @@
+digraph G {
+
+	rankdir = LR;
+
+	start_c_q5_29[style=invisible];
+
+	node[shape=box, style="rounded, filled", color=lightblue2];
+
+	c_q6_28[label="c_q6_28"];
+	c_q2_30[label="c_q2_30"];
+	c_q6_17[label="c_q6_17"];
+	c_q2_3[label="c_q2_3"];
+	c_q2_32[label="c_q2_32"];
+	c_q2_21[label="c_q2_21"];
+	c_q6_33[label="c_q6_33"];
+	c_q2_2[label="c_q2_2"];
+	c_q5_29[label="c_q5_29"];
+	c_q6_16[label="c_q6_16"];
+
+	start_c_q5_29 -> c_q5_29;
+	c_q5_29 -> c_q6_28[label="Appel_Qui_Donc", penwidth=3, color=red];
+	c_q2_2 -> c_q2_3[label="Start"];
+	c_q2_32 -> c_q2_30[label="Timeout", penwidth=3, color=red];
+	c_q2_32 -> c_q5_29[label="Start", penwidth=3, color=red];
+	c_q2_32 -> c_q5_29[label="HangUp", penwidth=3, color=red];
+	c_q2_32 -> c_q6_28[label="Start", penwidth=3, color=red];
+	c_q6_28 -> c_q6_33[label="Start", penwidth=3, color=red];
+	c_q6_28 -> c_q6_28[label="Start", penwidth=3, color=red];
+	c_q6_16 -> c_q6_17[label="Timeout"];
+	c_q6_33 -> c_q2_30[label="Start", penwidth=3, color=red];
+	c_q6_33 -> c_q2_21[label="Start", penwidth=3, color=red];
+	c_q6_28 -> c_q2_32[label="Timeout", penwidth=3, color=red];
+	c_q6_33 -> c_q5_29[label="Start", penwidth=3, color=red];
+	c_q6_33 -> c_q5_29[label="HangUp", penwidth=3, color=red];
+	c_q6_28 -> c_q5_29[label="HangUp", penwidth=3, color=red];
+	c_q2_30 -> c_q2_32[label="Start", penwidth=3, color=red];
+	c_q2_32 -> c_q6_33[label="Start", penwidth=3, color=red];
+
+}

@@ -1,0 +1,83 @@
+digraph G {
+
+	rankdir = LR;
+
+	start_c_q5_75[style=invisible];
+
+	node[shape=box, style="rounded, filled", color=lightblue2];
+
+	c_q0_22[label="c_q0_22"];
+	c_q0_16[label="c_q0_16"];
+	c_q4_57[label="c_q4_57"];
+	c_q4_36[label="c_q4_36"];
+	c_q0_19[label="c_q0_19"];
+	c_q4_66[label="c_q4_66"];
+	c_q5_63[label="c_q5_63"];
+	c_q4_56[label="c_q4_56"];
+	c_q0_27[label="c_q0_27"];
+	c_q4_72[label="c_q4_72"];
+	c_q0_13[label="c_q0_13"];
+	c_q4_62[label="c_q4_62"];
+	c_q2_28[label="c_q2_28"];
+	c_q4_74[label="c_q4_74"];
+	c_q4_52[label="c_q4_52"];
+	c_q0_20[label="c_q0_20"];
+	c_q4_38[label="c_q4_38"];
+	c_q4_58[label="c_q4_58"];
+	c_q5_8[label="c_q5_8"];
+	c_q4_64[label="c_q4_64"];
+	c_q4_7[label="c_q4_7"];
+	c_q0_24[label="c_q0_24"];
+	c_q0_12[label="c_q0_12"];
+	c_q4_60[label="c_q4_60"];
+	c_q4_41[label="c_q4_41"];
+	c_q2_30[label="c_q2_30"];
+	c_q5_75[label="c_q5_75"];
+	c_q5_59[label="c_q5_59"];
+	c_q2_26[label="c_q2_26"];
+	c_q5_67[label="c_q5_67"];
+	c_q4_35[label="c_q4_35"];
+	c_q0_14[label="c_q0_14"];
+	c_q4_44[label="c_q4_44"];
+
+	start_c_q5_75 -> c_q5_75;
+	c_q5_75 -> c_q5_67[label="e18", penwidth=3, color=red];
+	c_q5_67 -> c_q5_75[label="e19", penwidth=3, color=red];
+	c_q5_75 -> c_q0_20[label="e10", penwidth=3, color=red];
+	c_q5_67 -> c_q4_7[label="e1", penwidth=3, color=red];
+	c_q5_8 -> c_q4_35[label="e12"];
+	c_q5_67 -> c_q4_66[label="e16", penwidth=3, color=red];
+	c_q0_12 -> c_q0_13[label="e1"];
+	c_q0_14 -> c_q0_22[label="e4"];
+	c_q0_16 -> c_q0_27[label="e8"];
+	c_q0_20 -> c_q0_19[label="e20", penwidth=3, color=red];
+	c_q0_20 -> c_q2_26[label="e8", penwidth=3, color=red];
+	c_q0_22 -> c_q4_72[label="e6"];
+	c_q0_24 -> c_q5_63[label="e6"];
+	c_q2_26 -> c_q0_27[label="e7", penwidth=3, color=red];
+	c_q2_28 -> c_q4_62[label="e11"];
+	c_q2_30 -> c_q5_63[label="e11"];
+	c_q4_35 -> c_q4_56[label="e1"];
+	c_q4_56 -> c_q4_35[label="e2"];
+	c_q4_36 -> c_q4_38[label="e4"];
+	c_q4_38 -> c_q4_72[label="e6"];
+	c_q4_44 -> c_q4_41[label="e9"];
+	c_q4_62 -> c_q4_44[label="e12"];
+	c_q4_44 -> c_q4_62[label="e13"];
+	c_q4_72 -> c_q4_58[label="e14", penwidth=3, color=red];
+	c_q4_58 -> c_q4_72[label="e15", penwidth=3, color=red];
+	c_q4_74 -> c_q4_52[label="e16", penwidth=3, color=red];
+	c_q4_52 -> c_q4_74[label="e17", penwidth=3, color=red];
+	c_q4_74 -> c_q4_64[label="e18", penwidth=3, color=red];
+	c_q4_56 -> c_q4_57[label="e19"];
+	c_q4_58 -> c_q5_59[label="e2", penwidth=3, color=red];
+	c_q4_60 -> c_q5_63[label="e6"];
+	c_q4_62 -> c_q5_63[label="e9"];
+	c_q4_64 -> c_q5_67[label="e13", penwidth=3, color=red];
+	c_q4_66 -> c_q5_67[label="e17", penwidth=3, color=red];
+	c_q5_75 -> c_q4_72[label="e1", penwidth=3, color=red];
+	c_q5_75 -> c_q4_74[label="e12", penwidth=3, color=red];
+	c_q4_72 -> c_q5_75[label="e2", penwidth=3, color=red];
+	c_q4_74 -> c_q5_75[label="e13", penwidth=3, color=red];
+
+}

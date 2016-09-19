@@ -1,27 +1,27 @@
-System size: -1
+System size: 2
 #AbstractionPredicates: 1
 #Tests: 1
 AverageTestsLength: 1.0
 TestsLengthStandardDeviation: 0.0
 #AbstractStates: 2
+#AbstractStatesInTests: 2
+#ConcreteStates: 2
+#UniqueConcreteStatesInTests: 2
+#BlueStates: 0
+#GreenStates: 2
 #AbstractTransitions: 1
+#AbstractTransitionsInTests: 1
+#ConcreteTransitions: 1
+#UniqueConcreteTransitionsInTests: 1
+#BlueTransitions: 0
+#GreenTransitions: 1
+#PureMayTransitions: 1
 #MustMinusTransitions: 0
 #MustPlusTransitions: 0
 #MustSharpTransitions: 0
-#PureMayTransitions: 1
-#ConcreteStates: 2
-#ConcreteTransitions: 1
-#UniqueConcreteStatesInTests: 2
-#UniqueConcreteTransitionsInTests: 1
-#EventsInTestPurpose: 0
-#EventsInTestPurposeFiredInTests: 0
-#BlueStates: 0
-#GreenStates: 2
-#BlueTransitions: 0
-#GreenTransitions: 1
-#AbstractStatesInTests: 2
-#AbstractTransitionsInTests: -1
-Time: 0.090897325s
+#EventsInTestPurpose: 1
+#EventsInTestPurposeFiredInTests: 1
+Time: 0.092063253s
 -----------------------------------
 (c_q0 ≝ ((var1 = 0) ∧ (var2 = 0))) - event1 -> (c_q1 ≝ ((var1 = 1) ∧ (var2 = 0)))
 -----------------------------------

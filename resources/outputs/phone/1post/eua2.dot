@@ -2,44 +2,45 @@ digraph G {
 
 	rankdir = LR;
 
-	start_c_q6_41[style=invisible];
+	start_c_q6_43[style=invisible];
 
 	node[shape=box, style="rounded, filled", color=lightblue2];
 
-	c_q0_3[label="c_q0_3"];
-	c_q0_25[label="c_q0_25"];
-	c_q6_41[label="c_q6_41"];
-	c_q4_34[label="c_q4_34"];
-	c_q4_28[label="c_q4_28"];
-	c_q5_40[label="c_q5_40"];
-	c_q1_18[label="c_q1_18"];
-	c_q4_38[label="c_q4_38"];
-	c_q1_31[label="c_q1_31"];
-	c_q0_29[label="c_q0_29"];
-	c_q0_10[label="c_q0_10"];
-	c_q0_27[label="c_q0_27"];
+	c_q0_3[label="(c_q0 ≝ ((Combine = 1) ∧ (Etat = 1) ∧ (NbEssai = 1)))"];
+	c_q0_25[label="(c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 2)))"];
+	c_q6_43[label="(c_q6 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))"];
+	c_q4_36[label="(c_q4 ≝ ((Combine = 1) ∧ (Etat = 2) ∧ (NbEssai = 0)))"];
+	c_q4_26[label="(c_q4 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))"];
+	c_q5_42[label="(c_q5 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 0)))"];
+	c_q1_33[label="(c_q1 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 2)))"];
+	c_q4_40[label="(c_q4 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0)))"];
+	c_q1_31[label="(c_q1 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 1)))"];
+	c_q0_16[label="(c_q0 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))"];
+	c_q0_29[label="(c_q0 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 1)))"];
+	c_q0_27[label="(c_q0 ≝ ((Combine = 1) ∧ (Etat = 2) ∧ (NbEssai = 1)))"];
 
-	start_c_q6_41 -> c_q6_41;
-	c_q6_41 -> c_q4_28[label="Appel_Qui_Donc", penwidth=3, color=red];
-	c_q0_10 -> c_q0_3[label="Start"];
-	c_q0_29 -> c_q0_25[label="Timeout", penwidth=3, color=red];
-	c_q0_29 -> c_q1_31[label="Start", penwidth=3, color=red];
-	c_q0_25 -> c_q1_18[label="Timeout", penwidth=3, color=red];
-	c_q0_10 -> c_q4_28[label="Start"];
-	c_q0_29 -> c_q5_40[label="Start", penwidth=3, color=red];
-	c_q0_29 -> c_q6_41[label="Start", penwidth=3, color=red];
-	c_q0_29 -> c_q6_41[label="HangUp", penwidth=3, color=red];
-	c_q1_18 -> c_q6_41[label="HangUp", penwidth=3, color=red];
-	c_q4_28 -> c_q4_38[label="Start", penwidth=3, color=red];
-	c_q4_28 -> c_q4_28[label="Start", penwidth=3, color=red];
-	c_q4_38 -> c_q0_25[label="Start", penwidth=3, color=red];
-	c_q4_38 -> c_q0_27[label="Start", penwidth=3, color=red];
-	c_q4_28 -> c_q0_29[label="Timeout", penwidth=3, color=red];
-	c_q4_38 -> c_q1_31[label="Start", penwidth=3, color=red];
-	c_q4_38 -> c_q5_40[label="Start", penwidth=3, color=red];
-	c_q4_34 -> c_q5_40[label="Timeout"];
-	c_q4_38 -> c_q6_41[label="Start", penwidth=3, color=red];
-	c_q4_38 -> c_q6_41[label="HangUp", penwidth=3, color=red];
-	c_q5_40 -> c_q6_41[label="HangUp", penwidth=3, color=red];
+	start_c_q6_43 -> c_q6_43;
+	c_q6_43 -> c_q4_26[label="Appel_Qui_Donc", penwidth=3, color=red];
+	c_q0_29 -> c_q0_3[label="Start", penwidth=3, color=red];
+	c_q0_16 -> c_q0_25[label="Timeout"];
+	c_q0_16 -> c_q1_31[label="Start"];
+	c_q0_25 -> c_q1_33[label="Timeout", penwidth=3, color=red];
+	c_q0_29 -> c_q4_26[label="Start", penwidth=3, color=red];
+	c_q0_16 -> c_q5_42[label="Start"];
+	c_q0_16 -> c_q6_43[label="Start"];
+	c_q0_16 -> c_q6_43[label="HangUp"];
+	c_q1_33 -> c_q6_43[label="HangUp", penwidth=3, color=red];
+	c_q4_26 -> c_q4_40[label="Start", penwidth=3, color=red];
+	c_q4_26 -> c_q4_26[label="Start", penwidth=3, color=red];
+	c_q4_40 -> c_q0_25[label="Start", penwidth=3, color=red];
+	c_q4_26 -> c_q0_27[label="Start", penwidth=3, color=red];
+	c_q4_40 -> c_q0_29[label="Timeout", penwidth=3, color=red];
+	c_q4_40 -> c_q1_31[label="Start", penwidth=3, color=red];
+	c_q4_40 -> c_q1_33[label="Start", penwidth=3, color=red];
+	c_q4_40 -> c_q5_42[label="Start", penwidth=3, color=red];
+	c_q4_36 -> c_q5_42[label="Timeout"];
+	c_q4_40 -> c_q6_43[label="Start", penwidth=3, color=red];
+	c_q4_40 -> c_q6_43[label="HangUp", penwidth=3, color=red];
+	c_q5_42 -> c_q6_43[label="HangUp", penwidth=3, color=red];
 
 }

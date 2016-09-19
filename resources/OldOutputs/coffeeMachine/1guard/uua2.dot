@@ -1,0 +1,81 @@
+digraph G {
+
+	rankdir = LR;
+
+	start_c_q6_60[style=invisible];
+
+	node[shape=box, style="rounded, filled", color=lightblue2];
+
+	c_q2_58[label="c_q2_58"];
+	c_q6_6[label="c_q6_6"];
+	c_q0_26[label="c_q0_26"];
+	c_q6_59[label="c_q6_59"];
+	c_q0_69[label="c_q0_69"];
+	c_q1_55[label="c_q1_55"];
+	c_q6_60[label="c_q6_60"];
+	c_q0_21[label="c_q0_21"];
+	c_q2_63[label="c_q2_63"];
+	c_q0_20[label="c_q0_20"];
+	c_q1_27[label="c_q1_27"];
+	c_q2_56[label="c_q2_56"];
+	c_q0_65[label="c_q0_65"];
+	c_q6_39[label="c_q6_39"];
+	c_q0_70[label="c_q0_70"];
+	c_q2_54[label="c_q2_54"];
+	c_q1_75[label="c_q1_75"];
+	c_q1_38[label="c_q1_38"];
+	c_q2_49[label="c_q2_49"];
+	c_q6_57[label="c_q6_57"];
+	c_q1_36[label="c_q1_36"];
+	c_q6_16[label="c_q6_16"];
+	c_q2_52[label="c_q2_52"];
+	c_q1_30[label="c_q1_30"];
+	c_q1_66[label="c_q1_66"];
+	c_q1_31[label="c_q1_31"];
+	c_q2_74[label="c_q2_74"];
+	c_q6_67[label="c_q6_67"];
+	c_q2_51[label="c_q2_51"];
+	c_q6_37[label="c_q6_37"];
+	c_q0_25[label="c_q0_25"];
+
+	start_c_q6_60 -> c_q6_60;
+	c_q6_60 -> c_q6_60[label="insert", penwidth=3, color=red];
+	c_q6_60 -> c_q6_67[label="powerUp", penwidth=3, color=red];
+	c_q6_67 -> c_q6_60[label="powerDown", penwidth=3, color=red];
+	c_q6_6 -> c_q6_57[label="AutoOut"];
+	c_q6_60 -> c_q6_60[label="takeMago", penwidth=3, color=red];
+	c_q6_60 -> c_q6_16[label="addCofee", penwidth=3, color=red];
+	c_q6_16 -> c_q0_69[label="insert", penwidth=3, color=red];
+	c_q6_67 -> c_q1_75[label="insert", penwidth=3, color=red];
+	c_q6_16 -> c_q2_49[label="insert", penwidth=3, color=red];
+	c_q0_69 -> c_q0_26[label="insert", penwidth=3, color=red];
+	c_q0_20 -> c_q0_21[label="powerDown"];
+	c_q0_26 -> c_q0_26[label="takeMago", penwidth=3, color=red];
+	c_q0_69 -> c_q0_25[label="addCofee", penwidth=3, color=red];
+	c_q0_26 -> c_q1_27[label="powerUp", penwidth=3, color=red];
+	c_q1_75 -> c_q1_66[label="insert", penwidth=3, color=red];
+	c_q1_30 -> c_q1_31[label="ServeCoffee"];
+	c_q1_75 -> c_q0_70[label="powerDown", penwidth=3, color=red];
+	c_q1_66 -> c_q2_54[label="ServeCoffee", penwidth=3, color=red];
+	c_q1_36 -> c_q6_37[label="AutoOut"];
+	c_q1_38 -> c_q6_39[label="ServeCoffee"];
+	c_q1_75 -> c_q6_67[label="backBalance", penwidth=3, color=red];
+	c_q2_49 -> c_q2_52[label="insert", penwidth=3, color=red];
+	c_q2_49 -> c_q2_58[label="powerUp", penwidth=3, color=red];
+	c_q2_58 -> c_q2_49[label="powerDown", penwidth=3, color=red];
+	c_q2_49 -> c_q2_49[label="takeMago", penwidth=3, color=red];
+	c_q2_52 -> c_q2_51[label="addCofee", penwidth=3, color=red];
+	c_q2_52 -> c_q0_69[label="insert", penwidth=3, color=red];
+	c_q2_54 -> c_q1_55[label="insert", penwidth=3, color=red];
+	c_q2_56 -> c_q6_57[label="AutoOut"];
+	c_q2_58 -> c_q6_59[label="backBalance", penwidth=3, color=red];
+	c_q6_60 -> c_q2_63[label="insert", penwidth=3, color=red];
+	c_q2_63 -> c_q2_63[label="insert", penwidth=3, color=red];
+	c_q1_66 -> c_q0_65[label="powerDown", penwidth=3, color=red];
+	c_q1_66 -> c_q6_67[label="backBalance", penwidth=3, color=red];
+	c_q0_69 -> c_q0_69[label="insert", penwidth=3, color=red];
+	c_q0_70 -> c_q1_75[label="powerUp", penwidth=3, color=red];
+	c_q1_75 -> c_q1_75[label="insert", penwidth=3, color=red];
+	c_q2_74 -> c_q1_75[label="insert"];
+
+}

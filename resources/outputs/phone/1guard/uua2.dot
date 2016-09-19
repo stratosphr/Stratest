@@ -6,20 +6,20 @@ digraph G {
 
 	node[shape=box, style="rounded, filled", color=lightblue2];
 
-	c_q6_30[label="c_q6_30"];
-	c_q2_32[label="c_q2_32"];
-	c_q6_17[label="c_q6_17"];
-	c_q2_3[label="c_q2_3"];
-	c_q2_34[label="c_q2_34"];
-	c_q2_21[label="c_q2_21"];
-	c_q6_35[label="c_q6_35"];
-	c_q2_28[label="c_q2_28"];
-	c_q5_31[label="c_q5_31"];
-	c_q6_16[label="c_q6_16"];
+	c_q6_30[label="(c_q6 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))"];
+	c_q2_32[label="(c_q2 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 2)))"];
+	c_q6_17[label="(c_q6 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 0)))"];
+	c_q2_3[label="(c_q2 ≝ ((Combine = 1) ∧ (Etat = 1) ∧ (NbEssai = 1)))"];
+	c_q2_34[label="(c_q2 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 1)))"];
+	c_q2_21[label="(c_q2 ≝ ((Combine = 1) ∧ (Etat = 5) ∧ (NbEssai = 1)))"];
+	c_q6_35[label="(c_q6 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 0)))"];
+	c_q2_28[label="(c_q2 ≝ ((Combine = 1) ∧ (Etat = 3) ∧ (NbEssai = 1)))"];
+	c_q5_31[label="(c_q5 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))"];
+	c_q6_16[label="(c_q6 ≝ ((Combine = 1) ∧ (Etat = 2) ∧ (NbEssai = 0)))"];
 
 	start_c_q5_31 -> c_q5_31;
 	c_q5_31 -> c_q6_30[label="Appel_Qui_Donc", penwidth=3, color=red];
-	c_q2_28 -> c_q2_3[label="Start"];
+	c_q2_28 -> c_q2_3[label="Start", penwidth=3, color=red];
 	c_q2_34 -> c_q2_32[label="Timeout", penwidth=3, color=red];
 	c_q2_34 -> c_q5_31[label="Start", penwidth=3, color=red];
 	c_q2_34 -> c_q5_31[label="HangUp", penwidth=3, color=red];
@@ -28,11 +28,11 @@ digraph G {
 	c_q6_30 -> c_q6_30[label="Start", penwidth=3, color=red];
 	c_q6_16 -> c_q6_17[label="Timeout"];
 	c_q6_35 -> c_q2_32[label="Start", penwidth=3, color=red];
-	c_q6_35 -> c_q2_21[label="Start", penwidth=3, color=red];
-	c_q6_30 -> c_q2_34[label="Timeout", penwidth=3, color=red];
+	c_q6_30 -> c_q2_21[label="Start", penwidth=3, color=red];
+	c_q6_35 -> c_q2_28[label="Timeout", penwidth=3, color=red];
 	c_q6_35 -> c_q5_31[label="Start", penwidth=3, color=red];
 	c_q6_35 -> c_q5_31[label="HangUp", penwidth=3, color=red];
-	c_q2_28 -> c_q5_31[label="HangUp"];
+	c_q2_28 -> c_q5_31[label="HangUp", penwidth=3, color=red];
 	c_q6_30 -> c_q5_31[label="HangUp", penwidth=3, color=red];
 	c_q2_32 -> c_q2_34[label="Start", penwidth=3, color=red];
 	c_q2_34 -> c_q6_35[label="Start", penwidth=3, color=red];

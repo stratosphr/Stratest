@@ -1,0 +1,42 @@
+System size: 54
+#AbstractionPredicates: 2
+#Tests: 3
+AverageTestsLength: 4.666666666666667
+TestsLengthStandardDeviation: 0.9428090415820634
+#AbstractStates: 3
+#AbstractStatesInTests: 3
+#ConcreteStates: 15
+#UniqueConcreteStatesInTests: 9
+#BlueStates: 0
+#GreenStates: 0
+#AbstractTransitions: 9
+#AbstractTransitionsInTests: 8
+#ConcreteTransitions: 16
+#UniqueConcreteTransitionsInTests: 10
+#BlueTransitions: 0
+#GreenTransitions: 0
+#PureMayTransitions: 5
+#MustMinusTransitions: 4
+#MustPlusTransitions: 4
+#MustSharpTransitions: 4
+#EventsInTestPurpose: 2
+#EventsInTestPurposeFiredInTests: 2
+Time: 0.116405372s
+-----------------------------------
+(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1))) - Fail -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1)))
+(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1))) - Fail -> (c_q2 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1)))
+(c_q2 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1))) - Tic -> (c_q2 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 0)))
+(c_q2 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 0))) - Repair -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 0)))
+(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 0))) - Repair -> (c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))
+(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0))) - Commute -> (c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 3) ∧ (h = 1)))
+-----------------------------------
+(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1))) - Fail -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1)))
+(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1))) - Fail -> (c_q2 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1)))
+(c_q2 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1))) - Repair -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1)))
+(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1))) - Tic -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))
+-----------------------------------
+(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1))) - Fail -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1)))
+(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1))) - Repair -> (c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1)))
+(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1))) - Tic -> (c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))
+(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0))) - Commute -> (c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 3) ∧ (h = 1)))
+-----------------------------------

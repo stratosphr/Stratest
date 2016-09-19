@@ -1,27 +1,27 @@
-System size: -1
+System size: 64
 #AbstractionPredicates: 3
 #Tests: 1
 AverageTestsLength: 14.0
 TestsLengthStandardDeviation: 0.0
 #AbstractStates: 3
+#AbstractStatesInTests: 3
+#ConcreteStates: 8
+#UniqueConcreteStatesInTests: 4
+#BlueStates: 0
+#GreenStates: 0
 #AbstractTransitions: 12
+#AbstractTransitionsInTests: 9
+#ConcreteTransitions: 16
+#UniqueConcreteTransitionsInTests: 9
+#BlueTransitions: 0
+#GreenTransitions: 0
+#PureMayTransitions: 3
 #MustMinusTransitions: 8
 #MustPlusTransitions: 3
 #MustSharpTransitions: 2
-#PureMayTransitions: 3
-#ConcreteStates: 8
-#ConcreteTransitions: 16
-#UniqueConcreteStatesInTests: 4
-#UniqueConcreteTransitionsInTests: 9
-#EventsInTestPurpose: 0
-#EventsInTestPurposeFiredInTests: 0
-#BlueStates: 1
-#GreenStates: 0
-#BlueTransitions: 1
-#GreenTransitions: 0
-#AbstractStatesInTests: 4
-#AbstractTransitionsInTests: -1
-Time: 0.034979109s
+#EventsInTestPurpose: 2
+#EventsInTestPurposeFiredInTests: 2
+Time: 0.033922129s
 -----------------------------------
 (c_q5 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q6 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
 (c_q6 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - HangUp -> (c_q5 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0)))

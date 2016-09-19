@@ -24,11 +24,15 @@ public final class ConcreteStateComputer {
     public static ABooleanExpression computeConcreteStateExpression(Model model, boolean isSource) {
         TreeMap<AAssignable, Int> sortedAssignables = new TreeMap<>();
         model.forEach((assignable, ints) -> {
-            if (isSource && !assignable.getName().endsWith(Primer.getSuffix())) {
-                sortedAssignables.put(assignable, model.get(assignable));
+            if (isSource && !assignable.getName().endsWith(Primer.getPrimeSuffix())) {
+                if (assignable.getName().endsWith(Primer.getAnteSuffix())) {
+                    sortedAssignables.put((AAssignable) assignable.unAnte(), model.get(assignable));
+                } else {
+                    sortedAssignables.put(assignable, model.get(assignable));
+                }
             }
-            if (!isSource && assignable.getName().endsWith(Primer.getSuffix())) {
-                sortedAssignables.put((AAssignable) assignable.unprime(), model.get(assignable));
+            if (!isSource && assignable.getName().endsWith(Primer.getPrimeSuffix())) {
+                sortedAssignables.put((AAssignable) assignable.unPrime(), model.get(assignable));
             }
         });
         return new And(sortedAssignables.keySet().stream().map(assignable -> new Equals(assignable, sortedAssignables.get(assignable))).toArray(ABooleanExpression[]::new));

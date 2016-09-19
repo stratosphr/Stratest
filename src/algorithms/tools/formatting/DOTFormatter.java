@@ -35,7 +35,8 @@ public final class DOTFormatter extends AFormatter {
         str += indent() + "node[shape=box, style=\"rounded, filled\", color=lightblue2];" + UCharacters.LINE_SEPARATOR;
         str += UCharacters.LINE_SEPARATOR;
         for (AState state : renamedStates.keySet()) {
-            str += indent() + renamedStates.get(state) + "[label=\"" + renamedStates.get(state) + "\"];" + UCharacters.LINE_SEPARATOR;
+            //str += indent() + renamedStates.get(state) + "[label=\"" + renamedStates.get(state) + "\"];" + UCharacters.LINE_SEPARATOR;
+            str += indent() + renamedStates.get(state) + "[label=\"" + state + "\"];" + UCharacters.LINE_SEPARATOR;
         }
         str += UCharacters.LINE_SEPARATOR;
         for (AState initialState : initialStates) {
@@ -70,8 +71,8 @@ public final class DOTFormatter extends AFormatter {
         str += indent() + "node[shape=box, style=\"rounded, filled\", color=lightblue2];" + UCharacters.LINE_SEPARATOR;
         str += UCharacters.LINE_SEPARATOR;
         for (AState state : renamedStates.keySet()) {
-            str += indent() + renamedStates.get(state) + "[label=\"" + renamedStates.get(state) + "\"];" + UCharacters.LINE_SEPARATOR;
-            //str += indent() + renamedStates.get(state) + "[label=\"" + state + "\"];" + UCharacters.LINE_SEPARATOR;
+            //str += indent() + renamedStates.get(state) + "[label=\"" + renamedStates.get(state) + "\"];" + UCharacters.LINE_SEPARATOR;
+            str += indent() + renamedStates.get(state) + "[label=\"" + state + "\"];" + UCharacters.LINE_SEPARATOR;
         }
         str += UCharacters.LINE_SEPARATOR;
         for (AState initialState : initialStates) {

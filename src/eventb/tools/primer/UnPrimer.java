@@ -16,9 +16,11 @@ import java.util.Set;
  */
 public final class UnPrimer implements IExpressionToExpressionVisitor {
 
+    private final String suffix;
     private Set<AAssignable> quantifiedVariables;
 
-    public UnPrimer() {
+    public UnPrimer(String suffix) {
+        this.suffix = suffix;
         this.quantifiedVariables = new LinkedHashSet<>();
     }
 
@@ -122,9 +124,9 @@ public final class UnPrimer implements IExpressionToExpressionVisitor {
     @Override
     public AExpression visit(Variable variable) {
         if (variable.getName().contains("!")) {
-            return new Variable(variable.getName().substring(0, variable.getName().indexOf("!")).split("_prime")[0] + variable.getName().substring(variable.getName().indexOf("!")));
+            return new Variable(variable.getName().substring(0, variable.getName().indexOf("!")).split(getSuffix())[0] + variable.getName().substring(variable.getName().indexOf("!")));
         } else {
-            return new Variable(variable.getName().split("_prime")[0]);
+            return new Variable(variable.getName().split(getSuffix())[0]);
         }
     }
 
@@ -147,6 +149,10 @@ public final class UnPrimer implements IExpressionToExpressionVisitor {
     @Override
     public AExpression visit(Multiplication multiplication) {
         return new Multiplication(multiplication.getOperands().stream().map(parameter -> (AArithmeticExpression) parameter.accept(this)).toArray(AArithmeticExpression[]::new));
+    }
+
+    public String getSuffix() {
+        return suffix;
     }
 
 }

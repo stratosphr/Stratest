@@ -26,8 +26,12 @@ public abstract class AExpression extends AObjectEventB implements IAssignableRe
         return accept(new Primer(primeFunctionCallsParameters));
     }
 
-    public AExpression unprime() {
-        return accept(new UnPrimer());
+    public AExpression unPrime() {
+        return accept(new UnPrimer(Primer.getPrimeSuffix()));
+    }
+
+    public AExpression unAnte() {
+        return accept(new UnPrimer(Primer.getAnteSuffix()));
     }
 
 }

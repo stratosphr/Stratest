@@ -1,0 +1,86 @@
+digraph G {
+
+	rankdir = LR;
+
+	start_c_q30_121[style=invisible];
+
+	node[shape=box, style="rounded, filled", color=lightblue2];
+
+	c_q22_117[label="c_q22_117"];
+	c_q5_40[label="c_q5_40"];
+	c_q22_76[label="c_q22_76"];
+	c_q39_103[label="c_q39_103"];
+	c_q39_110[label="c_q39_110"];
+	c_q39_122[label="c_q39_122"];
+	c_q19_115[label="c_q19_115"];
+	c_q35_123[label="c_q35_123"];
+	c_q5_111[label="c_q5_111"];
+	c_q7_113[label="c_q7_113"];
+	c_q30_121[label="c_q30_121"];
+	c_q3_107[label="c_q3_107"];
+
+	start_c_q30_121 -> c_q30_121;
+	c_q30_121 -> c_q22_117[label="Appel_Qui_Donc", penwidth=3, color=red];
+	c_q3_107 -> c_q3_107[label="Start", penwidth=3, color=red];
+	c_q3_107 -> c_q5_111[label="Start", penwidth=3, color=red];
+	c_q3_107 -> c_q7_113[label="Start", penwidth=3, color=red];
+	c_q3_107 -> c_q7_113[label="Timeout", penwidth=3, color=red];
+	c_q3_107 -> c_q19_115[label="Start", penwidth=3, color=red];
+	c_q3_107 -> c_q22_117[label="Start", penwidth=3, color=red];
+	c_q3_107 -> c_q30_121[label="Start", penwidth=3, color=red];
+	c_q3_107 -> c_q30_121[label="HangUp", penwidth=3, color=red];
+	c_q3_107 -> c_q35_123[label="Start", penwidth=3, color=red];
+	c_q3_107 -> c_q39_110[label="Start", penwidth=3, color=red];
+	c_q5_111 -> c_q5_111[label="Start", penwidth=3, color=red];
+	c_q5_40 -> c_q3_107[label="Start"];
+	c_q5_40 -> c_q7_113[label="Start"];
+	c_q5_40 -> c_q7_113[label="Timeout"];
+	c_q5_40 -> c_q19_115[label="Start"];
+	c_q5_40 -> c_q22_117[label="Start"];
+	c_q5_40 -> c_q30_121[label="Start"];
+	c_q5_40 -> c_q30_121[label="HangUp"];
+	c_q5_40 -> c_q35_123[label="Start"];
+	c_q5_40 -> c_q39_110[label="Start"];
+	c_q7_113 -> c_q30_121[label="HangUp", penwidth=3, color=red];
+	c_q19_115 -> c_q19_115[label="Start", penwidth=3, color=red];
+	c_q19_115 -> c_q3_107[label="Start", penwidth=3, color=red];
+	c_q19_115 -> c_q5_111[label="Start", penwidth=3, color=red];
+	c_q19_115 -> c_q7_113[label="Start", penwidth=3, color=red];
+	c_q19_115 -> c_q22_117[label="Start", penwidth=3, color=red];
+	c_q19_115 -> c_q22_76[label="Timeout", penwidth=3, color=red];
+	c_q19_115 -> c_q30_121[label="Start", penwidth=3, color=red];
+	c_q19_115 -> c_q30_121[label="HangUp", penwidth=3, color=red];
+	c_q19_115 -> c_q35_123[label="Start", penwidth=3, color=red];
+	c_q19_115 -> c_q39_110[label="Start", penwidth=3, color=red];
+	c_q22_117 -> c_q22_117[label="Start", penwidth=3, color=red];
+	c_q22_117 -> c_q3_107[label="Start", penwidth=3, color=red];
+	c_q22_117 -> c_q5_111[label="Start", penwidth=3, color=red];
+	c_q22_117 -> c_q7_113[label="Start", penwidth=3, color=red];
+	c_q22_117 -> c_q19_115[label="Start", penwidth=3, color=red];
+	c_q22_117 -> c_q30_121[label="Start", penwidth=3, color=red];
+	c_q22_76 -> c_q30_121[label="HangUp", penwidth=3, color=red];
+	c_q22_117 -> c_q35_123[label="Start", penwidth=3, color=red];
+	c_q22_117 -> c_q39_110[label="Start", penwidth=3, color=red];
+	c_q22_117 -> c_q39_110[label="Timeout", penwidth=3, color=red];
+	c_q35_123 -> c_q35_123[label="Start", penwidth=3, color=red];
+	c_q35_123 -> c_q3_107[label="Start", penwidth=3, color=red];
+	c_q35_123 -> c_q5_111[label="Start", penwidth=3, color=red];
+	c_q35_123 -> c_q7_113[label="Start", penwidth=3, color=red];
+	c_q35_123 -> c_q19_115[label="Start", penwidth=3, color=red];
+	c_q35_123 -> c_q22_117[label="Start", penwidth=3, color=red];
+	c_q35_123 -> c_q30_121[label="Start", penwidth=3, color=red];
+	c_q35_123 -> c_q30_121[label="HangUp", penwidth=3, color=red];
+	c_q35_123 -> c_q39_110[label="Start", penwidth=3, color=red];
+	c_q35_123 -> c_q39_103[label="Timeout", penwidth=3, color=red];
+	c_q39_110 -> c_q39_110[label="Start", penwidth=3, color=red];
+	c_q39_110 -> c_q3_107[label="Start", penwidth=3, color=red];
+	c_q39_110 -> c_q5_111[label="Start", penwidth=3, color=red];
+	c_q39_110 -> c_q5_111[label="Timeout", penwidth=3, color=red];
+	c_q39_122 -> c_q7_113[label="Start"];
+	c_q39_122 -> c_q19_115[label="Start"];
+	c_q39_122 -> c_q22_117[label="Start"];
+	c_q39_122 -> c_q30_121[label="Start"];
+	c_q39_122 -> c_q30_121[label="HangUp"];
+	c_q39_122 -> c_q35_123[label="Start"];
+
+}

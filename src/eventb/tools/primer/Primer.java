@@ -16,7 +16,8 @@ import java.util.Set;
  */
 public final class Primer implements IExpressionToExpressionVisitor {
 
-    private static String suffix = "_prime";
+    private static String anteSuffix = "_ante";
+    private static String primeSuffix = "_prime";
     private final boolean primeFunctionCallsParameters;
     private Set<AAssignable> quantifiedVariables;
 
@@ -25,8 +26,12 @@ public final class Primer implements IExpressionToExpressionVisitor {
         this.quantifiedVariables = new HashSet<>();
     }
 
-    public static String getSuffix() {
-        return suffix;
+    public static String getAnteSuffix() {
+        return anteSuffix;
+    }
+
+    public static String getPrimeSuffix() {
+        return primeSuffix;
     }
 
     @Override
@@ -36,7 +41,7 @@ public final class Primer implements IExpressionToExpressionVisitor {
 
     @Override
     public AExpression visit(FunctionCall functionCall) {
-        return primeFunctionCallsParameters ? new FunctionCall(new FunctionDefinition(functionCall.getDefinition().getName() + getSuffix(), functionCall.getDefinition().getDomain(), functionCall.getDefinition().getCoDomain()), functionCall.getOperands().stream().map(operand -> operand.accept(this)).toArray(AArithmeticExpression[]::new)) : new FunctionCall(new FunctionDefinition(functionCall.getDefinition().getName() + getSuffix(), functionCall.getDefinition().getDomain(), functionCall.getDefinition().getCoDomain()), functionCall.getOperands().toArray(new AArithmeticExpression[functionCall.getOperands().size()]));
+        return primeFunctionCallsParameters ? new FunctionCall(new FunctionDefinition(functionCall.getDefinition().getName() + getPrimeSuffix(), functionCall.getDefinition().getDomain(), functionCall.getDefinition().getCoDomain()), functionCall.getOperands().stream().map(operand -> operand.accept(this)).toArray(AArithmeticExpression[]::new)) : new FunctionCall(new FunctionDefinition(functionCall.getDefinition().getName() + getPrimeSuffix(), functionCall.getDefinition().getDomain(), functionCall.getDefinition().getCoDomain()), functionCall.getOperands().toArray(new AArithmeticExpression[functionCall.getOperands().size()]));
     }
 
     @Override
@@ -81,9 +86,9 @@ public final class Primer implements IExpressionToExpressionVisitor {
 
     @Override
     public AExpression visit(Variable variable) {
-        /*JSCATS.out.println(quantifiedVariables.contains(variable) ? variable : variable.getName().contains("!") ? new Variable(variable.getName().substring(0, variable.getName().indexOf("!")) + getSuffix() + variable.getName().substring(variable.getName().indexOf("!"))) : new Variable(variable.getName() + getSuffix()));
-        return quantifiedVariables.contains(variable) ? variable : variable.getName().contains("!") ? new Variable(variable.getName().substring(0, variable.getName().indexOf("!")) + getSuffix() + variable.getName().substring(variable.getName().indexOf("!"))) : new Variable(variable.getName() + getSuffix());*/
-        return new Variable(variable.getName() + getSuffix());
+        /*JSCATS.out.println(quantifiedVariables.contains(variable) ? variable : variable.getName().contains("!") ? new Variable(variable.getName().substring(0, variable.getName().indexOf("!")) + getPrimeSuffix() + variable.getName().substring(variable.getName().indexOf("!"))) : new Variable(variable.getName() + getPrimeSuffix()));
+        return quantifiedVariables.contains(variable) ? variable : variable.getName().contains("!") ? new Variable(variable.getName().substring(0, variable.getName().indexOf("!")) + getPrimeSuffix() + variable.getName().substring(variable.getName().indexOf("!"))) : new Variable(variable.getName() + getPrimeSuffix());*/
+        return new Variable(variable.getName() + getPrimeSuffix());
     }
 
     @Override

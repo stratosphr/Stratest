@@ -20,10 +20,10 @@ public class PrimerTest {
     public void test_visitArithmeticITE() {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -38,10 +38,10 @@ public class PrimerTest {
     public void test_visitFunctionCall() {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -53,10 +53,10 @@ public class PrimerTest {
     public void test_visitGreaterOrEqual() {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -71,10 +71,10 @@ public class PrimerTest {
     public void test_visitGreaterThan() {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -103,10 +103,10 @@ public class PrimerTest {
     public void test_visitLowerOrEqual() {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -121,10 +121,10 @@ public class PrimerTest {
     public void test_visitLowerThan() {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -140,11 +140,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -160,11 +160,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -180,11 +180,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -198,7 +198,7 @@ public class PrimerTest {
     @Test
     public void test_visitVariable() {
         Variable v1 = new Variable("v1");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
         Assert.assertEquals(v1Primed, v1.prime());
     }
 
@@ -207,11 +207,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -227,11 +227,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -247,11 +247,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -267,11 +267,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -287,11 +287,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -307,11 +307,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -330,11 +330,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -353,11 +353,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -376,11 +376,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);
@@ -399,11 +399,11 @@ public class PrimerTest {
         Variable v1 = new Variable("v1");
         Variable v2 = new Variable("v2");
         Variable v3 = new Variable("v3");
-        Variable v1Primed = new Variable(v1.getName() + Primer.getSuffix());
-        Variable v2Primed = new Variable(v2.getName() + Primer.getSuffix());
-        Variable v3Primed = new Variable(v3.getName() + Primer.getSuffix());
+        Variable v1Primed = new Variable(v1.getName() + Primer.getPrimeSuffix());
+        Variable v2Primed = new Variable(v2.getName() + Primer.getPrimeSuffix());
+        Variable v3Primed = new Variable(v3.getName() + Primer.getPrimeSuffix());
         FunctionDefinition functionDefinition = new FunctionDefinition("fun", new CustomSet(new Int(0), new Int(3), new Int(4)), new RangeSet(new Int(1), new Int(3)));
-        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
+        FunctionDefinition functionDefinitionPrimed = new FunctionDefinition(functionDefinition.getName() + Primer.getPrimeSuffix(), functionDefinition.getDomain(), functionDefinition.getCoDomain());
         FunctionCall functionCall = new FunctionCall(functionDefinition, v2, v1);
         FunctionCall functionCallPrimedFalse = new FunctionCall(functionDefinitionPrimed, v2, v1);
         FunctionCall functionCallPrimedTrue = new FunctionCall(functionDefinitionPrimed, v2Primed, v1Primed);

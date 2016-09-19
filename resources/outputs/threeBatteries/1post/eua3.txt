@@ -1,26 +1,27 @@
-System size : -1
-#AbstractionPredicates : 2
-#Tests : 6
-AverageTestsLength : 13.166666666666666
-TestsLengthStandardDeviation : 8.89600409672168
-#AbstractStates : 2
-#AbstractTransitions : 8
-#MustMinusTransitions : 1
-#MustPlusTransitions : 1
-#MustSharpTransitions : 0
-#PureMayTransitions : 6
-#ConcreteStates : 24
-#ConcreteTransitions : 49
-#UniqueConcreteStatesInTests : 23
-#UniqueConcreteTransitionsInTests : 49
-#EventsInTestPurpose : 0
-#EventsInTestPurposeFiredInTests : 0
-#BlueStates : 1
-#GreenStates : 23
-#BlueTransitions : 0
-#GreenTransitions : 49
-#AbstractStatesInTests : -1
-#AbstractTransitionsInTests : -1
+System size: 54
+#AbstractionPredicates: 2
+#Tests: 6
+AverageTestsLength: 13.166666666666666
+TestsLengthStandardDeviation: 8.89600409672168
+#AbstractStates: 2
+#AbstractStatesInTests: 2
+#ConcreteStates: 24
+#UniqueConcreteStatesInTests: 23
+#BlueStates: 1
+#GreenStates: 23
+#AbstractTransitions: 8
+#AbstractTransitionsInTests: 8
+#ConcreteTransitions: 49
+#UniqueConcreteTransitionsInTests: 49
+#BlueTransitions: 0
+#GreenTransitions: 49
+#PureMayTransitions: 6
+#MustMinusTransitions: 1
+#MustPlusTransitions: 1
+#MustSharpTransitions: 0
+#EventsInTestPurpose: 2
+#EventsInTestPurposeFiredInTests: 2
+Time: 4.036771751s
 -----------------------------------
 (c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1))) - Fail -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1)))
 (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1))) - Tic -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 0)))

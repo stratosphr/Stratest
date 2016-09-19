@@ -1,0 +1,86 @@
+digraph G {
+
+	rankdir = LR;
+
+	start_c_q1_95[style=invisible];
+
+	node[shape=box, style="rounded, filled", color=lightblue2];
+
+	c_q3_69[label="c_q3_69"];
+	c_q3_91[label="c_q3_91"];
+	c_q3_94[label="c_q3_94"];
+	c_q2_88[label="c_q2_88"];
+	c_q1_71[label="c_q1_71"];
+	c_q2_87[label="c_q2_87"];
+	c_q3_100[label="c_q3_100"];
+	c_q2_47[label="c_q2_47"];
+	c_q3_76[label="c_q3_76"];
+	c_q2_93[label="c_q2_93"];
+	c_q3_99[label="c_q3_99"];
+	c_q2_97[label="c_q2_97"];
+	c_q3_50[label="c_q3_50"];
+	c_q2_75[label="c_q2_75"];
+	c_q3_83[label="c_q3_83"];
+	c_q1_85[label="c_q1_85"];
+	c_q1_101[label="c_q1_101"];
+	c_q1_51[label="c_q1_51"];
+	c_q3_60[label="c_q3_60"];
+	c_q3_84[label="c_q3_84"];
+	c_q1_77[label="c_q1_77"];
+	c_q3_35[label="c_q3_35"];
+	c_q1_95[label="c_q1_95"];
+
+	start_c_q1_95 -> c_q1_95;
+	c_q1_95 -> c_q1_51[label="Tic", penwidth=3, color=red];
+	c_q1_51 -> c_q1_71[label="Commute", penwidth=3, color=red];
+	c_q1_51 -> c_q3_91[label="Fail", penwidth=3, color=red];
+	c_q2_93 -> c_q2_47[label="Tic", penwidth=3, color=red];
+	c_q2_97 -> c_q3_100[label="Repair", penwidth=3, color=red];
+	c_q3_83 -> c_q3_50[label="Tic", penwidth=3, color=red];
+	c_q3_91 -> c_q3_35[label="Commute", penwidth=3, color=red];
+	c_q3_35 -> c_q1_77[label="Repair", penwidth=3, color=red];
+	c_q3_91 -> c_q2_47[label="Fail", penwidth=3, color=red];
+	c_q3_35 -> c_q2_75[label="Fail", penwidth=3, color=red];
+	c_q1_95 -> c_q3_83[label="Fail", penwidth=3, color=red];
+	c_q1_51 -> c_q3_50[label="Fail", penwidth=3, color=red];
+	c_q1_71 -> c_q1_85[label="Tic", penwidth=3, color=red];
+	c_q1_71 -> c_q3_60[label="Fail", penwidth=3, color=red];
+	c_q3_91 -> c_q1_51[label="Repair", penwidth=3, color=red];
+	c_q3_35 -> c_q3_69[label="Tic", penwidth=3, color=red];
+	c_q1_77 -> c_q1_101[label="Tic", penwidth=3, color=red];
+	c_q1_77 -> c_q3_35[label="Fail", penwidth=3, color=red];
+	c_q2_47 -> c_q3_50[label="Repair", penwidth=3, color=red];
+	c_q2_75 -> c_q2_97[label="Tic", penwidth=3, color=red];
+	c_q2_75 -> c_q3_76[label="Repair", penwidth=3, color=red];
+	c_q3_83 -> c_q2_93[label="Fail", penwidth=3, color=red];
+	c_q3_83 -> c_q1_95[label="Repair", penwidth=3, color=red];
+	c_q3_50 -> c_q2_47[label="Fail", penwidth=3, color=red];
+	c_q3_50 -> c_q3_60[label="Commute", penwidth=3, color=red];
+	c_q3_50 -> c_q1_51[label="Repair", penwidth=3, color=red];
+	c_q1_85 -> c_q3_84[label="Fail", penwidth=3, color=red];
+	c_q1_85 -> c_q1_77[label="Commute", penwidth=3, color=red];
+	c_q3_60 -> c_q3_84[label="Tic", penwidth=3, color=red];
+	c_q3_60 -> c_q2_88[label="Fail", penwidth=3, color=red];
+	c_q3_60 -> c_q1_71[label="Repair", penwidth=3, color=red];
+	c_q3_69 -> c_q2_97[label="Fail", penwidth=3, color=red];
+	c_q3_69 -> c_q3_94[label="Commute", penwidth=3, color=red];
+	c_q3_69 -> c_q1_101[label="Repair", penwidth=3, color=red];
+	c_q1_101 -> c_q3_69[label="Fail", penwidth=3, color=red];
+	c_q1_101 -> c_q1_71[label="Commute", penwidth=3, color=red];
+	c_q3_76 -> c_q3_100[label="Tic", penwidth=3, color=red];
+	c_q3_76 -> c_q2_75[label="Fail", penwidth=3, color=red];
+	c_q3_76 -> c_q1_77[label="Repair", penwidth=3, color=red];
+	c_q2_93 -> c_q3_83[label="Repair", penwidth=3, color=red];
+	c_q3_84 -> c_q2_87[label="Fail", penwidth=3, color=red];
+	c_q3_84 -> c_q3_83[label="Commute", penwidth=3, color=red];
+	c_q3_84 -> c_q1_85[label="Repair", penwidth=3, color=red];
+	c_q2_88 -> c_q2_87[label="Tic", penwidth=3, color=red];
+	c_q2_88 -> c_q3_99[label="Repair", penwidth=3, color=red];
+	c_q3_94 -> c_q3_91[label="Tic", penwidth=3, color=red];
+	c_q3_94 -> c_q2_93[label="Fail", penwidth=3, color=red];
+	c_q3_94 -> c_q1_95[label="Repair", penwidth=3, color=red];
+	c_q3_100 -> c_q2_97[label="Fail", penwidth=3, color=red];
+	c_q3_100 -> c_q3_99[label="Commute", penwidth=3, color=red];
+	c_q3_100 -> c_q1_101[label="Repair", penwidth=3, color=red];
+
+}

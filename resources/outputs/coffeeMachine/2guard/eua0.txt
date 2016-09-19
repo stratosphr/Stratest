@@ -1,26 +1,27 @@
-System size : -1
-#AbstractionPredicates : 3
-#Tests : 1
-AverageTestsLength : 1.0
-TestsLengthStandardDeviation : 0.0
-#AbstractStates : 5
-#AbstractTransitions : 28
-#MustMinusTransitions : 11
-#MustPlusTransitions : 14
-#MustSharpTransitions : 6
-#PureMayTransitions : 9
-#ConcreteStates : 30
-#ConcreteTransitions : 28
-#UniqueConcreteStatesInTests : 1
-#UniqueConcreteTransitionsInTests : 1
-#EventsInTestPurpose : 0
-#EventsInTestPurposeFiredInTests : 0
-#BlueStates : 0
-#GreenStates : 0
-#BlueTransitions : 0
-#GreenTransitions : 0
-#AbstractStatesInTests : -1
-#AbstractTransitionsInTests : -1
+System size: 65536
+#AbstractionPredicates: 3
+#Tests: 1
+AverageTestsLength: 1.0
+TestsLengthStandardDeviation: 0.0
+#AbstractStates: 5
+#AbstractStatesInTests: 1
+#ConcreteStates: 30
+#UniqueConcreteStatesInTests: 1
+#BlueStates: 0
+#GreenStates: 0
+#AbstractTransitions: 28
+#AbstractTransitionsInTests: 1
+#ConcreteTransitions: 28
+#UniqueConcreteTransitionsInTests: 1
+#BlueTransitions: 0
+#GreenTransitions: 0
+#PureMayTransitions: 9
+#MustMinusTransitions: 11
+#MustPlusTransitions: 14
+#MustSharpTransitions: 6
+#EventsInTestPurpose: 3
+#EventsInTestPurposeFiredInTests: 0
+Time: 4.55111477s
 -----------------------------------
 (c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
 -----------------------------------

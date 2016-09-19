@@ -1,37 +1,31 @@
-System size : -1
-#AbstractionPredicates : 3
-#Tests : 24
-AverageTestsLength : 7.833333333333333
-TestsLengthStandardDeviation : 4.827582785986746
-#AbstractStates : 4
-#AbstractTransitions : 30
-#MustMinusTransitions : 10
-#MustPlusTransitions : 7
-#MustSharpTransitions : 5
-#PureMayTransitions : 18
-#ConcreteStates : 68
-#ConcreteTransitions : 106
-#UniqueConcreteStatesInTests : 46
-#UniqueConcreteTransitionsInTests : 100
-#EventsInTestPurpose : 0
-#EventsInTestPurposeFiredInTests : 0
-#BlueStates : 22
-#GreenStates : 46
-#BlueTransitions : 0
-#GreenTransitions : 100
-#AbstractStatesInTests : -1
-#AbstractTransitionsInTests : -1
+System size: 65536
+#AbstractionPredicates: 3
+#Tests: 22
+AverageTestsLength: 8.636363636363637
+TestsLengthStandardDeviation: 3.6871454164860453
+#AbstractStates: 4
+#AbstractStatesInTests: 4
+#ConcreteStates: 67
+#UniqueConcreteStatesInTests: 45
+#BlueStates: 22
+#GreenStates: 45
+#AbstractTransitions: 30
+#AbstractTransitionsInTests: 24
+#ConcreteTransitions: 109
+#UniqueConcreteTransitionsInTests: 103
+#BlueTransitions: 0
+#GreenTransitions: 103
+#PureMayTransitions: 18
+#MustMinusTransitions: 10
+#MustPlusTransitions: 7
+#MustSharpTransitions: 5
+#EventsInTestPurpose: 1
+#EventsInTestPurposeFiredInTests: 1
+Time: 9.485409547s
 -----------------------------------
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
------------------------------------
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
@@ -39,54 +33,90 @@ TestsLengthStandardDeviation : 4.827582785986746
 (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 104) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
 -----------------------------------
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - serveCofee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - ServeCoffee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
 (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - powerDown -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0))) - takeMago -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
 -----------------------------------
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
+-----------------------------------
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - serveCofee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - powerDown -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - ServeCoffee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
 -----------------------------------
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - ServeCoffee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 1)))
+-----------------------------------
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
+-----------------------------------
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
+-----------------------------------
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+-----------------------------------
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
@@ -98,27 +128,12 @@ TestsLengthStandardDeviation : 4.827582785986746
 -----------------------------------
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - serveCofee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 1)))
------------------------------------
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
------------------------------------
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
 -----------------------------------
@@ -129,108 +144,94 @@ TestsLengthStandardDeviation : 4.827582785986746
 -----------------------------------
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - serveCofee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - insert -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - powerDown -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - ServeCoffee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - powerDown -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0))) - addCofee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 0))) - takeMago -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
 -----------------------------------
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - serveCofee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - powerDown -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - ServeCoffee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - powerDown -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0))) - powerUp -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
 -----------------------------------
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
------------------------------------
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - serveCofee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 1))) - insert -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - ServeCoffee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 1)))
+-----------------------------------
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - ServeCoffee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - powerDown -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0))) - takeMago -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 0) ∧ (Statut = 1)))
+-----------------------------------
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - ServeCoffee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - powerDown -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0))) - addCofee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 0))) - addCofee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 60) ∧ (Statut = 0)))
+-----------------------------------
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - ServeCoffee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - powerDown -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 0))) - addCofee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 0))) - powerUp -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 1)))
 -----------------------------------
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
------------------------------------
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1))) - serveCofee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 60) ∧ (Statut = 1)))
------------------------------------
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
------------------------------------
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - serveCofee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
------------------------------------
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
------------------------------------
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 1)))
------------------------------------
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
------------------------------------
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - serveCofee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - serveCofee -> (c_q2 ≝ ((Balance = 1) ∧ (CofeeLeft = 98) ∧ (Mago = 120) ∧ (Statut = 1)))
------------------------------------
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - serveCofee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 61) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 99) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 104) ∧ (Mago = 0) ∧ (Statut = 0)))
 -----------------------------------
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
-(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
-(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - serveCofee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 1)))
-(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 1))) - powerDown -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 100) ∧ (Mago = 60) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1))) - ServeCoffee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 60) ∧ (Statut = 1))) - insert -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 60) ∧ (Statut = 1))) - backBalance -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 60) ∧ (Statut = 1)))
+-----------------------------------
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 1)))
+-----------------------------------
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 61) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q0 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q1 ≝ ((Balance = 62) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1))) - ServeCoffee -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 60) ∧ (Statut = 1)))
+(c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 60) ∧ (Statut = 1))) - powerDown -> (c_q2 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 60) ∧ (Statut = 0)))
 -----------------------------------
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 102) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 103) ∧ (Mago = 0) ∧ (Statut = 0)))
 -----------------------------------

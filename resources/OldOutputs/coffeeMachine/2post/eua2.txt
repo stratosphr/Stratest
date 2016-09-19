@@ -1,0 +1,37 @@
+System size: 65536
+#AbstractionPredicates: 3
+#Tests: 2
+AverageTestsLength: 5.0
+TestsLengthStandardDeviation: 0.0
+#AbstractStates: 6
+#AbstractStatesInTests: 2
+#ConcreteStates: 25
+#UniqueConcreteStatesInTests: 7
+#BlueStates: 18
+#GreenStates: 7
+#AbstractTransitions: 24
+#AbstractTransitionsInTests: 7
+#ConcreteTransitions: 24
+#UniqueConcreteTransitionsInTests: 7
+#BlueTransitions: 0
+#GreenTransitions: 7
+#PureMayTransitions: 6
+#MustMinusTransitions: 10
+#MustPlusTransitions: 18
+#MustSharpTransitions: 10
+#EventsInTestPurpose: 3
+#EventsInTestPurposeFiredInTests: 2
+Time: 5.319650847s
+-----------------------------------
+(c_q5 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q4 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q4 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q4 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q4 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q5 ≝ ((Balance = 2) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+-----------------------------------
+(c_q5 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - takeMago -> (c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - addCofee -> (c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q4 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q4 ≝ ((Balance = 1) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1))) - backBalance -> (c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 1)))
+-----------------------------------

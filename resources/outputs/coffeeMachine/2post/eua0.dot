@@ -6,28 +6,28 @@ digraph G {
 
 	node[shape=box, style="rounded, filled", color=lightblue2];
 
-	c_q4_40[label="c_q4_40"];
-	c_q0_37[label="c_q0_37"];
-	c_q5_25[label="c_q5_25"];
-	c_q5_6[label="c_q5_6"];
-	c_q6_46[label="c_q6_46"];
-	c_q5_39[label="c_q5_39"];
-	c_q1_24[label="c_q1_24"];
-	c_q4_32[label="c_q4_32"];
-	c_q5_47[label="c_q5_47"];
-	c_q5_5[label="c_q5_5"];
-	c_q4_38[label="c_q4_38"];
-	c_q4_33[label="c_q4_33"];
-	c_q4_45[label="c_q4_45"];
-	c_q0_29[label="c_q0_29"];
-	c_q0_9[label="c_q0_9"];
-	c_q1_20[label="c_q1_20"];
-	c_q0_23[label="c_q0_23"];
-	c_q2_30[label="c_q2_30"];
-	c_q4_36[label="c_q4_36"];
-	c_q0_12[label="c_q0_12"];
-	c_q0_13[label="c_q0_13"];
-	c_q1_31[label="c_q1_31"];
+	c_q4_40[label="(c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 0) ∧ (Statut = 1)))"];
+	c_q0_37[label="(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 60) ∧ (Statut = 1)))"];
+	c_q5_25[label="(c_q5 ≝ ((Balance = 0) ∧ (CofeeLeft = 1) ∧ (Mago = 0) ∧ (Statut = 0)))"];
+	c_q5_6[label="(c_q5 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))"];
+	c_q6_46[label="(c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 0) ∧ (Statut = 2)))"];
+	c_q5_39[label="(c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 0) ∧ (Mago = 0) ∧ (Statut = 0)))"];
+	c_q1_24[label="(c_q1 ≝ ((Balance = 0) ∧ (CofeeLeft = 1) ∧ (Mago = 1) ∧ (Statut = 0)))"];
+	c_q4_32[label="(c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))"];
+	c_q5_47[label="(c_q5 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 0) ∧ (Statut = 0)))"];
+	c_q5_5[label="(c_q5 ≝ ((Balance = 0) ∧ (CofeeLeft = 101) ∧ (Mago = 0) ∧ (Statut = 0)))"];
+	c_q4_38[label="(c_q4 ≝ ((Balance = 1) ∧ (CofeeLeft = 0) ∧ (Mago = 0) ∧ (Statut = 1)))"];
+	c_q4_33[label="(c_q4 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))"];
+	c_q4_45[label="(c_q4 ≝ ((Balance = 1) ∧ (CofeeLeft = 0) ∧ (Mago = 0) ∧ (Statut = 2)))"];
+	c_q0_29[label="(c_q0 ≝ ((Balance = 1) ∧ (CofeeLeft = 0) ∧ (Mago = 61) ∧ (Statut = 2)))"];
+	c_q0_9[label="(c_q0 ≝ ((Balance = 1) ∧ (CofeeLeft = 0) ∧ (Mago = 1) ∧ (Statut = 1)))"];
+	c_q1_20[label="(c_q1 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 1) ∧ (Statut = 0)))"];
+	c_q0_23[label="(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 61) ∧ (Statut = 1)))"];
+	c_q2_30[label="(c_q2 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 61) ∧ (Statut = 2)))"];
+	c_q4_36[label="(c_q4 ≝ ((Balance = 60) ∧ (CofeeLeft = 1) ∧ (Mago = 0) ∧ (Statut = 1)))"];
+	c_q0_12[label="(c_q0 ≝ ((Balance = 60) ∧ (CofeeLeft = 1) ∧ (Mago = 1) ∧ (Statut = 1)))"];
+	c_q0_13[label="(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 1) ∧ (Mago = 1) ∧ (Statut = 1)))"];
+	c_q1_31[label="(c_q1 ≝ ((Balance = 0) ∧ (CofeeLeft = 0) ∧ (Mago = 61) ∧ (Statut = 0)))"];
 
 	start_c_q5_6 -> c_q5_6;
 	c_q5_6 -> c_q5_6[label="insert", penwidth=3, color=red];
@@ -35,7 +35,7 @@ digraph G {
 	c_q5_47 -> c_q5_5[label="addCofee"];
 	c_q5_6 -> c_q4_32[label="powerUp", penwidth=3, color=red];
 	c_q0_9 -> c_q0_9[label="insert"];
-	c_q0_12 -> c_q0_23[label="serveCofee"];
+	c_q0_12 -> c_q0_23[label="ServeCoffee"];
 	c_q0_12 -> c_q0_13[label="backBalance"];
 	c_q0_23 -> c_q1_31[label="powerDown"];
 	c_q0_23 -> c_q2_30[label="AutoOut"];
@@ -48,7 +48,7 @@ digraph G {
 	c_q2_30 -> c_q1_31[label="powerDown"];
 	c_q4_32 -> c_q4_33[label="insert", penwidth=3, color=red];
 	c_q4_38 -> c_q4_40[label="backBalance"];
-	c_q4_36 -> c_q0_37[label="serveCofee"];
+	c_q4_36 -> c_q0_37[label="ServeCoffee"];
 	c_q4_38 -> c_q5_39[label="powerDown"];
 	c_q4_40 -> c_q6_46[label="AutoOut"];
 	c_q6_46 -> c_q6_46[label="insert"];

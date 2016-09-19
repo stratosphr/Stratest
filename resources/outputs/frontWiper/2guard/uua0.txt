@@ -1,26 +1,27 @@
-System size : -1
-#AbstractionPredicates : 3
-#Tests : 1
-AverageTestsLength : 3.0
-TestsLengthStandardDeviation : 0.0
-#AbstractStates : 8
-#AbstractTransitions : 143
-#MustMinusTransitions : 4
-#MustPlusTransitions : 8
-#MustSharpTransitions : 4
-#PureMayTransitions : 135
-#ConcreteStates : 189
-#ConcreteTransitions : 154
-#UniqueConcreteStatesInTests : 3
-#UniqueConcreteTransitionsInTests : 3
-#EventsInTestPurpose : 0
-#EventsInTestPurposeFiredInTests : 0
-#BlueStates : 6
-#GreenStates : 0
-#BlueTransitions : 0
-#GreenTransitions : 0
-#AbstractStatesInTests : -1
-#AbstractTransitionsInTests : -1
+System size: 134217728
+#AbstractionPredicates: 3
+#Tests: 1
+AverageTestsLength: 3.0
+TestsLengthStandardDeviation: 0.0
+#AbstractStates: 8
+#AbstractStatesInTests: 2
+#ConcreteStates: 189
+#UniqueConcreteStatesInTests: 3
+#BlueStates: 0
+#GreenStates: 0
+#AbstractTransitions: 143
+#AbstractTransitionsInTests: 3
+#ConcreteTransitions: 154
+#UniqueConcreteTransitionsInTests: 3
+#BlueTransitions: 0
+#GreenTransitions: 0
+#PureMayTransitions: 135
+#MustMinusTransitions: 4
+#MustPlusTransitions: 8
+#MustSharpTransitions: 4
+#EventsInTestPurpose: 2
+#EventsInTestPurposeFiredInTests: 0
+Time: 0.673102932s
 -----------------------------------
 (c_q5 ≝ ((alimentation = 2) ∧ (cdp = 2) ∧ (depassement_temps_maintenance = 1) ∧ (dmd_commodo = 0) ∧ (dmd_commodo_user = 0) ∧ (etat_cdp = 1) ∧ (etat_commodo = 1) ∧ (etat_moteur_ess_av = 2) ∧ (presence_CDP = 1) ∧ (seuil_depasse_vit1 = 0) ∧ (seuil_depasse_vit2 = 0) ∧ (t_int_av = 0) ∧ (t_perte_acc_depasse = 1) ∧ (type_vitesse = 0) ∧ (vitesse_vehicule = 0))) - action_cdp_defaillant_deb -> (c_q5 ≝ ((alimentation = 2) ∧ (cdp = 2) ∧ (depassement_temps_maintenance = 1) ∧ (dmd_commodo = 0) ∧ (dmd_commodo_user = 0) ∧ (etat_cdp = 0) ∧ (etat_commodo = 1) ∧ (etat_moteur_ess_av = 2) ∧ (presence_CDP = 1) ∧ (seuil_depasse_vit1 = 0) ∧ (seuil_depasse_vit2 = 0) ∧ (t_int_av = 0) ∧ (t_perte_acc_depasse = 1) ∧ (type_vitesse = 0) ∧ (vitesse_vehicule = 0)))
 (c_q5 ≝ ((alimentation = 2) ∧ (cdp = 2) ∧ (depassement_temps_maintenance = 1) ∧ (dmd_commodo = 0) ∧ (dmd_commodo_user = 0) ∧ (etat_cdp = 0) ∧ (etat_commodo = 1) ∧ (etat_moteur_ess_av = 2) ∧ (presence_CDP = 1) ∧ (seuil_depasse_vit1 = 0) ∧ (seuil_depasse_vit2 = 0) ∧ (t_int_av = 0) ∧ (t_perte_acc_depasse = 1) ∧ (type_vitesse = 0) ∧ (vitesse_vehicule = 0))) - action_cdp_defaillant_fin -> (c_q5 ≝ ((alimentation = 2) ∧ (cdp = 2) ∧ (depassement_temps_maintenance = 1) ∧ (dmd_commodo = 0) ∧ (dmd_commodo_user = 0) ∧ (etat_cdp = 1) ∧ (etat_commodo = 1) ∧ (etat_moteur_ess_av = 2) ∧ (presence_CDP = 1) ∧ (seuil_depasse_vit1 = 0) ∧ (seuil_depasse_vit2 = 0) ∧ (t_int_av = 0) ∧ (t_perte_acc_depasse = 1) ∧ (type_vitesse = 0) ∧ (vitesse_vehicule = 0)))

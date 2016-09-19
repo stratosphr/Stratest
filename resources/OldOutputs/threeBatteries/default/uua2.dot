@@ -1,0 +1,36 @@
+digraph G {
+
+	rankdir = LR;
+
+	start_c_q1_6[style=invisible];
+
+	node[shape=box, style="rounded, filled", color=lightblue2];
+
+	c_q2_23[label="c_q2_23"];
+	c_q0_10[label="c_q0_10"];
+	c_q3_25[label="c_q3_25"];
+	c_q1_27[label="c_q1_27"];
+	c_q3_29[label="c_q3_29"];
+	c_q1_19[label="c_q1_19"];
+	c_q1_28[label="c_q1_28"];
+	c_q3_18[label="c_q3_18"];
+	c_q1_6[label="c_q1_6"];
+
+	start_c_q1_6 -> c_q1_6;
+	c_q1_6 -> c_q1_27[label="Fail", penwidth=3, color=red];
+	c_q1_27 -> c_q1_6[label="Repair", penwidth=3, color=red];
+	c_q1_27 -> c_q0_10[label="Fail", penwidth=3, color=red];
+	c_q1_6 -> c_q3_18[label="Tic", penwidth=3, color=red];
+	c_q0_10 -> c_q1_27[label="Repair", penwidth=3, color=red];
+	c_q0_10 -> c_q2_23[label="Tic", penwidth=3, color=red];
+	c_q2_23 -> c_q3_25[label="Repair", penwidth=3, color=red];
+	c_q3_18 -> c_q3_25[label="Fail", penwidth=3, color=red];
+	c_q3_25 -> c_q3_18[label="Repair", penwidth=3, color=red];
+	c_q3_18 -> c_q1_19[label="Commute", penwidth=3, color=red];
+	c_q3_25 -> c_q1_28[label="Commute", penwidth=3, color=red];
+	c_q3_25 -> c_q2_23[label="Fail", penwidth=3, color=red];
+	c_q1_27 -> c_q3_25[label="Tic", penwidth=3, color=red];
+	c_q3_29 -> c_q1_27[label="Commute", penwidth=3, color=red];
+	c_q1_28 -> c_q3_29[label="Tic", penwidth=3, color=red];
+
+}

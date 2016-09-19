@@ -1,26 +1,27 @@
-System size : -1
-#AbstractionPredicates : 4
-#Tests : 1
-AverageTestsLength : 0.0
-TestsLengthStandardDeviation : 0.0
-#AbstractStates : 7
-#AbstractTransitions : 102
-#MustMinusTransitions : 24
-#MustPlusTransitions : 3
-#MustSharpTransitions : 0
-#PureMayTransitions : 75
-#ConcreteStates : 133
-#ConcreteTransitions : 102
-#UniqueConcreteStatesInTests : 0
-#UniqueConcreteTransitionsInTests : 0
-#EventsInTestPurpose : 0
-#EventsInTestPurposeFiredInTests : 0
-#BlueStates : 0
-#GreenStates : 0
-#BlueTransitions : 0
-#GreenTransitions : 0
-#AbstractStatesInTests : -1
-#AbstractTransitionsInTests : -1
+System size: 2147483647
+#AbstractionPredicates: 4
+#Tests: 1
+AverageTestsLength: 0.0
+TestsLengthStandardDeviation: 0.0
+#AbstractStates: 7
+#AbstractStatesInTests: 0
+#ConcreteStates: 134
+#UniqueConcreteStatesInTests: 0
+#BlueStates: 0
+#GreenStates: 0
+#AbstractTransitions: 102
+#AbstractTransitionsInTests: 0
+#ConcreteTransitions: 102
+#UniqueConcreteTransitionsInTests: 0
+#BlueTransitions: 0
+#GreenTransitions: 0
+#PureMayTransitions: 75
+#MustMinusTransitions: 24
+#MustPlusTransitions: 3
+#MustSharpTransitions: 0
+#EventsInTestPurpose: 2
+#EventsInTestPurposeFiredInTests: 0
+Time: 21.934811476s
 -----------------------------------
 
 -----------------------------------

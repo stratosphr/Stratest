@@ -1,0 +1,83 @@
+digraph G {
+
+	rankdir = LR;
+
+	start_c_q5_0[style=invisible];
+
+	node[shape=box, style="rounded, filled", color=lightblue2];
+
+	c_q5_0[label="c_q5_0"];
+	c_q0_40[label="c_q0_40"];
+	c_q0_24[label="c_q0_24"];
+	c_q0_30[label="c_q0_30"];
+	c_q4_37[label="c_q4_37"];
+	c_q0_21[label="c_q0_21"];
+	c_q0_29[label="c_q0_29"];
+	c_q4_54[label="c_q4_54"];
+	c_q0_10[label="c_q0_10"];
+	c_q0_18[label="c_q0_18"];
+	c_q0_8[label="c_q0_8"];
+	c_q0_46[label="c_q0_46"];
+	c_q0_3[label="c_q0_3"];
+	c_q4_41[label="c_q4_41"];
+	c_q0_53[label="c_q0_53"];
+	c_q2_33[label="c_q2_33"];
+	c_q0_55[label="c_q0_55"];
+	c_q0_22[label="c_q0_22"];
+	c_q2_35[label="c_q2_35"];
+	c_q0_6[label="c_q0_6"];
+	c_q0_28[label="c_q0_28"];
+	c_q5_45[label="c_q5_45"];
+	c_q2_51[label="c_q2_51"];
+	c_q0_4[label="c_q0_4"];
+	c_q2_52[label="c_q2_52"];
+	c_q0_44[label="c_q0_44"];
+	c_q0_27[label="c_q0_27"];
+	c_q0_32[label="c_q0_32"];
+	c_q0_42[label="c_q0_42"];
+	c_q0_12[label="c_q0_12"];
+	c_q5_49[label="c_q5_49"];
+	c_q0_19[label="c_q0_19"];
+	c_q0_14[label="c_q0_14"];
+	c_q5_43[label="c_q5_43"];
+	c_q0_48[label="c_q0_48"];
+	c_q0_34[label="c_q0_34"];
+	c_q0_26[label="c_q0_26"];
+	c_q0_16[label="c_q0_16"];
+	c_q0_23[label="c_q0_23"];
+	c_q2_50[label="c_q2_50"];
+	c_q0_20[label="c_q0_20"];
+	c_q0_38[label="c_q0_38"];
+	c_q5_47[label="c_q5_47"];
+
+	start_c_q5_0 -> c_q5_0;
+	c_q5_0 -> c_q0_4[label="ATM_signal_connexion", penwidth=3, color=red];
+	c_q0_19 -> c_q0_3[label="ATM_signal_connexion"];
+	c_q0_4 -> c_q0_6[label="ATM_operation_vide", penwidth=3, color=red];
+	c_q0_6 -> c_q0_8[label="ATM_demande_id", penwidth=3, color=red];
+	c_q0_8 -> c_q0_10[label="CARD_reponse_id", penwidth=3, color=red];
+	c_q0_10 -> c_q0_12[label="ATM_demande_pin_user", penwidth=3, color=red];
+	c_q0_12 -> c_q0_14[label="ATM_recoit_pin_user", penwidth=3, color=red];
+	c_q0_14 -> c_q0_16[label="ATM_transfer_pin_user", penwidth=3, color=red];
+	c_q0_16 -> c_q0_20[label="CARD_traite_pin", penwidth=3, color=red];
+	c_q0_18 -> c_q0_19[label="CARD_failed_pin"];
+	c_q0_20 -> c_q0_21[label="ATM_traite_reponse_pin", penwidth=3, color=red];
+	c_q0_22 -> c_q0_23[label="DB_check_id"];
+	c_q0_24 -> c_q0_26[label="DB_demande_retrait"];
+	c_q0_26 -> c_q0_27[label="ATM_demande_retrait"];
+	c_q0_28 -> c_q0_29[label="ATM_obtient_montant"];
+	c_q0_30 -> c_q0_48[label="ATM_traite_retrait"];
+	c_q0_32 -> c_q2_33[label="ATM_demande_id"];
+	c_q0_34 -> c_q2_35[label="CARD_succes_pin"];
+	c_q0_42 -> c_q4_37[label="ATM_demande_id"];
+	c_q0_38 -> c_q4_41[label="CARD_failed_pin"];
+	c_q0_40 -> c_q4_41[label="DB_traitement_ok"];
+	c_q0_42 -> c_q5_43[label="ATM_demande_id"];
+	c_q0_44 -> c_q5_45[label="CARD_failed_pin"];
+	c_q0_46 -> c_q5_47[label="DB_operation_not_done"];
+	c_q0_48 -> c_q5_49[label="DB_traitement_ok"];
+	c_q2_50 -> c_q2_51[label="DB_check_id"];
+	c_q2_52 -> c_q0_53[label="ATM_traite_reponse_pin"];
+	c_q4_54 -> c_q0_55[label="ATM_signal_connexion"];
+
+}

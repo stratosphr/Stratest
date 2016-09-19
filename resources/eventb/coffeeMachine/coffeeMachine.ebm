@@ -146,7 +146,7 @@
         </CAssignment>
       </CGuarded>
     </CAnyEvent>
-    <CGuardedEvent name="serveCofee">
+      <CGuardedEvent name="ServeCoffee">
       <CAnd>
         <CEquals>
           <CVariable val="Statut" />
