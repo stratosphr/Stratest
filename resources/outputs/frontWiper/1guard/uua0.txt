@@ -21,7 +21,7 @@ TestsLengthStandardDeviation: 1.0
 #MustSharpTransitions: 0
 #EventsInTestPurpose: 3
 #EventsInTestPurposeFiredInTests: 0
-Time: 1.427679358s
+Time: 1.077464072s
 -----------------------------------
 (c_q0 ≝ ((alimentation = 2) ∧ (cdp = 2) ∧ (depassement_temps_maintenance = 1) ∧ (dmd_commodo = 0) ∧ (dmd_commodo_user = 0) ∧ (etat_cdp = 1) ∧ (etat_commodo = 1) ∧ (etat_moteur_ess_av = 2) ∧ (presence_CDP = 1) ∧ (seuil_depasse_vit1 = 0) ∧ (seuil_depasse_vit2 = 0) ∧ (t_int_av = 0) ∧ (t_perte_acc_depasse = 1) ∧ (type_vitesse = 0) ∧ (vitesse_vehicule = 0))) - action_commodo_defaillance_deb -> (c_q0 ≝ ((alimentation = 2) ∧ (cdp = 2) ∧ (depassement_temps_maintenance = 1) ∧ (dmd_commodo = 0) ∧ (dmd_commodo_user = 0) ∧ (etat_cdp = 1) ∧ (etat_commodo = 0) ∧ (etat_moteur_ess_av = 2) ∧ (presence_CDP = 1) ∧ (seuil_depasse_vit1 = 0) ∧ (seuil_depasse_vit2 = 0) ∧ (t_int_av = 0) ∧ (t_perte_acc_depasse = 1) ∧ (type_vitesse = 0) ∧ (vitesse_vehicule = 0)))
 (c_q0 ≝ ((alimentation = 2) ∧ (cdp = 2) ∧ (depassement_temps_maintenance = 1) ∧ (dmd_commodo = 0) ∧ (dmd_commodo_user = 0) ∧ (etat_cdp = 1) ∧ (etat_commodo = 0) ∧ (etat_moteur_ess_av = 2) ∧ (presence_CDP = 1) ∧ (seuil_depasse_vit1 = 0) ∧ (seuil_depasse_vit2 = 0) ∧ (t_int_av = 0) ∧ (t_perte_acc_depasse = 1) ∧ (type_vitesse = 0) ∧ (vitesse_vehicule = 0))) - alimentation_acc -> (c_q4 ≝ ((alimentation = 0) ∧ (cdp = 2) ∧ (depassement_temps_maintenance = 0) ∧ (dmd_commodo = 0) ∧ (dmd_commodo_user = 0) ∧ (etat_cdp = 1) ∧ (etat_commodo = 0) ∧ (etat_moteur_ess_av = 6) ∧ (presence_CDP = 1) ∧ (seuil_depasse_vit1 = 0) ∧ (seuil_depasse_vit2 = 0) ∧ (t_int_av = 0) ∧ (t_perte_acc_depasse = 0) ∧ (type_vitesse = 0) ∧ (vitesse_vehicule = 0)))

@@ -21,7 +21,7 @@ TestsLengthStandardDeviation: 1.0
 #MustSharpTransitions: 28
 #EventsInTestPurpose: 2
 #EventsInTestPurposeFiredInTests: 0
-Time: 2.277899026s
+Time: 2.36643207s
 -----------------------------------
 (c_q4 ≝ ((Combine = 0) ∧ (Etat = 4) ∧ (NbEssai = 0))) - Appel_Qui_Donc -> (c_q7 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))
 (c_q7 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0))) - Start -> (c_q7 ≝ ((Combine = 1) ∧ (Etat = 0) ∧ (NbEssai = 0)))

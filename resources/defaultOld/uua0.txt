@@ -1,0 +1,28 @@
+System size: 54
+#AbstractionPredicates: 2
+#Tests: 1
+AverageTestsLength: 2.0
+TestsLengthStandardDeviation: 0.0
+#AbstractStates: 4
+#AbstractStatesInTests: 2
+#ConcreteStates: 17
+#UniqueConcreteStatesInTests: 3
+#BlueStates: 0
+#GreenStates: 0
+#AbstractTransitions: 11
+#AbstractTransitionsInTests: 2
+#ConcreteTransitions: 15
+#UniqueConcreteTransitionsInTests: 2
+#BlueTransitions: 0
+#GreenTransitions: 0
+#PureMayTransitions: 4
+#MustMinusTransitions: 5
+#MustPlusTransitions: 5
+#MustSharpTransitions: 3
+#EventsInTestPurpose: 4
+#EventsInTestPurposeFiredInTests: 2
+Time: 0.072340069s
+-----------------------------------
+(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1))) - Tic -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))
+(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0))) - Fail -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))
+-----------------------------------

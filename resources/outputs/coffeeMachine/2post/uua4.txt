@@ -5,13 +5,13 @@ AverageTestsLength: 13.6
 TestsLengthStandardDeviation: 4.6303347611160905
 #AbstractStates: 6
 #AbstractStatesInTests: 2
-#ConcreteStates: 44
+#ConcreteStates: 45
 #UniqueConcreteStatesInTests: 19
 #BlueStates: 20
-#GreenStates: 24
+#GreenStates: 25
 #AbstractTransitions: 24
 #AbstractTransitionsInTests: 7
-#ConcreteTransitions: 77
+#ConcreteTransitions: 79
 #UniqueConcreteTransitionsInTests: 49
 #BlueTransitions: 0
 #GreenTransitions: 49
@@ -21,7 +21,7 @@ TestsLengthStandardDeviation: 4.6303347611160905
 #MustSharpTransitions: 10
 #EventsInTestPurpose: 3
 #EventsInTestPurposeFiredInTests: 2
-Time: 0.230206839s
+Time: 0.171189928s
 -----------------------------------
 (c_q5 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q5 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q4 ≝ ((Balance = 1) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))

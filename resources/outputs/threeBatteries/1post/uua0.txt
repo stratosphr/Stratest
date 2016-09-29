@@ -1,18 +1,18 @@
 System size: 54
 #AbstractionPredicates: 2
-#Tests: 3
-AverageTestsLength: 1.6666666666666667
-TestsLengthStandardDeviation: 0.4714045207910317
+#Tests: 1
+AverageTestsLength: 2.0
+TestsLengthStandardDeviation: 0.0
 #AbstractStates: 2
 #AbstractStatesInTests: 2
-#ConcreteStates: 14
-#UniqueConcreteStatesInTests: 5
+#ConcreteStates: 12
+#UniqueConcreteStatesInTests: 3
 #BlueStates: 0
 #GreenStates: 0
 #AbstractTransitions: 8
-#AbstractTransitionsInTests: 3
-#ConcreteTransitions: 10
-#UniqueConcreteTransitionsInTests: 4
+#AbstractTransitionsInTests: 2
+#ConcreteTransitions: 9
+#UniqueConcreteTransitionsInTests: 2
 #BlueTransitions: 0
 #GreenTransitions: 0
 #PureMayTransitions: 6
@@ -20,14 +20,9 @@ TestsLengthStandardDeviation: 0.4714045207910317
 #MustPlusTransitions: 1
 #MustSharpTransitions: 0
 #EventsInTestPurpose: 2
-#EventsInTestPurposeFiredInTests: 2
-Time: 0.033853703s
------------------------------------
-(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1))) - Tic -> (c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))
-(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0))) - Fail -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))
------------------------------------
-(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1))) - Tic -> (c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))
-(c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0))) - Commute -> (c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 3) ∧ (h = 1)))
+#EventsInTestPurposeFiredInTests: 1
+Time: 0.011676848s
 -----------------------------------
 (c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1))) - Fail -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1)))
+(c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 1))) - Tic -> (c_q3 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 1) ∧ (batInUse = 1) ∧ (h = 0)))
 -----------------------------------

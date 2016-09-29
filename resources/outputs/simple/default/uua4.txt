@@ -21,7 +21,7 @@ TestsLengthStandardDeviation: 0.0
 #MustSharpTransitions: 0
 #EventsInTestPurpose: 1
 #EventsInTestPurposeFiredInTests: 1
-Time: 4.1451E-5s
+Time: 7.4449E-5s
 -----------------------------------
 (c_q0 ≝ ((var1 = 0) ∧ (var2 = 0))) - event1 -> (c_q1 ≝ ((var1 = 1) ∧ (var2 = 0)))
 -----------------------------------

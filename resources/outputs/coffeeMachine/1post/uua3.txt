@@ -21,7 +21,7 @@ TestsLengthStandardDeviation: 6.663665067585855
 #MustSharpTransitions: 12
 #EventsInTestPurpose: 1
 #EventsInTestPurposeFiredInTests: 1
-Time: 0.188390725s
+Time: 0.168158361s
 -----------------------------------
 (c_q6 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q0 ≝ ((Balance = 60) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
 (c_q0 ≝ ((Balance = 60) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q0 ≝ ((Balance = 60) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))

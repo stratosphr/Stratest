@@ -21,7 +21,7 @@ TestsLengthStandardDeviation: 0.0
 #MustSharpTransitions: 12
 #EventsInTestPurpose: 4
 #EventsInTestPurposeFiredInTests: 0
-Time: 0.291875814s
+Time: 0.204955892s
 -----------------------------------
 (c_q403 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 0) ∧ (Wa = 0))) - e12 -> (c_q403 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 1) ∧ (Wa = 0)))
 (c_q403 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 0) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 1) ∧ (Wa = 0))) - e16 -> (c_q275 ≝ ((A = 0) ∧ (CA = 0) ∧ (D = 0) ∧ (E = 0) ∧ (F = 0) ∧ (M = 1) ∧ (P = 0) ∧ (S = 0) ∧ (T = 0) ∧ (Ut = 1) ∧ (Vi = 1) ∧ (Wa = 0)))

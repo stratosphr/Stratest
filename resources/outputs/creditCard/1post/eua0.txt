@@ -21,7 +21,7 @@ TestsLengthStandardDeviation: 0.0
 #MustSharpTransitions: 0
 #EventsInTestPurpose: 2
 #EventsInTestPurposeFiredInTests: 0
-Time: 21.934811476s
+Time: 14.806332066s
 -----------------------------------
 
 -----------------------------------

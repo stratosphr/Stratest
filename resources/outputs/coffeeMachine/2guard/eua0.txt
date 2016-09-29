@@ -21,7 +21,7 @@ TestsLengthStandardDeviation: 0.0
 #MustSharpTransitions: 6
 #EventsInTestPurpose: 3
 #EventsInTestPurposeFiredInTests: 0
-Time: 4.55111477s
+Time: 2.97226047s
 -----------------------------------
 (c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
 -----------------------------------

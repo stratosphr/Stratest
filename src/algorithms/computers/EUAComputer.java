@@ -64,6 +64,8 @@ public final class EUAComputer implements IComputer<JSCATS> {
         double computationTime;
         startTime = System.nanoTime();
         // Step 0: Variables declaration
+        List<Thread> modalitiesComputers = new ArrayList<>();
+        Map<AbstractState, List<Event>> E = new HashMap<>();
         Set<AbstractState> Q = new LinkedHashSet<>();
         Set<AbstractState> Q0 = new LinkedHashSet<>();
         Set<ConcreteState> C;
@@ -96,6 +98,21 @@ public final class EUAComputer implements IComputer<JSCATS> {
         }
         C = new LinkedHashSet<>(IC0);
         // Step 2: Computation of the reachable states, the transitions in delta, delta+, delta-
+        for (AbstractState q : abstractStates) {
+            E.put(q, new ArrayList<>());
+            for (Event e : machine.getEvents()) {
+                z3.reset();
+                z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
+                        machine.getInvariant(),
+                        (ABooleanExpression) machine.getInvariant().prime(true),
+                        q,
+                        e.getSubstitution().getPrd(machine)
+                )));
+                if (z3.checkSAT() == Status.SATISFIABLE) {
+                    E.get(q).add(e);
+                }
+            }
+        }
         RQ.addAll(Q0);
         while (!RQ.isEmpty()) {
             AbstractState q = RQ.iterator().next();
@@ -105,16 +122,22 @@ public final class EUAComputer implements IComputer<JSCATS> {
             sortedAbstractStates.addAll(getAbstractStates());
             Q.add(q);
             for (AbstractState qPrime : sortedAbstractStates) {
-                for (Event e : machine.getEvents()) {
+                for (Event e : E.get(q)) {
                     UTuple<Boolean, Model> nc = new ModalityChecker(machine).isMayWithModel(new AbstractTransition(q, e, qPrime));
                     if (nc.getFirst()) {
                         Delta.add(new AbstractTransition(q, e, qPrime));
-                        if (new ModalityChecker(machine).isMustMinus(new AbstractTransition(q, e, qPrime))) {
-                            DeltaMinus.add(new AbstractTransition(q, e, qPrime));
-                        }
-                        if (new ModalityChecker(machine).isMustPlus(new AbstractTransition(q, e, qPrime))) {
-                            DeltaPlus.add(new AbstractTransition(q, e, qPrime));
-                        }
+                        modalitiesComputers.add(new Thread(() -> {
+                            if (new ModalityChecker(machine).isMustMinus(new AbstractTransition(q, e, qPrime))) {
+                                DeltaMinus.add(new AbstractTransition(q, e, qPrime));
+                            }
+                        }));
+                        modalitiesComputers.add(new Thread(() -> {
+                            if (new ModalityChecker(machine).isMustPlus(new AbstractTransition(q, e, qPrime))) {
+                                DeltaPlus.add(new AbstractTransition(q, e, qPrime));
+                            }
+                        }));
+                        modalitiesComputers.get(modalitiesComputers.size() - 2).start();
+                        modalitiesComputers.get(modalitiesComputers.size() - 1).start();
                         ConcreteState witness = ConcreteStateComputer.computeConcreteState("c_" + q.getName(), nc.getSecond(), true);
                         if (C.add(witness)) {
                             Alpha.put(witness, q);
@@ -217,10 +240,10 @@ public final class EUAComputer implements IComputer<JSCATS> {
                                 }
                             }
                         }
+                        if (!E.get(q).isEmpty() && !Q.contains(qPrime)) {
+                            RQ.add(qPrime);
+                        }
                     }
-                }
-                if (!Q.contains(qPrime)) {
-                    RQ.add(qPrime);
                 }
             }
         }
@@ -229,7 +252,7 @@ public final class EUAComputer implements IComputer<JSCATS> {
             while (!RC.isEmpty()) {
                 ConcreteState c = RC.iterator().next();
                 RC.remove(c);
-                for (Event e : machine.getEvents()) {
+                for (Event e : E.get(Alpha.get(c))) {
                     z3.reset();
                     z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
                             (ABooleanExpression) machine.getInvariant().prime(true),
@@ -261,6 +284,13 @@ public final class EUAComputer implements IComputer<JSCATS> {
                 }
             }
         }
+        modalitiesComputers.forEach(thread -> {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
         // Time measurement
         endTime = System.nanoTime();
         computationTime = (1.0 * endTime - startTime) / 1000000000;
