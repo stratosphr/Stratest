@@ -1,18 +1,18 @@
 System size: 65536
 #AbstractionPredicates: 3
 #Tests: 1
-AverageTestsLength: 1.0
+AverageTestsLength: 4.0
 TestsLengthStandardDeviation: 0.0
 #AbstractStates: 5
-#AbstractStatesInTests: 1
+#AbstractStatesInTests: 2
 #ConcreteStates: 30
-#UniqueConcreteStatesInTests: 1
+#UniqueConcreteStatesInTests: 2
 #BlueStates: 0
 #GreenStates: 0
 #AbstractTransitions: 28
-#AbstractTransitionsInTests: 1
+#AbstractTransitionsInTests: 3
 #ConcreteTransitions: 28
-#UniqueConcreteTransitionsInTests: 1
+#UniqueConcreteTransitionsInTests: 3
 #BlueTransitions: 0
 #GreenTransitions: 0
 #PureMayTransitions: 9
@@ -20,8 +20,11 @@ TestsLengthStandardDeviation: 0.0
 #MustPlusTransitions: 14
 #MustSharpTransitions: 6
 #EventsInTestPurpose: 3
-#EventsInTestPurposeFiredInTests: 0
-Time: 2.97226047s
+#EventsInTestPurposeFiredInTests: 1
+Time: 2.617229404s
 -----------------------------------
-(c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - insert -> (c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - powerDown -> (c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0)))
+(c_q4 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 0))) - powerUp -> (c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
+(c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1))) - insert -> (c_q0 ≝ ((Balance = 0) ∧ (CofeeLeft = 100) ∧ (Mago = 0) ∧ (Statut = 1)))
 -----------------------------------

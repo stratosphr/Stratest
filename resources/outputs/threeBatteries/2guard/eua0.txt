@@ -4,9 +4,9 @@ System size: 54
 AverageTestsLength: 0.0
 TestsLengthStandardDeviation: 0.0
 #AbstractStates: 3
-#AbstractStatesInTests: 0
-#ConcreteStates: 12
-#UniqueConcreteStatesInTests: 0
+#AbstractStatesInTests: 1
+#ConcreteStates: 10
+#UniqueConcreteStatesInTests: 1
 #BlueStates: 0
 #GreenStates: 0
 #AbstractTransitions: 9
@@ -21,7 +21,7 @@ TestsLengthStandardDeviation: 0.0
 #MustSharpTransitions: 4
 #EventsInTestPurpose: 2
 #EventsInTestPurposeFiredInTests: 0
-Time: 0.692466493s
+Time: 0.756511572s
 -----------------------------------
 
 -----------------------------------

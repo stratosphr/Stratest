@@ -64,7 +64,7 @@ public final class JSCATSStatisticsReporter extends AStatisticsReporter {
         this.nbPureMayTransitions = jscats.getDelta().stream().filter(abstractTransition -> !jscats.getDeltaMinus().contains(abstractTransition) && !jscats.getDeltaPlus().contains(abstractTransition)).collect(Collectors.toList()).size();
         this.nbConcreteStates = jscats.getC().size();
         this.nbConcreteTransitions = jscats.getDeltaC().size();
-        this.nbUniqueConcreteStatesInTests = flattenedTestsStates.size();
+        this.nbUniqueConcreteStatesInTests = flattenedTestsStates.isEmpty() ? jscats.getIc0().size() : flattenedTestsStates.size();
         this.nbUniqueConcreteTransitionsInTests = flattenedTestsTransitions.size();
         this.nbEventsInTestPurpose = testPurposeEventNames.size();
         this.nbEventsInTestPurposeFiredInTests = testPurposeEventNames.stream().filter(eventName -> flattenedTestsTransitions.stream().anyMatch(concreteTransition -> concreteTransition.getEvent().getName().equals(eventName))).collect(Collectors.toList()).size();
@@ -72,7 +72,7 @@ public final class JSCATSStatisticsReporter extends AStatisticsReporter {
         this.nbGreenStates = jscats.getKappa().values().stream().filter(stateColor -> stateColor == EStateColor.GREEN).collect(Collectors.toList()).size();
         this.nbBlueTransitions = flattenedTestsTransitions.stream().filter(concreteTransition -> jscats.getKappa().get(concreteTransition.getSource()) == EStateColor.BLUE).collect(Collectors.toList()).size();
         this.nbGreenTransitions = flattenedTestsTransitions.stream().filter(concreteTransition -> jscats.getKappa().get(concreteTransition.getSource()) == EStateColor.GREEN).collect(Collectors.toList()).size();
-        this.nbAbstractStatesInTests = flattenedTestsStates.stream().map(concreteState -> jscats.getAlpha().get(concreteState)).collect(Collectors.toSet()).size();
+        this.nbAbstractStatesInTests = flattenedTestsStates.isEmpty() ? jscats.getIc0().size() : flattenedTestsStates.stream().map(concreteState -> jscats.getAlpha().get(concreteState)).collect(Collectors.toSet()).size();
         this.nbAbstractTransitionsInTests = flattenedTestsTransitions.stream().map(concreteTransition -> new AbstractTransition(jscats.getAlpha().get(concreteTransition.getSource()), concreteTransition.getEvent(), jscats.getAlpha().get(concreteTransition.getTarget()))).collect(Collectors.toSet()).size();
         this.computationTime = jscats.getComputationTime();
     }

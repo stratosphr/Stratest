@@ -28,8 +28,8 @@ digraph G {
 	c_q7_69 -> c_q7_69[label="Start", penwidth=3, color=red];
 	c_q7_22 -> c_q2_53[label="Start", penwidth=3, color=red];
 	c_q7_69 -> c_q3_57[label="Start", penwidth=3, color=red];
-	c_q7_22 -> c_q4_63[label="Start", penwidth=3, color=red];
 	c_q7_69 -> c_q4_63[label="HangUp", penwidth=3, color=red];
+	c_q7_22 -> c_q4_63[label="Start", penwidth=3, color=red];
 	c_q7_22 -> c_q6_65[label="Start", penwidth=3, color=red];
 	c_q7_67 -> c_q6_65[label="Timeout", penwidth=3, color=red];
 	c_q7_22 -> c_q10_73[label="Start", penwidth=3, color=red];
@@ -39,8 +39,8 @@ digraph G {
 	c_q3_57 -> c_q3_57[label="Start", penwidth=3, color=red];
 	c_q3_57 -> c_q2_53[label="Start", penwidth=3, color=red];
 	c_q3_57 -> c_q2_53[label="Timeout", penwidth=3, color=red];
-	c_q3_57 -> c_q4_63[label="Start", penwidth=3, color=red];
 	c_q3_57 -> c_q4_63[label="HangUp", penwidth=3, color=red];
+	c_q3_57 -> c_q4_63[label="Start", penwidth=3, color=red];
 	c_q3_57 -> c_q6_65[label="Start", penwidth=3, color=red];
 	c_q3_57 -> c_q7_39[label="Start", penwidth=3, color=red];
 	c_q3_57 -> c_q7_69[label="Start", penwidth=3, color=red];
@@ -53,8 +53,8 @@ digraph G {
 	c_q11_70 -> c_q3_55[label="Start", penwidth=3, color=red];
 	c_q11_70 -> c_q3_57[label="Start", penwidth=3, color=red];
 	c_q11_70 -> c_q3_59[label="Timeout", penwidth=3, color=red];
-	c_q11_70 -> c_q4_63[label="Start", penwidth=3, color=red];
 	c_q11_70 -> c_q4_63[label="HangUp", penwidth=3, color=red];
+	c_q11_70 -> c_q4_63[label="Start", penwidth=3, color=red];
 	c_q11_70 -> c_q6_65[label="Start", penwidth=3, color=red];
 	c_q11_70 -> c_q7_67[label="Start", penwidth=3, color=red];
 	c_q11_70 -> c_q7_69[label="Start", penwidth=3, color=red];

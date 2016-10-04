@@ -10,7 +10,7 @@ do
         do
             pdfFile=$preds/$(basename $dotFile .dot).pdf
             echo $pdfFile
-            dot -Tpdf $dotFile >$pdfFile
+            dot -Tpdf $dotFile >$pdfFile 
         done
     done;
 done;

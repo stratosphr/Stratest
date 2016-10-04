@@ -76,12 +76,9 @@ public final class OldEUAComputer implements IComputer<JSCATS> {
         while (!RQ.isEmpty()) {
             AbstractState q = RQ.iterator().next();
             RQ.remove(q);
-            Set<AbstractState> sortedAbstractStates = new LinkedHashSet<>();
-            sortedAbstractStates.add(q);
-            sortedAbstractStates.addAll(getAbstractStates());
             Q.add(q);
-            for (AbstractState qPrime : sortedAbstractStates) {
-                for (Event e : machine.getEvents()) {
+            for (AbstractState qPrime : orderStates(abstractStates, q)) {
+                for (Event e : orderEvents(machine.getEvents())) {
                     UTuple<Boolean, Model> nc = new ModalityChecker(machine).isMayWithModel(new AbstractTransition(q, e, qPrime));
                     if (nc.getFirst()) {
                         Delta.add(new AbstractTransition(q, e, qPrime));
@@ -119,10 +116,10 @@ public final class OldEUAComputer implements IComputer<JSCATS> {
                         if (C.add(witness)) {
                             Alpha.put(witness, q);
                         }
+                        if (!Q.contains(qPrime)) {
+                            RQ.add(qPrime);
+                        }
                     }
-                }
-                if (!Q.contains(qPrime)) {
-                    RQ.add(qPrime);
                 }
             }
         }
@@ -130,6 +127,20 @@ public final class OldEUAComputer implements IComputer<JSCATS> {
         endTime = System.nanoTime();
         computationTime = (1.0 * endTime - startTime) / 1000000000;
         return new JSCATS(Q, Q0, C, IC0, Delta, DeltaPlus, DeltaMinus, Alpha, Kappa, DeltaC, computationTime);
+    }
+
+    private List<AbstractState> orderStates(List<AbstractState> abstractStates, AbstractState q) {
+        /*Set<AbstractState> sortedAbstractStates = new LinkedHashSet<>();
+        sortedAbstractStates.add(q);
+        sortedAbstractStates.addAll(abstractStates);
+        return new ArrayList<>(sortedAbstractStates);*/
+        return abstractStates;
+    }
+
+    private List<Event> orderEvents(List<Event> events) {
+        List<Event> orderedEvents = new ArrayList<>(events);
+        Collections.sort(orderedEvents);
+        return orderedEvents;
     }
 
     public Machine getMachine() {

@@ -19,6 +19,9 @@ public final class DOTFormatter extends AFormatter {
     public String formatGraph(List<? extends AState> initialStates, List<? extends ATransition> transitions) {
         List<AState> states = transitions.stream().map(transition -> Arrays.asList(transition.getSource(), transition.getTarget())).flatMap(Collection::stream).collect(Collectors.toList());
         Map<AState, String> renamedStates = new HashMap<>();
+        for (int i = 0; i < initialStates.size(); i++) {
+            renamedStates.put(initialStates.get(i), initialStates.get(i).getName() + "_" + i);
+        }
         for (int i = 0; i < states.size(); i++) {
             renamedStates.put(states.get(i), states.get(i).getName() + "_" + i);
         }
@@ -55,6 +58,9 @@ public final class DOTFormatter extends AFormatter {
         LinkedHashSet<ConcreteTransition> flattenedTestsTransitions = new LinkedHashSet<>(tests.stream().flatMap(Collection::stream).collect(Collectors.toCollection(LinkedHashSet::new)));
         List<AState> states = transitions.stream().map(transition -> Arrays.asList(transition.getSource(), transition.getTarget())).flatMap(Collection::stream).collect(Collectors.toList());
         Map<AState, String> renamedStates = new HashMap<>();
+        for (int i = 0; i < initialStates.size(); i++) {
+            renamedStates.put(initialStates.get(i), initialStates.get(i).getName() + "_" + i);
+        }
         for (int i = 0; i < states.size(); i++) {
             renamedStates.put(states.get(i), states.get(i).getName() + "_" + i);
         }

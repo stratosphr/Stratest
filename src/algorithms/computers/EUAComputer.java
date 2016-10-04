@@ -64,7 +64,6 @@ public final class EUAComputer implements IComputer<JSCATS> {
         double computationTime;
         startTime = System.nanoTime();
         // Step 0: Variables declaration
-        List<Thread> modalitiesComputers = new ArrayList<>();
         Map<AbstractState, List<Event>> E = new HashMap<>();
         Set<AbstractState> Q = new LinkedHashSet<>();
         Set<AbstractState> Q0 = new LinkedHashSet<>();
@@ -98,46 +97,22 @@ public final class EUAComputer implements IComputer<JSCATS> {
         }
         C = new LinkedHashSet<>(IC0);
         // Step 2: Computation of the reachable states, the transitions in delta, delta+, delta-
-        for (AbstractState q : abstractStates) {
-            E.put(q, new ArrayList<>());
-            for (Event e : machine.getEvents()) {
-                z3.reset();
-                z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
-                        machine.getInvariant(),
-                        (ABooleanExpression) machine.getInvariant().prime(true),
-                        q,
-                        e.getSubstitution().getPrd(machine)
-                )));
-                if (z3.checkSAT() == Status.SATISFIABLE) {
-                    E.get(q).add(e);
-                }
-            }
-        }
         RQ.addAll(Q0);
         while (!RQ.isEmpty()) {
             AbstractState q = RQ.iterator().next();
             RQ.remove(q);
-            Set<AbstractState> sortedAbstractStates = new LinkedHashSet<>();
-            sortedAbstractStates.add(q);
-            sortedAbstractStates.addAll(getAbstractStates());
             Q.add(q);
-            for (AbstractState qPrime : sortedAbstractStates) {
-                for (Event e : E.get(q)) {
+            for (AbstractState qPrime : orderStates(abstractStates, q)) {
+                for (Event e : orderEvents(machine.getEvents())) {
                     UTuple<Boolean, Model> nc = new ModalityChecker(machine).isMayWithModel(new AbstractTransition(q, e, qPrime));
                     if (nc.getFirst()) {
                         Delta.add(new AbstractTransition(q, e, qPrime));
-                        modalitiesComputers.add(new Thread(() -> {
-                            if (new ModalityChecker(machine).isMustMinus(new AbstractTransition(q, e, qPrime))) {
-                                DeltaMinus.add(new AbstractTransition(q, e, qPrime));
-                            }
-                        }));
-                        modalitiesComputers.add(new Thread(() -> {
-                            if (new ModalityChecker(machine).isMustPlus(new AbstractTransition(q, e, qPrime))) {
-                                DeltaPlus.add(new AbstractTransition(q, e, qPrime));
-                            }
-                        }));
-                        modalitiesComputers.get(modalitiesComputers.size() - 2).start();
-                        modalitiesComputers.get(modalitiesComputers.size() - 1).start();
+                        if (new ModalityChecker(machine).isMustMinus(new AbstractTransition(q, e, qPrime))) {
+                            DeltaMinus.add(new AbstractTransition(q, e, qPrime));
+                        }
+                        if (new ModalityChecker(machine).isMustPlus(new AbstractTransition(q, e, qPrime))) {
+                            DeltaPlus.add(new AbstractTransition(q, e, qPrime));
+                        }
                         ConcreteState witness = ConcreteStateComputer.computeConcreteState("c_" + q.getName(), nc.getSecond(), true);
                         if (C.add(witness)) {
                             Alpha.put(witness, q);
@@ -240,7 +215,7 @@ public final class EUAComputer implements IComputer<JSCATS> {
                                 }
                             }
                         }
-                        if (!E.get(q).isEmpty() && !Q.contains(qPrime)) {
+                        if (!Q.contains(qPrime)) {
                             RQ.add(qPrime);
                         }
                     }
@@ -284,17 +259,35 @@ public final class EUAComputer implements IComputer<JSCATS> {
                 }
             }
         }
-        modalitiesComputers.forEach(thread -> {
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
         // Time measurement
         endTime = System.nanoTime();
         computationTime = (1.0 * endTime - startTime) / 1000000000;
         return new JSCATS(Q, Q0, C, IC0, Delta, DeltaPlus, DeltaMinus, Alpha, Kappa, DeltaC, computationTime);
+    }
+
+    private List<AbstractState> orderStates(List<AbstractState> abstractStates, AbstractState q) {
+        Set<AbstractState> sortedAbstractStates = new LinkedHashSet<>();
+        sortedAbstractStates.add(q);
+        sortedAbstractStates.addAll(abstractStates);
+        return new ArrayList<>(sortedAbstractStates);
+        /*AbstractState q0 = abstractStates.get(1);
+        AbstractState q1 = abstractStates.get(0);
+        AbstractState q2 = abstractStates.get(3);
+        AbstractState q3 = abstractStates.get(2);
+        return Arrays.asList(q0, q1, q2, q3);
+        return abstractStates;*/
+    }
+
+    private List<Event> orderEvents(List<Event> events) {
+        /*Event tic = events.stream().filter(event -> event.getName().equals("Tic")).findFirst().orElse(null);
+        Event commute = events.stream().filter(event -> event.getName().equals("Commute")).findFirst().orElse(null);
+        Event fail = events.stream().filter(event -> event.getName().equals("Fail")).findFirst().orElse(null);
+        Event repair = events.stream().filter(event -> event.getName().equals("Repair")).findFirst().orElse(null);*/
+        //return Arrays.asList(commute, repair, tic, fail);
+        //return Arrays.asList(tic, commute, fail, repair);
+        List<Event> orderedEvents = new ArrayList<>(events);
+        Collections.sort(orderedEvents);
+        return orderedEvents;
     }
 
     private static void propagate(ConcreteState c, Set<ConcreteTransition> deltaC, Map<ConcreteState, EStateColor> kappa) {
