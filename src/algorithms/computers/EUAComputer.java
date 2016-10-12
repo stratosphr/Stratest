@@ -227,7 +227,7 @@ public final class EUAComputer implements IComputer<JSCATS> {
             while (!RC.isEmpty()) {
                 ConcreteState c = RC.iterator().next();
                 RC.remove(c);
-                for (Event e : E.get(Alpha.get(c))) {
+                for (Event e : getMachine().getEvents()) {
                     z3.reset();
                     z3.addCode(ExpressionToSMTLib2Formatter.formatExpression(new And(
                             (ABooleanExpression) machine.getInvariant().prime(true),
@@ -270,24 +270,31 @@ public final class EUAComputer implements IComputer<JSCATS> {
         sortedAbstractStates.add(q);
         sortedAbstractStates.addAll(abstractStates);
         return new ArrayList<>(sortedAbstractStates);
-        /*AbstractState q0 = abstractStates.get(1);
-        AbstractState q1 = abstractStates.get(0);
-        AbstractState q2 = abstractStates.get(3);
-        AbstractState q3 = abstractStates.get(2);
-        return Arrays.asList(q0, q1, q2, q3);
-        return abstractStates;*/
     }
 
     private List<Event> orderEvents(List<Event> events) {
-        /*Event tic = events.stream().filter(event -> event.getName().equals("Tic")).findFirst().orElse(null);
-        Event commute = events.stream().filter(event -> event.getName().equals("Commute")).findFirst().orElse(null);
-        Event fail = events.stream().filter(event -> event.getName().equals("Fail")).findFirst().orElse(null);
-        Event repair = events.stream().filter(event -> event.getName().equals("Repair")).findFirst().orElse(null);*/
-        //return Arrays.asList(commute, repair, tic, fail);
-        //return Arrays.asList(tic, commute, fail, repair);
-        List<Event> orderedEvents = new ArrayList<>(events);
+        /*Event e0 = events.stream().filter(event -> event.getName().equals("ATM_signal_connexion")).findFirst().orElse(null);
+        Event e1 = events.stream().filter(event -> event.getName().equals("ATM_operation_vide")).findFirst().orElse(null);
+        Event e2 = events.stream().filter(event -> event.getName().equals("ATM_demande_id")).findFirst().orElse(null);
+        Event e3 = events.stream().filter(event -> event.getName().equals("CARD_reponse_id")).findFirst().orElse(null);
+        Event e4 = events.stream().filter(event -> event.getName().equals("ATM_demande_pin_user")).findFirst().orElse(null);
+        Event e5 = events.stream().filter(event -> event.getName().equals("ATM_recoit_pin_user")).findFirst().orElse(null);
+        Event e6 = events.stream().filter(event -> event.getName().equals("ATM_transfer_pin_user")).findFirst().orElse(null);
+        Event e7 = events.stream().filter(event -> event.getName().equals("CARD_traite_pin")).findFirst().orElse(null);
+        Event e8 = events.stream().filter(event -> event.getName().equals("CARD_succes_pin")).findFirst().orElse(null);
+        Event e9 = events.stream().filter(event -> event.getName().equals("CARD_failed_pin")).findFirst().orElse(null);
+        Event e10 = events.stream().filter(event -> event.getName().equals("ATM_traite_reponse_pin")).findFirst().orElse(null);
+        Event e11 = events.stream().filter(event -> event.getName().equals("DB_check_id")).findFirst().orElse(null);
+        Event e12 = events.stream().filter(event -> event.getName().equals("DB_operation_not_done")).findFirst().orElse(null);
+        Event e13 = events.stream().filter(event -> event.getName().equals("DB_demande_retrait")).findFirst().orElse(null);
+        Event e14 = events.stream().filter(event -> event.getName().equals("ATM_demande_retrait")).findFirst().orElse(null);
+        Event e15 = events.stream().filter(event -> event.getName().equals("ATM_obtient_montant")).findFirst().orElse(null);
+        Event e16 = events.stream().filter(event -> event.getName().equals("ATM_traite_retrait")).findFirst().orElse(null);
+        Event e17 = events.stream().filter(event -> event.getName().equals("DB_traitement_ok")).findFirst().orElse(null);*/
+        return events;
+        /*List<Event> orderedEvents = new ArrayList<>(events);
         Collections.sort(orderedEvents);
-        return orderedEvents;
+        return orderedEvents;*/
     }
 
     private static void propagate(ConcreteState c, Set<ConcreteTransition> deltaC, Map<ConcreteState, EStateColor> kappa) {

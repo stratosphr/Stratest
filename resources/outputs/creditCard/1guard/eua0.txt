@@ -1,27 +1,27 @@
 System size: 2147483647
-#AbstractionPredicates: 3
+#AbstractionPredicates: 2
 #Tests: 1
 AverageTestsLength: 1.0
 TestsLengthStandardDeviation: 0.0
-#AbstractStates: 6
+#AbstractStates: 4
 #AbstractStatesInTests: 1
-#ConcreteStates: 63
+#ConcreteStates: 117
 #UniqueConcreteStatesInTests: 2
 #BlueStates: 0
 #GreenStates: 0
-#AbstractTransitions: 52
+#AbstractTransitions: 88
 #AbstractTransitionsInTests: 1
-#ConcreteTransitions: 52
+#ConcreteTransitions: 88
 #UniqueConcreteTransitionsInTests: 1
 #BlueTransitions: 0
 #GreenTransitions: 0
-#PureMayTransitions: 38
-#MustMinusTransitions: 12
-#MustPlusTransitions: 2
+#PureMayTransitions: 72
+#MustMinusTransitions: 16
+#MustPlusTransitions: 0
 #MustSharpTransitions: 0
 #EventsInTestPurpose: 2
 #EventsInTestPurposeFiredInTests: 0
-Time: 8.567522679s
+Time: 10.439430868s
 -----------------------------------
 (c_q0 ≝ ((ATM_state = 0) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 0) ∧ (A_balance_after_operation = 0) ∧ (A_card_id = 0) ∧ (A_error = 0) ∧ (A_result = 0) ∧ (A_user_pin = 0) ∧ (CARD_state = 0) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 0) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 0) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 0))) - ATM_signal_connexion -> (c_q0 ≝ ((ATM_state = 1) ∧ (A_asked_withdrawal = 0) ∧ (A_balance = 0) ∧ (A_balance_after_operation = 0) ∧ (A_card_id = 0) ∧ (A_error = 0) ∧ (A_result = 0) ∧ (A_user_pin = 0) ∧ (CARD_state = 0) ∧ (C_card_id = 3121) ∧ (C_card_pin = 4040) ∧ (C_counter = 0) ∧ (C_user_pin = 0) ∧ (DB_asked_withdrawal = 0) ∧ (DB_balance = 7400) ∧ (DB_card_id = 0) ∧ (DB_count_id = 3121) ∧ (DB_error = 0) ∧ (DB_state = 0)))
 -----------------------------------

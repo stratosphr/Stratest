@@ -417,10 +417,10 @@
             <CVariable val="local_x" />
             <CNumber val="4040" />
           </CEquals>
-          <CEquals>
+          <!--<CEquals>
             <CVariable val="local_x" />
             <CNumber val="2121" />
-          </CEquals>
+          </CEquals>-->
         </COr>
         <CMultipleAssignment>
           <CAssignment>
