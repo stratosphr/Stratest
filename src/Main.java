@@ -22,15 +22,15 @@ import java.util.stream.Collectors;
  */
 public class Main {
 
-    private static void save(File outputFolder, JSCATS eua0, JSCATS eua1, JSCATSStatisticsReporter eua0Report, JSCATSStatisticsReporter eua1Report) {
+    private static void save(File outputFolder, Machine machine, JSCATS eua0, JSCATS eua1, JSCATSStatisticsReporter eua0Report, JSCATSStatisticsReporter eua1Report) {
         try {
             outputFolder.mkdirs();
-            Files.write(Paths.get(outputFolder.getAbsolutePath() + "/eua0.txt"), eua0Report.toString().getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-            Files.write(Paths.get(outputFolder.getAbsolutePath() + "/eua0.dot"), eua0.getTestsDOTFormatting(eua0Report.getTests()).getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-            Files.write(Paths.get(outputFolder.getAbsolutePath() + "/eua0.table"), eua0Report.getRowRepresentation().getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-            Files.write(Paths.get(outputFolder.getAbsolutePath() + "/eua1.txt"), eua1Report.toString().getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-            Files.write(Paths.get(outputFolder.getAbsolutePath() + "/eua1.dot"), eua1.getTestsDOTFormatting(eua1Report.getTests()).getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-            Files.write(Paths.get(outputFolder.getAbsolutePath() + "/eua1.table"), eua1Report.getRowRepresentation().getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            Files.write(Paths.get(outputFolder.getAbsolutePath() + "/" + machine.getName() + "_noHeuristics.txt"), eua0Report.toString().getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            Files.write(Paths.get(outputFolder.getAbsolutePath() + "/" + machine.getName() + "_noHeuristics.dot"), eua0.getTestsDOTFormatting(eua0Report.getTests()).getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            Files.write(Paths.get(outputFolder.getAbsolutePath() + "/" + machine.getName() + "_noHeuristics.table"), eua0Report.getRowRepresentation().getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            Files.write(Paths.get(outputFolder.getAbsolutePath() + "/" + machine.getName() + "_heuristics.txt"), eua1Report.toString().getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            Files.write(Paths.get(outputFolder.getAbsolutePath() + "/" + machine.getName() + "_heuristics.dot"), eua1.getTestsDOTFormatting(eua1Report.getTests()).getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            Files.write(Paths.get(outputFolder.getAbsolutePath() + "/" + machine.getName() + "_heuristics.table"), eua1Report.getRowRepresentation().getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,7 +54,7 @@ public class Main {
                 JSCATS eua1 = new EUAComputer(machine, abstractStates).compute();
                 JSCATSStatisticsReporter eua0Report = new JSCATSStatisticsReporter(eua0, machine, new ArrayList<>(abstractionPredicates), new HashSet<>(), -1);
                 JSCATSStatisticsReporter eua1Report = new JSCATSStatisticsReporter(eua1, machine, new ArrayList<>(abstractionPredicates), new HashSet<>(), -1);
-                save(new File(args[2]), eua0, eua1, eua0Report, eua1Report);
+                save(new File(args[2]), machine, eua0, eua1, eua0Report, eua1Report);
             }
         }
     }
