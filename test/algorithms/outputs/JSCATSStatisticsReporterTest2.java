@@ -277,7 +277,7 @@ public class JSCATSStatisticsReporterTest2 {
 
     @Test
     public void test_frontWiper1guard() throws BParserException, InvocationTargetException, AfterParserException, IllegalAccessException, NoSuchMethodException, IOException, NoSuchFieldException {
-        Machine machine = new EBMParser().parseMachine(new File("/home/gvoiron/IdeaProjects/stratest/resources/eventb/frontWiper/frontWiper.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/frontWiper/frontWiper.ebm"));
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/frontWiper/frontWiper_1guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Arrays.asList("power_down", "wash_action_begin", "wash_action_end"));
@@ -290,7 +290,7 @@ public class JSCATSStatisticsReporterTest2 {
 
     @Test
     public void test_frontWiper2guard() throws BParserException, InvocationTargetException, AfterParserException, IllegalAccessException, NoSuchMethodException, IOException, NoSuchFieldException {
-        Machine machine = new EBMParser().parseMachine(new File("/home/gvoiron/IdeaProjects/stratest/resources/eventb/frontWiper/frontWiper.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/frontWiper/frontWiper.ebm"));
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/frontWiper/frontWiper_2guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Arrays.asList("block_FW_engine", "action_commodo_down"));
@@ -303,7 +303,7 @@ public class JSCATSStatisticsReporterTest2 {
 
     @Test
     public void test_creditCard1guard() throws BParserException, InvocationTargetException, AfterParserException, IllegalAccessException, NoSuchMethodException, IOException, NoSuchFieldException {
-        Machine machine = new EBMParser().parseMachine(new File("/home/gvoiron/IdeaProjects/stratest/resources/eventb/creditCard/creditCard.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/creditCard/creditCard.ebm"));
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/creditCard/creditCard_1guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Arrays.asList("CARD_failed_pin", "CARD_process_pin"));
@@ -316,7 +316,7 @@ public class JSCATSStatisticsReporterTest2 {
 
     @Test
     public void test_creditCard2guard() throws BParserException, InvocationTargetException, AfterParserException, IllegalAccessException, NoSuchMethodException, IOException, NoSuchFieldException {
-        Machine machine = new EBMParser().parseMachine(new File("/home/gvoiron/IdeaProjects/stratest/resources/eventb/creditCard/creditCard.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/creditCard/creditCard.ebm"));
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/creditCard/creditCard_2guard.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Arrays.asList("DB_ok", "CARD_success_pin", "DB_operation_not_done"));
@@ -329,7 +329,7 @@ public class JSCATSStatisticsReporterTest2 {
 
     @Test
     public void test_creditCard1post() throws BParserException, InvocationTargetException, AfterParserException, IllegalAccessException, NoSuchMethodException, IOException, NoSuchFieldException {
-        Machine machine = new EBMParser().parseMachine(new File("/home/gvoiron/IdeaProjects/stratest/resources/eventb/creditCard/creditCard.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/creditCard/creditCard.ebm"));
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/creditCard/creditCard_1post.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Arrays.asList("CARD_failed_pin", "CARD_process_pin"));
@@ -342,7 +342,7 @@ public class JSCATSStatisticsReporterTest2 {
 
     @Test
     public void test_creditCard2post() throws BParserException, InvocationTargetException, AfterParserException, IllegalAccessException, NoSuchMethodException, IOException, NoSuchFieldException {
-        Machine machine = new EBMParser().parseMachine(new File("/home/gvoiron/IdeaProjects/stratest/resources/eventb/creditCard/creditCard.ebm"));
+        Machine machine = new EBMParser().parseMachine(new File("resources/eventb/creditCard/creditCard.ebm"));
         Set<Predicate> abstractionPredicates = new LinkedHashSet<>(new EBMParser().parseAbstractionPredicates(new File("resources/eventb/creditCard/creditCard_2post.ap")));
         List<AbstractState> abstractStates = AbstractStatesComputer.computeAbstractStates(machine, abstractionPredicates.stream().collect(Collectors.toList()));
         Set<String> eventNames = new LinkedHashSet<>(Arrays.asList("DB_ok", "CARD_success_pin", "DB_operation_not_done"));

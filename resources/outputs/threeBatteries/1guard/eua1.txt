@@ -1,4 +1,4 @@
-System size: 54
+System size: -1
 #AbstractionPredicates: 2
 #Tests: 2
 AverageTestsLength: 4.5
@@ -19,9 +19,9 @@ TestsLengthStandardDeviation: 0.5
 #MustMinusTransitions: 2
 #MustPlusTransitions: 1
 #MustSharpTransitions: 0
-#EventsInTestPurpose: 2
-#EventsInTestPurposeFiredInTests: 2
-Time: 0.788599216s
+#EventsInTestPurpose: 0
+#EventsInTestPurposeFiredInTests: 0
+Time: 0.682884679s
 -----------------------------------
 (c_q1 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 1))) - Tic -> (c_q0 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))
 (c_q0 ≝ ((bat1 = 0) ∧ (bat2 = 0) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0))) - Fail -> (c_q0 ≝ ((bat1 = 0) ∧ (bat2 = 1) ∧ (bat3 = 0) ∧ (batInUse = 1) ∧ (h = 0)))

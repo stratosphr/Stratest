@@ -130,14 +130,30 @@ public final class OldEUAComputer implements IComputer<JSCATS> {
     }
 
     private List<AbstractState> orderStates(List<AbstractState> abstractStates, AbstractState q) {
-        /*Set<AbstractState> sortedAbstractStates = new LinkedHashSet<>();
+        Set<AbstractState> sortedAbstractStatesSet = new LinkedHashSet<>();
+        sortedAbstractStatesSet.add(q);
+        sortedAbstractStatesSet.addAll(abstractStates);
+        return new ArrayList<>(sortedAbstractStatesSet);
+        /*AbstractState q0 = abstractStates.stream().filter(abstractState -> abstractState.getName().equals("q0")).findFirst().orElse(null);
+        AbstractState q1 = abstractStates.stream().filter(abstractState -> abstractState.getName().equals("q1")).findFirst().orElse(null);
+        AbstractState q2 = abstractStates.stream().filter(abstractState -> abstractState.getName().equals("q2")).findFirst().orElse(null);
+        AbstractState q3 = abstractStates.stream().filter(abstractState -> abstractState.getName().equals("q3")).findFirst().orElse(null);
+        Set<AbstractState> sortedAbstractStates = new LinkedHashSet<>();
         sortedAbstractStates.add(q);
-        sortedAbstractStates.addAll(abstractStates);
+        sortedAbstractStates.add(q3);
+        sortedAbstractStates.add(q2);
+        sortedAbstractStates.add(q1);
+        sortedAbstractStates.add(q0);
         return new ArrayList<>(sortedAbstractStates);*/
-        return abstractStates;
     }
 
     private List<Event> orderEvents(List<Event> events) {
+        /*Event tic = events.stream().filter(event -> event.getName().equals("Tic")).findAny().orElse(null);
+        Event com = events.stream().filter(event -> event.getName().equals("Commute")).findAny().orElse(null);
+        Event fail = events.stream().filter(event -> event.getName().equals("Fail")).findAny().orElse(null);
+        Event rep = events.stream().filter(event -> event.getName().equals("Repair")).findAny().orElse(null);
+        //List<Event> orderedEvents = new ArrayList<>(Arrays.asList(rep, com, fail, tic));
+        //List<Event> orderedEvents = new ArrayList<>(Arrays.asList(tic, com, fail, rep));*/
         List<Event> orderedEvents = new ArrayList<>(events);
         Collections.sort(orderedEvents);
         return orderedEvents;
